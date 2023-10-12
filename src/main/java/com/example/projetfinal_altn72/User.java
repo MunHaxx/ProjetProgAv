@@ -1,10 +1,11 @@
+package com.example.projetfinal_altn72;
 
-
+import java.util.Date;
 
 public class User{
 
-    private string name, lastname;
-    private string password;
-    private string adresse;
+    private String name, lastname;
+    private String password;
+    private String adresse;
     private Date birthdate;
 }

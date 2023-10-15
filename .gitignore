@@ -39,4 +39,3 @@ build/
 
 ### Persistence.xml ###
 /src/main/resources/META-INF/persistence.xml
-/src/main/java/fr/efrei/projetTAN/progav_lsi2_tp3/model

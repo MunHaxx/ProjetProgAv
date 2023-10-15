@@ -1,4 +1,4 @@
-package fr.efrei2023.progav_lsi2_tp3;
+package fr.efrei.projetTAN;
 
 public class Utilisateur {
 

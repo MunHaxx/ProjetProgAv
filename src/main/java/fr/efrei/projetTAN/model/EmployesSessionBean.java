@@ -1,4 +1,4 @@
-package fr.efrei2023.progav_lsi2_tp3.model;
+package fr.efrei.projetTAN.model;
 
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;

@@ -1,13 +1,13 @@
-package fr.efrei2023.progav_lsi2_tp3.model;
+package fr.efrei.projetTAN.model;
 
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
-import static fr.efrei2023.progav_lsi2_tp3.utils.EmployesConstantes.*;
+import static fr.efrei.projetTAN.utils.EmployesConstantes.*;
 
 @Entity
-@Table(name = "employes", schema = "progAvTP3")
+@Table(name = "employes", schema = "progavtp3")
 
 @NamedQueries(
         {

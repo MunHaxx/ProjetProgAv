@@ -1,15 +1,15 @@
-package fr.efrei2023.progav_lsi2_tp3;
+package fr.efrei.projetTAN;
 
 import java.io.*;
 import java.util.List;
 
-import fr.efrei2023.progav_lsi2_tp3.model.EmployesEntity;
-import fr.efrei2023.progav_lsi2_tp3.model.EmployesSessionBean;
-import fr.efrei2023.progav_lsi2_tp3.utils.EmployesConstantes;
+import fr.efrei.projetTAN.model.EmployesEntity;
+import fr.efrei.projetTAN.model.EmployesSessionBean;
+import fr.efrei.projetTAN.utils.*;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
-import static fr.efrei2023.progav_lsi2_tp3.utils.EmployesConstantes.*;
+import static fr.efrei.projetTAN.utils.EmployesConstantes.*;
 
 //@WebServlet(name = "helloServlet", value = "/hello-servlet")
 public class Controleur extends HttpServlet {

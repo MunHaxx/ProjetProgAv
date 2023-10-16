@@ -5,7 +5,7 @@ import java.util.List;
 
 import fr.efrei.projetTAN.model.EmployesEntity;
 import fr.efrei.projetTAN.model.EmployesSessionBean;
-import fr.efrei.projetTAN.utils.*;
+import fr.efrei.projetTAN.utils.EmployesConstantes;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;

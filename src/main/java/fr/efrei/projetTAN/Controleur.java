@@ -4,11 +4,10 @@ import java.io.*;
 
 import fr.efrei.projetTAN.entities.CompetenceEntity;
 import fr.efrei.projetTAN.session.CompetenceSessionBean;
-import fr.efrei.projetTAN.utils.CompetenceConst;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
-import static fr.efrei.projetTAN.utils.CompetenceConst.*;
+import static fr.efrei.projetTAN.utils.UtilisateurConst.*;
 
 public class Controleur extends HttpServlet {
     private Utilisateur unUtilisateur;

@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="progavtp3@localhost" uuid="b54d2e4b-51d0-41b1-b9f6-e3cc993a1a60">
+    <data-source source="LOCAL" name="projetTAN/EclipseLink" uuid="26b4f4b6-082b-4b15-969a-975939980765">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>EclipseLink
+
+C:/Users/chloe/Documents/TP-Projet/M1-ProgAvance/Projet/ProjetProgAv/src/main/resources/META-INF/persistence.xml</remarks>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/prj_progav</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="prj_progav@localhost" uuid="bd6bdb5d-2222-4e20-923e-25574cabcba5">
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/progavtp3</jdbc-url>
+      <jdbc-url>jdbc:mysql://localhost:3306/prj_progav</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

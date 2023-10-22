@@ -21,6 +21,8 @@ public class Controleur extends HttpServlet {
     private RecruteurSessionBean recruteurSB;
     @EJB
     private EtudeSessionBean etudeSB;
+    @EJB
+    private CandidatureSessionBean candidatureSB;
 
     public void init() {
         // Laisser cette fonction vide

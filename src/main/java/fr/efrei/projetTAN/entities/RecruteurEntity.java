@@ -30,6 +30,15 @@ public class RecruteurEntity {
     @Column(name = "Prenom", nullable = true, length = 50)
     private String prenom;
 
+    public RecruteurEntity(int idRecruteur, String nom, String prenom) {
+        this.idRecruteur = idRecruteur;
+        this.nom = nom;
+        this.prenom = prenom;
+    }
+    public RecruteurEntity() {
+
+    }
+
     public int getIdRecruteur() {
         return idRecruteur;
     }

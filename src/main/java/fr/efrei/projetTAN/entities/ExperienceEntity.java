@@ -39,6 +39,17 @@ public class ExperienceEntity {
             inverseJoinColumns = @JoinColumn( name = "ID_Competence" ) )
     private List<CompetenceEntity> listeCompetences = new ArrayList<>();
 
+    public ExperienceEntity(int idExperience, String ecole, String evalEcole, String duree, List<CompetenceEntity> listeCompetences) {
+        this.idExperience = idExperience;
+        this.ecole = ecole;
+        this.evalEcole = evalEcole;
+        this.duree = duree;
+        this.listeCompetences = listeCompetences;
+    }
+    public ExperienceEntity() {
+
+    }
+
     public int getiDexperience() {
         return idExperience;
     }

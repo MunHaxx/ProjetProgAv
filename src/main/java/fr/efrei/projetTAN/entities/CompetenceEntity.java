@@ -36,7 +36,6 @@ public class CompetenceEntity {
         this.nom = nom;
         this.niveau = niveau;
     }
-
     public CompetenceEntity() {
     }
 

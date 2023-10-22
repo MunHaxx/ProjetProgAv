@@ -29,6 +29,15 @@ public class EtudeEntity {
     @Column(name = "Date_obtention", nullable = true)
     private Date dateObtention;
 
+    public EtudeEntity(int idEtude, String titre, Date dateObtention) {
+        this.idEtude = idEtude;
+        this.titre = titre;
+        this.dateObtention = dateObtention;
+    }
+    public EtudeEntity() {
+
+    }
+
     public int getIdEtude() {
         return idEtude;
     }

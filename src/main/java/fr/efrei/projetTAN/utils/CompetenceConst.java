@@ -1,7 +1,5 @@
 package fr.efrei.projetTAN.utils;
 
-import jakarta.persistence.NamedQuery;
-
 public final class CompetenceConst {
 
     //Requêtes JPQL

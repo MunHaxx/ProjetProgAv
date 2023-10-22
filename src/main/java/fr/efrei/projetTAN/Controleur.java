@@ -1,19 +1,22 @@
 package fr.efrei.projetTAN;
 
 import java.io.*;
+import java.util.List;
 
-import fr.efrei.projetTAN.entities.CompetenceEntity;
-import fr.efrei.projetTAN.session.CompetenceSessionBean;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import static fr.efrei.projetTAN.utils.UtilisateurConst.*;
+import fr.efrei.projetTAN.entities.*;
+import fr.efrei.projetTAN.session.*;
 
 public class Controleur extends HttpServlet {
     private Utilisateur unUtilisateur;
     private String actionUtilisateur;
     @EJB
     private CompetenceSessionBean competenceSessionBean;
+    @EJB
+    private ExperienceSessionBean experienceSessionBean;
 
     public void init() {
         // Laisser cette fonction vide
@@ -22,6 +25,8 @@ public class Controleur extends HttpServlet {
         testerRecupUneCompetence(1);
         testerModificationCompetence(1);
         testerRecupUneCompetence(1);*/
+        //testerRecupExperiences();
+        //testerRecupExperienceParId(1);
     }
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -103,14 +108,14 @@ public class Controleur extends HttpServlet {
     }
 
 
-
+    // ---------------------------------------- TESTS ----------------------------------------
 
     // Méthode pour tester la récupération des informations d'un compétence -> A SUPPRIMER !!!
     public void testerRecupUneCompetence(int id) {
         System.out.println("\n\n--- Début du test de récupération ---");
         System.out.println("Test récupération d'une compétence par ID :");
-        int competenceIdToFetch = 1; // Remplacez par l'ID de la compétence que vous voulez récupérer
-        CompetenceEntity competence = competenceSessionBean.getCompetenceParId(competenceIdToFetch);
+        int comptIdRecup = 1;
+        CompetenceEntity competence = competenceSessionBean.getCompetenceParId(comptIdRecup);
         System.out.println("Compétence récupérée - ID : " + competence.getIdCompetence());
         System.out.println("Nom : " + competence.getNom());
         System.out.println("Niveau : " + competence.getNiveau());
@@ -141,6 +146,49 @@ public class Controleur extends HttpServlet {
     }
 
 
+    public void testerRecupExperiences() {
+        List<ExperienceEntity> toutesLesExperiences = experienceSessionBean.getToutesLesExperiences();
+        System.out.println("\n--- Liste de toutes les expériences ---\n");
+        for (ExperienceEntity experience : toutesLesExperiences) {
+            System.out.println("ID : " + experience.getiDexperience());
+            System.out.println("École : " + experience.getEcole());
+            System.out.println("Évaluation École : " + experience.getEvalEcole());
+            System.out.println("Durée : " + experience.getDuree());
+
+            // Afficher les compétences associées à cette expérience
+            List<CompetenceEntity> competences = experience.getListeCompetences();
+            System.out.println("Compétences associées :");
+            for (CompetenceEntity competence : competences) {
+                System.out.println("ID : " + competence.getIdCompetence());
+                System.out.println("Nom : " + competence.getNom());
+                System.out.println("Niveau : " + competence.getNiveau());
+            }
+
+            System.out.println();
+        }
+    }
+
+    public void testerRecupExperienceParId(int experienceId) {
+        ExperienceEntity experience = experienceSessionBean.getCompetenceParId(experienceId);
+        System.out.println("\n--- Expérience récupérée par ID ---\n");
+        System.out.println("ID : " + experience.getiDexperience());
+        System.out.println("École : " + experience.getEcole());
+        System.out.println("Évaluation École : " + experience.getEvalEcole());
+        System.out.println("Durée : " + experience.getDuree());
+
+        // Afficher les compétences associées à cette expérience
+        List<CompetenceEntity> competences = experience.getListeCompetences();
+        System.out.println("Compétences associées :");
+        for (CompetenceEntity competence : competences) {
+            System.out.println("ID : " + competence.getIdCompetence());
+            System.out.println("Nom : " + competence.getNom());
+            System.out.println("Niveau : " + competence.getNiveau());
+        }
+    }
+
+
+
+    // ---------------------------------------- FIN DE TESTS  ----------------------------------------
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         processRequest(request, response);
     }

@@ -19,7 +19,7 @@ public class ExperienceSessionBean {
     }
 
     // Permet d'obtenir une compétence à partir de son ID
-    public ExperienceEntity getCompetenceParId(int id) {
+    public ExperienceEntity getExperienceParId(int id) {
         requete = entityManager.createNamedQuery("recupXpId" );
         requete.setParameter("id", id);
         return (ExperienceEntity) requete.getSingleResult();

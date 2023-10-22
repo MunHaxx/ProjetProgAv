@@ -19,6 +19,8 @@ public class Controleur extends HttpServlet {
     private ExperienceSessionBean experienceSB;
     @EJB
     private RecruteurSessionBean recruteurSB;
+    @EJB
+    private EtudeSessionBean etudeSB;
 
     public void init() {
         // Laisser cette fonction vide
@@ -28,7 +30,7 @@ public class Controleur extends HttpServlet {
         testerModificationCompetence(1);
         testerRecupUneCompetence(1);*/
         //testerRecupExperiences();
-        //testerRecupExperienceParId(1);
+        testerRecupExperienceParId(1);
     }
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -171,7 +173,7 @@ public class Controleur extends HttpServlet {
     }
 
     public void testerRecupExperienceParId(int experienceId) {
-        ExperienceEntity experience = experienceSB.getCompetenceParId(experienceId);
+        ExperienceEntity experience = experienceSB.getExperienceParId(experienceId);
         System.out.println("\n--- Expérience récupérée par ID ---\n");
         System.out.println("ID : " + experience.getiDexperience());
         System.out.println("École : " + experience.getEcole());

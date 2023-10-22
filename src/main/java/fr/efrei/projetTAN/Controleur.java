@@ -14,9 +14,11 @@ public class Controleur extends HttpServlet {
     private Utilisateur unUtilisateur;
     private String actionUtilisateur;
     @EJB
-    private CompetenceSessionBean competenceSessionBean;
+    private CompetenceSessionBean competenceSB;
     @EJB
-    private ExperienceSessionBean experienceSessionBean;
+    private ExperienceSessionBean experienceSB;
+    @EJB
+    private RecruteurSessionBean recruteurSB;
 
     public void init() {
         // Laisser cette fonction vide
@@ -115,7 +117,7 @@ public class Controleur extends HttpServlet {
         System.out.println("\n\n--- Début du test de récupération ---");
         System.out.println("Test récupération d'une compétence par ID :");
         int comptIdRecup = 1;
-        CompetenceEntity competence = competenceSessionBean.getCompetenceParId(comptIdRecup);
+        CompetenceEntity competence = competenceSB.getCompetenceParId(comptIdRecup);
         System.out.println("Compétence récupérée - ID : " + competence.getIdCompetence());
         System.out.println("Nom : " + competence.getNom());
         System.out.println("Niveau : " + competence.getNiveau());
@@ -124,7 +126,7 @@ public class Controleur extends HttpServlet {
     public void testerRecupToutesCompetences(){
         System.out.println("\n\n--- Début du test de récupération ---");
         System.out.println("Liste de toutes les compétences :");
-        for (CompetenceEntity c : competenceSessionBean.getToutesLesCompetences()) {
+        for (CompetenceEntity c : competenceSB.getToutesLesCompetences()) {
             System.out.println("ID : " + c.getIdCompetence());
             System.out.println("Nom : " + c.getNom());
             System.out.println("Niveau : " + c.getNiveau());
@@ -133,12 +135,12 @@ public class Controleur extends HttpServlet {
     // Méthode pour tester la modification d'une compétence -> A SUPPRIMER !!!
     public void testerModificationCompetence(int id) {
         System.out.println("\n\n--- Début du test de modification ---");
-        CompetenceEntity competenceAModifier = competenceSessionBean.getCompetenceParId(id);
+        CompetenceEntity competenceAModifier = competenceSB.getCompetenceParId(id);
         if (competenceAModifier != null) {
             competenceAModifier.setNom("NouveauNom");
             competenceAModifier.setNiveau("NouveauNiveau");
 
-            competenceSessionBean.modifierCompetence(competenceAModifier);
+            competenceSB.modifierCompetence(competenceAModifier);
             System.out.println("Compétence modifiée avec succès : " + competenceAModifier.getIdCompetence());
         } else {
             System.out.println("La compétence avec l'ID spécifié n'a pas été trouvée.");
@@ -147,7 +149,7 @@ public class Controleur extends HttpServlet {
 
 
     public void testerRecupExperiences() {
-        List<ExperienceEntity> toutesLesExperiences = experienceSessionBean.getToutesLesExperiences();
+        List<ExperienceEntity> toutesLesExperiences = experienceSB.getToutesLesExperiences();
         System.out.println("\n--- Liste de toutes les expériences ---\n");
         for (ExperienceEntity experience : toutesLesExperiences) {
             System.out.println("ID : " + experience.getiDexperience());
@@ -169,7 +171,7 @@ public class Controleur extends HttpServlet {
     }
 
     public void testerRecupExperienceParId(int experienceId) {
-        ExperienceEntity experience = experienceSessionBean.getCompetenceParId(experienceId);
+        ExperienceEntity experience = experienceSB.getCompetenceParId(experienceId);
         System.out.println("\n--- Expérience récupérée par ID ---\n");
         System.out.println("ID : " + experience.getiDexperience());
         System.out.println("École : " + experience.getEcole());

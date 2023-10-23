@@ -23,6 +23,8 @@ public class Controleur extends HttpServlet {
     private EtudeSessionBean etudeSB;
     @EJB
     private CandidatureSessionBean candidatureSB;
+    @EJB
+    private EcoleSessionBean ecoleSB;
 
     public void init() {
         // Laisser cette fonction vide
@@ -32,7 +34,7 @@ public class Controleur extends HttpServlet {
         testerModificationCompetence(1);
         testerRecupUneCompetence(1);*/
         //testerRecupExperiences();
-        testerRecupExperienceParId(1);
+        //testerRecupExperienceParId(1);
     }
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

@@ -3,10 +3,12 @@ package fr.efrei.projetTAN;
 import java.io.*;
 import java.util.List;
 
+import fr.efrei.projetTAN.utils.GlobalConst;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import static fr.efrei.projetTAN.utils.UtilisateurConst.*;
+import static fr.efrei.projetTAN.utils.GlobalConst.*;
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
 
@@ -25,6 +27,10 @@ public class Controleur extends HttpServlet {
     private CandidatureSessionBean candidatureSB;
     @EJB
     private EcoleSessionBean ecoleSB;
+    @EJB
+    private PosteSessionBean posteSB;
+    @EJB
+    private EnseignantSessionBean enseignantSB;
 
     public void init() {
         // Laisser cette fonction vide
@@ -144,7 +150,7 @@ public class Controleur extends HttpServlet {
         CompetenceEntity competenceAModifier = competenceSB.getCompetenceParId(id);
         if (competenceAModifier != null) {
             competenceAModifier.setNom("NouveauNom");
-            competenceAModifier.setNiveau("NouveauNiveau");
+            competenceAModifier.setNiveau(NiveauCompetence.Intermediaire);
 
             competenceSB.modifierCompetence(competenceAModifier);
             System.out.println("Compétence modifiée avec succès : " + competenceAModifier.getIdCompetence());

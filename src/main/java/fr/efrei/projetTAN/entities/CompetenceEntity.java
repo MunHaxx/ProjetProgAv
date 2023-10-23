@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import java.util.Objects;
 
 import static fr.efrei.projetTAN.utils.CompetenceConst.*;
+import static fr.efrei.projetTAN.utils.GlobalConst.*;
 
 @Entity
 @Table(name = "competence", schema = "prj_progav")
@@ -27,46 +28,54 @@ public class CompetenceEntity {
     @Column(name = "Nom", nullable = true, length = 50)
     private String nom;
 
-    @Basic
+    @Enumerated(EnumType.STRING)
     @Column(name = "niveau", nullable = true, length = 50)
-    private String niveau;
+    private NiveauCompetence niveau;
 
-    public CompetenceEntity(Integer id, String nom, String niveau){
-        this.idCompetence = id;
+    public CompetenceEntity(int idCompetence, String nom, NiveauCompetence niveau) {
+        this.idCompetence = idCompetence;
         this.nom = nom;
         this.niveau = niveau;
     }
+
     public CompetenceEntity() {
     }
 
-    public int getIdCompetence() { return idCompetence; }
-    public void setIdCompetence(int idCompetence) { this.idCompetence = idCompetence; }
+    public int getIdCompetence() {
+        return idCompetence;
+    }
 
-    public String getNom() { return nom; }
-    public void setNom(String nom) { this.nom = nom; }
+    public void setIdCompetence(int idCompetence) {
+        this.idCompetence = idCompetence;
+    }
 
-    public String getNiveau() { return niveau; }
-    public void setNiveau(String niveau) { this.niveau = niveau; }
+    public String getNom() {
+        return nom;
+    }
 
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public NiveauCompetence getNiveau() {
+        return niveau;
+    }
+
+    public void setNiveau(NiveauCompetence niveau) {
+        this.niveau = niveau;
+    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        fr.efrei.projetTAN.entities.CompetenceEntity that = (fr.efrei.projetTAN.entities.CompetenceEntity) o;
-
-        if (idCompetence != that.idCompetence) return false;
-        if (!Objects.equals(nom, that.nom)) return false;
-        return Objects.equals(niveau, that.niveau);
+        if (!(o instanceof CompetenceEntity)) return false;
+        CompetenceEntity that = (CompetenceEntity) o;
+        return getIdCompetence() == that.getIdCompetence() && Objects.equals(getNom(), that.getNom()) && getNiveau() == that.getNiveau();
     }
 
     @Override
     public int hashCode() {
-        int result = idCompetence;
-        result = 31 * result + (nom != null ? nom.hashCode() : 0);
-        result = 31 * result + (niveau != null ? niveau.hashCode() : 0);
-        return result;
+        return Objects.hash(getIdCompetence(), getNom(), getNiveau());
     }
 }
 

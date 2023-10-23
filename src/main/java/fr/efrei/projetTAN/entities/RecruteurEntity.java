@@ -2,6 +2,7 @@ package fr.efrei.projetTAN.entities;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 import static fr.efrei.projetTAN.utils.RecruteurConst.*;
@@ -30,34 +31,26 @@ public class RecruteurEntity {
     @Column(name = "Prenom", nullable = true, length = 50)
     private String prenom;
 
-    public RecruteurEntity(int idRecruteur, String nom, String prenom) {
+    @OneToMany(mappedBy = "recruteurRespo")
+    private List<PosteEntity> estRespoListePostes;
+
+    public RecruteurEntity() {
+
+    }
+
+    public RecruteurEntity(int idRecruteur, String nom, String prenom, List<PosteEntity> estRespoListePostes) {
         this.idRecruteur = idRecruteur;
         this.nom = nom;
         this.prenom = prenom;
-    }
-    public RecruteurEntity() {
-
+        this.estRespoListePostes = estRespoListePostes;
     }
 
     public int getIdRecruteur() {
         return idRecruteur;
     }
+
     public void setIdRecruteur(int idRecruteur) {
         this.idRecruteur = idRecruteur;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
     }
 
     @Override
@@ -65,12 +58,36 @@ public class RecruteurEntity {
         if (this == o) return true;
         if (!(o instanceof RecruteurEntity)) return false;
         RecruteurEntity that = (RecruteurEntity) o;
-        return getIdRecruteur() == that.getIdRecruteur() && Objects.equals(getNom(), that.getNom()) && Objects.equals(getPrenom(), that.getPrenom());
+        return getIdRecruteur() == that.getIdRecruteur() && Objects.equals(getNom(), that.getNom()) && Objects.equals(getPrenom(), that.getPrenom()) && Objects.equals(getEstRespoListePostes(), that.getEstRespoListePostes());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdRecruteur(), getNom(), getPrenom());
+        return Objects.hash(getIdRecruteur(), getNom(), getPrenom(), getEstRespoListePostes());
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
+    }
+
+    public List<PosteEntity> getEstRespoListePostes() {
+        return estRespoListePostes;
+    }
+
+    public void setEstRespoListePostes(List<PosteEntity> estRespoListePostes) {
+        this.estRespoListePostes = estRespoListePostes;
     }
 }
 

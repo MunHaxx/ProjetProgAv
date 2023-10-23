@@ -14,8 +14,6 @@ import static fr.efrei.projetTAN.utils.CandidatureConst.*;
         {
                 @NamedQuery(name = "recupToutesCandidatures", query = SELECT_TOUTES_CANDIDATURES)
                 , @NamedQuery(name = "recupCandidatureId", query = SELECT_CANDIDATURE_PAR_ID)
-                , @NamedQuery(name = "recupCandidatureIdEnseignant", query = SELECT_CANDIDATURE_PAR_IDENSEIGNANT)
-                , @NamedQuery(name = "recupCandidatureIdPoste", query = SELECT_CANDIDATURE_PAR_IDPOSTE)
         }
 )
 public class CandidatureEntity {
@@ -23,12 +21,10 @@ public class CandidatureEntity {
     @Id
     @Column(name = "ID_Candidature", nullable = false)
     private int idCandidature;
-    @Basic
-    @Column(name = "ID_Poste", nullable = false)
-    private int idPoste;
-    @Basic
-    @Column(name = "IDenseignant", nullable = false)
-    private int idEnseignant;
+    @ManyToOne
+    private PosteEntity poste;
+    @ManyToOne
+    private EnseignantEntity enseignant;
     @Basic
     @Column(name = "Contacte_le", nullable = true)
     private Date dateCandid;
@@ -36,51 +32,16 @@ public class CandidatureEntity {
     @Column(name = "Decision", nullable = true, length = 50)
     private String decision;
 
-    public CandidatureEntity(int idCandidature, int idPoste, int iDenseignant, Date dateCandid, String decision) {
-        this.idCandidature = idCandidature;
-        this.idPoste = idPoste;
-        this.idEnseignant = iDenseignant;
-        this.dateCandid = dateCandid;
-        this.decision = decision;
-    }
     public CandidatureEntity() {
 
     }
 
-
     public int getIdCandidature() {
         return idCandidature;
     }
+
     public void setIdCandidature(int idCandidature) {
         this.idCandidature = idCandidature;
-    }
-
-    public int getIdPoste() {
-        return idPoste;
-    }
-    public void setIdPoste(int idPoste) {
-        this.idPoste = idPoste;
-    }
-
-    public int getiDenseignant() {
-        return idEnseignant;
-    }
-    public void setiDenseignant(int iDenseignant) {
-        this.idEnseignant = iDenseignant;
-    }
-
-    public Date getDateCandid() {
-        return dateCandid;
-    }
-    public void setDateCandid(Date dateCandid) {
-        this.dateCandid = dateCandid;
-    }
-
-    public String getDecision() {
-        return decision;
-    }
-    public void setDecision(String decision) {
-        this.decision = decision;
     }
 
     @Override
@@ -88,11 +49,51 @@ public class CandidatureEntity {
         if (this == o) return true;
         if (!(o instanceof CandidatureEntity)) return false;
         CandidatureEntity that = (CandidatureEntity) o;
-        return getIdCandidature() == that.getIdCandidature() && getIdPoste() == that.getIdPoste() && getiDenseignant() == that.getiDenseignant() && Objects.equals(getDateCandid(), that.getDateCandid()) && Objects.equals(getDecision(), that.getDecision());
+        return getIdCandidature() == that.getIdCandidature() && Objects.equals(getPoste(), that.getPoste()) && Objects.equals(getEnseignant(), that.getEnseignant()) && Objects.equals(getDateCandid(), that.getDateCandid()) && Objects.equals(getDecision(), that.getDecision());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdCandidature(), getIdPoste(), getiDenseignant(), getDateCandid(), getDecision());
+        return Objects.hash(getIdCandidature(), getPoste(), getEnseignant(), getDateCandid(), getDecision());
+    }
+
+    public PosteEntity getPoste() {
+        return poste;
+    }
+
+    public void setPoste(PosteEntity poste) {
+        this.poste = poste;
+    }
+
+    public EnseignantEntity getEnseignant() {
+        return enseignant;
+    }
+
+    public void setEnseignant(EnseignantEntity enseignant) {
+        this.enseignant = enseignant;
+    }
+
+    public Date getDateCandid() {
+        return dateCandid;
+    }
+
+    public void setDateCandid(Date dateCandid) {
+        this.dateCandid = dateCandid;
+    }
+
+    public String getDecision() {
+        return decision;
+    }
+
+    public void setDecision(String decision) {
+        this.decision = decision;
+    }
+
+    public CandidatureEntity(int idCandidature, PosteEntity poste, EnseignantEntity enseignant, Date dateCandid, String decision) {
+        this.idCandidature = idCandidature;
+        this.poste = poste;
+        this.enseignant = enseignant;
+        this.dateCandid = dateCandid;
+        this.decision = decision;
     }
 }

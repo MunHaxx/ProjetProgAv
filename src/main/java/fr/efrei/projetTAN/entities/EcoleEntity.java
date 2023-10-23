@@ -1,6 +1,7 @@
 package fr.efrei.projetTAN.entities;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 import static fr.efrei.projetTAN.utils.EcoleConst.*;
@@ -22,14 +23,16 @@ public class EcoleEntity {
     @Basic
     @Column(name = "Raison_sociale", nullable = true, length = 50)
     private String raisonSociale;
+    @OneToMany(mappedBy = "ecole")
+    private List<PosteEntity> besoinListePostes;
 
-    public EcoleEntity(int idEcole, String raisonSociale) {
+
+    public EcoleEntity(int idEcole, String raisonSociale, List<PosteEntity> besoinListePostes) {
         this.idEcole = idEcole;
         this.raisonSociale = raisonSociale;
+        this.besoinListePostes = besoinListePostes;
     }
-    public EcoleEntity(){
-    }
-
+    public EcoleEntity(){}
 
     public int getIdEcole() {
         return idEcole;
@@ -45,16 +48,23 @@ public class EcoleEntity {
         this.raisonSociale = raisonSociale;
     }
 
+    public List<PosteEntity> getBesoinListePostes() {
+        return besoinListePostes;
+    }
+    public void setBesoinListePostes(List<PosteEntity> besoinListePostes) {
+        this.besoinListePostes = besoinListePostes;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof EcoleEntity)) return false;
         EcoleEntity that = (EcoleEntity) o;
-        return getIdEcole() == that.getIdEcole() && Objects.equals(getRaisonSociale(), that.getRaisonSociale());
+        return getIdEcole() == that.getIdEcole() && Objects.equals(getRaisonSociale(), that.getRaisonSociale()) && Objects.equals(getBesoinListePostes(), that.getBesoinListePostes());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdEcole(), getRaisonSociale());
+        return Objects.hash(getIdEcole(), getRaisonSociale(), getBesoinListePostes());
     }
 }

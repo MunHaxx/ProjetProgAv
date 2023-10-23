@@ -64,7 +64,7 @@
     </dependencies>
 
     <build>
-        <finalName>TP3-PROF</finalName>
+        <finalName>ProjetTAN</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

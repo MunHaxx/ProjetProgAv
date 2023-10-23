@@ -3,7 +3,7 @@ package fr.efrei.projetTAN;
 import java.io.*;
 import java.util.List;
 
-import fr.efrei.projetTAN.utils.GlobalConst;
+import fr.efrei.projetTAN.utils.GlobalConst.*;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;

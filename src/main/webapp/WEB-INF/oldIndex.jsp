@@ -1,29 +1,19 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Jacques
+  Date: 19/09/2023
+  Time: 14:26
+--%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
     <head>
-        <link href="./style.css" rel="stylesheet">
-        <title>ProjetTA - Login</title>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+        <title>Jakarta EE - Login</title>
     </head>
 
     <body>
-        <div>
-            <div class="Header">
-                <div class="title">Talent Teachers</div>
-                <div class="hello">Connectez-vous !</div>
-            </div>
-    
-            <div class="content-login">
-                <div class="presentation-message">Bienvenue sur la plateforme de recrutement d'enseignant supérieurs</div>
-    
-                <form action="Controleur" method="post" class="container-input-login">
-                    <input class="input-connexion" placeholder="Identifiant" name="champLogin" />
-                    <input type="password" class="input-connexion" placeholder="Remarques 3" name="champPassword" />
-                    <input type="submit" name="action" value="SeConnecter" class="se-connecter"/>
-                </form>
-            </div>
-        </div>
-
         <div class="container" style="margin-top:30px">
             <div class="col-md-4">
                 <div style="color:red">

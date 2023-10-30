@@ -1,0 +1,92 @@
+[33mcommit 539088b6cad6e2c09f9b4d84899ce8495161bfda[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: 9e294bd 89880e6
+Author: Auno2 <78856545+Auno2@users.noreply.github.com>
+Date:   Sun Oct 15 18:28:34 2023 +0200
+
+    Structure des fichiers adaptée au projet
+    
+    Structure des fichiers adaptée au projet
+
+[33mcommit 89880e6aef8d080c48ed2511522a84e2a5f9c207[m[33m ([m[1;32mAuno[m[33m)[m
+Author: Aunorine <chloe.bastong@efrei.net>
+Date:   Sun Oct 15 18:27:44 2023 +0200
+
+    Correction du gitignore
+
+[33mcommit 6807650caea29d9233619f127c9644076a3a868e[m
+Author: Aunorine <chloe.bastong@efrei.net>
+Date:   Sun Oct 15 15:47:44 2023 +0200
+
+    Modif des chemins pour correspondre au projet
+
+[33mcommit 9078120290b855609420a41420ad89a5e4413cd6[m
+Author: Aunorine <chloe.bastong@efrei.net>
+Date:   Sun Oct 15 15:27:25 2023 +0200
+
+    Ignore employeEntity + persistence.xml
+
+[33mcommit 9e294bd33b3690f3ab2f296ae58a2c9c533772df[m
+Merge: 1643a21 d278191
+Author: DE COLIGNY Thibault <59777006+MunHaxx@users.noreply.github.com>
+Date:   Thu Oct 12 09:37:36 2023 +0200
+
+    Merge pull request #4 from MunHaxx/Thibault
+    
+    Set up du TP
+
+[33mcommit d278191435b3f1352d5cabc2fdeea18c72995c70[m
+Author: DE COLIGNY Thibault <thibault.2coligny@gmail.com>
+Date:   Thu Oct 12 09:36:49 2023 +0200
+
+    Set up du TP
+
+[33mcommit 1643a21c9d94d2c81cc8071413e8e84a571479bf[m
+Merge: 33d99a6 9ef5fc4
+Author: DE COLIGNY Thibault <59777006+MunHaxx@users.noreply.github.com>
+Date:   Thu Oct 12 09:20:45 2023 +0200
+
+    Merge pull request #3 from MunHaxx/Thibault
+    
+    Correction des imports
+
+[33mcommit 9ef5fc4035bd7245da179e5b0ba4495d2a72bb3a[m
+Author: DE COLIGNY Thibault <thibault.2coligny@gmail.com>
+Date:   Thu Oct 12 09:17:32 2023 +0200
+
+    Correction des imports
+
+[33mcommit 33d99a6cc92a4dc8625d4ae49e0c84974ae29c45[m
+Merge: 0af4f81 cdb1f2b
+Author: GigikerJD <95540034+GigikerJD@users.noreply.github.com>
+Date:   Thu Oct 12 09:06:15 2023 +0200
+
+    Merge pull request #2 from MunHaxx/Nelgie
+    
+    Try adding to main branch
+
+[33mcommit cdb1f2bc8a4875d4b5c0adf3ae627fd23ff2241b[m
+Author: Gigik <nelgie.ferrol94@gmail.com>
+Date:   Thu Oct 12 09:04:47 2023 +0200
+
+    Try adding to main branch
+
+[33mcommit 0af4f81dcc657c2d0bb298001da1accc36531fa0[m
+Merge: 53221c7 2555203
+Author: DE COLIGNY Thibault <59777006+MunHaxx@users.noreply.github.com>
+Date:   Thu Oct 12 08:57:29 2023 +0200
+
+    Merge pull request #1 from MunHaxx/Thibault
+    
+    First commit
+
+[33mcommit 255520356219a98f312395bb019b53b4d63dbfb3[m
+Author: DE COLIGNY Thibault <thibault.2coligny@gmail.com>
+Date:   Thu Oct 12 08:56:44 2023 +0200
+
+    First commit
+
+[33mcommit 53221c7d91c23f1f3d198ca8c0fd11900da526f4[m
+Author: DE COLIGNY Thibault <59777006+MunHaxx@users.noreply.github.com>
+Date:   Thu Oct 12 08:53:11 2023 +0200
+
+    First commit

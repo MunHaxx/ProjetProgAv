@@ -1,0 +1,99 @@
+package fr.efrei.projetTAN.entities;
+
+import jakarta.persistence.*;
+
+import java.sql.Date;
+import java.util.Objects;
+
+import static fr.efrei.projetTAN.utils.CandidatureConst.*;
+
+@Entity
+@Table(name = "candidature", schema = "prj_progav")
+
+@NamedQueries(
+        {
+                @NamedQuery(name = "recupToutesCandidatures", query = SELECT_TOUTES_CANDIDATURES)
+                , @NamedQuery(name = "recupCandidatureId", query = SELECT_CANDIDATURE_PAR_ID)
+        }
+)
+public class CandidatureEntity {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @Column(name = "ID_Candidature", nullable = false)
+    private int idCandidature;
+    @ManyToOne
+    private PosteEntity poste;
+    @ManyToOne
+    private EnseignantEntity enseignant;
+    @Basic
+    @Column(name = "Contacte_le", nullable = true)
+    private Date dateCandid;
+    @Basic
+    @Column(name = "Decision", nullable = true, length = 50)
+    private String decision;
+
+    public CandidatureEntity() {
+
+    }
+
+    public int getIdCandidature() {
+        return idCandidature;
+    }
+
+    public void setIdCandidature(int idCandidature) {
+        this.idCandidature = idCandidature;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CandidatureEntity)) return false;
+        CandidatureEntity that = (CandidatureEntity) o;
+        return getIdCandidature() == that.getIdCandidature() && Objects.equals(getPoste(), that.getPoste()) && Objects.equals(getEnseignant(), that.getEnseignant()) && Objects.equals(getDateCandid(), that.getDateCandid()) && Objects.equals(getDecision(), that.getDecision());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getIdCandidature(), getPoste(), getEnseignant(), getDateCandid(), getDecision());
+    }
+
+    public PosteEntity getPoste() {
+        return poste;
+    }
+
+    public void setPoste(PosteEntity poste) {
+        this.poste = poste;
+    }
+
+    public EnseignantEntity getEnseignant() {
+        return enseignant;
+    }
+
+    public void setEnseignant(EnseignantEntity enseignant) {
+        this.enseignant = enseignant;
+    }
+
+    public Date getDateCandid() {
+        return dateCandid;
+    }
+
+    public void setDateCandid(Date dateCandid) {
+        this.dateCandid = dateCandid;
+    }
+
+    public String getDecision() {
+        return decision;
+    }
+
+    public void setDecision(String decision) {
+        this.decision = decision;
+    }
+
+    public CandidatureEntity(int idCandidature, PosteEntity poste, EnseignantEntity enseignant, Date dateCandid, String decision) {
+        this.idCandidature = idCandidature;
+        this.poste = poste;
+        this.enseignant = enseignant;
+        this.dateCandid = dateCandid;
+        this.decision = decision;
+    }
+}

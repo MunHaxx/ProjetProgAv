@@ -3,16 +3,16 @@ package fr.efrei.projetTAN.utils;
 import jakarta.persistence.*;
 
 public class GlobalConst {
-    public enum TypeContrat {
+    public enum EnumTypeContrat {
         CDI, CDD, Interim
     }
 
-    public enum NiveauCompetence {
-        Debutant, Intermediaire, Confirme, Expert
+    public enum EnumNivCompt {
+        Débutant, Intermédiaire, Confirmé, Expert
     }
 
     @DiscriminatorColumn(name="Classe") @Table(name="Niveau_etudiant")
-    public enum NiveauEtudiant {
+    public enum EnumNivEtudiant {
         L1, L2, L3, M1, M2
     }
 }

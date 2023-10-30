@@ -13,7 +13,7 @@
         <url-pattern>/Controleur</url-pattern>
     </servlet-mapping>
 
-    <!-- La servlet est le point d'entrée de l'applicaiton -->
+    <!-- La servlet est le point d'entrée de l'application -->
     <welcome-file-list>
         <welcome-file>Controleur</welcome-file>
     </welcome-file-list>

@@ -3,12 +3,12 @@ package fr.efrei.projetTAN;
 import java.io.*;
 import java.util.List;
 
-import fr.efrei.projetTAN.utils.GlobalConst.*;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
-import static fr.efrei.projetTAN.utils.UtilisateurConst.*;
+
 import static fr.efrei.projetTAN.utils.GlobalConst.*;
+import static fr.efrei.projetTAN.utils.UtilisateurConst.*;
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
 
@@ -41,6 +41,7 @@ public class Controleur extends HttpServlet {
         testerRecupUneCompetence(1);*/
         //testerRecupExperiences();
         //testerRecupExperienceParId(1);
+        //testerCreationCompetence();
     }
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -138,19 +139,29 @@ public class Controleur extends HttpServlet {
     public void testerRecupToutesCompetences(){
         System.out.println("\n\n--- Début du test de récupération ---");
         System.out.println("Liste de toutes les compétences :");
-        for (CompetenceEntity c : competenceSB.getToutesLesCompetences()) {
+        for (CompetenceEntity c : competenceSB.getToutesCompetences()) {
             System.out.println("ID : " + c.getIdCompetence());
             System.out.println("Nom : " + c.getNom());
             System.out.println("Niveau : " + c.getNiveau());
         }
     }
+    public void testerCreationCompetence(){
+        testerRecupToutesCompetences();
+        CompetenceEntity compt = new CompetenceEntity();
+        // !!! Recup les données du front ici !!!
+        compt.setNom("Nouvelle compétence");
+        compt.setNiveau(EnumNivCompt.Intermédiaire);
+        competenceSB.ajouterCompetence(compt);
+        testerRecupToutesCompetences();
+    }
+
     // Méthode pour tester la modification d'une compétence -> A SUPPRIMER !!!
     public void testerModificationCompetence(int id) {
         System.out.println("\n\n--- Début du test de modification ---");
         CompetenceEntity competenceAModifier = competenceSB.getCompetenceParId(id);
         if (competenceAModifier != null) {
             competenceAModifier.setNom("NouveauNom");
-            competenceAModifier.setNiveau(NiveauCompetence.Intermediaire);
+            competenceAModifier.setNiveau(EnumNivCompt.Intermédiaire);
 
             competenceSB.modifierCompetence(competenceAModifier);
             System.out.println("Compétence modifiée avec succès : " + competenceAModifier.getIdCompetence());

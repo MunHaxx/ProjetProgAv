@@ -30,9 +30,9 @@ public class PosteEntity {
     private EcoleEntity ecole;
     @Enumerated(EnumType.STRING)
     @Column(name = "Type_contrat", nullable = true, length = 50)
-    private TypeContrat typeContrat;
+    private EnumTypeContrat typeContrat;
     @Enumerated(EnumType.STRING)
-        private NiveauEtudiant nivEtudiant;
+        private EnumNivEtudiant nivEtudiant;
     @Basic
     @Column(name = "Periode", nullable = true, length = 50)
     private String periode;
@@ -50,7 +50,7 @@ public class PosteEntity {
     @OneToMany(mappedBy = "poste")
     private List<CandidatureEntity> listeCandid;
 
-    public PosteEntity(int idPoste, String nom, EcoleEntity ecole, TypeContrat typeContrat, NiveauEtudiant nivEtudiant, String periode, int idRecruteur, String remarque, String classe, RecruteurEntity recruteurRespo, List<CandidatureEntity> listeCandid) {
+    public PosteEntity(int idPoste, String nom, EcoleEntity ecole, EnumTypeContrat typeContrat, EnumNivEtudiant nivEtudiant, String periode, int idRecruteur, String remarque, String classe, RecruteurEntity recruteurRespo, List<CandidatureEntity> listeCandid) {
         this.idPoste = idPoste;
         this.nom = nom;
         this.ecole = ecole;
@@ -90,19 +90,19 @@ public class PosteEntity {
         this.ecole = ecole;
     }
 
-    public TypeContrat getTypeContrat() {
+    public EnumTypeContrat getTypeContrat() {
         return typeContrat;
     }
 
-    public void setTypeContrat(TypeContrat typeContrat) {
+    public void setTypeContrat(EnumTypeContrat typeContrat) {
         this.typeContrat = typeContrat;
     }
 
-    public NiveauEtudiant getNivEtudiant() {
+    public EnumNivEtudiant getNivEtudiant() {
         return nivEtudiant;
     }
 
-    public void setNivEtudiant(NiveauEtudiant nivEtudiant) {
+    public void setNivEtudiant(EnumNivEtudiant nivEtudiant) {
         this.nivEtudiant = nivEtudiant;
     }
 

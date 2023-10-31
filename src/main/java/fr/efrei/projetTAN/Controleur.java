@@ -41,7 +41,15 @@ public class Controleur extends HttpServlet {
         testerRecupUneCompetence(1);*/
         //testerRecupExperiences();
         //testerRecupExperienceParId(1);
-        //testerCreationCompetence();
+        //testerCreationCompetence("Nouvelle compétence", EnumNivCompt.Intermédiaire);
+    }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        processRequest(request, response);
+    }
+
+    public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        processRequest(request, response);
     }
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -145,14 +153,21 @@ public class Controleur extends HttpServlet {
             System.out.println("Niveau : " + c.getNiveau());
         }
     }
-    public void testerCreationCompetence(){
-        testerRecupToutesCompetences();
-        CompetenceEntity compt = new CompetenceEntity();
-        // !!! Recup les données du front ici !!!
-        compt.setNom("Nouvelle compétence");
-        compt.setNiveau(EnumNivCompt.Intermédiaire);
-        competenceSB.ajouterCompetence(compt);
-        testerRecupToutesCompetences();
+    public void testerCreationCompetence(String nom, EnumNivCompt niveau){
+        if (nom != null && niveau != null){
+            testerRecupToutesCompetences();
+            CompetenceEntity compt = new CompetenceEntity();
+            // !!! Recup les données du front ici !!!
+            compt.setNom(nom);
+            compt.setNiveau(niveau);
+            competenceSB.ajouterCompetence(compt);
+            testerRecupToutesCompetences();
+        }
+        else {
+            // gérer les erreurs, truc du genre :
+            /*request.getSession().setAttribute("messageErreur", MESSAGE_ERREUR_CREDENTIALS_KO);
+            request.getRequestDispatcher(PAGE_INDEX).forward(request, response);*/
+        }
     }
 
     // Méthode pour tester la modification d'une compétence -> A SUPPRIMER !!!
@@ -211,15 +226,6 @@ public class Controleur extends HttpServlet {
         }
     }
 
-
-
     // ---------------------------------------- FIN DE TESTS  ----------------------------------------
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        processRequest(request, response);
-    }
-
-    public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        processRequest(request, response);
-    }
 }
 

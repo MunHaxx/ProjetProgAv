@@ -1,6 +1,7 @@
 package fr.efrei.projetTAN.session;
 
 import fr.efrei.projetTAN.entities.CandidatureEntity;
+import fr.efrei.projetTAN.entities.CompetenceEntity;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 import java.util.List;
@@ -24,19 +25,11 @@ public class CandidatureSessionBean {
         return (CandidatureEntity) requete.getSingleResult();
     }
 
-    // Permet d'obtenir une candidature à partir de l'ID de l'enseignant
-    public CandidatureEntity getEtudeParIdEnseignant(int id) {
-        requete = entityManager.createNamedQuery("recupCandidatureIdEnseignant" );
-        requete.setParameter("id", id);
-        return (CandidatureEntity) requete.getSingleResult();
+    // Permet de créer une nouvelle candidature
+    public void ajouterCandidature(CandidatureEntity candidACreer) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(candidACreer);
+        entityManager.getTransaction().commit();
     }
 
-    // Permet d'obtenir une candidature à partir de l'ID du poste
-    public CandidatureEntity getEtudeParIdPoste(int id) {
-        requete = entityManager.createNamedQuery("recupCandidatureIdPoste" );
-        requete.setParameter("id", id);
-        return (CandidatureEntity) requete.getSingleResult();
-    }
-
-    // Permet de modifier une candidature
 }

@@ -1,5 +1,6 @@
 package fr.efrei.projetTAN.session;
 
+import fr.efrei.projetTAN.entities.EnseignantEntity;
 import fr.efrei.projetTAN.entities.RecruteurEntity;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
@@ -24,5 +25,17 @@ public class RecruteurSessionBean {
         return (RecruteurEntity) requete.getSingleResult();
     }
 
+    // Permet de créer un nouveau recruteur
+    public void ajouterRecruteur(RecruteurEntity recruteurACreer) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(recruteurACreer);
+        entityManager.getTransaction().commit();
+    }
+
     // Permet de modifier un recruteur
+    public void modifierRecruteur(RecruteurEntity recruteurAModifier) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(recruteurAModifier);
+        entityManager.getTransaction().commit();
+    }
 }

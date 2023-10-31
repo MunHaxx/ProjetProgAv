@@ -204,6 +204,8 @@ public class Controleur extends HttpServlet {
 
     // ---------------------------------------- FIN DE TESTS  ----------------------------------------
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
+        request.setAttribute("tousLesRecruteurs", listeRecruteurs);
         processRequest(request, response);
     }
 

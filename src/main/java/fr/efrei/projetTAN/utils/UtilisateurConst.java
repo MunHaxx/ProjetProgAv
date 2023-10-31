@@ -12,7 +12,7 @@ public final class UtilisateurConst {
     public static final String ACTION_VOIR_LISTE = "Retour";*/
     public static final String ACTION_LOGIN = "Login";
     public static final String FRM_LOGIN = "champLogin";
-    public static final String FRM_MDP = "champMotDePasse";
+    public static final String FRM_MDP = "champPassword";
    /* public static final String FRM_ID_EMPL_SELECT = "idEmploye";
     public static final String CHAMP_ADRESSE = "frmAdresse";
     public static final String CHAMP_CODEPOSTAL = "frmCodePostal";

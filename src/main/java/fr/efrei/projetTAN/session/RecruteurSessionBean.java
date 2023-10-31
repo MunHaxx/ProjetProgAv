@@ -24,5 +24,17 @@ public class RecruteurSessionBean {
         return (RecruteurEntity) requete.getSingleResult();
     }
 
+    // Permet de créer un nouveau recruteur
+    public void ajouterRecruteur(RecruteurEntity recruteurACreer) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(recruteurACreer);
+        entityManager.getTransaction().commit();
+    }
+
     // Permet de modifier un recruteur
+    public void modifierRecruteur(RecruteurEntity recruteurAModifier) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(recruteurAModifier);
+        entityManager.getTransaction().commit();
+    }
 }

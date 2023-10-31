@@ -22,7 +22,7 @@
               <div class="deconnexion">Déconnexion</div>
             </div>
             
-            <div class="liste-enseignant">
+            <form class="liste-enseignant" method="post" action="Controleur">
                 <div class="container-button">
                     <button class="button-add">
                         <div class="plus">+</div>
@@ -31,56 +31,25 @@
                     <button type="submit" name="action" value="+ Ajouter" class="ajouter"/>
                 </div>
         
-                <div class="container-enseignant">
-                    <div class="modifier">Modifier</div>
-                    <div class="title-enseignant">Enseignant n°N</div>
-        
-                    <div class="container-line">
-                        <div class="info">Nom</div>
-                        <div class="info">Prenom</div>
-                        <div class="info">Recommandé par</div>
+                <c:forEach items="${tousLesEmployes}" var="employe">
+                    <div class="container-enseignant">
+                        <div class="modifier">Modifier</div>
+                        <div class="title-enseignant">Enseignant n°N</div>
+            
+                        <div class="container-line">
+                            <div class="info">Nom</div>
+                            <div class="info">Prenom</div>
+                            <div class="info">Recommandé par</div>
+                        </div>
+                        <div class="container-line">
+                            <div class="info">Mail.mon.test@gmail.com</div>
+                            <div class="info">0102030405</div>
+                            <div class="info">truc-de-test.com</div>
+                            <div class="info">L3 / M1 / M2</div>
+                        </div>
                     </div>
-                    <div class="container-line">
-                        <div class="info">Mail.mon.test@gmail.com</div>
-                        <div class="info">0102030405</div>
-                        <div class="info">truc-de-test.com</div>
-                        <div class="info">L3 / M1 / M2</div>
-                    </div>
-                </div>
-        
-                <div class="container-enseignant">
-                    <div class="modifier">Modifier</div>
-                    <div class="title-enseignant">Enseignant n°N</div>
-        
-                    <div class="container-line">
-                        <div class="info">Nom</div>
-                        <div class="info">Prenom</div>
-                        <div class="info">Recommandé par</div>
-                    </div>
-                    <div class="container-line">
-                        <div class="info">Mail.mon.test@gmail.com</div>
-                        <div class="info">0102030405</div>
-                        <div class="info">truc-de-test.com</div>
-                        <div class="info">L3 / M1 / M2</div>
-                    </div>
-                </div>
-        
-                <div class="container-enseignant">
-                    <div class="modifier">Modifier</div>
-                    <div class="title-enseignant">Enseignant n°N</div>
-                    
-                    <div class="container-line">
-                        <div class="info">Nom</div>
-                        <div class="info">Prenom</div>
-                        <div class="info">Recommandé par</div>
-                    </div>
-                    <div class="container-line">
-                        <div class="info">Mail.mon.test@gmail.com</div>
-                        <div class="info">0102030405</div>
-                        <div class="info">truc-de-test.com</div>
-                        <div class="info">L3 / M1 / M2</div>
-                    </div>
-                </div>
+                </c:forEach>
+                
             </div>
           </div>
     </body>

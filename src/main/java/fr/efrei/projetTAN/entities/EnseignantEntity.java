@@ -11,7 +11,7 @@ import static fr.efrei.projetTAN.utils.EnseignantConst.*;
 
 @NamedQueries(
         {
-                @NamedQuery(name = "recupToutesEnseignants", query = SELECT_TOUS_ENSEIGNANTS)
+                @NamedQuery(name = "recupTousEnseignants", query = SELECT_TOUS_ENSEIGNANTS)
                 , @NamedQuery(name = "recupEnseignantId", query = SELECT_ENSEIGNANT_PAR_ID)
         }
 )

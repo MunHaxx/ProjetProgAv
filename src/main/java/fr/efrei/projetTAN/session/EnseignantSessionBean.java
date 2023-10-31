@@ -4,7 +4,6 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 
 import java.util.List;
-import jakarta.ejb.Stateless;
 
 @Stateless
 public class EnseignantSessionBean {
@@ -28,7 +27,7 @@ public class EnseignantSessionBean {
 
     // Permet d'obtenir la liste de tous les enseignants
     public List<EnseignantEntity> getTousEnseignants(){
-        requete = entityManager.createNamedQuery("recupToutesEnseignants");
+        requete = entityManager.createNamedQuery("recupTousEnseignants");
         return  requete.getResultList();
     }
 

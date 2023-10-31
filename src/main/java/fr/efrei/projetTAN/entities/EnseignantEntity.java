@@ -4,13 +4,23 @@ import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+import static fr.efrei.projetTAN.utils.EnseignantConst.*;
+
 @Entity
 @Table(name = "enseignant", schema = "prj_progav")
+
+@NamedQueries(
+        {
+                @NamedQuery(name = "recupToutesEnseignants", query = SELECT_TOUS_ENSEIGNANTS)
+                , @NamedQuery(name = "recupEnseignantId", query = SELECT_ENSEIGNANT_PAR_ID)
+        }
+)
+
 public class EnseignantEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "IDenseignant", nullable = false)
-    private int iDenseignant;
+    private int idEnseignant;
     @Basic
     @Column(name = "Nom", nullable = false, length = 50)
     private String nom;
@@ -30,7 +40,7 @@ public class EnseignantEntity {
     private List<CandidatureEntity> listeCandid;
 
     public EnseignantEntity(int iDenseignant, String nom, String prenom, String mail, String telephone, String siteWeb, List<CandidatureEntity> listeCandid) {
-        this.iDenseignant = iDenseignant;
+        this.idEnseignant = iDenseignant;
         this.nom = nom;
         this.prenom = prenom;
         this.mail = mail;
@@ -42,11 +52,11 @@ public class EnseignantEntity {
     public EnseignantEntity(){}
 
     public int getiDenseignant() {
-        return iDenseignant;
+        return idEnseignant;
     }
 
     public void setiDenseignant(int iDenseignant) {
-        this.iDenseignant = iDenseignant;
+        this.idEnseignant = iDenseignant;
     }
 
     public String getNom() {

@@ -35,7 +35,7 @@ public class RecruteurSessionBean {
     // Permet de modifier un recruteur
     public void modifierRecruteur(RecruteurEntity recruteurAModifier) {
         entityManager.getTransaction().begin();
-        entityManager.persist(recruteurAModifier);
+        entityManager.merge(recruteurAModifier);
         entityManager.getTransaction().commit();
     }
 }

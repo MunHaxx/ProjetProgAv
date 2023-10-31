@@ -45,7 +45,10 @@ public class Controleur extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        List<EnseignantEntity> listeEnseignants = enseignantSB.getTousEnseignants();
+        request.setAttribute("listeEnseignants", listeEnseignants);
         processRequest(request, response);
+
     }
 
     public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

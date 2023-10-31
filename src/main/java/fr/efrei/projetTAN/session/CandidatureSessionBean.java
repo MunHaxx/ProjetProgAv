@@ -13,7 +13,7 @@ public class CandidatureSessionBean {
     private Query requete;
 
     // Permet d'obtenir la liste de toutes les candidatures
-    public List<CandidatureEntity> getToutesEtudes(){
+    public List<CandidatureEntity> getToutesCandidatures(){
         requete = entityManager.createNamedQuery("recupToutesCandidatures");
         return  requete.getResultList();
     }

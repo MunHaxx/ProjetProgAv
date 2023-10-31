@@ -32,7 +32,7 @@ public class PosteEntity {
     @Column(name = "Type_contrat", nullable = true, length = 50)
     private EnumTypeContrat typeContrat;
     @Enumerated(EnumType.STRING)
-        private EnumNivEtudiant nivEtudiant;
+    private EnumNivEtudiant nivEtudiant;
     @Basic
     @Column(name = "Periode", nullable = true, length = 50)
     private String periode;

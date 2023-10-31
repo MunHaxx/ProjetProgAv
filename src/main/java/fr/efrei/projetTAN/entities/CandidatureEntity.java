@@ -22,9 +22,12 @@ public class CandidatureEntity {
     @Column(name = "ID_Candidature", nullable = false)
     private int idCandidature;
     @ManyToOne
+    @JoinColumn(name = "ID_Poste")
     private PosteEntity poste;
     @ManyToOne
+    @JoinColumn(name = "IDenseignant")
     private EnseignantEntity enseignant;
+
     @Basic
     @Column(name = "Contacte_le", nullable = true)
     private Date dateCandid;

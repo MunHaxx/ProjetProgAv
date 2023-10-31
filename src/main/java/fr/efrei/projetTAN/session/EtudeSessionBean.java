@@ -35,7 +35,7 @@ public class EtudeSessionBean {
     // Permet de modifier une étude
     public void modifierEtude(EtudeEntity etudeAModifier) {
         entityManager.getTransaction().begin();
-        entityManager.persist(etudeAModifier);
+        entityManager.merge(etudeAModifier);
         entityManager.getTransaction().commit();
     }
 }

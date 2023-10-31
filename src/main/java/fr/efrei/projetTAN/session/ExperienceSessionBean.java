@@ -36,7 +36,7 @@ public class ExperienceSessionBean {
     // Permet de modifier une expérience
     public void modifierExperience(ExperienceEntity xpAModifier) {
         entityManager.getTransaction().begin();
-        entityManager.persist(xpAModifier);
+        entityManager.merge(xpAModifier);
         entityManager.getTransaction().commit();
     }
 

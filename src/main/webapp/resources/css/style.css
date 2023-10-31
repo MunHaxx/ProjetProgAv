@@ -1,0 +1,1183 @@
+html {
+    overflow: hidden;
+    --main-orange: #ff9a0e;
+}
+
+input {
+    all: initial;
+}
+
+button {
+    all: unset;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+}
+
+li {
+    padding: 0;
+    margin: 0;
+}
+
+/**************************************************************
+************************** HEADER *****************************
+**************************************************************/
+.Header {
+    height: 60px;
+    padding: 0 15px 0 15px;
+    border-bottom: 1px solid #F2F2F2;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Header .title {
+    font-size: 35px;
+}
+
+.Header .hello {
+    font-size: 35px;
+}
+
+
+/**************************************************************
+**************************** MENU *****************************
+**************************************************************/
+.content {
+    display: flex;
+    height: calc(100vh - 60px);
+    background-color: #F2F2F2;
+}
+
+.Menu {
+    position: relative;
+    display: block;
+    min-width: 250px;
+    box-sizing: border-box;
+    background-color: white;
+    padding: 50px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 0px solid rgb(255, 180, 66);
+}
+
+.Menu .element {
+    width: max-content;
+    font-size: 25px;
+    margin-bottom: 50px;
+    position: relative;
+}
+
+.Menu .element::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 4px;
+    background-color: var(--main-orange);
+    bottom: -5px;
+    left: 0;
+    transition: width 0.25s;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+.Menu .element:hover::before,
+.Menu .element.select::before {
+    width: 100%;
+}
+
+.Menu .deconnexion {
+    color: white;
+    position: absolute;
+    display: flex;
+    width: 200px;
+    height: 40px;
+    bottom: 50px;
+    font-size: 25px;
+    background-color: var(--main-orange);
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    border: 0px solid rgb(255, 211, 144);
+    transition: transform 0.3s;
+}
+
+.Menu .deconnexion:hover {
+    transform: scale(1.1);
+}
+
+/**************************************************************
+******************** LISTE POSTE EMPLOYE **********************
+**************************************************************/
+.content .liste-poste-employe {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 50px;
+    overflow-y: scroll;
+    width: 100%;
+    height: auto;
+}
+
+.poste-employe {
+    border: 1px solid black;
+    width: 490px;
+    height: auto;
+    position: relative;
+    border-radius: 20px;
+    background-color: white;
+    padding: 50px 50px 20px;
+    margin: 0 62px 65px;
+    box-sizing: border-box;
+}
+
+.poste-employe .postuler {
+    position: absolute;
+    background-color: var(--main-orange);
+    padding: 10px;
+    border: 1px solid rgb(238, 149, 25);
+    right: 50px;
+    top: 50px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.poste-employe .postuler:hover {
+    transform: scale(1.2);
+}
+
+.poste-employe .title {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+.poste-employe .container-infos {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+
+.poste-employe .container-infos .container-info {
+    display: flex;
+    align-items: center;
+    width: 180px;
+    margin-bottom: 8px;
+}
+
+.poste-employe .container-infos .container-info .info {
+    font-size: 18px;
+}
+
+.poste-employe .container-points {
+    margin-bottom: 20px;
+}
+
+.poste-employe .container-points .title-point {
+    font-size: 20px;
+    margin-bottom: 5px;
+}
+
+.poste-employe .container-points .point {
+    margin-left: 30px;
+    margin-bottom: 5px;
+}
+
+/**************************************************************
+********************* MODIF EMPLOYE ***************************
+**************************************************************/
+
+.content .container-modif-employe {
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.content .modif-employe {
+    margin: 50px;
+    background-color: white;
+    border: 1px solid black;
+    height: auto;
+    border-radius: 20px;
+    padding: 80px 80px;
+}
+
+.modif-employe .title-page {
+    font-size: 40px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.modif-employe form {
+    width: 100%;
+    padding-left: 35px;
+    box-sizing: border-box;
+}
+
+.modif-employe .container-info {
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.modif-employe .container-info .title-info-case {
+    font-size: 23px;
+    width: 121px;
+    padding-right: 25px;
+    text-align: right;
+}
+
+.modif-employe .container-info .title-info-case.droite {
+    width: 150px;
+}
+
+.modif-employe .container-info .info-case {
+    width: 270px;
+    border: 1px solid var(--main-orange);
+    margin-right: 40px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.modif-employe .container-liste {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.modif-employe .container-liste .title-liste {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.modif-employe .container-liste .container-champs {
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.modif-employe .container-liste .container-champ {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.modif-employe .container-liste .point-champ {
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.modif-employe .container-liste .input-champ {
+    width: 80%;
+    border: 1px solid var(--main-orange);
+    height: 40px;
+    border-radius: 10px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.modif-employe .container-liste .ajout-champ {
+    font-size: 25px;
+}
+
+/* ETUDE */
+.modif-employe .container-liste.etude .titre-champ {
+    font-size: 20px;
+    margin-right: 15px;
+}
+
+.modif-employe .container-liste.etude .date {
+    margin: 0 15px 0 25px;
+    white-space: nowrap;
+}
+
+.modif-employe .container-liste.etude .input-date {
+    width: 200px;
+    align-items: center;
+}
+
+
+/* ExpÃ©rience */
+.modif-employe .container-liste.experience .container-experience {
+    margin-bottom: 60px;
+}
+
+.modif-employe .container-liste.experience .titre-champ {
+    font-size: 20px;
+    margin-right: 10px;
+}
+
+.modif-employe .container-liste.experience .container-ecole {
+    margin-bottom: 20px;
+}
+
+.modif-employe .container-liste.experience .duree,
+.modif-employe .container-liste.experience .evaluation {
+    margin-left: 20px;
+}
+
+.modif-employe .container-liste.experience .container-competence {
+    padding-left: 40px;
+}
+
+.modif-employe .container-liste.experience .titre-liste-competence {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.modif-employe .container-liste.experience .container-competence .input-champ {
+    width: 200px;
+    margin-right: 20px;
+}
+
+.modif-employe .container-liste.experience .container-competence .input-niveau {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /*background-image: url('../images/real-one-select-icon.png');*/
+    background-repeat: no-repeat;
+    background-position: right 5px center;
+    background-size: 15px;
+    padding-right: 30px;
+}
+
+/* Bouton sauvegarder */
+.modif-employe .container-button {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.modif-employe .sauvegarder {
+    color: white;
+    display: flex;
+    width: 200px;
+    height: 40px;
+    font-size: 25px;
+    background-color: var(--main-orange);
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    border: 0px solid rgb(255, 211, 144);
+    transition: transform 0.3s;
+}
+
+.modif-employe .sauvegarder:hover {
+    transform: scale(1.1);
+}
+
+
+
+
+/*****************************************************************
+***************************MODIF RECRUTEUR************************
+******************************************************************/
+
+.content .container-modif-recruteur {
+    width: 100%;
+    overflow-y: scroll;
+}
+
+.content .modif-recruteur {
+    margin: 50px;
+    background-color: white;
+    border: 1px solid black;
+    height: auto;
+    border-radius: 20px;
+    padding: 80px 80px 40px;
+}
+
+.modif-recruteur .title-page {
+    font-size: 40px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.modif-recruteur .form {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.modif-recruteur .container-info {
+    display: flex;
+    margin-bottom: 100px;
+    align-items: center;
+    padding-left: 35px;
+}
+
+.modif-recruteur .container-info .title-info-case {
+    font-size: 23px;
+    width: 121px;
+    padding-right: 25px;
+    text-align: right;
+}
+
+.modif-recruteur .container-info .title-info-case.droite {
+    width: 150px;
+}
+
+.modif-recruteur .container-info .info-case {
+    width: 270px;
+    border: 1px solid var(--main-orange);
+    margin-right: 40px;
+    height: 40px;
+    border-radius: 10px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.modif-recruteur .container-button {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.modif-recruteur .sauvegarder {
+    color: white;
+    display: flex;
+    width: 200px;
+    height: 40px;
+    font-size: 25px;
+    background-color: var(--main-orange);
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    border: 0px solid rgb(255, 211, 144);
+    transition: transform 0.3s;
+}
+
+.modif-recruteur .sauvegarder:hover {
+    transform: scale(1.1);
+}
+
+/*****************************************************************
+****************** LISTE POSTE RECRUTEUR ************************
+******************************************************************/
+
+.content .liste-poste-recruteur {
+    justify-content: center;
+    padding-top: 50px;
+    overflow-y: auto;
+    width: calc(100vw - 250px);
+    height: auto;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.poste-recruteur {
+    border: 1px solid black;
+    height: auto;
+    position: relative;
+    border-radius: 20px;
+    background-color: white;
+    padding: 50px 50px 20px;
+    margin: 0 62px 65px;
+    box-sizing: border-box;
+}
+
+.poste-recruteur .postuler {
+    position: absolute;
+    background-color: var(--main-orange);
+    padding: 10px;
+    border: 1px solid rgb(238, 149, 25);
+    right: 50px;
+    top: 50px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.poste-recruteur .postuler:hover {
+    transform: scale(1.2);
+}
+
+.poste-recruteur .title {
+    font-size: 30px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.poste-recruteur .container-infos {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    margin-bottom: 40px;
+}
+
+.poste-recruteur .container-info {
+    display: flex;
+    align-items: center;
+}
+
+.poste-recruteur .container-info .info {
+    font-size: 22px;
+}
+
+.poste-recruteur .container-points {
+    margin-bottom: 40px;
+}
+
+.poste-recruteur .container-points .title-point {
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.poste-recruteur .container-points .point {
+    margin-left: 60px;
+    margin-bottom: 5px;
+}
+
+
+
+/*****************************************************************
+************************ CREER POSTE *****************************
+******************************************************************/
+
+.content .container-creer-poste {
+    justify-content: center;
+    padding-top: 50px;
+    overflow-y: auto;
+    width: calc(100vw - 250px);
+    height: auto;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.creer-poste {
+    border: 1px solid black;
+    height: auto;
+    position: relative;
+    border-radius: 20px;
+    background-color: white;
+    padding: 50px 50px 50px;
+    margin: 0 62px 65px;
+    box-sizing: border-box;
+}
+
+.creer-poste .postuler {
+    position: absolute;
+    background-color: var(--main-orange);
+    padding: 10px;
+    border: 1px solid rgb(238, 149, 25);
+    right: 50px;
+    top: 50px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.creer-poste .postuler:hover {
+    transform: scale(1.2);
+}
+
+.creer-poste .title {
+    font-size: 30px;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.creer-poste .container-infos {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    margin-bottom: 40px;
+}
+
+.creer-poste .container-infos .container-info {
+    display: flex;
+    align-items: center;
+}
+
+.creer-poste .container-infos .info-case {
+    width: 200px;
+    border: 1px solid var(--main-orange);
+    height: 40px;
+    border-radius: 10px;
+    padding: 0 10px;
+    box-sizing: border-box;
+}
+
+.creer-poste .container-liste {
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.creer-poste .container-liste .title-liste {
+    font-size: 24px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+
+.creer-poste .container-liste .container-champs {
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.creer-poste .container-liste .container-champ {
+    display: flex;
+    width: 100%;
+    margin-bottom: 15px;
+    align-items: center;
+}
+
+.creer-poste .container-liste .point-champ {
+    font-size: 25px;
+    margin-right: 20px;
+}
+
+.creer-poste .container-liste .input-champ {
+    width: 80%;
+    border: 1px solid var(--main-orange);
+    height: 40px;
+    border-radius: 10px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.creer-poste .container-liste .ajout-champ {
+    font-size: 25px;
+}
+
+.creer-poste .container-button {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+}
+
+.creer-poste .sauvegarder {
+    color: white;
+    display: flex;
+    width: 200px;
+    height: 40px;
+    font-size: 25px;
+    background-color: var(--main-orange);
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    border: 0px solid rgb(255, 211, 144);
+    transition: transform 0.3s;
+}
+
+.creer-poste .sauvegarder:hover {
+    transform: scale(1.1);
+}
+
+
+/*****************************************************************
+********************** LISTE ENSEIGNANT **************************
+******************************************************************/
+
+.liste-enseignant {
+    justify-content: center;
+    padding-top: 50px;
+    overflow-y: scroll;
+    width: 100%;
+    height: auto;
+}
+
+.container-enseignant {
+    border: 1px solid black;
+    width: auto;
+    height: auto;
+    position: relative;
+    border-radius: 20px;
+    background-color: white;
+    padding: 30px;
+    margin: 0 62px 30px;
+    box-sizing: border-box;
+}
+
+.container-enseignant .title-enseignant {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: var(--main-orange)
+}
+
+.container-enseignant .container-line {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.container-enseignant .container-line .info {
+    font-size: 24px;
+    margin-right: 60px;
+}
+
+.container-enseignant .container-line .info:first-child {
+    width: 270px;
+}
+
+.container-enseignant .container-line .info:nth-child(2) {
+    width: 150px;
+}
+
+.container-enseignant .modifier {
+    position: absolute;
+    background-color: var(--main-orange);
+    padding: 10px;
+    border: 1px solid rgb(238, 149, 25);
+    right: 30px;
+    top: 30px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.container-enseignant .modifier:hover {
+    transform: scale(1.2);
+}
+
+.liste-enseignant .container-button {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.liste-enseignant .button-add {
+    display: flex;
+    width: 200px;
+    height: 40px;
+    font-weight: bold;
+    background-color: white;
+    align-items: center;
+    justify-content: left;
+    border-radius: 5px;
+    border: 1px solid black;
+    transition: transform 0.3s;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.liste-enseignant .button-add:hover {
+    transform: scale(1.1);
+}
+
+.liste-enseignant .button-add .plus {
+    color: var(--main-orange);
+    margin-right: 20px;
+    font-size: 30px;
+    margin-top: -5px;
+}
+
+.liste-enseignant .button-add .title-button {
+    color: var(--main-orange);
+    font-size: 25px;
+}
+
+
+/*****************************************************************
+********************** LISTE RECRUTEUR **************************
+******************************************************************/
+
+.liste-recruteur {
+    justify-content: center;
+    padding-top: 50px;
+    overflow-y: scroll;
+    width: 100%;
+    height: auto;
+}
+
+.container-recruteur {
+    position: relative;
+    border: 1px solid black;
+    width: auto;
+    height: auto;
+    position: relative;
+    border-radius: 20px;
+    background-color: white;
+    padding: 30px;
+    margin: 0 62px 30px;
+    box-sizing: border-box;
+}
+
+.container-recruteur .title-recruteur {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: var(--main-orange)
+}
+
+.container-recruteur .modifier {
+    position: absolute;
+    background-color: var(--main-orange);
+    padding: 10px;
+    border: 1px solid rgb(238, 149, 25);
+    right: 30px;
+    top: 30px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s;
+    cursor: pointer;
+    font-size: 23px;
+}
+
+.container-recruteur .modifier:hover {
+    transform: scale(1.2);
+}
+
+.container-recruteur .container-line {
+    display: flex;
+    margin-bottom: 15px;
+}
+
+.container-recruteur .container-line .info {
+    font-size: 24px;
+    margin-right: 60px;
+}
+
+.container-recruteur .container-line .info:first-child {
+    width: 270px;
+}
+
+.container-recruteur .container-line .info:nth-child(2) {
+    width: 150px;
+}
+
+.liste-recruteur .container-button {
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.liste-recruteur .button-add {
+    display: flex;
+    width: 200px;
+    height: 40px;
+    font-weight: bold;
+    background-color: white;
+    align-items: center;
+    justify-content: left;
+    border-radius: 5px;
+    border: 1px solid black;
+    transition: transform 0.3s;
+    padding-left: 20px;
+    box-sizing: border-box;
+}
+
+.liste-recruteur .button-add:hover {
+    transform: scale(1.1);
+}
+
+.liste-recruteur .button-add .plus {
+    color: var(--main-orange);
+    margin-right: 20px;
+    font-size: 30px;
+    margin-top: -5px;
+}
+
+.liste-recruteur .button-add .title-button {
+    color: var(--main-orange);
+    font-size: 25px;
+}
+
+/*****************************************************************
+************************ SE CONNECTER ****************************
+******************************************************************/
+.content-login {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #F2F2F2;
+    align-items: center;
+    padding-top: 150px
+}
+
+.content-login .presentation-message {
+    font-size: 35px;
+    width: 600px;
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.content-login .container-input-login {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    width: 300px;
+    background-color: white;
+    padding: 30px;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.content-login .container-input-login .input-connexion {
+    width: 100%;
+    border: 1px solid var(--main-orange);
+    height: 40px;
+    border-radius: 10px;
+    padding: 0 10px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.content-login .container-input-login .se-connecter {
+    color: white;
+    display: flex;
+    width: 90%;
+    height: 40px;
+    font-size: 25px;
+    background-color: var(--main-orange);
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+    border: 0px solid rgb(255, 211, 144);
+    transition: transform 0.3s;
+}
+
+.content-login .container-input-login .se-connecter:hover {
+    transform: scale(1.1);
+}
+
+
+/*****************************************************************
+**************** LISTE CANDIDATURE RECRUTEUR *********************
+******************************************************************/
+
+.liste-candidature-recruteur {
+    justify-content: center;
+    padding-top: 50px;
+    overflow-y: scroll;
+    width: 100%;
+    height: auto;
+}
+
+.container-candidature-recruteur {
+    margin: 0 62px 30px;
+    box-sizing: border-box;
+}
+
+.container-candidature-recruteur .container-infos-candidature {
+    border: 1px solid black;
+    width: auto;
+    height: auto;
+    position: relative;
+    border-radius: 20px 20px 0 0;
+    background-color: white;
+    padding: 30px;
+    box-sizing: border-box;
+}
+
+.container-candidature-recruteur .container-infos-candidature .title-candidature {
+    font-size: 30px;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: var(--main-orange)
+}
+
+.container-candidature-recruteur .container-infos-candidature .container-line {
+    display: flex;
+}
+
+.container-candidature-recruteur .container-infos-candidature .container-line .infos {
+    font-size: 24px;
+    margin-right: 60px;
+}
+
+.container-candidature-recruteur .container-infos-candidature .container-line .infos .info {
+    margin-bottom: 15px;
+    word-wrap: break-word;
+}
+
+.container-candidature-recruteur .container-infos-candidature .action-button {
+    position: absolute;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s;
+    cursor: pointer;
+    width: 100px;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.container-candidature-recruteur .container-infos-candidature .rejeter {
+    color: black;
+    right: 30px;
+    top: 30px;
+}
+
+.container-candidature-recruteur .container-infos-candidature .accepter {
+    color: var(--main-orange);
+    right: 30px;
+    top: 72px;
+}
+
+.container-candidature-recruteur .container-infos-candidature .action-button:hover {
+    transform: scale(1.2);
+    z-index: 10;
+}
+
+.container-candidature-recruteur .agrandir {
+    border: 1px solid black;
+    font-size: 22px;
+    border-top: 0px;
+    width: auto;
+    height: 40px;
+    position: relative;
+    background-color: white;
+    padding: 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.container-candidature-recruteur .agrandir:hover {
+    font-size: 24px;
+    color: var(--main-orange);
+    font-weight: bold;
+}
+
+/* Container listes */
+.liste-candidature-recruteur .container-candidature-recruteur .container-listes {
+    border: 1px solid black;
+    font-size: 22px;
+    border-top: 0px;
+    width: auto;
+    height: auto;
+    position: relative;
+    background-color: white;
+    padding: 30px;
+    box-sizing: border-box;
+    border-radius: 0 0 20px 20px;
+}
+
+.liste-candidature-recruteur .container-candidature-recruteur .container-liste {
+    margin-bottom: 40px;
+}
+
+.liste-candidature-recruteur .container-candidature-recruteur .container-liste .title-liste {
+    font-size: 25px;
+    margin-bottom: 20px;
+}
+
+.container-candidature-recruteur .container-liste .container-points {
+    display: flex;
+}
+
+.container-candidature-recruteur .container-liste .left-point,
+.container-candidature-recruteur .container-liste .point {
+    margin-left: 50px;
+    margin-bottom: 5px;
+}
+
+.container-candidature-recruteur .container-liste .point-etude,
+.container-candidature-recruteur .container-liste .right-point {
+    margin-bottom: 5px;
+}
+
+.container-candidature-recruteur .container-liste .left-point,
+.container-candidature-recruteur .container-liste .point-etude {
+    margin-right: 80px;
+}
+
+.container-candidature-recruteur .container-liste .container-competence {
+    padding: 0px 0 40px 30px;
+}
+
+/*****************************************************************
+*************** LISTE CANDIDATURE ENSEIGNANT *********************
+******************************************************************/
+
+.content .liste-canidature-enseignant {
+    justify-content: center;
+    padding-top: 50px;
+    overflow-y: auto;
+    width: calc(100vw - 250px);
+    height: auto;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.canidature-enseignant {
+    border: 1px solid black;
+    height: auto;
+    position: relative;
+    border-radius: 20px;
+    background-color: white;
+    padding: 50px 50px 20px;
+    margin: 0 62px 65px;
+    box-sizing: border-box;
+}
+
+.canidature-enseignant .postuler {
+    position: absolute;
+    background-color: var(--main-orange);
+    padding: 10px;
+    border: 1px solid rgb(238, 149, 25);
+    right: 50px;
+    top: 50px;
+    border-radius: 50px;
+    color: white;
+    font-weight: bold;
+    transition: transform 0.3s;
+    cursor: pointer;
+}
+
+.canidature-enseignant .postuler:hover {
+    transform: scale(1.2);
+}
+
+.canidature-enseignant .Statut {
+    position: absolute;
+    top: 55px;
+    left: 300px
+}
+
+.canidature-enseignant .title {
+    font-size: 30px;
+    margin-bottom: 40px;
+    font-weight: bold;
+    color: var(--main-orange)
+}
+
+.canidature-enseignant .container-infos {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 15px;
+    margin-bottom: 20px;
+}
+
+.canidature-enseignant .container-info {
+    display: flex;
+    align-items: center;
+}
+
+.canidature-enseignant .container-info .info {
+    font-size: 22px;
+}

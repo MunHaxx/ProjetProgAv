@@ -1,5 +1,4 @@
 package fr.efrei.projetTAN.session;
-import fr.efrei.projetTAN.entities.EcoleEntity;
 import fr.efrei.projetTAN.entities.EnseignantEntity;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
@@ -23,7 +22,20 @@ public class EnseignantSessionBean {
     // Permet de modifier un enseignant
     public void modifierEnseignant(EnseignantEntity enseignantAModifier) {
         entityManager.getTransaction().begin();
-        entityManager.persist(enseignantAModifier);
+        entityManager.merge(enseignantAModifier);
         entityManager.getTransaction().commit();
+    }
+
+    // Permet d'obtenir la liste de tous les enseignants
+    public List<EnseignantEntity> getTousEnseignants(){
+        requete = entityManager.createNamedQuery("recupToutesEnseignants");
+        return  requete.getResultList();
+    }
+
+    // Permet d'obtenir un enseignant à partir de son ID
+    public EnseignantEntity getEnseignantParId(int id) {
+        requete = entityManager.createNamedQuery("recupEnseignantId" );
+        requete.setParameter("id", id);
+        return (EnseignantEntity) requete.getSingleResult();
     }
 }

@@ -2,6 +2,8 @@ package fr.efrei.projetTAN.session;
 
 import fr.efrei.projetTAN.entities.CompetenceEntity;
 
+import fr.efrei.projetTAN.entities.ExperienceEntity;
+import fr.efrei.projetTAN.entities.PosteEntity;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 
@@ -14,7 +16,7 @@ public class CompetenceSessionBean {
     private Query requete;
 
     // Permet d'obtenir la liste de toutes les compétences
-    public List<CompetenceEntity> getToutesLesCompetences(){
+    public List<CompetenceEntity> getToutesCompetences(){
         requete = entityManager.createNamedQuery("recupTousCompt");
         return  requete.getResultList();
     }
@@ -26,11 +28,17 @@ public class CompetenceSessionBean {
         return (CompetenceEntity) requete.getSingleResult();
     }
 
+    // Permet de créer une nouvelle compétence
+    public void ajouterCompetence(CompetenceEntity comptACreer) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(comptACreer);
+        entityManager.getTransaction().commit();
+    }
+
     // Permet de modifier une compétence
     public void modifierCompetence(CompetenceEntity comptAModifier) {
-        requete = entityManager.createNamedQuery("modifUneCompt");
-        requete.setParameter("id", comptAModifier.getIdCompetence());
-        requete.setParameter("nom", comptAModifier.getNom());
-        requete.setParameter("niveau", comptAModifier.getNiveau());
+        entityManager.getTransaction().begin();
+        entityManager.merge(comptAModifier);
+        entityManager.getTransaction().commit();
     }
 }

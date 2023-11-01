@@ -1,11 +1,11 @@
 package fr.efrei.projetTAN.entities;
 
+import fr.efrei.projetTAN.utils.GlobalConst.EnumNivCompt;
 import jakarta.persistence.*;
 
 import java.util.Objects;
 
 import static fr.efrei.projetTAN.utils.Entity.CompetenceConst.*;
-import static fr.efrei.projetTAN.utils.GlobalConst.*;
 
 @Entity
 @Table(name = "competence", schema = "prj_progav")
@@ -14,7 +14,6 @@ import static fr.efrei.projetTAN.utils.GlobalConst.*;
         {
                 @NamedQuery(name = "recupTousCompt", query = SELECT_TOUTES_LES_COMPETENCES)
                 , @NamedQuery(name = "recupUneCompt", query = SELECT_UNE_COMPETENCE)
-                , @NamedQuery(name = "modifUneCompt", query = MODIF_UNE_COMPETENCE)
         }
 )
 
@@ -30,9 +29,9 @@ public class CompetenceEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "niveau", nullable = true, length = 50)
-    private NiveauCompetence niveau;
+    private EnumNivCompt niveau;
 
-    public CompetenceEntity(int idCompetence, String nom, NiveauCompetence niveau) {
+    public CompetenceEntity(int idCompetence, String nom, EnumNivCompt niveau) {
         this.idCompetence = idCompetence;
         this.nom = nom;
         this.niveau = niveau;
@@ -57,11 +56,11 @@ public class CompetenceEntity {
         this.nom = nom;
     }
 
-    public NiveauCompetence getNiveau() {
+    public EnumNivCompt getNiveau() {
         return niveau;
     }
 
-    public void setNiveau(NiveauCompetence niveau) {
+    public void setNiveau(EnumNivCompt niveau) {
         this.niveau = niveau;
     }
 

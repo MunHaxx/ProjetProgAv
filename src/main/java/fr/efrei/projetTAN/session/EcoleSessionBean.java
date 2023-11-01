@@ -1,5 +1,6 @@
 package fr.efrei.projetTAN.session;
 
+import fr.efrei.projetTAN.entities.CandidatureEntity;
 import fr.efrei.projetTAN.entities.EcoleEntity;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
@@ -22,5 +23,12 @@ public class EcoleSessionBean {
         requete = entityManager.createNamedQuery("recupEcoleId" );
         requete.setParameter("id", id);
         return (EcoleEntity) requete.getSingleResult();
+    }
+
+    // Permet de créer une nouvelle école
+    public void ajouterEcole(EcoleEntity ecoleACreer) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(ecoleACreer);
+        entityManager.getTransaction().commit();
     }
 }

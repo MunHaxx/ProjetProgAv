@@ -48,7 +48,6 @@
         <url-pattern>/ControleurEnseignant</url-pattern>
     </servlet-mapping>
 
-    <!-- La servlet est le point d'entrée de l'applicaiton -->
     <welcome-file-list>
         <welcome-file>Controleur</welcome-file>
     </welcome-file-list>

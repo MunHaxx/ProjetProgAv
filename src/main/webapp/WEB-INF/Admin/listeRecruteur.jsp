@@ -15,11 +15,11 @@
     
           <div class="content">
             <form class="Menu" method="post" action="ControleurAdmin">
-              <button type="submit" name="action" value="ListePoste" class="element select">Listes postes</button>
-              <button type="submit" name="action" value="CreerPoste" class="element">Créer postes</button>
-              <button type="submit" name="action" value="ModifierProfil" class="element">Modif profil</button>
+              <button type="submit" name="action" value="VoirListePoste" class="element select">Listes postes</button>
+              <button type="submit" name="action" value="VoirCreerPoste" class="element">Créer postes</button>
+              <button type="submit" name="action" value="VoirModifierProfilRecruteur" class="element">Modifier profil</button>
     
-              <div type="submit" name="action" value="Modifier" class="deconnexion">Déconnexion</div>
+              <div type="submit" name="action" value="Deconnexion" class="deconnexion">Déconnexion</div>
             </form> 
             
             <form class="liste-recruteur" method="post" action="ControleurAdmin">

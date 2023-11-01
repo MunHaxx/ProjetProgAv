@@ -107,11 +107,11 @@ public class Controleur extends HttpServlet {
             if ("admin".equals(role)) {
                 List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
                 request.setAttribute("tousLesRecruteurs", listeRecruteurs);
-                request.getRequestDispatcher("/WEB-INF/BordelTest/testAdmin.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/Admin/listeRecruteur.jsp").forward(request, response);
             } else if ("recruteur".equals(role)) {
                 List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
                 request.setAttribute("tousLesRecruteurs", listeRecruteurs);
-                request.getRequestDispatcher("/WEB-INF/Recruteur/listeRecruteur.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/Recruteur/listePosteRecruteur.jsp").forward(request, response);
             } else if ("enseignant".equals(role)) {
                 request.getRequestDispatcher("/WEB-INF/Enseignant/testEnseignant.jsp").forward(request, response);
             } else {

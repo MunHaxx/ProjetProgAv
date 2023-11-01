@@ -4,6 +4,7 @@ button {all: unset;}
 body {margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
 ul {padding: 0; margin: 0;}
 li {padding: 0; margin: 0;}
+form {padding: 0; margin: 0;}
 
 /**************************************************************
 ************************** HEADER *****************************
@@ -262,6 +263,8 @@ li {padding: 0; margin: 0;}
                     .container-candidature-recruteur .container-liste .point-etude {margin-right: 80px;}
                 
                     .container-candidature-recruteur .container-liste .container-competence {padding:0px 0 40px 30px;}
+        
+        .liste-candidature-recruteur .container-candidature-recruteur .hide {display: none;}
     
 /*****************************************************************
 *************** LISTE CANDIDATURE ENSEIGNANT *********************

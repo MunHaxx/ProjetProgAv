@@ -18,21 +18,29 @@ public class ControleurAdmin extends HttpServlet {
     private Utilisateur unUtilisateur;
     private String actionUtilisateur;
     @EJB
-    private CompetenceSessionBean competenceSB;
-    @EJB
-    private ExperienceSessionBean experienceSB;
-    @EJB
-    private RecruteurSessionBean recruteurSB;
-    @EJB
-    private EtudeSessionBean etudeSB;
+    private ActiviteEntity activiteSB;
     @EJB
     private CandidatureSessionBean candidatureSB;
     @EJB
+    private CompetenceSessionBean competenceSB;
+    @EJB
+    private ContrainteSessionBean contrainteSB;
+    @EJB
     private EcoleSessionBean ecoleSB;
+    @EJB
+    private EnseignantSessionBean enseignantSB;
+    @EJB
+    private EtudeSessionBean etudeSB;
+    @EJB
+    private ExperienceSessionBean experienceSB;
+    @EJB
+    private InteretSessionBean interetSB;
+    @EJB
+    private NiveauEtudiantSessionBean nivEtudSB;
     @EJB
     private PosteSessionBean posteSB;
     @EJB
-    private EnseignantSessionBean enseignantSB;
+    private RecruteurSessionBean recruteurSB;
 
     public void init() {
         

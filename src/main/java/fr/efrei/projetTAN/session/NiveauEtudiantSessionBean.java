@@ -15,21 +15,21 @@ public class NiveauEtudiantSessionBean {
     private final EntityManager entityManager = entityManagerFactory.createEntityManager();
     private Query requete;
 
-    // Permet d'obtenir la liste de tous les recruteurs
+    // Permet d'obtenir la liste de tous les niveaux étudiants
     public List<NiveauEtudiantEntity> getTousNiveauxEtudiants(){
         requete = entityManager.createNamedQuery("recupTousRecruteurs");
         return  requete.getResultList();
     }
 
-    // Permet d'obtenir un recruteur à partir de son ID
+    // Permet d'obtenir un niveau étudiant à partir de son ID
     public NiveauEtudiantEntity getNiveauEtudiantParId(int id) {
         requete = entityManager.createNamedQuery("recupNiveauEtudiantParId" );
         requete.setParameter("id", id);
         return (NiveauEtudiantEntity) requete.getSingleResult();
     }
 
-    // Permet de créer un nouveau recruteur
-    public void ajouterRecruteur(NiveauEtudiantEntity nivEtudACreer) {
+    // Permet de créer un nouveau niveau étudiant
+    public void ajouterNiveauEtudiant(NiveauEtudiantEntity nivEtudACreer) {
         entityManager.getTransaction().begin();
         entityManager.persist(nivEtudACreer);
         entityManager.getTransaction().commit();

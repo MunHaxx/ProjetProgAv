@@ -14,14 +14,14 @@
                 <div class="hello">Bonjour Recruteur !</div>
             </div>
             
-            <div class="content">
-                <form class="Menu" method="post" action="ControleurRecruteur">
+            <form class="content" method="post" action="ControleurRecruteur">
+                <div class="Menu">
                     <button type="submit" name="action" value="VoirListePoste" class="element">Listes postes</button>
                     <button type="submit" name="action" value="VoirCreerPoste" class="element">Créer postes</button>
                     <button type="submit" name="action" value="VoirModifierProfil" class="element select">Modifier profil</button>
             
-                    <div type="submit" name="action" value="Deconnexion" class="deconnexion">Déconnexion</div>
-                </form> 
+                    <button type="submit" name="action" value="Deconnexion" class="deconnexion">Déconnexion</button>
+                </div> 
 
                 <div class="container-modif-recruteur">
                     <div class="modif-recruteur">
@@ -37,12 +37,12 @@
                             </div>
                     
                             <div class="container-button">
-                                <input type="submit" name="action" value="Sauvegarder" class="sauvegarder"/>
+                                <button type="submit" name="action" value="SaveModifProfil" class="sauvegarder">Sauvegarder</button>
                             </div>
                         </form>
                     </div>
-                  </div>
-            </div>
+                </div>
+            </form>
         </div>
     </body>
 </html>

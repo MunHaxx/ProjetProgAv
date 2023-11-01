@@ -75,6 +75,18 @@ public class ControleurRecruteur extends HttpServlet {
                 case ACTION_DECONNEXION:
                     request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
                     break;
+                case ACTION_RECRUTEUR_SAVE_CREATION_POSTE:
+                    // request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                    break;
+                case ACTION_RECRUTEUR_SAVE_MODIFICATION_PROFIL:
+                    // request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                    break;
+                case ACTION_RECRUTEUR_ACCEPTER_CANDIDATURE:
+                    // request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                    break;
+                case ACTION_RECRUTEUR_REJETER_CANDIDATURE:
+                    // request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                    break;
             }
         }
     }

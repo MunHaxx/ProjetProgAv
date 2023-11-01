@@ -6,6 +6,10 @@ public final class UserRecruteurConst {
     public static final String ACTION_RECRUTEUR_VOIR_CREER_POSTE = "VoirCreerPoste";
     public static final String ACTION_RECRUTEUR_VOIR_MODIFIER_PROFIL = "VoirModifierProfil";
     public static final String ACTION_RECRUTEUR_VOIR_LISTE_CANDIDATURE = "VoirListeCandidature";
+    public static final String ACTION_RECRUTEUR_SAVE_CREATION_POSTE = "SaveCreationPosteRecruteur";
+    public static final String ACTION_RECRUTEUR_SAVE_MODIFICATION_PROFIL = "SaveModifProfil";
+    public static final String ACTION_RECRUTEUR_ACCEPTER_CANDIDATURE = "AccepterCandidature";
+    public static final String ACTION_RECRUTEUR_REJETER_CANDIDATURE = "RejeterCandidature";
     public static final String ACTION_DECONNEXION = "Deconnexion";
 
     // Lien de page

@@ -14,16 +14,16 @@
                 <div class="hello">Bonjour Recruteur !</div>
             </div>
             
-            <div class="content">
-                <form class="Menu" method="post" action="ControleurRecruteur">
+            <form class="content" method="post" action="ControleurRecruteur">
+                <div class="Menu">
                     <button type="submit" name="action" value="VoirListePoste" class="element select">Listes postes</button>
                     <button type="submit" name="action" value="VoirCreerPoste" class="element">Créer postes</button>
                     <button type="submit" name="action" value="VoirModifierProfil" class="element">Modifier profil</button>
             
-                    <div type="submit" name="action" value="Deconnexion" class="deconnexion">Déconnexion</div>
-                </form> 
+                    <button type="submit" name="action" value="Deconnexion" class="deconnexion">Déconnexion</button>
+                </div> 
 
-                <form class="liste-poste-recruteur" method="post" action="ControleurRecruteur">
+                <div class="liste-poste-recruteur">
                     <div class="poste-recruteur">
                         <button type="submit" name="action" value="VoirListeCandidature" class="postuler">Voir candidature</button>
                         <div class="title">Titre poste</div>
@@ -121,7 +121,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </form>
         </div>
     </body>
 </html>

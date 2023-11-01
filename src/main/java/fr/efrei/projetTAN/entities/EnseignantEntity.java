@@ -38,28 +38,29 @@ public class EnseignantEntity {
     @Column(name = "Site_web", nullable = true, length = 50)
     private String siteWeb;
     @ManyToOne
+    @JoinColumn(name = "ID_NivEtudiant")
     private NiveauEtudiantEntity prefereNivEtudiant;
+
+    @ManyToMany
+    @JoinTable( name = "fait_activite",
+            joinColumns = @JoinColumn( name = "IDenseignant" ),
+            inverseJoinColumns = @JoinColumn( name = "ID_Activite" ) )
+    private List<ActiviteEntity> listeActivites;
+
+    @ManyToMany
+    @JoinTable( name = "est_interesse",
+            joinColumns = @JoinColumn( name = "IDenseignant" ),
+            inverseJoinColumns = @JoinColumn( name = "ID_Interet" ) )
+    private List<InteretEntity> listeInterets;
     @OneToMany(mappedBy = "enseignant")
     private List<CandidatureEntity> listeCandid;
 
-    public EnseignantEntity(int iDenseignant, String nom, String prenom, String mail, String telephone, String siteWeb, List<CandidatureEntity> listeCandid) {
-        this.idEnseignant = iDenseignant;
-        this.nom = nom;
-        this.prenom = prenom;
-        this.mail = mail;
-        this.telephone = telephone;
-        this.siteWeb = siteWeb;
-        this.listeCandid = listeCandid;
-    }
-
-    public EnseignantEntity(){}
-
-    public int getiDenseignant() {
+    public int getIdEnseignant() {
         return idEnseignant;
     }
 
-    public void setiDenseignant(int iDenseignant) {
-        this.idEnseignant = iDenseignant;
+    public void setIdEnseignant(int idEnseignant) {
+        this.idEnseignant = idEnseignant;
     }
 
     public String getNom() {
@@ -102,6 +103,30 @@ public class EnseignantEntity {
         this.siteWeb = siteWeb;
     }
 
+    public NiveauEtudiantEntity getPrefereNivEtudiant() {
+        return prefereNivEtudiant;
+    }
+
+    public void setPrefereNivEtudiant(NiveauEtudiantEntity prefereNivEtudiant) {
+        this.prefereNivEtudiant = prefereNivEtudiant;
+    }
+
+    public List<ActiviteEntity> getListeActivites() {
+        return listeActivites;
+    }
+
+    public void setListeActivites(List<ActiviteEntity> listeActivites) {
+        this.listeActivites = listeActivites;
+    }
+
+    public List<InteretEntity> getListeInterets() {
+        return listeInterets;
+    }
+
+    public void setListeInterets(List<InteretEntity> listeInterets) {
+        this.listeInterets = listeInterets;
+    }
+
     public List<CandidatureEntity> getListeCandid() {
         return listeCandid;
     }
@@ -115,11 +140,11 @@ public class EnseignantEntity {
         if (this == o) return true;
         if (!(o instanceof EnseignantEntity)) return false;
         EnseignantEntity that = (EnseignantEntity) o;
-        return getiDenseignant() == that.getiDenseignant() && Objects.equals(getNom(), that.getNom()) && Objects.equals(getPrenom(), that.getPrenom()) && Objects.equals(getMail(), that.getMail()) && Objects.equals(getTelephone(), that.getTelephone()) && Objects.equals(getSiteWeb(), that.getSiteWeb()) && Objects.equals(getListeCandid(), that.getListeCandid());
+        return getIdEnseignant() == that.getIdEnseignant() && Objects.equals(getNom(), that.getNom()) && Objects.equals(getPrenom(), that.getPrenom()) && Objects.equals(getMail(), that.getMail()) && Objects.equals(getTelephone(), that.getTelephone()) && Objects.equals(getSiteWeb(), that.getSiteWeb()) && Objects.equals(getPrefereNivEtudiant(), that.getPrefereNivEtudiant()) && Objects.equals(getListeActivites(), that.getListeActivites()) && Objects.equals(getListeInterets(), that.getListeInterets()) && Objects.equals(getListeCandid(), that.getListeCandid());
     }
 
-    @Override
+    /*@Override
     public int hashCode() {
-        return Objects.hash(getiDenseignant(), getNom(), getPrenom(), getMail(), getTelephone(), getSiteWeb(), getListeCandid());
-    }
+        return Objects.hash(getIdEnseignant(), getNom(), getPrenom(), getMail(), getTelephone(), getSiteWeb(), getPrefereNivEtudiant(), getListeActivites(), getListeInterets(), getListeCandid());
+    }*/
 }

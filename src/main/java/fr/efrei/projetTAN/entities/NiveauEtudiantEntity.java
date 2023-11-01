@@ -26,25 +26,16 @@ public class NiveauEtudiantEntity {
     @Column(name = "Niveau")
     @Enumerated(EnumType.STRING)
     private EnumNivEtudiant niveau;
-    @OneToMany(mappedBy = "enseignant")
+    @OneToMany(mappedBy = "prefereNivEtudiant")
     private List<EnseignantEntity> EnseignantsPreferentNivEtud;
-    @OneToMany(mappedBy = "poste")
+    @OneToMany(mappedBy = "pourNivEtudiant")
     private List<PosteEntity> PostesPourNivEtud;
 
-    public NiveauEtudiantEntity(int idNivEtud, EnumNivEtudiant niveau, List<EnseignantEntity> enseignantsPreferentNivEtud, List<PosteEntity> postesPourNivEtud) {
-        this.idNivEtud = idNivEtud;
-        this.niveau = niveau;
-        EnseignantsPreferentNivEtud = enseignantsPreferentNivEtud;
-        PostesPourNivEtud = postesPourNivEtud;
-    }
-
-    public NiveauEtudiantEntity(){
-
-    }
 
     public int getIdNivEtud() {
         return idNivEtud;
     }
+
     public void setIdNivEtud(int idNivEtud) {
         this.idNivEtud = idNivEtud;
     }
@@ -52,6 +43,7 @@ public class NiveauEtudiantEntity {
     public EnumNivEtudiant getNiveau() {
         return niveau;
     }
+
     public void setNiveau(EnumNivEtudiant niveau) {
         this.niveau = niveau;
     }
@@ -59,6 +51,7 @@ public class NiveauEtudiantEntity {
     public List<EnseignantEntity> getEnseignantsPreferentNivEtud() {
         return EnseignantsPreferentNivEtud;
     }
+
     public void setEnseignantsPreferentNivEtud(List<EnseignantEntity> enseignantsPreferentNivEtud) {
         EnseignantsPreferentNivEtud = enseignantsPreferentNivEtud;
     }
@@ -66,6 +59,7 @@ public class NiveauEtudiantEntity {
     public List<PosteEntity> getPostesPourNivEtud() {
         return PostesPourNivEtud;
     }
+
     public void setPostesPourNivEtud(List<PosteEntity> postesPourNivEtud) {
         PostesPourNivEtud = postesPourNivEtud;
     }
@@ -78,8 +72,8 @@ public class NiveauEtudiantEntity {
         return getIdNivEtud() == that.getIdNivEtud() && getNiveau() == that.getNiveau() && Objects.equals(getEnseignantsPreferentNivEtud(), that.getEnseignantsPreferentNivEtud()) && Objects.equals(getPostesPourNivEtud(), that.getPostesPourNivEtud());
     }
 
-    @Override
+    /*@Override
     public int hashCode() {
         return Objects.hash(getIdNivEtud(), getNiveau(), getEnseignantsPreferentNivEtud(), getPostesPourNivEtud());
-    }
+    }*/
 }

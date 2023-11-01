@@ -179,7 +179,7 @@ public class Controleur extends HttpServlet {
         CompetenceEntity competenceAModifier = competenceSB.getCompetenceParId(id);
         if (competenceAModifier != null) {
             competenceAModifier.setNom("NouveauNom");
-            competenceAModifier.setNiveau(EnumNivCompt.Intermédiaire);
+            competenceAModifier.setNiveau(EnumNivCompt.Intermediaire);
 
             competenceSB.modifierCompetence(competenceAModifier);
             System.out.println("Compétence modifiée avec succès : " + competenceAModifier.getIdCompetence());

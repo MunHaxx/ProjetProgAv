@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 
 import static fr.efrei.projetTAN.utils.EnseignantConst.*;
+import static fr.efrei.projetTAN.utils.GlobalConst.EnumNivEtudiant;
 
 @Entity
 @Table(name = "enseignant", schema = "prj_progav")
@@ -36,6 +37,8 @@ public class EnseignantEntity {
     @Basic
     @Column(name = "Site_web", nullable = true, length = 50)
     private String siteWeb;
+    @ManyToOne
+    private NiveauEtudiantEntity prefereNivEtudiant;
     @OneToMany(mappedBy = "enseignant")
     private List<CandidatureEntity> listeCandid;
 

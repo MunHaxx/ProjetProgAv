@@ -7,11 +7,11 @@ public class GlobalConst {
         CDI, CDD, Interim
     }
 
+    // Pas d'accents dans les enums !
     public enum EnumNivCompt {
-        Débutant, Intermédiaire, Confirmé, Expert
+        Debutant, Intermediaire, Confirme, Expert
     }
 
-    @DiscriminatorColumn(name="Classe") @Table(name="Niveau_etudiant")
     public enum EnumNivEtudiant {
         L1, L2, L3, M1, M2
     }

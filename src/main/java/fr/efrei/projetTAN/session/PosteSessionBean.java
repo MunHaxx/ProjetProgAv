@@ -1,11 +1,8 @@
 package fr.efrei.projetTAN.session;
-        import fr.efrei.projetTAN.entities.EnseignantEntity;
-        import fr.efrei.projetTAN.entities.PosteEntity;
-        import jakarta.ejb.Stateless;
-        import jakarta.persistence.*;
 
-        import java.util.List;
-        import jakarta.ejb.Stateless;
+import fr.efrei.projetTAN.entities.PosteEntity;
+import jakarta.ejb.Stateless;
+import jakarta.persistence.*;
 
 @Stateless
 public class PosteSessionBean {

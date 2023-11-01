@@ -4,7 +4,7 @@ import java.util.List;
 
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
-import fr.efrei.projetTAN.utils.GlobalConst.NiveauCompetence;
+import fr.efrei.projetTAN.utils.GlobalConst.EnumNivCompt;
 
 public class DataManager {
     // ---------------------------------------- TESTS ----------------------------------------
@@ -35,7 +35,7 @@ public class DataManager {
         CompetenceEntity competenceAModifier = competenceSB.getCompetenceParId(id);
         if (competenceAModifier != null) {
             competenceAModifier.setNom("NouveauNom");
-            competenceAModifier.setNiveau(NiveauCompetence.Intermediaire);
+            competenceAModifier.setNiveau(EnumNivCompt.Intermediaire);
 
             competenceSB.modifierCompetence(competenceAModifier);
             System.out.println("Compétence modifiée avec succès : " + competenceAModifier.getIdCompetence());

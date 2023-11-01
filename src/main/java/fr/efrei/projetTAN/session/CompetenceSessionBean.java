@@ -2,8 +2,6 @@ package fr.efrei.projetTAN.session;
 
 import fr.efrei.projetTAN.entities.CompetenceEntity;
 
-import fr.efrei.projetTAN.entities.ExperienceEntity;
-import fr.efrei.projetTAN.entities.PosteEntity;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;
 
@@ -16,7 +14,7 @@ public class CompetenceSessionBean {
     private Query requete;
 
     // Permet d'obtenir la liste de toutes les compétences
-    public List<CompetenceEntity> getToutesCompetences(){
+    public List<CompetenceEntity> getToutesLesCompetences(){
         requete = entityManager.createNamedQuery("recupTousCompt");
         return  requete.getResultList();
     }

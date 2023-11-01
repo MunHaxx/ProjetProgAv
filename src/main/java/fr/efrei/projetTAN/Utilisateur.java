@@ -2,23 +2,31 @@ package fr.efrei.projetTAN;
 
 public class Utilisateur {
 
-    private String loginSaisi;
-    private String motDePasseSaisi;
+    private String identifiant;
+    private String motDePasse;
+    private String role;
 
-    public String getLoginSaisi() {
-        return loginSaisi;
+    public String getIdentifiant() {
+        return identifiant;
     }
 
-    public void setLoginSaisi(String loginSaisi) {
-        this.loginSaisi = loginSaisi;
+    public void setIdentifiant(String identifiant) {
+        this.identifiant = identifiant;
     }
 
-    public String getMotDePasseSaisi() {
-        return motDePasseSaisi;
+    public String getMotDePasse() {
+        return motDePasse;
     }
 
-    public void setMotDePasseSaisi(String motDePasseSaisi) {
-        this.motDePasseSaisi = motDePasseSaisi;
+    public void setMotDePasse(String motDePasse) {
+        this.motDePasse = motDePasse;
     }
 
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 }

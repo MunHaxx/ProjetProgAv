@@ -1,8 +1,9 @@
 package fr.efrei.projetTAN.entities;
 
-import static fr.efrei.projetTAN.utils.ExperienceConst.*;
-
 import jakarta.persistence.*;
+
+import static fr.efrei.projetTAN.utils.Entity.ExperienceConst.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;

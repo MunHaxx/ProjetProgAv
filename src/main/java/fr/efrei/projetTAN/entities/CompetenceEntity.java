@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 
 import java.util.Objects;
 
-import static fr.efrei.projetTAN.utils.CompetenceConst.*;
+import static fr.efrei.projetTAN.utils.Entity.CompetenceConst.*;
 import static fr.efrei.projetTAN.utils.GlobalConst.*;
 
 @Entity

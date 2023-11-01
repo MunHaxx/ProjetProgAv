@@ -2,10 +2,10 @@ package fr.efrei.projetTAN.entities;
 
 import jakarta.persistence.*;
 
+import static fr.efrei.projetTAN.utils.Entity.EtudeConst.*;
+
 import java.sql.Date;
 import java.util.Objects;
-
-import static fr.efrei.projetTAN.utils.EtudeConst.*;
 
 @Entity
 @Table(name = "etude", schema = "prj_progav")

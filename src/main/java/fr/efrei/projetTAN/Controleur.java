@@ -7,8 +7,10 @@ import fr.efrei.projetTAN.utils.GlobalConst.*;
 import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
-import static fr.efrei.projetTAN.utils.UtilisateurConst.*;
+
 import static fr.efrei.projetTAN.utils.GlobalConst.*;
+import static fr.efrei.projetTAN.utils.User.LoginConst.*;
+
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
 
@@ -35,12 +37,20 @@ public class Controleur extends HttpServlet {
     public void init() {
         // Laisser cette fonction vide
         // Je l'ai utilisé pour mes tests avec des System.println
-        /*testerRecupToutesCompetences();
-        testerRecupUneCompetence(1);
-        testerModificationCompetence(1);
-        testerRecupUneCompetence(1);*/
-        //testerRecupExperiences();
-        //testerRecupExperienceParId(1);
+        // DataManager.testerRecupToutesCompetences(competenceSB);
+        // DataManager.testerRecupUneCompetence(competenceSB, 1);
+        // DataManager.testerModificationCompetence(competenceSB, 1);
+        // DataManager.testerRecupUneCompetence(competenceSB, 1);
+        // DataManager.testerRecupExperiences(experienceSB);
+        // DataManager.testerRecupExperienceParId(experienceSB, 1);
+    }
+
+    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        processRequest(request, response);
+    }
+
+    public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        processRequest(request, response);
     }
 
     public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -54,35 +64,74 @@ public class Controleur extends HttpServlet {
     public boolean verifierInfosConnexion(Utilisateur unUtilisateur) {
         String motDePasseValide = getServletContext().getInitParameter("login");
         String loginValide = getServletContext().getInitParameter("motDePasse");
-
-        return (unUtilisateur.getLoginSaisi().equals(motDePasseValide)
-                && unUtilisateur.getMotDePasseSaisi().equals(loginValide));
+        return (unUtilisateur.getIdentifiant().equals(motDePasseValide)
+                && unUtilisateur.getMotDePasse().equals(loginValide));
     }
 
     public void placerUtilisateurDansContexte(HttpServletRequest request) {
+
+        String identifiant = request.getParameter(FRM_LOGIN);
+        String motDePasse = request.getParameter(FRM_MDP);
+        String role = null;
         unUtilisateur = new Utilisateur();
-        unUtilisateur.setLoginSaisi(request.getParameter(FRM_LOGIN));
-        unUtilisateur.setMotDePasseSaisi(request.getParameter(FRM_MDP));
+
+        if (identifiant != null && motDePasse != null) {
+            // Vérifiez les identifiants et le mot de passe pour chaque utilisateur
+            if (identifiant.equals("admin") && motDePasse.equals("prograv")) {
+                role = "admin";
+            } else if (identifiant.equals("recruteur") && motDePasse.equals("prograv")) {
+                role = "recruteur";
+            } else if (identifiant.equals("enseignant") && motDePasse.equals("prograv")) {
+                role = "enseignant";
+            }
+        }
+
+        if (role != null) {
+            unUtilisateur.setIdentifiant(identifiant);
+            unUtilisateur.setMotDePasse(motDePasse);
+            unUtilisateur.setRole(role);
+        }
         request.getSession().setAttribute("utilisateur", unUtilisateur);
     }
-
-    public void aiguillerVersLaProchainePage(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        if (verifierInfosConnexion(unUtilisateur)) {
-            //request.getRequestDispatcher(PAGE_TOUS_LES_EMPLOYES).forward(request, response);
+    
+    // seulement pour le login, vérif type user, rediriger
+    // Page d'accuil différente selon le type d'utilisateur connecté
+    public void dirigerVersPageAccueil(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        Utilisateur unUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");
+    
+        if (unUtilisateur != null) {
+            String role = unUtilisateur.getRole();
+    
+            if ("admin".equals(role)) {
+                List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
+                request.setAttribute("tousLesRecruteurs", listeRecruteurs);
+                request.getRequestDispatcher("/WEB-INF/BordelTest/testAdmin.jsp").forward(request, response);
+            } else if ("recruteur".equals(role)) {
+                request.getRequestDispatcher("/WEB-INF/Recruteur/listeRecruteur.jsp").forward(request, response);
+            } else if ("enseignant".equals(role)) {
+                request.getRequestDispatcher("/WEB-INF/BordelTest/testEnseignant.jsp").forward(request, response);
+            } else {
+                request.getSession().setAttribute("messageErreur", "Rôle non valide");
+                request.getRequestDispatcher(PAGE_INDEX).forward(request, response);
+            }
         } else {
+            // Gérer le cas où l'utilisateur n'est pas authentifié
             request.getSession().setAttribute("messageErreur", MESSAGE_ERREUR_CREDENTIALS_KO);
             request.getRequestDispatcher(PAGE_INDEX).forward(request, response);
         }
     }
 
+    // un login, enseignant, recruteur, admin 
     public void chargerLaPageSuivante(String actionUtilisateur, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (actionUtilisateur == null || actionUtilisateur.isEmpty()) {
             request.getRequestDispatcher(PAGE_INDEX).forward(request, response);
-        } else {
+        } 
+        // if recruteur, if enseignant, if admin, selon les consts définies dans chaque
+        else {
             switch (actionUtilisateur) {
                 case ACTION_LOGIN:
                     placerUtilisateurDansContexte(request);
-                    aiguillerVersLaProchainePage(request, response);
+                    dirigerVersPageAccueil(request, response);
                     break;
                 /*case ACTION_DETAILS:
                     idEmployeSelect = Integer.parseInt(request.getParameter(FRM_ID_EMPL_SELECT));
@@ -119,96 +168,6 @@ public class Controleur extends HttpServlet {
                     break;*/
             }
         }
-    }
-
-
-    // ---------------------------------------- TESTS ----------------------------------------
-
-    // Méthode pour tester la récupération des informations d'un compétence -> A SUPPRIMER !!!
-    public void testerRecupUneCompetence(int id) {
-        System.out.println("\n\n--- Début du test de récupération ---");
-        System.out.println("Test récupération d'une compétence par ID :");
-        int comptIdRecup = 1;
-        CompetenceEntity competence = competenceSB.getCompetenceParId(comptIdRecup);
-        System.out.println("Compétence récupérée - ID : " + competence.getIdCompetence());
-        System.out.println("Nom : " + competence.getNom());
-        System.out.println("Niveau : " + competence.getNiveau());
-    }
-    // Méthode pour tester la récupération des informations des compétences -> A SUPPRIMER !!!
-    public void testerRecupToutesCompetences(){
-        System.out.println("\n\n--- Début du test de récupération ---");
-        System.out.println("Liste de toutes les compétences :");
-        for (CompetenceEntity c : competenceSB.getToutesLesCompetences()) {
-            System.out.println("ID : " + c.getIdCompetence());
-            System.out.println("Nom : " + c.getNom());
-            System.out.println("Niveau : " + c.getNiveau());
-        }
-    }
-    // Méthode pour tester la modification d'une compétence -> A SUPPRIMER !!!
-    public void testerModificationCompetence(int id) {
-        System.out.println("\n\n--- Début du test de modification ---");
-        CompetenceEntity competenceAModifier = competenceSB.getCompetenceParId(id);
-        if (competenceAModifier != null) {
-            competenceAModifier.setNom("NouveauNom");
-            competenceAModifier.setNiveau(NiveauCompetence.Intermediaire);
-
-            competenceSB.modifierCompetence(competenceAModifier);
-            System.out.println("Compétence modifiée avec succès : " + competenceAModifier.getIdCompetence());
-        } else {
-            System.out.println("La compétence avec l'ID spécifié n'a pas été trouvée.");
-        }
-    }
-
-
-    public void testerRecupExperiences() {
-        List<ExperienceEntity> toutesLesExperiences = experienceSB.getToutesLesExperiences();
-        System.out.println("\n--- Liste de toutes les expériences ---\n");
-        for (ExperienceEntity experience : toutesLesExperiences) {
-            System.out.println("ID : " + experience.getiDexperience());
-            System.out.println("École : " + experience.getEcole());
-            System.out.println("Évaluation École : " + experience.getEvalEcole());
-            System.out.println("Durée : " + experience.getDuree());
-
-            // Afficher les compétences associées à cette expérience
-            List<CompetenceEntity> competences = experience.getListeCompetences();
-            System.out.println("Compétences associées :");
-            for (CompetenceEntity competence : competences) {
-                System.out.println("ID : " + competence.getIdCompetence());
-                System.out.println("Nom : " + competence.getNom());
-                System.out.println("Niveau : " + competence.getNiveau());
-            }
-
-            System.out.println();
-        }
-    }
-
-    public void testerRecupExperienceParId(int experienceId) {
-        ExperienceEntity experience = experienceSB.getExperienceParId(experienceId);
-        System.out.println("\n--- Expérience récupérée par ID ---\n");
-        System.out.println("ID : " + experience.getiDexperience());
-        System.out.println("École : " + experience.getEcole());
-        System.out.println("Évaluation École : " + experience.getEvalEcole());
-        System.out.println("Durée : " + experience.getDuree());
-
-        // Afficher les compétences associées à cette expérience
-        List<CompetenceEntity> competences = experience.getListeCompetences();
-        System.out.println("Compétences associées :");
-        for (CompetenceEntity competence : competences) {
-            System.out.println("ID : " + competence.getIdCompetence());
-            System.out.println("Nom : " + competence.getNom());
-            System.out.println("Niveau : " + competence.getNiveau());
-        }
-    }
-
-
-
-    // ---------------------------------------- FIN DE TESTS  ----------------------------------------
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        processRequest(request, response);
-    }
-
-    public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        processRequest(request, response);
     }
 }
 

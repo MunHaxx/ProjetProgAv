@@ -2,10 +2,10 @@ package fr.efrei.projetTAN.entities;
 
 import jakarta.persistence.*;
 
+import static fr.efrei.projetTAN.utils.Entity.RecruteurConst.*;
+
 import java.util.List;
 import java.util.Objects;
-
-import static fr.efrei.projetTAN.utils.RecruteurConst.*;
 
 @Entity
 @Table(name = "recruteur", schema = "prj_progav")

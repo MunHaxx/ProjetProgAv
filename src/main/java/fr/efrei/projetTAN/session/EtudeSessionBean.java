@@ -1,6 +1,5 @@
 package fr.efrei.projetTAN.session;
 
-import fr.efrei.projetTAN.entities.EnseignantEntity;
 import fr.efrei.projetTAN.entities.EtudeEntity;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.*;

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="https://jakarta.ee/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="https://jakarta.ee/xml/ns/persistence https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd"
+             version="3.0">
+    <persistence-unit name="projetTAN">
+        <class>fr.efrei.projetTAN.entities.ActiviteEntity</class>
+        <class>fr.efrei.projetTAN.entities.CandidatureEntity</class>
+        <class>fr.efrei.projetTAN.entities.CompetenceEntity</class>
+        <class>fr.efrei.projetTAN.entities.ContrainteEntity</class>
+        <class>fr.efrei.projetTAN.entities.EcoleEntity</class>
+        <class>fr.efrei.projetTAN.entities.EnseignantEntity</class>
+        <class>fr.efrei.projetTAN.entities.EtudeEntity</class>
+        <class>fr.efrei.projetTAN.entities.ExperienceEntity</class>
+        <class>fr.efrei.projetTAN.entities.InteretEntity</class>
+        <class>fr.efrei.projetTAN.entities.NiveauEtudiantEntity</class>
+        <class>fr.efrei.projetTAN.entities.PosteEntity</class>
+        <class>fr.efrei.projetTAN.entities.RecruteurEntity</class>
+        <class>fr.efrei.projetTAN.entities.RemarqueEntity</class>
+
+
+        <properties>
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/prj_progav"/>
+            <property name="jakarta.persistence.jdbc.driver" value="com.mysql.cj.jdbc.Driver"/>
+            <property name="jakarta.persistence.jdbc.user" value="root"/>
+            <property name="jakarta.persistence.jdbc.password" value="root"/>
+        </properties>
+
+    </persistence-unit>
+</persistence>

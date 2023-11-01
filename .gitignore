@@ -36,6 +36,3 @@ build/
 
 ### Mac OS ###
 .DS_Store
-
-### Persistence.xml ###
-/src/main/resources/META-INF/persistence.xml

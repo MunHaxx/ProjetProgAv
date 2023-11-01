@@ -73,7 +73,7 @@ public class Controleur extends HttpServlet {
         String identifiant = request.getParameter(FRM_LOGIN);
         String motDePasse = request.getParameter(FRM_MDP);
         String role = null;
-        unUtilisateur = new Utilisateur();
+        
 
         if (identifiant != null && motDePasse != null) {
             // Vérifiez les identifiants et le mot de passe pour chaque utilisateur
@@ -87,11 +87,13 @@ public class Controleur extends HttpServlet {
         }
 
         if (role != null) {
+            unUtilisateur = new Utilisateur();
             unUtilisateur.setIdentifiant(identifiant);
             unUtilisateur.setMotDePasse(motDePasse);
             unUtilisateur.setRole(role);
+            request.getSession().setAttribute("utilisateur", unUtilisateur);
         }
-        request.getSession().setAttribute("utilisateur", unUtilisateur);
+        
     }
     
     // seulement pour le login, vérif type user, rediriger
@@ -107,9 +109,11 @@ public class Controleur extends HttpServlet {
                 request.setAttribute("tousLesRecruteurs", listeRecruteurs);
                 request.getRequestDispatcher("/WEB-INF/BordelTest/testAdmin.jsp").forward(request, response);
             } else if ("recruteur".equals(role)) {
+                List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
+                request.setAttribute("tousLesRecruteurs", listeRecruteurs);
                 request.getRequestDispatcher("/WEB-INF/Recruteur/listeRecruteur.jsp").forward(request, response);
             } else if ("enseignant".equals(role)) {
-                request.getRequestDispatcher("/WEB-INF/BordelTest/testEnseignant.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/Enseignant/testEnseignant.jsp").forward(request, response);
             } else {
                 request.getSession().setAttribute("messageErreur", "Rôle non valide");
                 request.getRequestDispatcher(PAGE_INDEX).forward(request, response);

@@ -10,21 +10,19 @@
     <body>
         <div class="Header">
             <div class="title">Talent Teachers</div>
-            <div class="hello">Bonjour toto !</div>
+            <div class="hello">Bonjour Admin mais c'est pas le vrai !</div>
           </div>
     
           <div class="content">
-            <div class="Menu">
-              <div class="element select">Listes postes</div>
-              <div class="element">Créer postes</div>
-              <div class="element">Modif profil</div>
+            <form class="Menu" method="post" action="ControleurAdmin">
+              <button type="submit" name="action" value="ListePoste" class="element">Listes postes</button>
+              <button type="submit" name="action" value="CreerPoste" class="element select">Créer postes</button>
+              <button type="submit" name="action" value="ModifierProfil" class="element">Modif profil</button>
     
-              <div class="deconnexion">Déconnexion</div>
-            </div>
+              <div type="submit" name="action" value="Deconnexion" class="deconnexion">Déconnexion</div>
+            </form> 
             
-            <form class="liste-recruteur" method="post" action="Controleur">
-
-                
+            <form class="liste-recruteur" method="post" action="ControleurAdmin">
                 <div class="container-button">
                     <button class="button-add">
                         <div class="plus">+</div>

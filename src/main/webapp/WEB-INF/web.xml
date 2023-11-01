@@ -3,6 +3,8 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_5_0.xsd"
          version="5.0">
+
+    <!-- Connexion -->
     <servlet>
         <servlet-name>Controleur</servlet-name>
         <servlet-class>fr.efrei.projetTAN.Controleur</servlet-class>
@@ -13,21 +15,43 @@
         <url-pattern>/Controleur</url-pattern>
     </servlet-mapping>
 
+    <!-- Admin -->
+    <servlet>
+        <servlet-name>ControleurAdmin</servlet-name>
+        <servlet-class>fr.efrei.projetTAN.ControleurAdmin</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ControleurAdmin</servlet-name>
+        <url-pattern>/ControleurAdmin</url-pattern>
+    </servlet-mapping>
+
+    <!-- Recruteur -->
+    <servlet>
+        <servlet-name>ControleurRecruteur</servlet-name>
+        <servlet-class>fr.efrei.projetTAN.ControleurRecruteur</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ControleurRecruteur</servlet-name>
+        <url-pattern>/ControleurRecruteur</url-pattern>
+    </servlet-mapping>
+
+    <!-- Enseignant -->
+    <servlet>
+        <servlet-name>ControleurEnseignant</servlet-name>
+        <servlet-class>fr.efrei.projetTAN.ControleurEnseignant</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ControleurEnseignant</servlet-name>
+        <url-pattern>/ControleurEnseignant</url-pattern>
+    </servlet-mapping>
+
     <!-- La servlet est le point d'entrée de l'applicaiton -->
     <welcome-file-list>
         <welcome-file>Controleur</welcome-file>
     </welcome-file-list>
-
-    <!-- stockage des credentials de connexion -->
-    <context-param>
-        <param-name>login</param-name>
-        <param-value>admin</param-value>
-    </context-param>
-
-    <context-param>
-        <param-name>motDePasse</param-name>
-        <param-value>prograv</param-value>
-    </context-param>
 
     <jsp-config>
         <jsp-property-group>
@@ -37,3 +61,4 @@
     </jsp-config>
 
 </web-app>
+

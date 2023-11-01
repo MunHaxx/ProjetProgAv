@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
-import static fr.efrei.projetTAN.utils.EcoleConst.*;
+import static fr.efrei.projetTAN.utils.Entity.EcoleConst.*;
 
 @Entity
 @Table(name = "ecole", schema = "prj_progav")

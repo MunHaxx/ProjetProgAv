@@ -1,8 +1,6 @@
-package fr.efrei.projetTAN.utils;
+package fr.efrei.projetTAN.utils.User;
 
-import jakarta.persistence.NamedQuery;
-
-public final class UtilisateurConst {
+public final class LoginConst {
 
     // !!!!!!!! c'est une duplique de employeConst donc faudra faire le ménage
 /*    public static final String ACTION = "action";
@@ -25,6 +23,7 @@ public final class UtilisateurConst {
     public static final String CHAMP_VILLE = "frmVille";*/
     public static final String MESSAGE_ERREUR_CREDENTIALS_KO = "Infos de connexion non valides. Merci de les saisir à nouveau";
     public static final String PAGE_INDEX = "/WEB-INF/index.jsp";
+    public static final String PAGE_LISTE_RECRUTEUR = "/WEB-INF/listeRecruteur.jsp";
 //    public static final String PAGE_TOUS_LES_EMPLOYES = "/WEB-INF/listeEmployes.jsp";
 //    public static final String PAGE_DETAILS_EMPLOYE = "/WEB-INF/detailsEmploye.jsp";
 

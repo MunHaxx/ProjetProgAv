@@ -1,4 +1,4 @@
-package fr.efrei.projetTAN.utils;
+package fr.efrei.projetTAN.utils.Entity;
 
 public class CandidatureConst {
     //Requêtes JPQL

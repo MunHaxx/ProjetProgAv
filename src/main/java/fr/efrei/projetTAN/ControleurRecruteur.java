@@ -8,14 +8,13 @@ import jakarta.ejb.EJB;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 
-import static fr.efrei.projetTAN.utils.GlobalConst.*;
+// import static fr.efrei.projetTAN.utils.GlobalConst.*;
 import static fr.efrei.projetTAN.utils.User.UserRecruteurConst.*;
 
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
 
 public class ControleurRecruteur extends HttpServlet {
-    private Utilisateur unUtilisateur;
     private String actionUtilisateur;
     @EJB
     private CompetenceSessionBean competenceSB;
@@ -33,6 +32,8 @@ public class ControleurRecruteur extends HttpServlet {
     private PosteSessionBean posteSB;
     @EJB
     private EnseignantSessionBean enseignantSB;
+
+    private RecruteurEntity recruteur;
 
     public void init() {
         
@@ -75,17 +76,49 @@ public class ControleurRecruteur extends HttpServlet {
                 case ACTION_DECONNEXION:
                     request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
                     break;
-                case ACTION_RECRUTEUR_SAVE_CREATION_POSTE:
-                    // request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                case ACTION_RECRUTEUR_SAUVE_CREATION_POSTE:
+                    // RecruteurEntity recruteur = new RecruteurEntity(idRecruteurSelect,
+                    //         request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_NOM),
+                    //         request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_PRENOM));
+                    // recruteurSessionBean.modifierRecruteur(recruteur);
+
+                    // // Info normal
+                    // request.getParameter(CHAMP_CREER_POSTE_ECOLE));
+                    // request.getParameter(CHAMP_CREER_POSTE_CONTRAT));
+                    // request.getParameter(CHAMP_CREER_POSTE_PERIODE));
+                    // request.getParameter(CHAMP_CREER_POSTE_NIVEAU));
+                    
+                    // // Compétences
+                    // request.getParameter(CHAMP_CREER_POSTE_COMPETENCE_1));
+                    // request.getParameter(CHAMP_CREER_POSTE_COMPETENCE_2));
+                    // request.getParameter(CHAMP_CREER_POSTE_COMPETENCE_3));
+
+                    // // Contraintes
+                    // request.getParameter(CHAMP_CREER_POSTE_CONTRAINTES_1));
+                    // request.getParameter(CHAMP_CREER_POSTE_CONTRAINTES_2));
+                    // request.getParameter(CHAMP_CREER_POSTE_CONTRAINTES_3));
+
+                    // // Remarques
+                    // request.getParameter(CHAMP_CREER_POSTE_REMARQUES_1));
+                    // request.getParameter(CHAMP_CREER_POSTE_REMARQUES_2));
+                    // request.getParameter(CHAMP_CREER_POSTE_REMARQUES_3));
+
+                    request.getRequestDispatcher(PAGE_RECRUTEUR_CREER_POSTE).forward(request, response);
                     break;
-                case ACTION_RECRUTEUR_SAVE_MODIFICATION_PROFIL:
-                    // request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                case ACTION_RECRUTEUR_SAUVE_MODIFICATION_PROFIL:
+                    // int idRecruteurSelect = Integer.parseInt(request.getParameter(ID_RECRUTEUR));
+                    // RecruteurEntity recruteur = new RecruteurEntity(idRecruteurSelect,
+                    //         request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_NOM),
+                    //         request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_PRENOM));
+                    // recruteurSessionBean.modifierRecruteur(recruteur);
+                    System.out.println("\n\n\n " + request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_NOM) + " " + request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_PRENOM) + "\n\n\n");
+                    request.getRequestDispatcher(PAGE_RECRUTEUR_MODIFIER_PROFIL).forward(request, response);
                     break;
                 case ACTION_RECRUTEUR_ACCEPTER_CANDIDATURE:
-                    // request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                
                     break;
                 case ACTION_RECRUTEUR_REJETER_CANDIDATURE:
-                    // request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                
                     break;
             }
         }

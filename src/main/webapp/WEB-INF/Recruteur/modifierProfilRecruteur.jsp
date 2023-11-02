@@ -27,19 +27,19 @@
                     <div class="modif-recruteur">
                         <div class="title-page">Mon profil</div>
 
-                        <form action="Controleur" method="post">
+                        <div>
                             <div class="container-info">
                                 <div class="title-info-case">Nom</div>
-                                <input class="info-case" placeholder="Nom" name="champNom" autofocus="" />
+                                <input class="info-case" placeholder="Nom" name="champModifNomRecruteur"/>
 
                                 <div class="title-info-case droite">Prénom</div>
-                                <input class="info-case" placeholder="Prénom" name="champPrenom" />
+                                <input class="info-case" placeholder="Prénom" name="champModifPrenomRecruteur" />
                             </div>
                     
                             <div class="container-button">
-                                <button type="submit" name="action" value="SaveModifProfil" class="sauvegarder">Sauvegarder</button>
+                                <button type="submit" name="action" value="SauveModifProfil" class="sauvegarder">Sauvegarder</button>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </form>

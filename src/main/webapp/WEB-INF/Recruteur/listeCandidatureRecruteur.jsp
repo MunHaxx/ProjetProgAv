@@ -32,7 +32,7 @@
                             <button type="submit" name="action" value="AccepterCandidature" class="action-button accepter">Accepter</button>
                             <button type="submit" name="action" value="RejeterCandidature" class="action-button rejeter">Rejeter</button>
                             <div class="title-candidature">Candidature n°N</div>
-            
+
                             <div class="container-line">
                                 <div class="infos">
                                     <div class="info">Nom</div>
@@ -44,7 +44,7 @@
                                 </div>
                                 <div class="infos">
                                     <div class="info">25/10/2023</div>
-                                    <div class="info">truc-de-test.com</div>
+                                    <div class="info">icon-recruteur-de-test.com</div>
                                 </div>
                                 <div class="infos">
                                     <div class="info">Recommandé par</div>

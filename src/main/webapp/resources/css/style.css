@@ -6,6 +6,9 @@ ul {padding: 0; margin: 0;}
 li {padding: 0; margin: 0;}
 form {padding: 0; margin: 0;}
 
+.icon-recruteur {width: 25px; margin-right: 10px;}
+.icon-status {width: 15px; margin-right: 10px;}
+
 /**************************************************************
 ************************** HEADER *****************************
 **************************************************************/
@@ -89,7 +92,7 @@ form {padding: 0; margin: 0;}
                 .modif-employe .container-liste.experience .container-competence {padding-left: 40px;}
                     .modif-employe .container-liste.experience .titre-liste-competence {font-size: 24px; margin-bottom: 20px;}
                     .modif-employe .container-liste.experience .container-competence .input-champ {width: 200px; margin-right: 20px;}
-                    .modif-employe .container-liste.experience .container-competence .input-niveau {-webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url('../images/real-one-select-icon.png'); background-repeat: no-repeat; background-position: right 5px center; background-size: 15px; padding-right: 30px;}
+                    .modif-employe .container-liste.experience .container-competence .input-niveau {-webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url('/ProjetTAN/resources/icons/select-icon.png'); background-repeat: no-repeat; background-position: right 5px center; background-size: 15px; padding-right: 30px;}
             
             /* Bouton sauvegarder */
             .modif-employe .container-button {width: 100%; justify-content: center; display: flex;}

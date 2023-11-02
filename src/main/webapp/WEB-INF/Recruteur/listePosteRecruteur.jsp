@@ -30,19 +30,19 @@
             
                         <div class="container-infos">
                             <div class="container-info">
-                                <div class="truc">O</div>
+                                <img class="icon-recruteur" src="/ProjetTAN/resources/icons/school.png" />
                                 <div class="info">Ecole</div>
                             </div>
                             <div class="container-info">
-                                <div class="truc">O</div>
+                                <img class="icon-recruteur" src="/ProjetTAN/resources/icons/contract.png" />
                                 <div class="info">Contrat</div>
                             </div>
                             <div class="container-info">
-                                <div class="truc">O</div>
+                                <img class="icon-recruteur" src="/ProjetTAN/resources/icons/periode.png" />
                                 <div class="info">Période</div>
                             </div>
                             <div class="container-info">
-                                <div class="truc">O</div>
+                                <img class="icon-recruteur" src="/ProjetTAN/resources/icons/class.png" />
                                 <div class="info">Classe_etud</div>
                             </div>
                         </div>
@@ -78,19 +78,19 @@
             
                         <div class="container-infos">
                             <div class="container-info">
-                                <div class="truc">O</div>
+                                <div class="icon-recruteur">O</div>
                                 <div class="info">Ecole</div>
                             </div>
                             <div class="container-info">
-                                <div class="truc">O</div>
+                                <div class="icon-recruteur">O</div>
                                 <div class="info">Contrat</div>
                             </div>
                             <div class="container-info">
-                                <div class="truc">O</div>
+                                <div class="icon-recruteur">O</div>
                                 <div class="info">Période</div>
                             </div>
                             <div class="container-info">
-                                <div class="truc">O</div>
+                                <div class="icon-recruteur">O</div>
                                 <div class="info">Classe_etud</div>
                             </div>
                         </div>

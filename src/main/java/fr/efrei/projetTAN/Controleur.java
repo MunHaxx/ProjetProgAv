@@ -111,9 +111,9 @@ public class Controleur extends HttpServlet {
             } else if ("recruteur".equals(role)) {
                 List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
                 request.setAttribute("tousLesRecruteurs", listeRecruteurs);
-                request.getRequestDispatcher("/WEB-INF/Recruteur/listePosteRecruteur.jsp").forward(request, response);
+                request.getRequestDispatcher(PAGE_RECRUTEUR).forward(request, response);
             } else if ("enseignant".equals(role)) {
-                request.getRequestDispatcher("/WEB-INF/Enseignant/testEnseignant.jsp").forward(request, response);
+                request.getRequestDispatcher(PAGE_ENSEIGNANT).forward(request, response);
             } else {
                 request.getSession().setAttribute("messageErreur", "Rôle non valide");
                 request.getRequestDispatcher(PAGE_INDEX).forward(request, response);

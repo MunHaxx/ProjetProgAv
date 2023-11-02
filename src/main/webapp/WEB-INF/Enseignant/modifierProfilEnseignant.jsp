@@ -344,7 +344,7 @@
                     </div>
           
                     <div class="container-button">
-                        <input type="submit" name="action" value="SauveModifEnseignant" class="sauvegarder"/>
+                        <button type="submit" name="action" value="SauveModifEnseignant" class="sauvegarder">Sauvegarder</button>
                     </div>
                 </div>
               </div>

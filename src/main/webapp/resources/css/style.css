@@ -245,8 +245,8 @@ form {padding: 0; margin: 0;}
 .container-candidature-recruteur .container-infos-candidature .container-line .infos .info{margin-bottom: 15px; word-wrap: break-word;}
 
 .container-candidature-recruteur .container-infos-candidature .action-button {position: absolute; background-color: white; padding: 10px; border: 1px solid black; border-radius: 5px; color: white; font-weight: bold; transition: transform 0.3s; cursor: pointer; width: 100px; display:flex; justify-content: center; box-sizing: border-box;}
-.container-candidature-recruteur .container-infos-candidature .rejeter {color:black; right: 30px; top: 30px;}
-.container-candidature-recruteur .container-infos-candidature .accepter {color:var(--main-orange); right: 30px; top: 72px;}
+.container-candidature-recruteur .container-infos-candidature .rejeter {color:black; right: 30px; top: 72px;}
+.container-candidature-recruteur .container-infos-candidature .accepter {color:var(--main-orange); right: 30px; top: 30px;}
 .container-candidature-recruteur .container-infos-candidature .action-button:hover {transform: scale(1.2); z-index: 10;}
 
 .container-candidature-recruteur .agrandir {border: 1px solid black; font-size: 22px;border-top:0px; width: auto; height: 40px; position: relative; background-color: white; padding: 5px; box-sizing: border-box; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s;}

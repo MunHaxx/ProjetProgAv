@@ -11,18 +11,18 @@
         <div class="Header">
             <div class="title">Talent Teachers</div>
             <div class="hello">Bonjour toto !</div>
-          </div>
+        </div>
     
-          <div class="content">
+        <form class="content" method="post" action="ControleurEnseignant">
             <div class="Menu">
-              <div class="element select">Listes postes</div>
-              <div class="element">Créer postes</div>
-              <div class="element">Modif profil</div>
-    
-              <div class="deconnexion">Déconnexion</div>
+                <button type="submit" name="action" value="VoirListePoste" class="element select">Liste postes</button>
+                <button type="submit" name="action" value="VoirListeCandidature" class="element">Liste candidatures</button>
+                <button type="submit" name="action" value="VoirModifierProfil" class="element">Modifier profil</button>
+
+                <button type="submit" name="action" value="Deconnexion" class="deconnexion">Déconnexion</button>
             </div>
             
-            <form class="liste-enseignant" method="post" action="Controleur">
+            <div class="liste-enseignant" >
                 <div class="container-button">
                     <button class="button-add">
                         <div class="plus">+</div>
@@ -51,6 +51,6 @@
                 </c:forEach>
                 
             </div>
-          </div>
+        </form>
     </body>
 </html>

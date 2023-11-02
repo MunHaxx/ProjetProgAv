@@ -1,9 +1,13 @@
 html {overflow: hidden;--main-orange: #ff9a0e;}
 input {all: initial;}
-button {all: unset;}
+button {all: unset; cursor: pointer;}
 body {margin: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;}
 ul {padding: 0; margin: 0;}
 li {padding: 0; margin: 0;}
+form {padding: 0; margin: 0;}
+
+.icon-recruteur {width: 25px; margin-right: 10px;}
+.icon-status {width: 15px; margin-right: 10px;}
 
 /**************************************************************
 ************************** HEADER *****************************
@@ -78,23 +82,23 @@ li {padding: 0; margin: 0;}
 .modif-employe .container-liste.etude .input-date {width: 200px; align-items: center;}
 
 
-/* Expérience */
-.modif-employe .container-liste.experience .container-experience {margin-bottom: 60px;}
-.modif-employe .container-liste.experience .titre-champ {font-size: 20px; margin-right: 10px;}
-.modif-employe .container-liste.experience .container-ecole {margin-bottom: 20px;}
-.modif-employe .container-liste.experience .duree,
-.modif-employe .container-liste.experience .evaluation {margin-left: 20px;}
-
-.modif-employe .container-liste.experience .container-competence {padding-left: 40px;}
-.modif-employe .container-liste.experience .titre-liste-competence {font-size: 24px; margin-bottom: 20px;}
-.modif-employe .container-liste.experience .container-competence .input-champ {width: 200px; margin-right: 20px;}
-.modif-employe .container-liste.experience .container-competence .input-niveau {-webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url('../images/real-one-select-icon.png'); background-repeat: no-repeat; background-position: right 5px center; background-size: 15px; padding-right: 30px;}
-
-/* Bouton sauvegarder */
-.modif-employe .container-button {width: 100%; justify-content: center; display: flex;}
-.modif-employe .sauvegarder {color: white; display: flex; width: 200px; height: 40px; font-size: 25px; background-color: var(--main-orange); align-items: center; justify-content: center; border-radius: 50px; border: 0px solid rgb(255, 211, 144); transition: transform 0.3s;}
-.modif-employe .sauvegarder:hover {transform: scale(1.1);}
-
+            /* Expérience */
+            .modif-employe .container-liste.experience .container-experience {margin-bottom: 60px;}
+                .modif-employe .container-liste.experience .titre-champ {font-size: 20px; margin-right: 10px;}
+                .modif-employe .container-liste.experience .container-ecole {margin-bottom: 20px;}
+                    .modif-employe .container-liste.experience .duree, 
+                    .modif-employe .container-liste.experience .evaluation {margin-left: 20px;}
+                
+                .modif-employe .container-liste.experience .container-competence {padding-left: 40px;}
+                    .modif-employe .container-liste.experience .titre-liste-competence {font-size: 24px; margin-bottom: 20px;}
+                    .modif-employe .container-liste.experience .container-competence .input-champ {width: 200px; margin-right: 20px;}
+                    .modif-employe .container-liste.experience .container-competence .input-niveau {-webkit-appearance: none; -moz-appearance: none; appearance: none; background-image: url('/ProjetTAN/resources/icons/select-icon.png'); background-repeat: no-repeat; background-position: right 5px center; background-size: 15px; padding-right: 30px;}
+            
+            /* Bouton sauvegarder */
+            .modif-employe .container-button {width: 100%; justify-content: center; display: flex;}
+                .modif-employe .sauvegarder {color: white; display: flex; width: 200px; height: 40px; font-size: 25px; background-color: var(--main-orange); align-items: center; justify-content: center; border-radius: 50px; border: 0px solid rgb(255, 211, 144); transition: transform 0.3s;}
+                .modif-employe .sauvegarder:hover {transform: scale(1.1);}
+            
 
 
 
@@ -263,6 +267,26 @@ li {padding: 0; margin: 0;}
 
 .container-candidature-recruteur .container-liste .container-competence {padding:0px 0 40px 30px;}
 
+        .container-candidature-recruteur .agrandir {border: 1px solid black; font-size: 22px;border-top:0px; width: auto; height: 40px; position: relative; background-color: white; padding: 5px; box-sizing: border-box; display: flex; justify-content: center; align-items: center; cursor: pointer; transition: all 0.3s;}
+        .container-candidature-recruteur .agrandir:hover {font-size: 24px; color:var(--main-orange); font-weight: bold;}
+    
+        /* Container listes */
+        .liste-candidature-recruteur .container-candidature-recruteur .container-listes {border: 1px solid black; font-size: 22px;border-top:0px; width: auto; height: auto; position: relative; background-color: white; padding: 30px; box-sizing: border-box; border-radius: 0 0 20px 20px;}
+            .liste-candidature-recruteur .container-candidature-recruteur .container-liste {margin-bottom: 40px;}  
+                .liste-candidature-recruteur .container-candidature-recruteur .container-liste .title-liste {font-size: 25px; margin-bottom: 20px;}
+                
+                .container-candidature-recruteur .container-liste .container-points {display: flex;}
+                    .container-candidature-recruteur .container-liste .left-point,
+                    .container-candidature-recruteur .container-liste .point {margin-left: 50px; margin-bottom: 5px;}
+                    .container-candidature-recruteur .container-liste .point-etude,
+                    .container-candidature-recruteur .container-liste .right-point {margin-bottom: 5px;}
+                    .container-candidature-recruteur .container-liste .left-point,
+                    .container-candidature-recruteur .container-liste .point-etude {margin-right: 80px;}
+                
+                    .container-candidature-recruteur .container-liste .container-competence {padding:0px 0 40px 30px;}
+        
+        .liste-candidature-recruteur .container-candidature-recruteur .hide {display: none;}
+    
 /*****************************************************************
 *************** LISTE CANDIDATURE ENSEIGNANT *********************
 ******************************************************************/

@@ -24,7 +24,7 @@
 
             <div class="liste-poste-employe">
                 <div class="poste-employe">
-                    <div class="postuler">Postuler</div>
+                    <button type="submit" name="action" value="Postuler" class="postuler">Postuler</button>
                     <div class="title">Titre poste</div>
         
                     <div class="container-infos">
@@ -73,7 +73,7 @@
                 </div>
         
                 <div class="poste-employe">
-                    <div class="postuler">Postuler</div>
+                    <button type="submit" name="action" value="Postuler" class="postuler">Postuler</button>
                     <div class="title">Titre poste</div>
         
                     <div class="container-infos">
@@ -122,7 +122,7 @@
                 </div>
         
                 <div class="poste-employe">
-                    <div class="postuler">Postuler</div>
+                    <button type="submit" name="action" value="Postuler" class="postuler">Postuler</button>
                     <div class="title">Titre poste</div>
         
                     <div class="container-infos">

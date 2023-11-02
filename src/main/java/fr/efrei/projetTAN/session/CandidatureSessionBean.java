@@ -12,7 +12,7 @@ public class CandidatureSessionBean {
     private Query requete;
 
     // Permet d'obtenir la liste de toutes les candidatures
-    public List<CandidatureEntity> getToutesEtudes(){
+    public List<CandidatureEntity> getToutesCandidatures(){
         requete = entityManager.createNamedQuery("recupToutesCandidatures");
         return  requete.getResultList();
     }
@@ -24,19 +24,11 @@ public class CandidatureSessionBean {
         return (CandidatureEntity) requete.getSingleResult();
     }
 
-    // Permet d'obtenir une candidature à partir de l'ID de l'enseignant
-    public CandidatureEntity getEtudeParIdEnseignant(int id) {
-        requete = entityManager.createNamedQuery("recupCandidatureIdEnseignant" );
-        requete.setParameter("id", id);
-        return (CandidatureEntity) requete.getSingleResult();
+    // Permet de créer une nouvelle candidature
+    public void ajouterCandidature(CandidatureEntity candidACreer) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(candidACreer);
+        entityManager.getTransaction().commit();
     }
 
-    // Permet d'obtenir une candidature à partir de l'ID du poste
-    public CandidatureEntity getEtudeParIdPoste(int id) {
-        requete = entityManager.createNamedQuery("recupCandidatureIdPoste" );
-        requete.setParameter("id", id);
-        return (CandidatureEntity) requete.getSingleResult();
-    }
-
-    // Permet de modifier une candidature
 }

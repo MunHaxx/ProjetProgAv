@@ -26,11 +26,17 @@ public class CompetenceSessionBean {
         return (CompetenceEntity) requete.getSingleResult();
     }
 
+    // Permet de créer une nouvelle compétence
+    public void ajouterCompetence(CompetenceEntity comptACreer) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(comptACreer);
+        entityManager.getTransaction().commit();
+    }
+
     // Permet de modifier une compétence
     public void modifierCompetence(CompetenceEntity comptAModifier) {
-        requete = entityManager.createNamedQuery("modifUneCompt");
-        requete.setParameter("id", comptAModifier.getIdCompetence());
-        requete.setParameter("nom", comptAModifier.getNom());
-        requete.setParameter("niveau", comptAModifier.getNiveau());
+        entityManager.getTransaction().begin();
+        entityManager.merge(comptAModifier);
+        entityManager.getTransaction().commit();
     }
 }

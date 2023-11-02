@@ -24,5 +24,17 @@ public class EtudeSessionBean {
         return (EtudeEntity) requete.getSingleResult();
     }
 
+    // Permet de créer une nouvelle étude
+    public void ajouterEtude(EtudeEntity etudeACreer) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(etudeACreer);
+        entityManager.getTransaction().commit();
+    }
+
     // Permet de modifier une étude
+    public void modifierEtude(EtudeEntity etudeAModifier) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(etudeAModifier);
+        entityManager.getTransaction().commit();
+    }
 }

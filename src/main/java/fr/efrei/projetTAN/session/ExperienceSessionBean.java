@@ -25,6 +25,18 @@ public class ExperienceSessionBean {
         return (ExperienceEntity) requete.getSingleResult();
     }
 
-    // Permet de modifier une expérience (/!\ liste compétences)
+    // Permet de créer une nouvelle expérience
+    public void ajouterExperience(ExperienceEntity xpACreer) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(xpACreer);
+        entityManager.getTransaction().commit();
+    }
+
+    // Permet de modifier une expérience
+    public void modifierExperience(ExperienceEntity xpAModifier) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(xpAModifier);
+        entityManager.getTransaction().commit();
+    }
 
 }

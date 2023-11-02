@@ -23,4 +23,11 @@ public class EcoleSessionBean {
         requete.setParameter("id", id);
         return (EcoleEntity) requete.getSingleResult();
     }
+
+    // Permet de créer une nouvelle école
+    public void ajouterEcole(EcoleEntity ecoleACreer) {
+        entityManager.getTransaction().begin();
+        entityManager.persist(ecoleACreer);
+        entityManager.getTransaction().commit();
+    }
 }

@@ -17,7 +17,7 @@ public class Controleur extends HttpServlet {
     private Utilisateur unUtilisateur;
     private String actionUtilisateur;
     @EJB
-    private ActiviteEntity activiteSB;
+    private ActiviteSessionBean activiteSB;
     @EJB
     private CandidatureSessionBean candidatureSB;
     @EJB

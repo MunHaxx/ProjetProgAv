@@ -16,7 +16,7 @@ import fr.efrei.projetTAN.session.*;
 
 public class ControleurRecruteur extends HttpServlet {
     @EJB
-    private ActiviteEntity activiteSB;
+    private ActiviteSessionBean activiteSB;
     @EJB
     private CandidatureSessionBean candidatureSB;
     @EJB

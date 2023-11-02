@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 
 import static fr.efrei.projetTAN.utils.Entity.RecruteurConst.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -37,12 +38,10 @@ public class RecruteurEntity {
     public RecruteurEntity() {
 
     }
-
-    public RecruteurEntity(int idRecruteur, String nom, String prenom, List<PosteEntity> estRespoListePostes) {
-        this.idRecruteur = idRecruteur;
+    public RecruteurEntity(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
-        this.estRespoListePostes = estRespoListePostes;
+        this.estRespoListePostes = new ArrayList<PosteEntity>();
     }
 
     public int getIdRecruteur() {

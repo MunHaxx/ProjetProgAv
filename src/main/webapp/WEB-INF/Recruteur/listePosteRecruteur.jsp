@@ -11,7 +11,7 @@
         <div>
             <div class="Header">
                 <div class="title">Talent Teachers</div>
-                <div class="hello">Bonjour Recruteur !</div>
+                <div class="hello">Bonjour ${leRecruteur.prenom} ${leRecruteur.nom} !</div>
             </div>
             
             <div class="content" >

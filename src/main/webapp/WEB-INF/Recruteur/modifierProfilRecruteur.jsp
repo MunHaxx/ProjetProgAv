@@ -11,11 +11,11 @@
         <div>
             <div class="Header">
                 <div class="title">Talent Teachers</div>
-                <div class="hello">Bonjour Recruteur !</div>
+                <div class="hello">Bonjour ${leRecruteur.prenom} ${leRecruteur.nom} !</div>
             </div>
             
             <form class="content" method="post" action="ControleurRecruteur">
-                <input type="hidden" name="data-id" value="${recruteur.recruteurId}">
+                <input type="hidden" name="data-id" value="${leRecruteur.idRecruteur}">
                 
                 <div class="Menu">
                     <button type="submit" name="action" value="VoirListePoste" class="element">Listes postes</button>
@@ -32,10 +32,10 @@
                         <div>
                             <div class="container-info">
                                 <div class="title-info-case">Nom</div>
-                                <input class="info-case" placeholder="Nom" name="champModifNomRecruteur"/>
+                                <input class="info-case" placeholder="Nom" name="champModifNomRecruteur" value="${leRecruteur.nom}"/>
 
                                 <div class="title-info-case droite">Prénom</div>
-                                <input class="info-case" placeholder="Prénom" name="champModifPrenomRecruteur" />
+                                <input class="info-case" placeholder="Prénom" name="champModifPrenomRecruteur" value="${leRecruteur.prenom}"/>
                             </div>
                     
                             <div class="container-button">

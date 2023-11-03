@@ -10,6 +10,7 @@ import jakarta.servlet.http.*;
 
 // import static fr.efrei.projetTAN.utils.GlobalConst.*;
 import static fr.efrei.projetTAN.utils.User.UserEnseignantConst.*;
+import static fr.efrei.projetTAN.utils.User.LoginConst.*;
 
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
@@ -54,7 +55,7 @@ public class ControleurEnseignant extends HttpServlet {
 
     public void chargerLaPageSuivante(String actionUtilisateur, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (actionUtilisateur == null || actionUtilisateur.isEmpty()) {
-            request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+            request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
         } 
         else {
             switch (actionUtilisateur) {
@@ -74,7 +75,7 @@ public class ControleurEnseignant extends HttpServlet {
                     request.getRequestDispatcher(PAGE_ENSEIGNANT_MODIFIER_PROFIL).forward(request, response);
                     break;
                 case ACTION_DECONNEXION:
-                    request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                    request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
                     break;
             }
         }

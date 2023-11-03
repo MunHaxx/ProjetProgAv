@@ -1,31 +1,21 @@
 package fr.efrei.projetTAN.utils.User;
 
 public final class LoginConst {
-
-    // !!!!!!!! c'est une duplique de employeConst donc faudra faire le ménage
-/*    public static final String ACTION = "action";
-    public static final String ACTION_SUPPRIMER = "Supprimer";
-    public static final String ACTION_DETAILS = "Details";
-    public static final String ACTION_MODIFIER = "Modifier";
-    public static final String ACTION_VOIR_LISTE = "Retour";*/
+    // Action
     public static final String ACTION_LOGIN = "Login";
-    public static final String FRM_LOGIN = "champLogin";
-    public static final String FRM_MDP = "champPassword";
-   /* public static final String FRM_ID_EMPL_SELECT = "idEmploye";
-    public static final String CHAMP_ADRESSE = "frmAdresse";
-    public static final String CHAMP_CODEPOSTAL = "frmCodePostal";
-    public static final String CHAMP_EMAIL = "frmEmail";
-    public static final String CHAMP_NOM = "frmNom";
-    public static final String CHAMP_PRENOM = "frmPrenom";
-    public static final String CHAMP_TELDOMICILE = "frmTelDomicile";
-    public static final String CHAMP_TELPORTABLE = "frmTelPortable";
-    public static final String CHAMP_TELPRO = "frmTelPro";
-    public static final String CHAMP_VILLE = "frmVille";*/
+    public static final String ACTION_DECONNEXION = "Deconnexion";
+
+    // Lien de page
+    public static final String PAGE_CONNEXION = "/WEB-INF/index.jsp";
+    public static final String PAGE_LOGIN_RECRUTEUR = "/WEB-INF/Recruteur/listePosteRecruteur.jsp";
+    public static final String PAGE_LOGIN_ENSEIGNANT = "/WEB-INF/Enseignant/listePosteEnseignant.jsp";
+    public static final String PAGE_LOGIN_ADMIN = "/WEB-INF/Admin/listePosteAdmin.jsp";
+
+    // Champs connexion
+    public static final String CHAMP_LOGIN = "champLogin";
+    public static final String CHAMP_PASSWORD = "champPassword";
+
+    // Message d'erreur
     public static final String MESSAGE_ERREUR_CREDENTIALS_KO = "Infos de connexion non valides. Merci de les saisir à nouveau";
-    public static final String PAGE_INDEX = "/WEB-INF/index.jsp";
-    public static final String PAGE_RECRUTEUR = "/WEB-INF/Recruteur/listePosteRecruteur.jsp";
-    public static final String PAGE_ENSEIGNANT = "/WEB-INF/Enseignant/listePosteEnseignant.jsp";
-//    public static final String PAGE_TOUS_LES_EMPLOYES = "/WEB-INF/listeEmployes.jsp";
-//    public static final String PAGE_DETAILS_EMPLOYE = "/WEB-INF/detailsEmploye.jsp";
 
 }

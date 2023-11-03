@@ -7,19 +7,17 @@ public final class UserEnseignantConst {
     public static final String ACTION_ENSEIGNANT_VOIR_MODIFIER_PROFIL = "VoirModifierProfil";
     public static final String ACTION_ENSEIGNANT_SAUVE_MODIFICATION_PROFIL = "SauveModifEnseignant";
     public static final String ACTION_ENSEIGNANT_POSTULER= "Postuler";
-    public static final String ACTION_DECONNEXION = "Deconnexion";
 
     // Lien de page
     public static final String PAGE_ENSEIGNANT_LISTE_POSTE = "/WEB-INF/Enseignant/listePosteEnseignant.jsp";
     public static final String PAGE_ENSEIGNANT_LISTE_CANDIDATURE = "/WEB-INF/Enseignant/listeCandidatureEnseignant.jsp";
     public static final String PAGE_ENSEIGNANT_MODIFIER_PROFIL = "/WEB-INF/Enseignant/modifierProfilEnseignant.jsp";
-    public static final String PAGE_LOGIN = "/WEB-INF/index.jsp";
 
     
     /**************************************************************************************
      **************************** CHAMPS MODIF PROFIL ENSEIGNANT **************************
      **************************************************************************************/
-    // information général
+    // Information général
     public static final String CHAMP_ENSEIGNANT_MODIFICATION_NOM = "champNom";
     public static final String CHAMP_ENSEIGNANT_MODIFICATION_SITE = "champSite";
     public static final String CHAMP_ENSEIGNANT_MODIFICATION_PRENOM = "champchampPrenomSite";

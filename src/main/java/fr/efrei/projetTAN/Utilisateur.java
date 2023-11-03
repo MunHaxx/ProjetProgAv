@@ -5,6 +5,7 @@ public class Utilisateur {
     private String identifiant;
     private String motDePasse;
     private String role;
+    private int idRole;
 
     public String getIdentifiant() {
         return identifiant;
@@ -29,4 +30,8 @@ public class Utilisateur {
     public void setRole(String role) {
         this.role = role;
     }
+
+    public int getIdRole() { return idRole; }
+
+    public void setIdRole(int idRole) { this.idRole = idRole; }
 }

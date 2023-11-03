@@ -16,6 +16,6 @@ public final class LoginConst {
     public static final String CHAMP_PASSWORD = "champPassword";
 
     // Message d'erreur
-    public static final String MESSAGE_ERREUR_CREDENTIALS_KO = "Infos de connexion non valides. Merci de les saisir à nouveau";
+    public static final String MESSAGE_ERREUR_IDENTIFIANTS_INTROUVABLES = "Infos de connexion non valides. Merci de les saisir à nouveau";
 
 }

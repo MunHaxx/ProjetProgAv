@@ -60,6 +60,8 @@ public class ControleurRecruteur extends HttpServlet {
         else {
             switch (actionUtilisateur) {
                 case ACTION_RECRUTEUR_VOIR_LISTE_POSTE:
+                    request.getSession().setAttribute("messageInfo", "");
+                    request.getSession().setAttribute("messageErreur", "");
                     request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_POSTE).forward(request, response);
                     break;
                 case ACTION_RECRUTEUR_VOIR_CREER_POSTE:

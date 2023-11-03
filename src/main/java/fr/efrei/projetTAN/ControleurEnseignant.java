@@ -60,6 +60,8 @@ public class ControleurEnseignant extends HttpServlet {
         else {
             switch (actionUtilisateur) {
                 case ACTION_ENSEIGNANT_VOIR_LISTE_POSTE:
+                    request.getSession().setAttribute("messageInfo", "");
+                    request.getSession().setAttribute("messageErreur", "");
                     request.getRequestDispatcher(PAGE_ENSEIGNANT_LISTE_POSTE).forward(request, response);
                     break;
                 case ACTION_ENSEIGNANT_VOIR_LISTE_CANDIDATURE:

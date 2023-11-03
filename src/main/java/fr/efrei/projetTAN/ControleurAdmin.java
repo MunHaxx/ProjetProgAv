@@ -63,6 +63,8 @@ public class ControleurAdmin extends HttpServlet {
 
             switch (actionUtilisateur) {
                 case ACTION_ADMIN_VOIR_LISTE_POSTE:
+                    request.getSession().setAttribute("messageInfo", "");
+                    request.getSession().setAttribute("messageErreur", "");
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_POSTE).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_LISTE_RECRUTEUR:

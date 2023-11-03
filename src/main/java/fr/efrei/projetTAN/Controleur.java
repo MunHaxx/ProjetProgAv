@@ -104,10 +104,16 @@ public class Controleur extends HttpServlet {
             String role = unUtilisateur.getRole();
     
             if ("admin".equals(role)) {
+                request.getSession().setAttribute("messageErreur", "");
+                request.getSession().setAttribute("messageInfo", "");
                 request.getRequestDispatcher(PAGE_LOGIN_ADMIN).forward(request, response);
             } else if ("recruteur".equals(role)) {
+                request.getSession().setAttribute("messageInfo", "");
+                request.getSession().setAttribute("messageErreur", "");
                 request.getRequestDispatcher(PAGE_LOGIN_RECRUTEUR).forward(request, response);
             } else if ("enseignant".equals(role)) {
+                request.getSession().setAttribute("messageInfo", "");
+                request.getSession().setAttribute("messageErreur", "");
                 request.getRequestDispatcher(PAGE_LOGIN_ENSEIGNANT).forward(request, response);
             } else {
                 request.getSession().setAttribute("messageErreur", "Rôle non valide");
@@ -115,7 +121,7 @@ public class Controleur extends HttpServlet {
             }
         } else {
             // Gérer le cas où l'utilisateur n'est pas authentifié
-            request.getSession().setAttribute("messageErreur", MESSAGE_ERREUR_CREDENTIALS_KO);
+            request.getSession().setAttribute("messageErreur", MESSAGE_ERREUR_IDENTIFIANTS_INTROUVABLES);
             request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
         }
     }

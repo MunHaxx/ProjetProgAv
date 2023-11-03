@@ -67,7 +67,6 @@ public class Controleur extends HttpServlet {
         chargerLaPageSuivante(actionUtilisateur, request, response);
     }
 
-    // Une tâche <-> une méthode
     public boolean verifierInfosConnexion(Utilisateur unUtilisateur) {
         String motDePasseValide = getServletContext().getInitParameter("login");
         String loginValide = getServletContext().getInitParameter("motDePasse");
@@ -80,7 +79,6 @@ public class Controleur extends HttpServlet {
         String identifiant = request.getParameter(FRM_LOGIN);
         String motDePasse = request.getParameter(FRM_MDP);
         String role = null;
-        
 
         if (identifiant != null && motDePasse != null) {
             // Vérifiez les identifiants et le mot de passe pour chaque utilisateur
@@ -98,13 +96,14 @@ public class Controleur extends HttpServlet {
             unUtilisateur.setIdentifiant(identifiant);
             unUtilisateur.setMotDePasse(motDePasse);
             unUtilisateur.setRole(role);
+            unUtilisateur.setIdRole(1); // ID = 1 par défaut, à améliorer dans une version future
             request.getSession().setAttribute("utilisateur", unUtilisateur);
         }
         
     }
     
     // seulement pour le login, vérif type user, rediriger
-    // Page d'accuil différente selon le type d'utilisateur connecté
+    // Page d'accueil différente selon le type d'utilisateur connecté
     public void dirigerVersPageAccueil(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utilisateur unUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");
     
@@ -113,13 +112,21 @@ public class Controleur extends HttpServlet {
     
             if ("admin".equals(role)) {
                 List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
+                request.getSession().setAttribute("utilisateur", unUtilisateur);
+                request.getSession().setAttribute("lAdmin", unUtilisateur);
                 request.setAttribute("tousLesRecruteurs", listeRecruteurs);
                 request.getRequestDispatcher("/WEB-INF/Admin/listeRecruteur.jsp").forward(request, response);
             } else if ("recruteur".equals(role)) {
                 List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
+                request.getSession().setAttribute("utilisateur", unUtilisateur);
+                RecruteurEntity recruteurActuel = recruteurSB.getRecruteurParId(unUtilisateur.getIdRole());
+                request.setAttribute("leRecruteur", recruteurActuel);
                 request.setAttribute("tousLesRecruteurs", listeRecruteurs);
                 request.getRequestDispatcher(PAGE_RECRUTEUR).forward(request, response);
             } else if ("enseignant".equals(role)) {
+                request.getSession().setAttribute("utilisateur", unUtilisateur);
+                EnseignantEntity enseignantActuel = enseignantSB.getEnseignantParId(unUtilisateur.getIdRole());
+                request.getSession().setAttribute("lEnseignant", enseignantActuel);
                 request.getRequestDispatcher(PAGE_ENSEIGNANT).forward(request, response);
             } else {
                 request.getSession().setAttribute("messageErreur", "Rôle non valide");

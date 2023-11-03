@@ -21,36 +21,43 @@ public class DataService {
     }
 
     // ----- Recruteur -----
-    public static String serviceModifierRecruteur(RecruteurSessionBean recruteurSB, HttpServletRequest request) {
+    public static void serviceModifierRecruteur(RecruteurSessionBean recruteurSB, HttpServletRequest request) {
+        String msgErreur = "";
+        String msgInfo = "";
         if (request.getParameter("data-id") == null)
-            return "Erreur : le recruteur à modifier n'existe pas";
+            msgErreur = "Erreur : le recruteur à modifier n'existe pas";
+        else {
+            // Récupération des données du formulaire
+            int idRecruteur = Integer.parseInt(request.getParameter("data-id"));
+            String nom = request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_NOM);
+            String prenom = request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_PRENOM);
 
-        // Récupération des données du formulaire
-        int idRecruteur = Integer.parseInt(request.getParameter("data-id"));
-        String nom = request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_NOM);
-        String prenom = request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_PRENOM);
-
-        if(idRecruteur <= 0 || nom == null || prenom == null)
-            return "Erreur : récupération des données saisies impossible";
-
-        // Vérifications des saisies utilisateur
-        if (!saisieCaractereValide(nom) || !saisieCaractereValide(prenom))
-            return "Saisie incorrecte, veuillez vérifier tous les champs";
-
-        // Récupération de l'entité
-        try {
-            RecruteurEntity recruteurModifie = recruteurSB.getRecruteurParId(idRecruteur);
-            // Modification des données
-            recruteurModifie.setNom(nom);
-            recruteurModifie.setPrenom(prenom);
-            recruteurSB.modifierRecruteur(recruteurModifie);
-            return "Modification du recruteur effectuée";
+            if(idRecruteur <= 0 || nom == null || prenom == null)
+                msgErreur = "Erreur : récupération des données saisies impossible";
+            else if (!saisieCaractereValide(nom) || !saisieCaractereValide(prenom)){
+                // Vérifications des saisies utilisateur
+                msgErreur = "Saisie incorrecte, veuillez vérifier tous les champs";
+            }
+            else{
+                // Récupération de l'entité
+                try {
+                    RecruteurEntity recruteurModifie = recruteurSB.getRecruteurParId(idRecruteur);
+                    // Modification des données
+                    recruteurModifie.setNom(nom);
+                    recruteurModifie.setPrenom(prenom);
+                    recruteurSB.modifierRecruteur(recruteurModifie);
+                    msgInfo = "Modification du recruteur effectuée";
+                }
+                catch (NoResultException e){
+                    // Création de l'entité s'il n'existe pas
+                    RecruteurEntity nouveauRecruteur = new RecruteurEntity(nom, prenom);
+                    recruteurSB.ajouterRecruteur(nouveauRecruteur);
+                    msgInfo = "Création du recruteur effectuée";
+                }
+            }
+            
         }
-        catch (NoResultException e){
-            // Création de l'entité s'il n'existe pas
-            RecruteurEntity nouveauRecruteur = new RecruteurEntity(nom, prenom);
-            recruteurSB.ajouterRecruteur(nouveauRecruteur);
-            return "Création du recruteur effectuée";
-        }
+        request.setAttribute("messageErreur", msgErreur);
+        request.setAttribute("messageInfo", msgInfo);
     }
 }

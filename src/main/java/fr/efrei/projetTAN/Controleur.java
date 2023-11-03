@@ -111,12 +111,16 @@ public class Controleur extends HttpServlet {
             String role = unUtilisateur.getRole();
     
             if ("admin".equals(role)) {
+                request.getSession().setAttribute("messageErreur", "");
+                request.getSession().setAttribute("messageInfo", "");
                 List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
                 request.getSession().setAttribute("utilisateur", unUtilisateur);
                 request.getSession().setAttribute("lAdmin", unUtilisateur);
                 request.setAttribute("tousLesRecruteurs", listeRecruteurs);
                 request.getRequestDispatcher(PAGE_LOGIN_ADMIN).forward(request, response);
             } else if ("recruteur".equals(role)) {
+                request.getSession().setAttribute("messageInfo", "");
+                request.getSession().setAttribute("messageErreur", "");
                 List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
                 request.getSession().setAttribute("utilisateur", unUtilisateur);
                 RecruteurEntity recruteurActuel = recruteurSB.getRecruteurParId(unUtilisateur.getIdRole());
@@ -124,6 +128,8 @@ public class Controleur extends HttpServlet {
                 request.setAttribute("tousLesRecruteurs", listeRecruteurs);
                 request.getRequestDispatcher(PAGE_LOGIN_RECRUTEUR).forward(request, response);
             } else if ("enseignant".equals(role)) {
+                request.getSession().setAttribute("messageInfo", "");
+                request.getSession().setAttribute("messageErreur", "");
                 request.getSession().setAttribute("utilisateur", unUtilisateur);
                 EnseignantEntity enseignantActuel = enseignantSB.getEnseignantParId(unUtilisateur.getIdRole());
                 request.getSession().setAttribute("lEnseignant", enseignantActuel);
@@ -134,7 +140,7 @@ public class Controleur extends HttpServlet {
             }
         } else {
             // Gérer le cas où l'utilisateur n'est pas authentifié
-            request.getSession().setAttribute("messageErreur", MESSAGE_ERREUR_CREDENTIALS_KO);
+            request.getSession().setAttribute("messageErreur", MESSAGE_ERREUR_IDENTIFIANTS_INTROUVABLES);
             request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
         }
     }

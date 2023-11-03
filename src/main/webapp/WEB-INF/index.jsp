@@ -16,9 +16,13 @@
             </div>
 
             <div class="content-login">
-                <div style="color:red">
+                <div class="message erreur">
                     ${messageErreur}
-                </div>
+                </div> 
+                
+                <div class="message info">
+                    ${messageInfo}
+                </div> 
                 <div class="presentation-message">Bienvenue sur la plateforme de recrutement d'enseignant supérieurs
                 </div>
 

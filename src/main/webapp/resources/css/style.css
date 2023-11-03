@@ -33,6 +33,13 @@ form {padding: 0; margin: 0;}
 .Menu .deconnexion:hover {transform: scale(1.1);}
 
 /**************************************************************
+************************** MESSAGE ****************************
+**************************************************************/
+.message {position: absolute; top: 60px; left:58%; transform: translate(-50%, 0); font-size:22px; height:50px; display: flex; white-space: normal; align-items: center; text-align: center;}
+.message.erreur {color: red}
+.message.info {color: green}
+
+/**************************************************************
 ******************** LISTE POSTE EMPLOYE **********************
 **************************************************************/
 .content .liste-poste-employe {display: flex; flex-wrap: wrap; justify-content: center; padding-top: 50px; overflow-y: scroll; width: 100%; height: auto;}

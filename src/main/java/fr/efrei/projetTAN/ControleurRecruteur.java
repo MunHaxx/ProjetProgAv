@@ -67,12 +67,12 @@ public class ControleurRecruteur extends HttpServlet {
             unUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");
             if (unUtilisateur == null) {
                 request.getSession().setAttribute("messageErreur", "Impossible de trouver l'utilisateur de ce recruteur");
-                request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
             } else {
                 RecruteurEntity recruteurActuel = recruteurSB.getRecruteurParId(unUtilisateur.getIdRole());
                 if (!"recruteur".equals(unUtilisateur.getRole()) || recruteurActuel == null) {
                     request.getSession().setAttribute("messageErreur", "Cet utilisateur n'est pas un recruteur");
-                    request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                    request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
                 } else {
                     request.setAttribute("leRecruteur", recruteurActuel);
 
@@ -110,7 +110,7 @@ public class ControleurRecruteur extends HttpServlet {
 
 
 //                            request.getSession().setAttribute("idRecruteur", recruteurActuel.getIdRecruteur());
-                            System.out.println("\n\n" + request.getParameter("idRecruteur")/*.getIdRecruteur()*/ + "\n\n");
+                            System.out.println("\n\n" + request.getParameter("data-id")/*.getIdRecruteur()*/ + "\n\n");
                             String msgInfo = DataService.serviceModifierRecruteur(recruteurSB, request);
                             System.out.println("\n\n" + msgInfo + "\n\n");
                             request.setAttribute("messageErreur", msgInfo);

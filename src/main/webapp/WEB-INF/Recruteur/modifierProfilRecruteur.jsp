@@ -15,7 +15,7 @@
             </div>
             
             <form class="content" method="post" action="ControleurRecruteur">
-                <input type="hidden" name="data-id" value="${recruteur.recruteurId}">
+                <input type="hidden" name="data-id" value="${leRecruteur.idRecruteur}">
                 
                 <div class="Menu">
                     <button type="submit" name="action" value="VoirListePoste" class="element">Listes postes</button>

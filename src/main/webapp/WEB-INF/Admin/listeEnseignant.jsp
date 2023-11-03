@@ -10,30 +10,33 @@
     <body>
         <div class="Header">
             <div class="title">Talent Teachers</div>
-            <div class="hello">Bonjour toto !</div>
+            <div class="hello">Bonjour Admin !</div>
         </div>
     
-        <form class="content" method="post" action="ControleurEnseignant">
-            <div class="Menu">
-                <button type="submit" name="action" value="VoirListePoste" class="element select">Liste postes</button>
-                <button type="submit" name="action" value="VoirListeCandidature" class="element">Liste candidatures</button>
-                <button type="submit" name="action" value="VoirModifierProfil" class="element">Modifier profil</button>
-
+        <div class="content">
+            <form class="Menu" method="post" action="ControleurAdmin">
+                <button type="submit" name="action" value="VoirListePoste" class="element">Listes postes</button>
+                <button type="submit" name="action" value="VoirListeRecruteur" class="element">Liste Recruteurs</button>
+                <button type="submit" name="action" value="VoirCreerRecruteur" class="element">Créer Recruteur</button>
+                <button type="submit" name="action" value="VoirListeEnseignant" class="element select">Liste Enseignants</button>
+                <button type="submit" name="action" value="VoirCreerEnseignant" class="element">Créer Enseignant</button>
+        
                 <button type="submit" name="action" value="Deconnexion" class="deconnexion">Déconnexion</button>
-            </div>
+            </form> 
             
-            <div class="liste-enseignant" >
-                <div class="container-button">
-                    <button class="button-add">
+            <div class="liste-enseignant" method="post" action="ControleurAdmin">
+                <form class="container-button">
+                    <button type="submit" name="action" value="VoirCreerEnseignant" class="button-add">
                         <div class="plus">+</div>
                         <div class="title-button">Ajouter</div>
                     </button>
-                    <button type="submit" name="action" value="+ Ajouter" class="ajouter"/>
-                </div>
+                </form>
         
-                <c:forEach items="${tousLesEmployes}" var="employe">
-                    <div class="container-enseignant">
-                        <div class="modifier">Modifier</div>
+                <c:forEach items="${tousLesEnseignants}" var="enseignant">
+                    <form class="container-enseignant" method="post" action="ControleurAdmin">
+                        <input type="hidden" name="data-id" value="${enseignant.idEnseignant}">
+                        <button type="submit" name="action" value="VoirCreerEnseignant" class="modifier">Modifier</button>
+
                         <div class="title-enseignant">Enseignant n°N</div>
             
                         <div class="container-line">
@@ -41,16 +44,16 @@
                             <div class="info">Prenom</div>
                             <div class="info">Recommandé par</div>
                         </div>
+
                         <div class="container-line">
                             <div class="info">Mail.mon.test@gmail.com</div>
                             <div class="info">0102030405</div>
                             <div class="info">truc-de-test.com</div>
                             <div class="info">L3 / M1 / M2</div>
                         </div>
-                    </div>
+                    </form>
                 </c:forEach>
-                
             </div>
-        </form>
+        </div>
     </body>
 </html>

@@ -4,25 +4,29 @@
     <head>
         <!-- <link rel="stylesheet" href="/style.css"> -->
         <link rel="stylesheet" type="text/css" href="/ProjetTAN/resources/css/style.css" />
-        <title>ProjetTA - Enseignant</title>
+        <title>ProjetTA - Admin</title>
     </head>
 
     <body>
         <div class="Header">
             <div class="title">Talent Teachers</div>
-            <div class="hello">Bonjour Enseignant !</div>
+            <div class="hello">Bonjour Admin !</div>
         </div>
-    
-        <form class="content" method="post" action="ControleurEnseignant">
-            <div class="Menu">
-                <button type="submit" name="action" value="VoirListePoste" class="element">Liste postes</button>
-                <button type="submit" name="action" value="VoirListeCandidature" class="element">Liste candidatures</button>
-                <button type="submit" name="action" value="VoirModifierProfil" class="element select">Modifier profil</button>
-
+  
+        <div class="content">
+            <form class="Menu" method="post" action="ControleurAdmin">
+                <button type="submit" name="action" value="VoirListePoste" class="element">Listes postes</button>
+                <button type="submit" name="action" value="VoirListeRecruteur" class="element">Liste Recruteurs</button>
+                <button type="submit" name="action" value="VoirCreerRecruteur" class="element">Créer Recruteur</button>
+                <button type="submit" name="action" value="VoirListeEnseignant" class="element">Liste Enseignants</button>
+                <button type="submit" name="action" value="VoirCreerEnseignant" class="element select">Créer Enseignant</button>
+      
                 <button type="submit" name="action" value="Deconnexion" class="deconnexion">Déconnexion</button>
-            </div>
-
-            <div class="container-modif-employe">
+            </form> 
+            
+            <form class="container-modif-employe" method="post" action="ControleurAdmin">
+                <input type="hidden" name="data-id" value="${enseignant.idEnseignant}">
+                
                 <div class="modif-employe">
                     <div class="title-page">Mon profil</div>
 
@@ -344,10 +348,10 @@
                     </div>
           
                     <div class="container-button">
-                        <button type="submit" name="action" value="SauveModifEnseignant" class="sauvegarder">Sauvegarder</button>
+                        <button type="submit" name="action" value="SauveEnseignant" class="sauvegarder">Sauvegarder</button>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </body>
 </html>

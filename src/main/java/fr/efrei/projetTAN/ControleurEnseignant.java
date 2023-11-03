@@ -10,6 +10,7 @@ import jakarta.servlet.http.*;
 
 // import static fr.efrei.projetTAN.utils.GlobalConst.*;
 import static fr.efrei.projetTAN.utils.User.UserEnseignantConst.*;
+import static fr.efrei.projetTAN.utils.User.LoginConst.*;
 
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
@@ -61,14 +62,11 @@ public class ControleurEnseignant extends HttpServlet {
 
     public void chargerLaPageSuivante(String actionUtilisateur, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (actionUtilisateur == null || actionUtilisateur.isEmpty()) {
-            request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+            request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
         } 
-        
         else {
-            List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
             switch (actionUtilisateur) {
                 case ACTION_ENSEIGNANT_VOIR_LISTE_POSTE:
-                    request.setAttribute("tousLesRecruteurs", listeRecruteurs);
                     request.getRequestDispatcher(PAGE_ENSEIGNANT_LISTE_POSTE).forward(request, response);
                     break;
                 case ACTION_ENSEIGNANT_VOIR_LISTE_CANDIDATURE:
@@ -77,8 +75,14 @@ public class ControleurEnseignant extends HttpServlet {
                 case ACTION_ENSEIGNANT_VOIR_MODIFIER_PROFIL:
                     request.getRequestDispatcher(PAGE_ENSEIGNANT_MODIFIER_PROFIL).forward(request, response);
                     break;
+                case ACTION_ENSEIGNANT_POSTULER:
+                    request.getRequestDispatcher(PAGE_ENSEIGNANT_LISTE_POSTE).forward(request, response);
+                    break;
+                case ACTION_ENSEIGNANT_SAUVE_MODIFICATION_PROFIL:
+                    request.getRequestDispatcher(PAGE_ENSEIGNANT_MODIFIER_PROFIL).forward(request, response);
+                    break;
                 case ACTION_DECONNEXION:
-                    request.getRequestDispatcher(PAGE_LOGIN).forward(request, response);
+                    request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
                     break;
             }
         }

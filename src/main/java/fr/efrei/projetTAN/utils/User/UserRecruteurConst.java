@@ -10,14 +10,12 @@ public final class UserRecruteurConst {
     public static final String ACTION_RECRUTEUR_SAUVE_MODIFICATION_PROFIL = "SauveModifProfil";
     public static final String ACTION_RECRUTEUR_ACCEPTER_CANDIDATURE = "AccepterCandidature";
     public static final String ACTION_RECRUTEUR_REJETER_CANDIDATURE = "RejeterCandidature";
-    public static final String ACTION_DECONNEXION = "Deconnexion";
 
     // Lien de page
     public static final String PAGE_RECRUTEUR_LISTE_POSTE = "/WEB-INF/Recruteur/listePosteRecruteur.jsp";
     public static final String PAGE_RECRUTEUR_CREER_POSTE = "/WEB-INF/Recruteur/creerPosteRecruteur.jsp";
     public static final String PAGE_RECRUTEUR_MODIFIER_PROFIL = "/WEB-INF/Recruteur/modifierProfilRecruteur.jsp";
     public static final String PAGE_RECRUTEUR_LISTE_CANDIDATURE = "/WEB-INF/Recruteur/listeCandidatureRecruteur.jsp";
-    public static final String PAGE_LOGIN = "/WEB-INF/index.jsp";
     
     // Champ Modifier Profil
     public static final String CHAMP_RECRUTEUR_MODIFICATION_NOM = "champModifNomRecruteur";

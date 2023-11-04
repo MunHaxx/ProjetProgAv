@@ -63,7 +63,7 @@
                                 <div class="title-point">Compétences</div>
                                 <ul>
                                     <c:forEach items="${poste.listeCompetences}" var="competence">
-                                        <li class="point">${competence.nom}</li>
+                                        <li class="point">${competence.nomCompetence}</li>
                                     </c:forEach>
                                 </ul>
                             </div>
@@ -72,7 +72,7 @@
                                 <div class="title-point">Contraintes</div>
                                 <ul>
                                     <c:forEach items="${poste.listeContraintes}" var="contrainte">
-                                        <li class="point">${contrainte.contrainte}</li>
+                                        <li class="point">${contrainte.nomContrainte}</li>
                                     </c:forEach>
                                 </ul>
                             </div>
@@ -80,8 +80,8 @@
                             <div class="container-points">
                                 <div class="title-point">Remarques</div>
                                 <ul>
-                                    <c:forEach items="${poste.remarques}" var="remarque">
-                                        <li class="point">Attention à ça</li>
+                                    <c:forEach items="${poste.listeRemarques}" var="remarque">
+                                        <li class="point">${remarque.nomRemarque}</li>
                                     </c:forEach>
                                 </ul>
                             </div>

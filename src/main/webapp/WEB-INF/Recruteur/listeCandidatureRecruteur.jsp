@@ -36,29 +36,29 @@
                 <div class="liste-candidature-recruteur">
                     <c:forEach items="${toutesLesCandidatures}" var="candidature">
                         <form class="container-candidature-recruteur" method="post" action="ControleurRecruteur">
-                            <input type="hidden" name="data-id" value="${candidature.candidatureId}">
+                            <input type="hidden" name="data-id" value="${candidature.idCandidature}">
 
                             <div class="container-infos-candidature">
                                 <button type="submit" name="action" value="AccepterCandidature" class="action-button accepter">Accepter</button>
                                 <button type="submit" name="action" value="RejeterCandidature" class="action-button rejeter">Rejeter</button>
-                                <div class="title-candidature">Candidature n°N</div>
+                                <div class="title-candidature">Candidature n°${candidature.idCandidature}</div>
 
                                 <div class="container-line">
                                     <div class="infos">
-                                        <div class="info">Nom</div>
-                                        <div class="info">Mail.de.test@gmail.com</div>
+                                        <div class="info">${candidature.enseignant.nom}</div>
+                                        <div class="info">${candidature.enseignant.mail}</div>
                                     </div>
                                     <div class="infos">
-                                        <div class="info">Prenom</div>
-                                        <div class="info">0102030405</div>
+                                        <div class="info">${candidature.enseignant.prenom}</div>
+                                        <div class="info">${candidature.enseignant.telephone}</div>
                                     </div>
                                     <div class="infos">
-                                        <div class="info">25/10/2023</div>
-                                        <div class="info">icon-recruteur-de-test.com</div>
+                                        <div class="info">${candidature.dateCandid}</div>
+                                        <div class="info">${candidature.enseignant.siteWeb}</div>
                                     </div>
                                     <div class="infos">
-                                        <div class="info">Recommandé par</div>
-                                        <div class="info">L3 / M1 / M2</div>
+                                        <div class="info">${candidature.enseignant.recoParEcole} ${candidature.enseignant.recoParRecruteur}</div>
+                                        <div class="info">${candidature.enseignant.prefereNivEtudiant}</div>
                                     </div>
                                 </div>
                             </div>
@@ -69,8 +69,8 @@
                                     <div class="title-liste">Activités</div>
                 
                                     <ul>
-                                        <c:forEach items="${candidature.enseignant.activite}" var="activite">
-                                            <li class="point">Attention à ça</li>
+                                        <c:forEach items="${candidature.enseignant.listeActivites}" var="activite">
+                                            <li class="point">${activite.nomActivite}</li>
                                         </c:forEach>
                                     </ul>
                                 </div>
@@ -79,8 +79,8 @@
                                     <div class="title-liste">Intérêts</div>
                 
                                     <ul>
-                                        <c:forEach items="${candidature.enseignant.interets}" var="interet">
-                                            <li class="point">Attention à ça</li>
+                                        <c:forEach items="${candidature.enseignant.listeInterets}" var="interet">
+                                            <li class="point">${interet.nomInteret}</li>
                                         </c:forEach>
                                     </ul>
                                 </div>
@@ -90,14 +90,14 @@
                 
                                     <div class="container-points">
                                         <ul>
-                                            <c:forEach items="${candidature.enseignant.etudes}" var="etude">
-                                                <li class="left-point">Attention à ça</li>
+                                            <c:forEach items="${candidature.enseignant.listeEtudes}" var="etude">
+                                                <li class="left-point">${etude.titre}</li>
                                             </c:forEach>
                                         </ul>
                 
                                         <div>
-                                            <c:forEach items="${candidature.enseignant.etudes}" var="etude">
-                                                <div class="right-point">Date d'optention</div>
+                                            <c:forEach items="${candidature.enseignant.listeEtudes}" var="etude">
+                                                <div class="right-point">${etude.dateObtention}</div>
                                             </c:forEach>
                                         </div>
                                     </div>
@@ -107,25 +107,25 @@
                                 <div class="container-liste">
                                     <div class="title-liste">Expériences</div>
                                     <ul>
-                                        <c:forEach items="${candidature.enseignant.experiences}" var="experience">
+                                        <c:forEach items="${candidature.enseignant.listeExperiences}" var="experience">
                                             <li class="point"><div class="container-points">
-                                                <div class="point-etude">Ecole</div>
-                                                <div class="point-etude">Duree</div>
-                                                <div class="point-etude">Eval laissé</div>
+                                                <div class="point-etude">${experience.ecole}</div>
+                                                <div class="point-etude">${experience.duree}</div>
+                                                <div class="point-etude">${experience.evalEcole}</div>
                                             </div></li>
                                             <div class="container-competence">
                                                 <div class="title-liste">Compétences</div>
                                                 
                                                 <div class="container-points">
                                                     <ul>
-                                                        <c:forEach items="${experience.competence}" var="competence">
-                                                            <li class="left-point">Nom de la compétence</li>
+                                                        <c:forEach items="${experience.listeCompetences}" var="competence">
+                                                            <li class="left-point">${competence.nomCompetence}</li>
                                                         </c:forEach>
                                                     </ul>
                 
                                                     <div>
-                                                        <c:forEach items="${experience.competence}" var="competence">
-                                                            <div class="right-point">Niveau</div>
+                                                        <c:forEach items="${experience.listeCompetences}" var="competence">
+                                                            <div class="right-point">${competence.niveau}</div>
                                                         </c:forEach>
                                                     </div>
                                                 </div>

@@ -12,13 +12,13 @@ public class CandidatureSessionBean {
     private Query requete;
 
     // Permet d'obtenir la liste de toutes les candidatures
-    public List<CandidatureEntity> getToutesCandidatures(){
-        requete = entityManager.createNamedQuery("recupToutesCandidatures");
+    public List<CandidatureEntity> getToutesLesCandidatures(){
+        requete = entityManager.createNamedQuery("recupToutesLesCandidatures");
         return  requete.getResultList();
     }
 
     // Permet d'obtenir une candidature à partir de son ID
-    public CandidatureEntity getEtudeParId(int id) {
+    public CandidatureEntity getCandidatureParId(int id) {
         requete = entityManager.createNamedQuery("recupCandidatureId" );
         requete.setParameter("id", id);
         return (CandidatureEntity) requete.getSingleResult();

@@ -4,37 +4,45 @@ import jakarta.persistence.*;
 
 import java.util.List;
 import java.util.Objects;
+import static fr.efrei.projetTAN.utils.Entity.ActiviteConst.*;
 
 @Entity
 @Table(name = "Activite", schema = "prj_progav")
+
+@NamedQueries(
+        {
+                @NamedQuery(name = "recupToutesLesActivites", query = SELECT_TOUTES_LES_ACTIVITES)
+                , @NamedQuery(name = "recupActiviteId", query = SELECT_UNE_ACTIVITE)
+        }
+)
 public class ActiviteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "ID_Activite", nullable = false)
-    private int idRemarque;
+    private int idActivite;
     @Basic
     @Column(name = "activite", nullable = true, length = 50)
-    private String remarque;
+    private String nomActivite;
     @ManyToMany
     @JoinTable( name = "fait_activite",
             joinColumns = @JoinColumn( name = "ID_Activite" ),
             inverseJoinColumns = @JoinColumn( name = "IDenseignant" ) )
     private List<EnseignantEntity> listeEnseignants;
 
-    public int getIdRemarque() {
-        return idRemarque;
+    public int getIdActivite() {
+        return idActivite;
     }
 
-    public void setIdRemarque(int idRemarque) {
-        this.idRemarque = idRemarque;
+    public void setIdActivite(int idActivite) {
+        this.idActivite = idActivite;
     }
 
-    public String getRemarque() {
-        return remarque;
+    public String getActivite() {
+        return nomActivite;
     }
 
-    public void setRemarque(String remarque) {
-        this.remarque = remarque;
+    public void setActivite(String nomActivite) {
+        this.nomActivite = nomActivite;
     }
 
     public List<EnseignantEntity> getListeEnseignants() {
@@ -50,7 +58,7 @@ public class ActiviteEntity {
         if (this == o) return true;
         if (!(o instanceof ActiviteEntity)) return false;
         ActiviteEntity that = (ActiviteEntity) o;
-        return getIdRemarque() == that.getIdRemarque() && Objects.equals(getRemarque(), that.getRemarque()) && Objects.equals(getListeEnseignants(), that.getListeEnseignants());
+        return getIdActivite() == that.getIdActivite() && Objects.equals(getActivite(), that.getActivite()) && Objects.equals(getListeEnseignants(), that.getListeEnseignants());
     }
 
     /*@Override

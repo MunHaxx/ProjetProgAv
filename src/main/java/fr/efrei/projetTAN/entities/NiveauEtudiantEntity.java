@@ -3,9 +3,11 @@ package fr.efrei.projetTAN.entities;
 import jakarta.persistence.*;
 
 import java.util.Objects;
+
+
 import java.util.List;
 
-import static fr.efrei.projetTAN.utils.NiveauEtudiantConst.*;
+import static fr.efrei.projetTAN.utils.Entity.NiveauEtudiantConst.*;
 import static fr.efrei.projetTAN.utils.GlobalConst.EnumNivEtudiant;
 
 
@@ -14,8 +16,8 @@ import static fr.efrei.projetTAN.utils.GlobalConst.EnumNivEtudiant;
 
 @NamedQueries(
         {
-                @NamedQuery(name = "recupTousLesNiveauxEtudiants", query = SELECT_TOUTES_NIVETUD)
-                , @NamedQuery(name = "recupNiveauEtudiantParId", query = SELECT_NIVETUD_PAR_ID)
+                @NamedQuery(name = "recupTousLesNiveauxEtudiants", query = SELECT_TOUS_LES_NIVETUD)
+                , @NamedQuery(name = "recupNiveauEtudiantId", query = SELECT_NIVETUD_PAR_ID)
         }
 )
 public class NiveauEtudiantEntity {

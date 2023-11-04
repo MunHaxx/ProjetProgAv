@@ -27,7 +27,7 @@ public class EnseignantSessionBean {
 
     // Permet d'obtenir la liste de tous les enseignants
     public List<EnseignantEntity> getTousEnseignants(){
-        requete = entityManager.createNamedQuery("recupTousEnseignants");
+        requete = entityManager.createNamedQuery("recupTousLesEnseignants");
         return  requete.getResultList();
     }
 

@@ -4,9 +4,16 @@ import jakarta.persistence.*;
 
 import java.util.List;
 import java.util.Objects;
+import static fr.efrei.projetTAN.utils.Entity.InteretConst.*;
 
 @Entity
 @Table(name = "interet", schema = "prj_progav")
+@NamedQueries(
+        {
+                @NamedQuery(name = "recupTousLesInterets", query = SELECT_TOUS_LES_INTERETS)
+                , @NamedQuery(name = "recupInteretId", query = SELECT_UN_INTERET)
+        }
+)
 public class InteretEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -14,7 +21,7 @@ public class InteretEntity {
     private int idInteret;
     @Basic
     @Column(name = "Interet", nullable = true, length = 50)
-    private String interet;
+    private String nomInteret;
     @ManyToMany
     @JoinTable( name = "est_interesse",
             joinColumns = @JoinColumn( name = "ID_Interet" ),
@@ -29,12 +36,12 @@ public class InteretEntity {
         this.idInteret = idInteret;
     }
 
-    public String getInteret() {
-        return interet;
+    public String getNomInteret() {
+        return nomInteret;
     }
 
-    public void setInteret(String interet) {
-        this.interet = interet;
+    public void setNomInteret(String nomInteret) {
+        this.nomInteret = nomInteret;
     }
 
     public List<EnseignantEntity> getListeEnseignants() {
@@ -50,7 +57,7 @@ public class InteretEntity {
         if (this == o) return true;
         if (!(o instanceof InteretEntity)) return false;
         InteretEntity that = (InteretEntity) o;
-        return getIdInteret() == that.getIdInteret() && Objects.equals(getInteret(), that.getInteret()) && Objects.equals(getListeEnseignants(), that.getListeEnseignants());
+        return getIdInteret() == that.getIdInteret() && Objects.equals(getNomInteret(), that.getNomInteret()) && Objects.equals(getListeEnseignants(), that.getListeEnseignants());
     }
 
     /*@Override

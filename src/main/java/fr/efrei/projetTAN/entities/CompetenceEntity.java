@@ -12,8 +12,8 @@ import static fr.efrei.projetTAN.utils.Entity.CompetenceConst.*;
 
 @NamedQueries(
         {
-                @NamedQuery(name = "recupTousCompt", query = SELECT_TOUTES_LES_COMPETENCES)
-                , @NamedQuery(name = "recupUneCompt", query = SELECT_UNE_COMPETENCE)
+                @NamedQuery(name = "recupTousLesCompt", query = SELECT_TOUTES_LES_COMPETENCES)
+                , @NamedQuery(name = "recupComptId", query = SELECT_UNE_COMPETENCE)
         }
 )
 
@@ -25,15 +25,15 @@ public class CompetenceEntity {
 
     @Basic
     @Column(name = "Nom", nullable = true, length = 50)
-    private String nom;
+    private String nomCompetence;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "niveau", nullable = true, length = 50)
     private EnumNivCompt niveau;
 
-    public CompetenceEntity(int idCompetence, String nom, EnumNivCompt niveau) {
+    public CompetenceEntity(int idCompetence, String nomCompetence, EnumNivCompt niveau) {
         this.idCompetence = idCompetence;
-        this.nom = nom;
+        this.nomCompetence = nomCompetence;
         this.niveau = niveau;
     }
 
@@ -48,12 +48,12 @@ public class CompetenceEntity {
         this.idCompetence = idCompetence;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomCompetence() {
+        return nomCompetence;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNomCompetence(String nomCompetence) {
+        this.nomCompetence = nomCompetence;
     }
 
     public EnumNivCompt getNiveau() {
@@ -69,12 +69,12 @@ public class CompetenceEntity {
         if (this == o) return true;
         if (!(o instanceof CompetenceEntity)) return false;
         CompetenceEntity that = (CompetenceEntity) o;
-        return getIdCompetence() == that.getIdCompetence() && Objects.equals(getNom(), that.getNom()) && getNiveau() == that.getNiveau();
+        return getIdCompetence() == that.getIdCompetence() && Objects.equals(getNomCompetence(), that.getNomCompetence()) && getNiveau() == that.getNiveau();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdCompetence(), getNom(), getNiveau());
+        return Objects.hash(getIdCompetence(), getNomCompetence(), getNiveau());
     }
 }
 

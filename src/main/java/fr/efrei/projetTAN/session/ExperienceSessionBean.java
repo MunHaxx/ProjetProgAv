@@ -14,7 +14,7 @@ public class ExperienceSessionBean {
 
     // Permet d'obtenir la liste de toutes les compétences
     public List<ExperienceEntity> getToutesLesExperiences(){
-        requete = entityManager.createNamedQuery("recupTousXp");
+        requete = entityManager.createNamedQuery("recupToutesLesXp");
         return  requete.getResultList();
     }
 

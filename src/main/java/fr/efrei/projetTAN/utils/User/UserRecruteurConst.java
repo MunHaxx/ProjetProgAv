@@ -22,6 +22,8 @@ public final class UserRecruteurConst {
     public static final String CHAMP_RECRUTEUR_MODIFICATION_PRENOM = "champModifPrenomRecruteur";
     
     // Champ Créer Poste
+    public static final String CHAMP_CREER_POSTE_TITRE = "champTitre";
+    
     public static final String CHAMP_CREER_POSTE_ECOLE = "champEcole";
     public static final String CHAMP_CREER_POSTE_CONTRAT = "champContrat";
     public static final String CHAMP_CREER_POSTE_PERIODE = "champPeriode";

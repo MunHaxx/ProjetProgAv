@@ -14,7 +14,7 @@
             </div>
             
             <form class="content" method="post" action="ControleurRecruteur">
-                <input type="hidden" name="data-id" value="${recruteur.recruteurId}">
+                <input type="hidden" name="data-id" value="${leRecruteur.idRecruteur}">
 
                 <div class="message erreur">
                     ${messageErreur}
@@ -35,27 +35,27 @@
                 <div class="container-creer-poste">
                     <div class="creer-poste">
                         <!-- Info poste -->
-                        <div class="title">Titre poste</div>
+                        <input class="title-case" placeholder="Titre poste" name="champTitre" autofocus=""/>
             
                         <div class="container-infos">
                             <div class="container-info">
                                 <img class="icon-recruteur" src="/ProjetTAN/resources/icons/school.png" />
-                                <input class="info-case" placeholder="Ecole" name="champEcole" autofocus="" />
+                                <input class="info-case" placeholder="Ecole" name="champEcole" />
                             </div>
 
                             <div class="container-info">
                                 <img class="icon-recruteur" src="/ProjetTAN/resources/icons/contract.png" />
-                                <input class="info-case" placeholder="Contrat" name="champContrat" autofocus="" />
+                                <input class="info-case" placeholder="Contrat" name="champContrat"/>
                             </div>
 
                             <div class="container-info">
                                 <img class="icon-recruteur" src="/ProjetTAN/resources/icons/periode.png" />
-                                <input class="info-case" placeholder="Période" name="champPeriode" autofocus="" />
+                                <input class="info-case" placeholder="Période" name="champPeriode" />
                             </div>
 
                             <div class="container-info">
                                 <img class="icon-recruteur" src="/ProjetTAN/resources/icons/class.png" />
-                                <input class="info-case" placeholder="Niveau étudiant" name="champNiveau" autofocus="" />
+                                <input class="info-case" placeholder="Niveau étudiant" name="champNiveau" />
                             </div>
                         </div>
                         

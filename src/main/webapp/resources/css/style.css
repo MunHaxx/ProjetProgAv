@@ -157,7 +157,8 @@ form {padding: 0; margin: 0;}
 .creer-poste .postuler {position: absolute; background-color: var(--main-orange); padding: 10px; border: 1px solid rgb(238, 149, 25); right: 50px; top: 50px; border-radius: 50px; color: white; font-weight: bold; transition: transform 0.3s; cursor: pointer;}
 .creer-poste .postuler:hover {transform: scale(1.2);}
 
-.creer-poste .title {font-size: 30px; margin-bottom: 40px; font-weight: bold;}
+.creer-poste .title {font-size: 30px; font-weight: bold;}
+.creer-poste .title-case {width: 300px; border: 1px solid var(--main-orange); height: 40px; border-radius: 10px; padding: 0 10px; box-sizing: border-box; margin-bottom: 40px;}
 
 .creer-poste .container-infos {display: flex; justify-content: space-between; padding-left: 15px; margin-bottom: 40px;}
 .creer-poste .container-infos .container-info {display: flex; align-items: center;}

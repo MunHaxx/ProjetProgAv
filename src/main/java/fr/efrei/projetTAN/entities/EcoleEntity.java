@@ -26,17 +26,14 @@ public class EcoleEntity {
     private String raisonSociale;
     @OneToMany(mappedBy = "ecole")
     private List<PosteEntity> besoinListePostes;
+    @OneToMany(mappedBy = "recoParEcole")
+    private List<EnseignantEntity> listeEnseignantReco;
 
     public EcoleEntity(){}
     public EcoleEntity(String raisonSociale){
         this.raisonSociale = raisonSociale;
         this.besoinListePostes = new ArrayList<PosteEntity>();
-    }
-
-    public EcoleEntity(int idEcole, String raisonSociale, List<PosteEntity> besoinListePostes) {
-        this.idEcole = idEcole;
-        this.raisonSociale = raisonSociale;
-        this.besoinListePostes = besoinListePostes;
+        this.listeEnseignantReco = new ArrayList<EnseignantEntity>();
     }
 
     public int getIdEcole() {
@@ -60,16 +57,24 @@ public class EcoleEntity {
         this.besoinListePostes = besoinListePostes;
     }
 
+    public List<EnseignantEntity> getListeEnseignantReco() {
+        return listeEnseignantReco;
+    }
+
+    public void setListeEnseignantReco(List<EnseignantEntity> listeEnseignantReco) {
+        this.listeEnseignantReco = listeEnseignantReco;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof EcoleEntity)) return false;
         EcoleEntity that = (EcoleEntity) o;
-        return getIdEcole() == that.getIdEcole() && Objects.equals(getRaisonSociale(), that.getRaisonSociale()) && Objects.equals(getBesoinListePostes(), that.getBesoinListePostes());
+        return getIdEcole() == that.getIdEcole() && Objects.equals(getRaisonSociale(), that.getRaisonSociale()) && Objects.equals(getBesoinListePostes(), that.getBesoinListePostes()) && Objects.equals(getListeEnseignantReco(), that.getListeEnseignantReco());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdEcole(), getRaisonSociale(), getBesoinListePostes());
+        return Objects.hash(getIdEcole(), getRaisonSociale(), getBesoinListePostes(), getListeEnseignantReco());
     }
 }

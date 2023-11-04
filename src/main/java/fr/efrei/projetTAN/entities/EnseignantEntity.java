@@ -27,9 +27,12 @@ public class EnseignantEntity {
     @Basic
     @Column(name = "Prenom", nullable = false, length = 50)
     private String prenom;
-    // RECOMMANDE PAR ???????????????????????????????
-    // Etudes
-    // Experiences               
+    @ManyToOne
+    @JoinColumn(name = "ID_recruteur")
+    private RecruteurEntity recoParRecruteur;
+    @ManyToOne
+    @JoinColumn(name = "ID_Ecole")
+    private EcoleEntity recoParEcole;
     @Basic
     @Column(name = "Mail", nullable = true, length = 50)
     private String mail;
@@ -39,6 +42,10 @@ public class EnseignantEntity {
     @Basic
     @Column(name = "Site_web", nullable = true, length = 50)
     private String siteWeb;
+    @OneToMany(mappedBy = "")
+    private List<EtudeEntity> listeEtudes;
+    @OneToMany(mappedBy = "")
+    private List<ExperienceEntity> listeExperiences;
     @ManyToOne
     @JoinColumn(name = "ID_NivEtudiant")
     private NiveauEtudiantEntity prefereNivEtudiant;
@@ -79,13 +86,21 @@ public class EnseignantEntity {
         this.prenom = prenom;
     }
 
-    // public String getRecommandePar() {
-    //     return recommandePar;
-    // }
+    public RecruteurEntity getRecoParRecruteur() {
+        return recoParRecruteur;
+    }
 
-    // public void setRecommandePar(String recommandePar) {
-    //     this.recommandePar = recommandePar;
-    // }
+    public void setRecoParRecruteur(RecruteurEntity recoParRecruteur) {
+        this.recoParRecruteur = recoParRecruteur;
+    }
+
+    public EcoleEntity getRecoParEcole() {
+        return recoParEcole;
+    }
+
+    public void setRecoParEcole(EcoleEntity recoParEcole) {
+        this.recoParEcole = recoParEcole;
+    }
 
     public String getMail() {
         return mail;
@@ -109,6 +124,22 @@ public class EnseignantEntity {
 
     public void setSiteWeb(String siteWeb) {
         this.siteWeb = siteWeb;
+    }
+
+    public List<EtudeEntity> getListeEtudes() {
+        return listeEtudes;
+    }
+
+    public void setListeEtudes(List<EtudeEntity> listeEtudes) {
+        this.listeEtudes = listeEtudes;
+    }
+
+    public List<ExperienceEntity> getListeExperiences() {
+        return listeExperiences;
+    }
+
+    public void setListeExperiences(List<ExperienceEntity> listeExperiences) {
+        this.listeExperiences = listeExperiences;
     }
 
     public NiveauEtudiantEntity getPrefereNivEtudiant() {
@@ -143,16 +174,5 @@ public class EnseignantEntity {
         this.listeCandid = listeCandid;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof EnseignantEntity)) return false;
-        EnseignantEntity that = (EnseignantEntity) o;
-        return getIdEnseignant() == that.getIdEnseignant() && Objects.equals(getNom(), that.getNom()) && Objects.equals(getPrenom(), that.getPrenom()) && /* Objects.equals(getRecommandePar(), that.getRecommandePar()) && */ Objects.equals(getMail(), that.getMail()) && Objects.equals(getTelephone(), that.getTelephone()) && Objects.equals(getSiteWeb(), that.getSiteWeb()) && Objects.equals(getPrefereNivEtudiant(), that.getPrefereNivEtudiant()) && Objects.equals(getListeActivites(), that.getListeActivites()) && Objects.equals(getListeInterets(), that.getListeInterets()) && Objects.equals(getListeCandid(), that.getListeCandid());
-    }
 
-    /*@Override
-    public int hashCode() {
-        return Objects.hash(getIdEnseignant(), getNom(), getPrenom(), getMail(), getTelephone(), getSiteWeb(), getPrefereNivEtudiant(), getListeActivites(), getListeInterets(), getListeCandid());
-    }*/
 }

@@ -113,7 +113,7 @@ public class ControleurRecruteur extends HttpServlet {
 
 //                            request.getSession().setAttribute("idRecruteur", recruteurActuel.getIdRecruteur());
                             System.out.println("\n\n" + request.getParameter("data-id")/*.getIdRecruteur()*/ + "\n\n");
-                            DataService.serviceModifierRecruteur(recruteurSB, request);
+                            DataService.serviceModifierCreerRecruteur(recruteurSB, request);
                             //request.setAttribute("messageErreur", msgInfo);
                             // Redirection vers la page correspondante
                             request.getRequestDispatcher(PAGE_RECRUTEUR_MODIFIER_PROFIL).forward(request, response);

@@ -1,6 +1,7 @@
 package fr.efrei.projetTAN.entities;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -26,13 +27,17 @@ public class EcoleEntity {
     @OneToMany(mappedBy = "ecole")
     private List<PosteEntity> besoinListePostes;
 
+    public EcoleEntity(){}
+    public EcoleEntity(String raisonSociale){
+        this.raisonSociale = raisonSociale;
+        this.besoinListePostes = new ArrayList<PosteEntity>();
+    }
 
     public EcoleEntity(int idEcole, String raisonSociale, List<PosteEntity> besoinListePostes) {
         this.idEcole = idEcole;
         this.raisonSociale = raisonSociale;
         this.besoinListePostes = besoinListePostes;
     }
-    public EcoleEntity(){}
 
     public int getIdEcole() {
         return idEcole;

@@ -27,7 +27,6 @@ public class CandidatureEntity {
     @ManyToOne
     @JoinColumn(name = "IDenseignant")
     private EnseignantEntity enseignant;
-
     @Basic
     @Column(name = "Contacte_le", nullable = true)
     private Date dateCandid;

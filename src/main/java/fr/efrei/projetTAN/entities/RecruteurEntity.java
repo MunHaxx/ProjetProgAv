@@ -35,6 +35,9 @@ public class RecruteurEntity {
     @OneToMany(mappedBy = "recruteurRespo")
     private List<PosteEntity> estRespoListePostes;
 
+    @OneToMany(mappedBy = "recoParRecruteur")
+    private List<EnseignantEntity> listeEnseignantReco;
+
     public RecruteurEntity() {
 
     }
@@ -42,6 +45,7 @@ public class RecruteurEntity {
         this.nom = nom;
         this.prenom = prenom;
         this.estRespoListePostes = new ArrayList<PosteEntity>();
+        this.listeEnseignantReco = new ArrayList<EnseignantEntity>();
     }
 
     public int getIdRecruteur() {
@@ -50,19 +54,6 @@ public class RecruteurEntity {
 
     public void setIdRecruteur(int idRecruteur) {
         this.idRecruteur = idRecruteur;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof RecruteurEntity)) return false;
-        RecruteurEntity that = (RecruteurEntity) o;
-        return getIdRecruteur() == that.getIdRecruteur() && Objects.equals(getNom(), that.getNom()) && Objects.equals(getPrenom(), that.getPrenom()) && Objects.equals(getEstRespoListePostes(), that.getEstRespoListePostes());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getIdRecruteur(), getNom(), getPrenom(), getEstRespoListePostes());
     }
 
     public String getNom() {
@@ -87,6 +78,27 @@ public class RecruteurEntity {
 
     public void setEstRespoListePostes(List<PosteEntity> estRespoListePostes) {
         this.estRespoListePostes = estRespoListePostes;
+    }
+
+    public List<EnseignantEntity> getListeEnseignantReco() {
+        return listeEnseignantReco;
+    }
+
+    public void setListeEnseignantReco(List<EnseignantEntity> listeEnseignantReco) {
+        this.listeEnseignantReco = listeEnseignantReco;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof RecruteurEntity)) return false;
+        RecruteurEntity recruteur = (RecruteurEntity) o;
+        return getIdRecruteur() == recruteur.getIdRecruteur() && Objects.equals(getNom(), recruteur.getNom()) && Objects.equals(getPrenom(), recruteur.getPrenom()) && Objects.equals(getEstRespoListePostes(), recruteur.getEstRespoListePostes()) && Objects.equals(getListeEnseignantReco(), recruteur.getListeEnseignantReco());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getIdRecruteur(), getNom(), getPrenom(), getEstRespoListePostes(), getListeEnseignantReco());
     }
 }
 

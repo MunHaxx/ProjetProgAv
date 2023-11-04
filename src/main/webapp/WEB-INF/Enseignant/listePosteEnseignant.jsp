@@ -14,6 +14,14 @@
         </div>
     
         <form class="content" method="post" action="ControleurEnseignant">
+            <div class="message erreur">
+                ${messageErreur}
+            </div> 
+            
+            <div class="message info">
+                ${messageInfo}
+            </div> 
+
             <div class="Menu">
                 <button type="submit" name="action" value="VoirListePoste" class="element select">Liste postes</button>
                 <button type="submit" name="action" value="VoirListeCandidature" class="element">Liste candidatures</button>

@@ -16,6 +16,14 @@
             <form class="content" method="post" action="ControleurRecruteur">
                 <input type="hidden" name="data-id" value="${recruteur.recruteurId}">
 
+                <div class="message erreur">
+                    ${messageErreur}
+                </div> 
+                
+                <div class="message info">
+                    ${messageInfo}
+                </div> 
+
                 <div class="Menu">
                     <button type="submit" name="action" value="VoirListePoste" class="element">Listes postes</button>
                     <button type="submit" name="action" value="VoirCreerPoste" class="element select">Créer postes</button>

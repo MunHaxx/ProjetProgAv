@@ -14,7 +14,7 @@ import java.util.Objects;
 
 @NamedQueries(
         {
-                @NamedQuery(name = "recupTousXp", query = SELECT_TOUTES_LES_EXPERIENCES)
+                @NamedQuery(name = "recupToutesLesXp", query = SELECT_TOUTES_LES_EXPERIENCES)
                 , @NamedQuery(name = "recupXpId", query = SELECT_EXPERIENCE_PAR_ID)
         }
 )

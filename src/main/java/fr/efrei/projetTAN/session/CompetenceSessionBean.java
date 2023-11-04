@@ -15,13 +15,13 @@ public class CompetenceSessionBean {
 
     // Permet d'obtenir la liste de toutes les compétences
     public List<CompetenceEntity> getToutesLesCompetences(){
-        requete = entityManager.createNamedQuery("recupTousCompt");
+        requete = entityManager.createNamedQuery("recupTousLesCompt");
         return  requete.getResultList();
     }
 
     // Permet d'obtenir une compétence à partir de son ID
     public CompetenceEntity getCompetenceParId(int id) {
-        requete = entityManager.createNamedQuery("recupUneCompt" );
+        requete = entityManager.createNamedQuery("recupComptId" );
         requete.setParameter("id", id);
         return (CompetenceEntity) requete.getSingleResult();
     }

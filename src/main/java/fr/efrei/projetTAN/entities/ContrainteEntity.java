@@ -5,8 +5,16 @@ import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+import static fr.efrei.projetTAN.utils.Entity.ContrainteConst.*;
+
 @Entity
 @Table(name = "contrainte", schema = "prj_progav")
+@NamedQueries(
+        {
+                @NamedQuery(name = "recupTousLesContraintes", query = SELECT_TOUTES_LES_CONTRAINTES)
+                , @NamedQuery(name = "recupContrainteId", query = SELECT_UNE_CONTRAINTE)
+        }
+)
 public class ContrainteEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -14,7 +22,7 @@ public class ContrainteEntity {
     private int idContrainte;
     @Basic
     @Column(name = "Contrainte", nullable = true, length = 50)
-    private String contrainte;
+    private String nomContrainte;
     @ManyToMany
     @JoinTable( name = "Contient_contrainte",
             joinColumns = @JoinColumn( name = "ID_Contrainte" ),
@@ -29,12 +37,12 @@ public class ContrainteEntity {
         this.idContrainte = idContrainte;
     }
 
-    public String getContrainte() {
-        return contrainte;
+    public String getNomContrainte() {
+        return nomContrainte;
     }
 
-    public void setContrainte(String contrainte) {
-        this.contrainte = contrainte;
+    public void setNomContrainte(String nomContrainte) {
+        this.nomContrainte = nomContrainte;
     }
 
     public List<PosteEntity> getListePostes() {
@@ -50,7 +58,7 @@ public class ContrainteEntity {
         if (this == o) return true;
         if (!(o instanceof ContrainteEntity)) return false;
         ContrainteEntity that = (ContrainteEntity) o;
-        return getIdContrainte() == that.getIdContrainte() && Objects.equals(getContrainte(), that.getContrainte()) && Objects.equals(getListePostes(), that.getListePostes());
+        return getIdContrainte() == that.getIdContrainte() && Objects.equals(getNomContrainte(), that.getNomContrainte()) && Objects.equals(getListePostes(), that.getListePostes());
     }
 
     /*@Override

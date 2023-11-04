@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @NamedQueries(
         {
-                @NamedQuery(name = "recupToutesCandidatures", query = SELECT_TOUTES_CANDIDATURES)
+                @NamedQuery(name = "recupToutesLesCandidatures", query = SELECT_TOUTES_LES_CANDIDATURES)
                 , @NamedQuery(name = "recupCandidatureId", query = SELECT_CANDIDATURE_PAR_ID)
         }
 )
@@ -27,7 +27,6 @@ public class CandidatureEntity {
     @ManyToOne
     @JoinColumn(name = "IDenseignant")
     private EnseignantEntity enseignant;
-
     @Basic
     @Column(name = "Contacte_le", nullable = true)
     private Date dateCandid;

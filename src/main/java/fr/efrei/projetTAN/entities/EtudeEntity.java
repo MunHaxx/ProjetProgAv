@@ -12,7 +12,7 @@ import java.util.Objects;
 
 @NamedQueries(
         {
-                @NamedQuery(name = "recupTousEtudes", query = SELECT_TOUTES_ETUDES)
+                @NamedQuery(name = "recupToutesLesEtudes", query = SELECT_TOUTES_LES_ETUDES)
                 , @NamedQuery(name = "recupEtudeId", query = SELECT_ETUDE_PAR_ID)
         }
 )

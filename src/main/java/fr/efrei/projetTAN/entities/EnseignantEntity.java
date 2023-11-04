@@ -11,7 +11,7 @@ import static fr.efrei.projetTAN.utils.Entity.EnseignantConst.*;
 
 @NamedQueries(
         {
-                @NamedQuery(name = "recupTousEnseignants", query = SELECT_TOUS_ENSEIGNANTS)
+                @NamedQuery(name = "recupTousLesEnseignants", query = SELECT_TOUS_LES_ENSEIGNANTS)
                 , @NamedQuery(name = "recupEnseignantId", query = SELECT_ENSEIGNANT_PAR_ID)
         }
 )
@@ -27,6 +27,9 @@ public class EnseignantEntity {
     @Basic
     @Column(name = "Prenom", nullable = false, length = 50)
     private String prenom;
+    // RECOMMANDE PAR ???????????????????????????????
+    // Etudes
+    // Experiences               
     @Basic
     @Column(name = "Mail", nullable = true, length = 50)
     private String mail;
@@ -39,13 +42,11 @@ public class EnseignantEntity {
     @ManyToOne
     @JoinColumn(name = "ID_NivEtudiant")
     private NiveauEtudiantEntity prefereNivEtudiant;
-
     @ManyToMany
     @JoinTable( name = "fait_activite",
             joinColumns = @JoinColumn( name = "IDenseignant" ),
             inverseJoinColumns = @JoinColumn( name = "ID_Activite" ) )
     private List<ActiviteEntity> listeActivites;
-
     @ManyToMany
     @JoinTable( name = "est_interesse",
             joinColumns = @JoinColumn( name = "IDenseignant" ),
@@ -77,6 +78,14 @@ public class EnseignantEntity {
     public void setPrenom(String prenom) {
         this.prenom = prenom;
     }
+
+    // public String getRecommandePar() {
+    //     return recommandePar;
+    // }
+
+    // public void setRecommandePar(String recommandePar) {
+    //     this.recommandePar = recommandePar;
+    // }
 
     public String getMail() {
         return mail;
@@ -139,7 +148,7 @@ public class EnseignantEntity {
         if (this == o) return true;
         if (!(o instanceof EnseignantEntity)) return false;
         EnseignantEntity that = (EnseignantEntity) o;
-        return getIdEnseignant() == that.getIdEnseignant() && Objects.equals(getNom(), that.getNom()) && Objects.equals(getPrenom(), that.getPrenom()) && Objects.equals(getMail(), that.getMail()) && Objects.equals(getTelephone(), that.getTelephone()) && Objects.equals(getSiteWeb(), that.getSiteWeb()) && Objects.equals(getPrefereNivEtudiant(), that.getPrefereNivEtudiant()) && Objects.equals(getListeActivites(), that.getListeActivites()) && Objects.equals(getListeInterets(), that.getListeInterets()) && Objects.equals(getListeCandid(), that.getListeCandid());
+        return getIdEnseignant() == that.getIdEnseignant() && Objects.equals(getNom(), that.getNom()) && Objects.equals(getPrenom(), that.getPrenom()) && /* Objects.equals(getRecommandePar(), that.getRecommandePar()) && */ Objects.equals(getMail(), that.getMail()) && Objects.equals(getTelephone(), that.getTelephone()) && Objects.equals(getSiteWeb(), that.getSiteWeb()) && Objects.equals(getPrefereNivEtudiant(), that.getPrefereNivEtudiant()) && Objects.equals(getListeActivites(), that.getListeActivites()) && Objects.equals(getListeInterets(), that.getListeInterets()) && Objects.equals(getListeCandid(), that.getListeCandid());
     }
 
     /*@Override

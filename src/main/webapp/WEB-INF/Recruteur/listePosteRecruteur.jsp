@@ -15,6 +15,14 @@
             </div>
             
             <div class="content" >
+                <div class="message erreur">
+                    ${messageErreur}
+                </div> 
+                
+                <div class="message info">
+                    ${messageInfo}
+                </div> 
+
                 <form class="Menu" method="post" action="ControleurRecruteur">
                     <button type="submit" name="action" value="VoirListePoste" class="element select">Listes postes</button>
                     <button type="submit" name="action" value="VoirCreerPoste" class="element">Créer postes</button>
@@ -24,38 +32,38 @@
                 </form> 
 
                 <div class="liste-poste-recruteur">
-                    <c:forEach items="${tousLesPostes}" var="poste">
+                    <c:forEach items="${leRecruteur.estRespoListePostes}" var="poste">
                         <form class="poste-recruteur" method="post" action="ControleurRecruteur">
-                            <input type="hidden" name="data-id" value="${poste.posteId}">
+                            <input type="hidden" name="data-id" value="${poste.idPoste}">
 
                             <button type="submit" name="action" value="VoirListeCandidature" class="postuler">Voir candidature</button>
 
-                            <div class="title">Titre poste</div>
+                            <div class="title">${poste.nom}</div>
                 
                             <div class="container-infos">
                                 <div class="container-info">
                                     <img class="icon-recruteur" src="/ProjetTAN/resources/icons/school.png" />
-                                    <div class="info">Ecole</div>
+                                    <div class="info">${poste.ecole}</div>
                                 </div>
                                 <div class="container-info">
                                     <img class="icon-recruteur" src="/ProjetTAN/resources/icons/contract.png" />
-                                    <div class="info">Contrat</div>
+                                    <div class="info">${poste.typeContrat}</div>
                                 </div>
                                 <div class="container-info">
                                     <img class="icon-recruteur" src="/ProjetTAN/resources/icons/periode.png" />
-                                    <div class="info">Période</div>
+                                    <div class="info">${poste.periode}</div>
                                 </div>
                                 <div class="container-info">
                                     <img class="icon-recruteur" src="/ProjetTAN/resources/icons/class.png" />
-                                    <div class="info">Classe_etud</div>
+                                    <div class="info">${poste.pourNivEtudiant}</div>
                                 </div>
                             </div>
                 
                             <div class="container-points">
                                 <div class="title-point">Compétences</div>
                                 <ul>
-                                    <c:forEach items="${poste.competences}" var="competence">
-                                        <li class="point">Attention à ça</li>
+                                    <c:forEach items="${poste.listeCompetences}" var="competence">
+                                        <li class="point">${competence.nom}</li>
                                     </c:forEach>
                                 </ul>
                             </div>
@@ -63,8 +71,8 @@
                             <div class="container-points">
                                 <div class="title-point">Contraintes</div>
                                 <ul>
-                                    <c:forEach items="${poste.contraintes}" var="contrainte">
-                                        <li class="point">Attention à ça</li>
+                                    <c:forEach items="${poste.listeContraintes}" var="contrainte">
+                                        <li class="point">${contrainte.contrainte}</li>
                                     </c:forEach>
                                 </ul>
                             </div>

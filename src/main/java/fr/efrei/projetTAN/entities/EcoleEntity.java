@@ -12,7 +12,7 @@ import static fr.efrei.projetTAN.utils.Entity.EcoleConst.*;
 
 @NamedQueries(
         {
-                @NamedQuery(name = "recupToutesEcoles", query = SELECT_TOUTES_ECOLES)
+                @NamedQuery(name = "recupToutesLesEcoles", query = SELECT_TOUTES_LES_ECOLES)
                 , @NamedQuery(name = "recupEcoleId", query = SELECT_ECOLE_PAR_ID)
         }
 )

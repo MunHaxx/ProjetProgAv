@@ -5,8 +5,16 @@ import jakarta.persistence.*;
 import java.util.List;
 import java.util.Objects;
 
+import static fr.efrei.projetTAN.utils.Entity.RemarqueConst.*;
+
 @Entity
 @Table(name = "remarque", schema = "prj_progav")
+@NamedQueries(
+        {
+                @NamedQuery(name = "recupToutesLesRemarques", query = SELECT_TOUTES_LES_REMARQUES)
+                , @NamedQuery(name = "recupRemarqueId", query = SELECT_REMARQUE_PAR_ID)
+        }
+)
 public class RemarqueEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
@@ -14,7 +22,7 @@ public class RemarqueEntity {
     private int idRemarque;
     @Basic
     @Column(name = "Remarque", nullable = true, length = 50)
-    private String remarque;
+    private String nomRemarque;
     @ManyToMany
     @JoinTable( name = "Contient_remarque",
             joinColumns = @JoinColumn( name = "ID_Remarque" ),
@@ -29,12 +37,12 @@ public class RemarqueEntity {
         this.idRemarque = idRemarque;
     }
 
-    public String getRemarque() {
-        return remarque;
+    public String getNomRemarque() {
+        return nomRemarque;
     }
 
-    public void setRemarque(String remarque) {
-        this.remarque = remarque;
+    public void setNomRemarque(String nomRemarque) {
+        this.nomRemarque = nomRemarque;
     }
 
     public List<PosteEntity> getListePostes() {
@@ -50,7 +58,7 @@ public class RemarqueEntity {
         if (this == o) return true;
         if (!(o instanceof RemarqueEntity)) return false;
         RemarqueEntity that = (RemarqueEntity) o;
-        return getIdRemarque() == that.getIdRemarque() && Objects.equals(getRemarque(), that.getRemarque()) && Objects.equals(getListePostes(), that.getListePostes());
+        return getIdRemarque() == that.getIdRemarque() && Objects.equals(getNomRemarque(), that.getNomRemarque()) && Objects.equals(getListePostes(), that.getListePostes());
     }
 
     /*@Override

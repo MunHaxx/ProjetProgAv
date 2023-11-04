@@ -14,7 +14,7 @@ import static fr.efrei.projetTAN.utils.GlobalConst.*;
 
 @NamedQueries(
         {
-                @NamedQuery(name = "recupTousPostes", query = SELECT_TOUS_POSTES)
+                @NamedQuery(name = "recupTousLesPostes", query = SELECT_TOUS_LES_POSTES)
                 , @NamedQuery(name = "recupPosteId", query = SELECT_POSTE_PAR_ID)
         }
 )
@@ -25,7 +25,7 @@ public class PosteEntity {
     private int idPoste;
     @Basic
     @Column(name = "Nom", nullable = true, length = 50)
-    private String nom;
+    private String nomPoste;
     @ManyToOne
     @JoinColumn(name = "ID_Ecole")
     private EcoleEntity ecole;
@@ -51,7 +51,6 @@ public class PosteEntity {
             joinColumns = @JoinColumn( name = "ID_Poste" ),
             inverseJoinColumns = @JoinColumn( name = "ID_Contrainte" ) )
     private List<ContrainteEntity> listeContraintes;
-
     @ManyToMany
     @JoinTable( name = "Contient_remarque",
             joinColumns = @JoinColumn( name = "ID_Poste" ),
@@ -68,12 +67,12 @@ public class PosteEntity {
         this.idPoste = idPoste;
     }
 
-    public String getNom() {
-        return nom;
+    public String getNomPoste() {
+        return nomPoste;
     }
 
-    public void setNom(String nom) {
-        this.nom = nom;
+    public void setNomPoste(String nomPoste) {
+        this.nomPoste = nomPoste;
     }
 
     public EcoleEntity getEcole() {
@@ -153,7 +152,7 @@ public class PosteEntity {
         if (this == o) return true;
         if (!(o instanceof PosteEntity)) return false;
         PosteEntity that = (PosteEntity) o;
-        return getIdPoste() == that.getIdPoste() && Objects.equals(getNom(), that.getNom()) && Objects.equals(getEcole(), that.getEcole()) && getTypeContrat() == that.getTypeContrat() && Objects.equals(getPeriode(), that.getPeriode()) && Objects.equals(getPourNivEtudiant(), that.getPourNivEtudiant()) && Objects.equals(getRecruteurRespo(), that.getRecruteurRespo()) && Objects.equals(getListeCompetences(), that.getListeCompetences()) && Objects.equals(getListeContraintes(), that.getListeContraintes()) && Objects.equals(getListeRemarques(), that.getListeRemarques()) && Objects.equals(getListeCandid(), that.getListeCandid());
+        return getIdPoste() == that.getIdPoste() && Objects.equals(getNomPoste(), that.getNomPoste()) && Objects.equals(getEcole(), that.getEcole()) && getTypeContrat() == that.getTypeContrat() && Objects.equals(getPeriode(), that.getPeriode()) && Objects.equals(getPourNivEtudiant(), that.getPourNivEtudiant()) && Objects.equals(getRecruteurRespo(), that.getRecruteurRespo()) && Objects.equals(getListeCompetences(), that.getListeCompetences()) && Objects.equals(getListeContraintes(), that.getListeContraintes()) && Objects.equals(getListeRemarques(), that.getListeRemarques()) && Objects.equals(getListeCandid(), that.getListeCandid());
     }
 
     /*@Override

@@ -13,7 +13,7 @@ public class RecruteurSessionBean {
 
     // Permet d'obtenir la liste de tous les recruteurs
     public List<RecruteurEntity> getTousRecruteurs(){
-        requete = entityManager.createNamedQuery("recupTousRecruteurs");
+        requete = entityManager.createNamedQuery("recupTousLesRecruteurs");
         return  requete.getResultList();
     }
 

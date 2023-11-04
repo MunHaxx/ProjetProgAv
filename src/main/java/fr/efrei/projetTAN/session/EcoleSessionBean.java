@@ -13,7 +13,7 @@ public class EcoleSessionBean {
 
     // Permet d'obtenir la liste de toutes les écoles
     public List<EcoleEntity> getToutesEtudes(){
-        requete = entityManager.createNamedQuery("recupToutesEcoles");
+        requete = entityManager.createNamedQuery("recupToutesLesEcoles");
         return  requete.getResultList();
     }
 

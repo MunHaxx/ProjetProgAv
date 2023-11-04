@@ -3,6 +3,7 @@ package fr.efrei.projetTAN.entities;
 import fr.efrei.projetTAN.utils.GlobalConst.EnumNivCompt;
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 import static fr.efrei.projetTAN.utils.Entity.CompetenceConst.*;
@@ -31,11 +32,11 @@ public class CompetenceEntity {
     @Column(name = "niveau", nullable = true, length = 50)
     private EnumNivCompt niveau;
 
-    public CompetenceEntity(int idCompetence, String nom, EnumNivCompt niveau) {
-        this.idCompetence = idCompetence;
-        this.nom = nom;
-        this.niveau = niveau;
-    }
+    @ManyToMany
+    @JoinTable( name = "requiert_compt",
+            joinColumns = @JoinColumn( name = "ID_Competence" ),
+            inverseJoinColumns = @JoinColumn( name = "ID_Poste" ) )
+    private List<PosteEntity> listePostes;
 
     public CompetenceEntity() {
     }
@@ -64,17 +65,24 @@ public class CompetenceEntity {
         this.niveau = niveau;
     }
 
+    public List<PosteEntity> getListePostes() {
+        return listePostes;
+    }
+    public void setListePostes(List<PosteEntity> listePostes) {
+        this.listePostes = listePostes;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof CompetenceEntity)) return false;
         CompetenceEntity that = (CompetenceEntity) o;
-        return getIdCompetence() == that.getIdCompetence() && Objects.equals(getNom(), that.getNom()) && getNiveau() == that.getNiveau();
+        return getIdCompetence() == that.getIdCompetence() && Objects.equals(getNom(), that.getNom()) && getNiveau() == that.getNiveau() && Objects.equals(getListePostes(), that.getListePostes());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdCompetence(), getNom(), getNiveau());
+        return Objects.hash(getIdCompetence(), getNom(), getNiveau(), getListePostes());
     }
 }
 

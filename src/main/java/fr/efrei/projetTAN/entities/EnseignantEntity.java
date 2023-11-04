@@ -42,9 +42,9 @@ public class EnseignantEntity {
     @Basic
     @Column(name = "Site_web", nullable = true, length = 50)
     private String siteWeb;
-    @OneToMany(mappedBy = "")
+    @OneToMany(mappedBy = "enseignant")
     private List<EtudeEntity> listeEtudes;
-    @OneToMany(mappedBy = "")
+    @OneToMany(mappedBy = "enseignant")
     private List<ExperienceEntity> listeExperiences;
     @ManyToOne
     @JoinColumn(name = "ID_NivEtudiant")

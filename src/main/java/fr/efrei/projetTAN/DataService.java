@@ -61,6 +61,24 @@ public class DataService {
         request.setAttribute("messageInfo", msgInfo);
     }
 
+    // Permet d'envoyer la liste des candidatures liées à un poste
+    // Associé au bouton voir candidature sur la page liste des postes de l'utilisateur recruteur
+    public static void serviceGetListeCandidatureDunPoste(PosteSessionBean posteSB, HttpServletRequest request) {
+        String msgErr = "";
+        // Si on ne retrouve pas l'ID du poste, on affiche une erreur
+        if (request.getParameter("data-id") == null)
+            msgErr = "Impossible d'afficher la liste des candidatures sur ce poste";
+        else {
+            int idPoste = Integer.parseInt(request.getParameter("data-id"));
+            PosteEntity posteSelect = posteSB.getPosteParId(idPoste);
+            if (posteSelect == null)
+                msgErr = "Impossible d'afficher la liste des candidatures sur ce poste";
+            else
+                request.setAttribute("toutesLesCandidatures", posteSelect.getListeCandid());
+        }
+        request.getSession().setAttribute("messageErreur", msgErr);
+    }
+
     // Permet de créer une école
     // Utilisé lors de la création de poste
     public static void serviceCreerEcole(EcoleSessionBean ecoleSB, HttpServletRequest request) {
@@ -85,6 +103,10 @@ public class DataService {
         // Envoi des informations
         request.setAttribute("messageErreur", msgErreur);
         request.setAttribute("messageInfo", msgInfo);
+    }
+
+    public static void serviceModifierCreerPoste(PosteSessionBean posteSB, HttpServletRequest request) {
+
     }
 
     // Permet de modifier ou de créer une candidature

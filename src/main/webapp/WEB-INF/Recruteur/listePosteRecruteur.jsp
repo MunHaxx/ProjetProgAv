@@ -38,12 +38,12 @@
 
                             <button type="submit" name="action" value="VoirListeCandidature" class="postuler">Voir candidature</button>
 
-                            <div class="title">${poste.nom}</div>
+                            <div class="title">${poste.nomPoste}</div>
                 
                             <div class="container-infos">
                                 <div class="container-info">
                                     <img class="icon-recruteur" src="/ProjetTAN/resources/icons/school.png" />
-                                    <div class="info">${poste.ecole}</div>
+                                    <div class="info">${poste.ecole.raisonSociale}</div>
                                 </div>
                                 <div class="container-info">
                                     <img class="icon-recruteur" src="/ProjetTAN/resources/icons/contract.png" />
@@ -55,7 +55,7 @@
                                 </div>
                                 <div class="container-info">
                                     <img class="icon-recruteur" src="/ProjetTAN/resources/icons/class.png" />
-                                    <div class="info">${poste.pourNivEtudiant}</div>
+                                    <div class="info">${poste.pourNivEtudiant.niveau}</div>
                                 </div>
                             </div>
                 
@@ -63,7 +63,7 @@
                                 <div class="title-point">Compétences</div>
                                 <ul>
                                     <c:forEach items="${poste.listeCompetences}" var="competence">
-                                        <li class="point">${competence.nom}</li>
+                                        <li class="point">${competence.nomCompetence}</li>
                                     </c:forEach>
                                 </ul>
                             </div>
@@ -72,7 +72,7 @@
                                 <div class="title-point">Contraintes</div>
                                 <ul>
                                     <c:forEach items="${poste.listeContraintes}" var="contrainte">
-                                        <li class="point">${contrainte.contrainte}</li>
+                                        <li class="point">${contrainte.nomContrainte}</li>
                                     </c:forEach>
                                 </ul>
                             </div>
@@ -80,8 +80,8 @@
                             <div class="container-points">
                                 <div class="title-point">Remarques</div>
                                 <ul>
-                                    <c:forEach items="${poste.remarques}" var="remarque">
-                                        <li class="point">Attention à ça</li>
+                                    <c:forEach items="${poste.listeRemarques}" var="remarque">
+                                        <li class="point">${remarque.nomRemarque}</li>
                                     </c:forEach>
                                 </ul>
                             </div>

@@ -15,6 +15,14 @@
             </div>
             
             <div class="content" >
+                <div class="message erreur">
+                    ${messageErreur}
+                </div> 
+                
+                <div class="message info">
+                    ${messageInfo}
+                </div> 
+
                 <form class="Menu" method="post" action="ControleurRecruteur">
                     <button type="submit" name="action" value="VoirListePoste" class="element select">Listes postes</button>
                     <button type="submit" name="action" value="VoirCreerPoste" class="element">Créer postes</button>

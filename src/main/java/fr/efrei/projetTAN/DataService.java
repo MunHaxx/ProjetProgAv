@@ -210,6 +210,11 @@ public class DataService {
 
         else{
             /*// C'est trop le bordel, fait des sous fonctions, on s'en sort plus
+
+
+
+
+
             GlobalConst.EnumTypeContrat contrat =  GlobalConst.stringVersEnumTypeContrat(strContrat);
             GlobalConst.EnumNivEtudiant nivEtudiant =  GlobalConst.stringVersEnumNivEtudiant(strNivEtudiant);
             // Création de l'entité

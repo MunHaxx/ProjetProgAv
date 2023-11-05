@@ -49,14 +49,14 @@ public class ControleurRecruteur extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        processRequest(request, response);
+        traiterRequete(request, response);
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        processRequest(request, response);
+        traiterRequete(request, response);
     }
 
-    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void traiterRequete(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         actionUtilisateur = request.getParameter("action");
         chargerLaPageSuivante(actionUtilisateur, request, response);
     }

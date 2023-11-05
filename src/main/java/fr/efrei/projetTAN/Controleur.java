@@ -41,41 +41,20 @@ public class Controleur extends HttpServlet {
     @EJB
     private RecruteurSessionBean recruteurSB;
 
-    public void init() {
-        // Laisser cette fonction vide
-        // Je l'ai utilisé pour mes tests avec des System.println
-        // DataManager.testerRecupToutesCompetences(competenceSB);
-        // DataManager.testerRecupUneCompetence(competenceSB, 1);
-        // DataManager.testerModificationCompetence(competenceSB, 1);
-        // DataManager.testerRecupUneCompetence(competenceSB, 1);
-        // DataManager.testerRecupExperiences(experienceSB);
-        // DataManager.testerRecupExperienceParId(experienceSB, 1);
-    }
-
+    public void init() { }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        processRequest(request, response);
+        traiterRequete(request, response);
     }
-
     public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        processRequest(request, response);
+        traiterRequete(request, response);
     }
 
-    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void traiterRequete(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         actionUtilisateur = request.getParameter("action");
-//        tousLesEmployes = employesSessionBean.getTousLesEmployes();
-//        request.getSession().setAttribute("tousLesEmployes", tousLesEmployes);
         chargerLaPageSuivante(actionUtilisateur, request, response);
     }
 
-    public boolean verifierInfosConnexion(Utilisateur unUtilisateur) {
-        String motDePasseValide = getServletContext().getInitParameter("login");
-        String loginValide = getServletContext().getInitParameter("motDePasse");
-        return (unUtilisateur.getIdentifiant().equals(motDePasseValide)
-                && unUtilisateur.getMotDePasse().equals(loginValide));
-    }
-
     public void placerUtilisateurDansContexte(HttpServletRequest request) {
-
         String identifiant = request.getParameter(CHAMP_LOGIN);
         String motDePasse = request.getParameter(CHAMP_PASSWORD);
         String role = null;
@@ -102,7 +81,6 @@ public class Controleur extends HttpServlet {
         
     }
     
-    // seulement pour le login, vérif type user, rediriger
     // Page d'accueil différente selon le type d'utilisateur connecté
     public void dirigerVersPageAccueil(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utilisateur unUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");
@@ -145,52 +123,13 @@ public class Controleur extends HttpServlet {
         }
     }
 
-    // un login, enseignant, recruteur, admin 
     public void chargerLaPageSuivante(String actionUtilisateur, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (actionUtilisateur == null || actionUtilisateur.isEmpty()) {
             request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
-        } 
-        // if recruteur, if enseignant, if admin, selon les consts définies dans chaque
-        else {
-            switch (actionUtilisateur) {
-                case ACTION_LOGIN:
-                    placerUtilisateurDansContexte(request);
-                    dirigerVersPageAccueil(request, response);
-                    break;
-                /*case ACTION_DETAILS:
-                    idEmployeSelect = Integer.parseInt(request.getParameter(FRM_ID_EMPL_SELECT));
-                    employe = employesSessionBean.getEmployeParId(idEmployeSelect);
-                    request.getSession().setAttribute("employe", employe);
-                    request.getRequestDispatcher(PAGE_DETAILS_EMPLOYE).forward(request, response);
-                    break;
-                case ACTION_SUPPRIMER:
-                    idEmployeSelect = Integer.parseInt(request.getParameter(FRM_ID_EMPL_SELECT));
-                    employe = employesSessionBean.getEmployeParId(idEmployeSelect);
-                    employesSessionBean.supprimerEmploye(employe);
-                    request.getSession().setAttribute("tousLesEmployes", employesSessionBean.getTousLesEmployes());
-                    request.getRequestDispatcher(PAGE_TOUS_LES_EMPLOYES).forward(request, response);
-                    break;
-                case ACTION_VOIR_LISTE:
-                    request.getSession().setAttribute("tousLesEmployes", employesSessionBean.getTousLesEmployes());
-                    request.getRequestDispatcher(PAGE_TOUS_LES_EMPLOYES).forward(request, response);
-                    break;
-                case ACTION_MODIFIER:
-                    idEmployeSelect = Integer.parseInt(request.getParameter(FRM_ID_EMPL_SELECT));
-                    employe = new EmployesEntity(idEmployeSelect,
-                            request.getParameter(EmployesConstantes.CHAMP_NOM),
-                            request.getParameter(EmployesConstantes.CHAMP_PRENOM),
-                            request.getParameter(EmployesConstantes.CHAMP_TELDOMICILE),
-                            request.getParameter(EmployesConstantes.CHAMP_TELPORTABLE),
-                            request.getParameter(EmployesConstantes.CHAMP_TELPRO),
-                            request.getParameter(EmployesConstantes.CHAMP_ADRESSE),
-                            request.getParameter(EmployesConstantes.CHAMP_CODEPOSTAL),
-                            int = request.getParameter(EmployesConstantes.CHAMP_VILLE),
-                            request.getParameter(EmployesConstantes.CHAMP_EMAIL));
-                    employesSessionBean.modifierEmploye(employe);
-                    request.getSession().setAttribute("tousLesEmployes", employesSessionBean.getTousLesEmployes());
-                    request.getRequestDispatcher(PAGE_TOUS_LES_EMPLOYES).forward(request, response);
-                    break;*/
-            }
+        }
+        else if (actionUtilisateur.equals(ACTION_LOGIN)){
+            placerUtilisateurDansContexte(request);
+            dirigerVersPageAccueil(request, response);
         }
     }
 }

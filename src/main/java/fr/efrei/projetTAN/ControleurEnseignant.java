@@ -84,8 +84,7 @@ public class ControleurEnseignant extends HttpServlet {
                     
                     switch (actionUtilisateur) {
                         case ACTION_ENSEIGNANT_VOIR_LISTE_POSTE:
-                            request.getSession().setAttribute("messageInfo", "");
-                            request.getSession().setAttribute("messageErreur", "");
+                            request.setAttribute("tousLesPostes", posteSB.getTousLesPostes());
                             request.getRequestDispatcher(PAGE_ENSEIGNANT_LISTE_POSTE).forward(request, response);
                             break;
                         case ACTION_ENSEIGNANT_VOIR_LISTE_CANDIDATURE:

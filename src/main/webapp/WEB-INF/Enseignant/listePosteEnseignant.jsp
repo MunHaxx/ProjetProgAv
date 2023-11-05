@@ -45,15 +45,15 @@
                             </div>
                             <div class="container-info">
                                 <img class="icon-recruteur" src="/ProjetTAN/resources/icons/periode.png" />
-                                <div class="info">${poste.ecole.periode}</div>
+                                <div class="info">${poste.periode}</div>
                             </div>
                             <div class="container-info">
                                 <img class="icon-recruteur" src="/ProjetTAN/resources/icons/contract.png" />
-                                <div class="info">${poste.ecole.typeContrat}</div>
+                                <div class="info">${poste.typeContrat}</div>
                             </div>
                             <div class="container-info">
                                 <img class="icon-recruteur" src="/ProjetTAN/resources/icons/class.png" />
-                                <div class="info">${poste.ecole.pourNivEtudiant.niveau}</div>
+                                <div class="info">${poste.pourNivEtudiant.niveau}</div>
                             </div>
                         </div>
             

@@ -13,13 +13,13 @@ public class RemarqueSessionBean {
     private final EntityManager entityManager = entityManagerFactory.createEntityManager();
     private Query requete;
 
-    // Permet d'obtenir la liste de tous les recruteurs
+    // Permet d'obtenir la liste de toutes les remarques
     public List<RemarqueEntity> getToutesLesRemarques(){
         requete = entityManager.createNamedQuery("recupToutesLesRemarques");
         return  requete.getResultList();
     }
 
-    // Permet d'obtenir un recruteur à partir de son ID
+    // Permet d'obtenir une remarque à partir de son ID
     public RemarqueEntity getRemarqueParId(int id) {
         requete = entityManager.createNamedQuery("recupRemarqueId" );
         requete.setParameter("id", id);

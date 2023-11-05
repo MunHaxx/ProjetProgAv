@@ -12,13 +12,13 @@ public class ContrainteSessionBean {
     private final EntityManager entityManager = entityManagerFactory.createEntityManager();
     private Query requete;
 
-    // Permet d'obtenir la liste de toutes les candidatures
+    // Permet d'obtenir la liste de toutes les contraintes
     public List<ContrainteEntity> getToutesContraintes(){
         requete = entityManager.createNamedQuery("recupToutesLesContraintes");
         return  requete.getResultList();
     }
 
-    // Permet d'obtenir une candidature à partir de son ID
+    // Permet d'obtenir une contrainte à partir de son ID
     public ContrainteEntity getContrainteParId(int id) {
         requete = entityManager.createNamedQuery("recupContrainteId" );
         requete.setParameter("id", id);

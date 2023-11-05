@@ -73,8 +73,6 @@ public class ControleurAdmin extends HttpServlet {
            
             switch (actionUtilisateur) {
                 case ACTION_ADMIN_VOIR_LISTE_POSTE:
-                    request.getSession().setAttribute("messageInfo", "");
-                    request.getSession().setAttribute("messageErreur", "");
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_POSTE).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_LISTE_RECRUTEUR:
@@ -107,7 +105,8 @@ public class ControleurAdmin extends HttpServlet {
                     request.getRequestDispatcher(PAGE_ADMIN_VOIR_CANDIDATURE).forward(request, response);
                     break;
                 case ACTION_ADMIN_SAUVE_RECRUTEUR:
-                    request.setAttribute("tousLesRecruteurs", listeRecruteurs);
+                    DataService.serviceModifierCreerRecruteur(recruteurSB, request);
+                    request.setAttribute("tousLesRecruteurs", recruteurSB.getTousRecruteurs());
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_RECRUTEUR).forward(request, response);
                     break;
                 case ACTION_ADMIN_SAUVE_ENSEIGNANT:

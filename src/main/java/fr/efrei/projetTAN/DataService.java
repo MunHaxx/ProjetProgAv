@@ -64,20 +64,70 @@ public class DataService {
     // Permet d'envoyer la liste des candidatures liées à un poste
     // Associé au bouton voir candidature sur la page liste des postes de l'utilisateur recruteur
     public static void serviceGetListeCandidatureDunPoste(PosteSessionBean posteSB, HttpServletRequest request) {
-        String msgErr = "";
-        // Si on ne retrouve pas l'ID du poste, on affiche une erreur
+        // Déclaration de variable pour le message à afficher
+        String msgErreur = "";
+        // Si on ne retrouve pas l'ID, on affiche une erreur
         if (request.getParameter("data-id") == null)
-            msgErr = "Impossible d'afficher la liste des candidatures sur ce poste";
+            msgErreur = "Impossible d'afficher la liste des candidatures sur ce poste";
         else {
             int idPoste = Integer.parseInt(request.getParameter("data-id"));
             PosteEntity posteSelect = posteSB.getPosteParId(idPoste);
             if (posteSelect == null)
-                msgErr = "Impossible d'afficher la liste des candidatures sur ce poste";
+                msgErreur = "Impossible d'afficher la liste des candidatures sur ce poste";
             else
                 request.setAttribute("toutesLesCandidatures", posteSelect.getListeCandid());
         }
-        request.getSession().setAttribute("messageErreur", msgErr);
+        request.getSession().setAttribute("messageErreur", msgErreur);
     }
+
+    // Permet de modifier le status d'une candidature en retenue (acceptée)
+    // Associé au bouton accetper sur la page liste des candidatures de l'utilisateur recruteur
+    public static void serviceModifStatusCandidatureRetenue(CandidatureSessionBean candidSB, HttpServletRequest request) {
+        // Déclaration de variable pour le message à afficher
+        String msgErreur = "";
+        String msgInfo = "";
+        // Si on ne retrouve pas l'ID, on affiche une erreur
+        if (request.getParameter("data-id") == null)
+            msgErreur = "Erreur : récupération de l'ID impossible, on ne peut pas modifier cette candidature";
+        else {
+            int idCandid = Integer.parseInt(request.getParameter("data-id"));
+            CandidatureEntity candidSelect = candidSB.getCandidatureParId(idCandid);
+            if (candidSelect == null)
+                msgErreur = "Erreur : récupération de la candidature impossible";
+            else {
+                candidSelect.setDecision("Retenue");
+                candidSB.modifierCandidature(candidSelect);
+                msgInfo = "Candidature retenue";
+            }
+        }
+        request.getSession().setAttribute("messageErreur", msgErreur);
+        request.getSession().setAttribute("messageInfo", msgInfo);
+    }
+
+    // Permet de modifier le status d'une candidature en non retenue (refusée)
+    // Associé au bouton accetper sur la page liste des candidatures de l'utilisateur recruteur
+    public static void serviceModifStatusCandidatureNonRetenue(CandidatureSessionBean candidSB, HttpServletRequest request) {
+        // Déclaration de variable pour le message à afficher
+        String msgErreur = "";
+        String msgInfo = "";
+        // Si on ne retrouve pas l'ID, on affiche une erreur
+        if (request.getParameter("data-id") == null)
+            msgErreur = "Erreur : récupération de l'ID impossible, on ne peut pas modifier cette candidature";
+        else {
+            int idCandid = Integer.parseInt(request.getParameter("data-id"));
+            CandidatureEntity candidSelect = candidSB.getCandidatureParId(idCandid);
+            if (candidSelect == null)
+                msgErreur = "Erreur : récupération de la candidature impossible";
+            else {
+                candidSelect.setDecision("Non retenue");
+                candidSB.modifierCandidature(candidSelect);
+                msgInfo = "Candidature non retenue";
+            }
+        }
+        request.getSession().setAttribute("messageErreur", msgErreur);
+        request.getSession().setAttribute("messageInfo", msgInfo);
+    }
+
 
     // Permet de créer une école
     // Utilisé lors de la création de poste

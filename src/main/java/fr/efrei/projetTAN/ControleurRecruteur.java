@@ -98,16 +98,10 @@ public class ControleurRecruteur extends HttpServlet {
                             request.getRequestDispatcher(PAGE_RECRUTEUR_MODIFIER_PROFIL).forward(request, response);
                             break;
                         case ACTION_RECRUTEUR_VOIR_LISTE_CANDIDATURE:
-                            DataService.serviceGetListeCandidatureDunPoste(posteSB, request);
-                            if (request.getSession().getAttribute("messageErreur") != "")
-                                // Redirection vers la page courante pour afficher l'erreur
-                                request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_POSTE).forward(request, response);
-                            else
-                                // Redirection vers la page correspondante
-                                request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_CANDIDATURE).forward(request, response);
+                            redirigerListeCandidatures(request, response);
                             break;
                         case ACTION_RECRUTEUR_SAUVE_CREATION_POSTE:
-                            //DataService.ser
+
                             request.getRequestDispatcher(PAGE_RECRUTEUR_CREER_POSTE).forward(request, response);
                             break;
                         case ACTION_RECRUTEUR_SAUVE_MODIFICATION_PROFIL:
@@ -116,12 +110,11 @@ public class ControleurRecruteur extends HttpServlet {
                             request.getRequestDispatcher(PAGE_RECRUTEUR_MODIFIER_PROFIL).forward(request, response);
                             break;
                         case ACTION_RECRUTEUR_ACCEPTER_CANDIDATURE:
-
-                            request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_CANDIDATURE).forward(request, response);
-                            break;
+                            DataService.serviceModifStatusCandidatureRetenue(candidatureSB, request);
+                            redirigerListeCandidatures(request, response);
                         case ACTION_RECRUTEUR_REJETER_CANDIDATURE:
-
-                            request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_CANDIDATURE).forward(request, response);
+                            DataService.serviceModifStatusCandidatureNonRetenue(candidatureSB, request);
+                            redirigerListeCandidatures(request, response);
                             break;
                         case ACTION_DECONNEXION:
                             request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
@@ -130,5 +123,15 @@ public class ControleurRecruteur extends HttpServlet {
                 }
             }
         }
+    }
+
+    public void redirigerListeCandidatures(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        DataService.serviceGetListeCandidatureDunPoste(posteSB, request);
+        if (request.getSession().getAttribute("messageErreur") != "")
+            // Redirection vers la page courante pour afficher l'erreur
+            request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_POSTE).forward(request, response);
+        else
+            // Redirection vers la page correspondante
+            request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_CANDIDATURE).forward(request, response);
     }
 }

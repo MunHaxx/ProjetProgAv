@@ -31,4 +31,11 @@ public class CandidatureSessionBean {
         entityManager.getTransaction().commit();
     }
 
+    // Permet de modifier une nouvelle candidature
+    public void modifierCandidature(CandidatureEntity candidAModifier) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(candidAModifier);
+        entityManager.getTransaction().commit();
+    }
+
 }

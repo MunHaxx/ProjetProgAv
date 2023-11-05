@@ -59,6 +59,18 @@ public class PosteEntity {
     @OneToMany(mappedBy = "poste")
     private List<CandidatureEntity> listeCandid;
 
+    public PosteEntity(){}
+
+    public PosteEntity(String nomPoste, EcoleEntity ecole, EnumTypeContrat typeContrat, String periode,
+                       NiveauEtudiantEntity pourNivEtudiant, RecruteurEntity recruteurRespo) {
+        this.nomPoste = nomPoste;
+        this.ecole = ecole;
+        this.typeContrat = typeContrat;
+        this.periode = periode;
+        this.pourNivEtudiant = pourNivEtudiant;
+        this.recruteurRespo = recruteurRespo;
+    }
+
     public int getIdPoste() {
         return idPoste;
     }

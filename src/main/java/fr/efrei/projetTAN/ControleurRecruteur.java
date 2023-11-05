@@ -14,6 +14,8 @@ import static fr.efrei.projetTAN.utils.User.LoginConst.*;
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
 
+import javax.xml.crypto.Data;
+
 public class ControleurRecruteur extends HttpServlet {
     private Utilisateur unUtilisateur;
     private String actionUtilisateur;
@@ -75,12 +77,12 @@ public class ControleurRecruteur extends HttpServlet {
                     request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
                 } else {
                     request.setAttribute("leRecruteur", recruteurActuel);
-
+                    // Remise à zéro des messages
+                    request.getSession().setAttribute("messageInfo", "");
+                    request.getSession().setAttribute("messageErreur", "");
                     switch (actionUtilisateur) {
                         case ACTION_RECRUTEUR_VOIR_LISTE_POSTE:
                             // Récupère et envoi la liste des recruteurs
-                            request.getSession().setAttribute("messageInfo", "");
-                            request.getSession().setAttribute("messageErreur", "");
                             List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
                             request.setAttribute("tousLesRecruteurs", listeRecruteurs);
                             // Redirection vers la page correspondante
@@ -96,33 +98,24 @@ public class ControleurRecruteur extends HttpServlet {
                             request.getRequestDispatcher(PAGE_RECRUTEUR_MODIFIER_PROFIL).forward(request, response);
                             break;
                         case ACTION_RECRUTEUR_VOIR_LISTE_CANDIDATURE:
-                            // Redirection vers la page correspondante
-                            request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_CANDIDATURE).forward(request, response);
+                            redirigerListeCandidatures(request, response);
                             break;
                         case ACTION_RECRUTEUR_SAUVE_CREATION_POSTE:
-                            
+
                             request.getRequestDispatcher(PAGE_RECRUTEUR_CREER_POSTE).forward(request, response);
                             break;
                         case ACTION_RECRUTEUR_SAUVE_MODIFICATION_PROFIL:
-                            // int idRecruteurSelect = Integer.parseInt(request.getParameter(ID_RECRUTEUR));
-                            // RecruteurEntity recruteur = new RecruteurEntity(idRecruteurSelect,
-                            //         request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_NOM),
-                            //         request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_PRENOM));
-                            // recruteurSessionBean.modifierRecruteur(recruteur);
-
-
-//                            request.getSession().setAttribute("idRecruteur", recruteurActuel.getIdRecruteur());
-                            System.out.println("\n\n" + request.getParameter("data-id")/*.getIdRecruteur()*/ + "\n\n");
                             DataService.serviceModifierCreerRecruteur(recruteurSB, request);
-                            //request.setAttribute("messageErreur", msgInfo);
                             // Redirection vers la page correspondante
                             request.getRequestDispatcher(PAGE_RECRUTEUR_MODIFIER_PROFIL).forward(request, response);
                             break;
                         case ACTION_RECRUTEUR_ACCEPTER_CANDIDATURE:
-                            request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_CANDIDATURE).forward(request, response);
+                            DataService.serviceModifStatusCandidatureRetenue(candidatureSB, request);
+                            redirigerListeCandidatures(request, response);
                             break;
                         case ACTION_RECRUTEUR_REJETER_CANDIDATURE:
-                            request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_CANDIDATURE).forward(request, response);
+                            DataService.serviceModifStatusCandidatureNonRetenue(candidatureSB, request);
+                            redirigerListeCandidatures(request, response);
                             break;
                         case ACTION_DECONNEXION:
                             request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
@@ -131,5 +124,15 @@ public class ControleurRecruteur extends HttpServlet {
                 }
             }
         }
+    }
+
+    public void redirigerListeCandidatures(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        DataService.serviceGetListeCandidatureDunPoste(posteSB, request);
+        if (request.getSession().getAttribute("messageErreur") != "")
+            // Redirection vers la page courante pour afficher l'erreur
+            request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_POSTE).forward(request, response);
+        else
+            // Redirection vers la page correspondante
+            request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_CANDIDATURE).forward(request, response);
     }
 }

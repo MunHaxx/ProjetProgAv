@@ -71,7 +71,7 @@ public class ControleurEnseignant extends HttpServlet {
                 request.getSession().setAttribute("messageErreur", "Impossible de trouver l'utilisateur de cet enseignant");
                 request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
             } else {
-                EnseignantEntity enseignantActuel = enseignantSB.getEnseignantParId(unUtilisateur.getIdRole());
+                EnseignantEntity enseignantActuel = enseignantSB.getEnseignantParId(unUtilisateur.getIdRole()).get(0);
                 if (!"enseignant".equals(unUtilisateur.getRole()) || enseignantActuel == null) {
                     request.getSession().setAttribute("messageErreur", "Cet utilisateur n'est pas un enseignant");
                     request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);

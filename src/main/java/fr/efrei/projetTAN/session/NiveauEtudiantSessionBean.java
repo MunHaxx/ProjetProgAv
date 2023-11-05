@@ -18,14 +18,14 @@ public class NiveauEtudiantSessionBean {
     // Permet d'obtenir la liste de tous les niveaux étudiants
     public List<NiveauEtudiantEntity> getTousNiveauxEtudiants(){
         requete = entityManager.createNamedQuery("recupTousLesNiveauxEtudiants");
-        return  requete.getResultList();
+        return requete.getResultList();
     }
 
     // Permet d'obtenir un niveau étudiant à partir de son ID
-    public NiveauEtudiantEntity getNiveauEtudiantParId(int id) {
+    public List<NiveauEtudiantEntity> getNiveauEtudiantParId(int id) {
         requete = entityManager.createNamedQuery("recupNiveauEtudiantId" );
         requete.setParameter("id", id);
-        return (NiveauEtudiantEntity) requete.getSingleResult();
+        return requete.getResultList();
     }
 
     // Permet de créer un nouveau niveau étudiant

@@ -18,10 +18,10 @@ public class RecruteurSessionBean {
     }
 
     // Permet d'obtenir un recruteur à partir de son ID
-    public RecruteurEntity getRecruteurParId(int id) {
+    public List<RecruteurEntity> getRecruteurParId(int id) {
         requete = entityManager.createNamedQuery("recupRecruteurId" );
         requete.setParameter("id", id);
-        return (RecruteurEntity) requete.getSingleResult();
+        return requete.getResultList();
     }
 
     // Permet de créer un nouveau recruteur

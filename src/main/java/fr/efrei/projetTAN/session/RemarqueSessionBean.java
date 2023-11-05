@@ -20,10 +20,10 @@ public class RemarqueSessionBean {
     }
 
     // Permet d'obtenir une remarque à partir de son ID
-    public RemarqueEntity getRemarqueParId(int id) {
+    public List<RemarqueEntity> getRemarqueParId(int id) {
         requete = entityManager.createNamedQuery("recupRemarqueId" );
         requete.setParameter("id", id);
-        return (RemarqueEntity) requete.getSingleResult();
+        return requete.getResultList();
     }
 
     // Permet de créer un nouveau

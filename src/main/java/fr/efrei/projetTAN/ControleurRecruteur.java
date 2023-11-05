@@ -72,7 +72,7 @@ public class ControleurRecruteur extends HttpServlet {
                 request.getSession().setAttribute("messageErreur", "Impossible de trouver l'utilisateur de ce recruteur");
                 request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
             } else {
-                RecruteurEntity recruteurActuel = recruteurSB.getRecruteurParId(unUtilisateur.getIdRole());
+                RecruteurEntity recruteurActuel = recruteurSB.getRecruteurParId(unUtilisateur.getIdRole()).get(0);
                 if (!"recruteur".equals(unUtilisateur.getRole()) || recruteurActuel == null) {
                     request.getSession().setAttribute("messageErreur", "Cet utilisateur n'est pas un recruteur");
                     request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);

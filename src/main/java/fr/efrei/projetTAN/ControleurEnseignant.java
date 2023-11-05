@@ -16,6 +16,7 @@ import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
 
 public class ControleurEnseignant extends HttpServlet {
+    private Utilisateur unUtilisateur;
     
     private String actionUtilisateur;
     @EJB
@@ -65,27 +66,45 @@ public class ControleurEnseignant extends HttpServlet {
             request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
         } 
         else {
-            switch (actionUtilisateur) {
-                case ACTION_ENSEIGNANT_VOIR_LISTE_POSTE:
+            // Récupère et envoi les informations du recruteur connecté
+            unUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");
+            if (unUtilisateur == null) {
+                request.getSession().setAttribute("messageErreur", "Impossible de trouver l'utilisateur de cet enseignant");
+                request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
+            } else {
+                EnseignantEntity enseignantActuel = enseignantSB.getEnseignantParId(unUtilisateur.getIdRole());
+                if (!"enseignant".equals(unUtilisateur.getRole()) || enseignantActuel == null) {
+                    request.getSession().setAttribute("messageErreur", "Cet utilisateur n'est pas un enseignant");
+                    request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
+                } else {
+                    request.setAttribute("lEnseignant", enseignantActuel);
+                    // Remise à zéro des messages
                     request.getSession().setAttribute("messageInfo", "");
                     request.getSession().setAttribute("messageErreur", "");
-                    request.getRequestDispatcher(PAGE_ENSEIGNANT_LISTE_POSTE).forward(request, response);
-                    break;
-                case ACTION_ENSEIGNANT_VOIR_LISTE_CANDIDATURE:
-                    request.getRequestDispatcher(PAGE_ENSEIGNANT_LISTE_CANDIDATURE).forward(request, response);
-                    break;
-                case ACTION_ENSEIGNANT_VOIR_MODIFIER_PROFIL:
-                    request.getRequestDispatcher(PAGE_ENSEIGNANT_MODIFIER_PROFIL).forward(request, response);
-                    break;
-                case ACTION_ENSEIGNANT_POSTULER:
-                    request.getRequestDispatcher(PAGE_ENSEIGNANT_LISTE_POSTE).forward(request, response);
-                    break;
-                case ACTION_ENSEIGNANT_SAUVE_MODIFICATION_PROFIL:
-                    request.getRequestDispatcher(PAGE_ENSEIGNANT_MODIFIER_PROFIL).forward(request, response);
-                    break;
-                case ACTION_DECONNEXION:
-                    request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
-                    break;
+                    
+                    switch (actionUtilisateur) {
+                        case ACTION_ENSEIGNANT_VOIR_LISTE_POSTE:
+                            request.setAttribute("tousLesPostes", posteSB.getTousLesPostes());
+                            request.getRequestDispatcher(PAGE_ENSEIGNANT_LISTE_POSTE).forward(request, response);
+                            break;
+                        case ACTION_ENSEIGNANT_VOIR_LISTE_CANDIDATURE:
+                            request.getRequestDispatcher(PAGE_ENSEIGNANT_LISTE_CANDIDATURE).forward(request, response);
+                            break;
+                        case ACTION_ENSEIGNANT_VOIR_MODIFIER_PROFIL:
+                            
+                            request.getRequestDispatcher(PAGE_ENSEIGNANT_MODIFIER_PROFIL).forward(request, response);
+                            break;
+                        case ACTION_ENSEIGNANT_POSTULER:
+                            request.getRequestDispatcher(PAGE_ENSEIGNANT_LISTE_POSTE).forward(request, response);
+                            break;
+                        case ACTION_ENSEIGNANT_SAUVE_MODIFICATION_PROFIL:
+                            request.getRequestDispatcher(PAGE_ENSEIGNANT_MODIFIER_PROFIL).forward(request, response);
+                            break;
+                        case ACTION_DECONNEXION:
+                            request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
+                            break;
+                    }
+                }
             }
         }
     }

@@ -12,13 +12,13 @@ public class ExperienceSessionBean {
     private final EntityManager entityManager = entityManagerFactory.createEntityManager();
     private Query requete;
 
-    // Permet d'obtenir la liste de toutes les compétences
+    // Permet d'obtenir la liste de toutes les expériences
     public List<ExperienceEntity> getToutesLesExperiences(){
         requete = entityManager.createNamedQuery("recupToutesLesXp");
         return  requete.getResultList();
     }
 
-    // Permet d'obtenir une compétence à partir de son ID
+    // Permet d'obtenir une expérience à partir de son ID
     public ExperienceEntity getExperienceParId(int id) {
         requete = entityManager.createNamedQuery("recupXpId" );
         requete.setParameter("id", id);

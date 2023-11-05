@@ -7,8 +7,7 @@ import java.util.Objects;
 import static fr.efrei.projetTAN.utils.Entity.ActiviteConst.*;
 
 @Entity
-@Table(name = "Activite", schema = "prj_progav")
-
+@Table(name = "activite", schema = "prj_progav")
 @NamedQueries(
         {
                 @NamedQuery(name = "recupToutesLesActivites", query = SELECT_TOUTES_LES_ACTIVITES)
@@ -37,11 +36,11 @@ public class ActiviteEntity {
         this.idActivite = idActivite;
     }
 
-    public String getActivite() {
+    public String getNomActivite() {
         return nomActivite;
     }
 
-    public void setActivite(String nomActivite) {
+    public void setNomActivite(String nomActivite) {
         this.nomActivite = nomActivite;
     }
 
@@ -58,7 +57,7 @@ public class ActiviteEntity {
         if (this == o) return true;
         if (!(o instanceof ActiviteEntity)) return false;
         ActiviteEntity that = (ActiviteEntity) o;
-        return getIdActivite() == that.getIdActivite() && Objects.equals(getActivite(), that.getActivite()) && Objects.equals(getListeEnseignants(), that.getListeEnseignants());
+        return getIdActivite() == that.getIdActivite() && Objects.equals(getNomActivite(), that.getNomActivite()) && Objects.equals(getListeEnseignants(), that.getListeEnseignants());
     }
 
     /*@Override

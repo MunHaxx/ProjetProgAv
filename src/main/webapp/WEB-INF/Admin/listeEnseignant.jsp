@@ -48,16 +48,16 @@
                         <div class="title-enseignant">Enseignant n°N</div>
             
                         <div class="container-line">
-                            <div class="info">Nom</div>
-                            <div class="info">Prenom</div>
-                            <div class="info">Recommandé par</div>
+                            <div class="info">${enseignant.nom}</div>
+                            <div class="info">${enseignant.prenom}</div>
+                            <div class="info">${enseignant.recoParEcole.raisonSociale}${enseignant.recoParRecruteur.nom} ${enseignant.recoParRecruteur.prenom}</div>
                         </div>
 
                         <div class="container-line">
-                            <div class="info">Mail.mon.test@gmail.com</div>
-                            <div class="info">0102030405</div>
-                            <div class="info">truc-de-test.com</div>
-                            <div class="info">L3 / M1 / M2</div>
+                            <div class="info">${enseignant.mail}</div>
+                            <div class="info">${enseignant.telephone}</div>
+                            <div class="info">${enseignant.site}</div>
+                            <div class="info">${enseignant.prefereNivEtudiant.niveau}</div>
                         </div>
                     </form>
                 </c:forEach>

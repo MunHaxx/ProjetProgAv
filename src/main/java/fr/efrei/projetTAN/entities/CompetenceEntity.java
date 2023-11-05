@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static fr.efrei.projetTAN.utils.Entity.CompetenceConst.*;
+import static fr.efrei.projetTAN.utils.Entity.EntityConst.*;
 
 @Entity
 @Table(name = "competence", schema = "prj_progav")

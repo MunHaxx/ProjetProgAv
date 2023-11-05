@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static fr.efrei.projetTAN.utils.Entity.PosteConst.*;
+import static fr.efrei.projetTAN.utils.Entity.EntityConst.*;
 import static fr.efrei.projetTAN.utils.GlobalConst.*;
 
 @Entity

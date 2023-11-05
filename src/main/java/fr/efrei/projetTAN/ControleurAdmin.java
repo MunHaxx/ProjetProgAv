@@ -73,6 +73,7 @@ public class ControleurAdmin extends HttpServlet {
            
             switch (actionUtilisateur) {
                 case ACTION_ADMIN_VOIR_LISTE_POSTE:
+                    request.setAttribute("tousLesPostes", posteSB.getTousLesPostes());
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_POSTE).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_LISTE_RECRUTEUR:
@@ -102,6 +103,9 @@ public class ControleurAdmin extends HttpServlet {
                     request.getRequestDispatcher(PAGE_ADMIN_CREER_ENSEIGNANT).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_LISTE_CANDIDATURE:
+                    // int dataId = Integer.parseInt(request.getParameter("data-id"));
+                    // request.setAttribute("toutesLesCandidatures", posteSB.getPosteParId(dataId).getListeCandid());
+                    redirigerListeCandidatures(request, response);
                     request.getRequestDispatcher(PAGE_ADMIN_VOIR_CANDIDATURE).forward(request, response);
                     break;
                 case ACTION_ADMIN_SAUVE_RECRUTEUR:
@@ -119,6 +123,15 @@ public class ControleurAdmin extends HttpServlet {
                     break;
             }
         }
+    }
+    public void redirigerListeCandidatures(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        DataService.serviceGetListeCandidatureDunPoste(posteSB, request);
+        if (request.getSession().getAttribute("messageErreur") != "")
+            // Redirection vers la page courante pour afficher l'erreur
+            request.getRequestDispatcher(PAGE_ADMIN_LISTE_POSTE).forward(request, response);
+        else
+            // Redirection vers la page correspondante
+            request.getRequestDispatcher(PAGE_ADMIN_VOIR_CANDIDATURE).forward(request, response);
     }
 }
 

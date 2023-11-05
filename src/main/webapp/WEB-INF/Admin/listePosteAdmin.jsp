@@ -44,7 +44,7 @@
                         <div class="container-infos">
                             <div class="container-info">
                                 <img class="icon-recruteur" src="/ProjetTAN/resources/icons/school.png" />
-                                <div class="info">${poste.ecole}</div>
+                                <div class="info">${poste.ecole.raisonSociale}</div>
                             </div>
                             <div class="container-info">
                                 <img class="icon-recruteur" src="/ProjetTAN/resources/icons/contract.png" />

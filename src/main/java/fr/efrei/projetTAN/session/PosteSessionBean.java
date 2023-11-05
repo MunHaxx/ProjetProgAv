@@ -32,4 +32,11 @@ public class PosteSessionBean {
         entityManager.getTransaction().commit();
     }
 
+    // Permet de modifier un nouveau poste
+    public void modifierPoste(PosteEntity posteAModifier) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(posteAModifier);
+        entityManager.getTransaction().commit();
+    }
+
 }

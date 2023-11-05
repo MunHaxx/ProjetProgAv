@@ -83,9 +83,6 @@ public class ControleurRecruteur extends HttpServlet {
                     request.getSession().setAttribute("messageErreur", "");
                     switch (actionUtilisateur) {
                         case ACTION_RECRUTEUR_VOIR_LISTE_POSTE:
-                            // Récupère et envoi la liste des recruteurs
-                            List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
-                            request.setAttribute("tousLesRecruteurs", listeRecruteurs);
                             // Redirection vers la page correspondante
                             request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_POSTE).forward(request, response);
                             break;
@@ -102,8 +99,13 @@ public class ControleurRecruteur extends HttpServlet {
                             redirigerListeCandidatures(request, response);
                             break;
                         case ACTION_RECRUTEUR_SAUVE_CREATION_POSTE:
-                            DataService.serviceCreerPoste(posteSB, ecoleSB, competenceSB, contrainteSB, remarqueSB, nivEtudSB, request);
-                            request.getRequestDispatcher(PAGE_RECRUTEUR_CREER_POSTE).forward(request, response);
+                            DataService.serviceCreerPoste(posteSB, ecoleSB, competenceSB, contrainteSB, remarqueSB, nivEtudSB, recruteurSB, request);
+                            request.setAttribute("leRecruteur", recruteurActuel);
+                            // Redirection vers la page correspondante
+                            if (request.getSession().getAttribute("messageErreur") == "")
+                                request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_POSTE).forward(request, response);
+                            else
+                                request.getRequestDispatcher(PAGE_RECRUTEUR_CREER_POSTE).forward(request, response);
                             break;
                         case ACTION_RECRUTEUR_SAUVE_MODIFICATION_PROFIL:
                             DataService.serviceModifierCreerRecruteur(recruteurSB, request);

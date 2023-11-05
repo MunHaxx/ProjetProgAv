@@ -92,7 +92,7 @@ public class ControleurAdmin extends HttpServlet {
                 case ACTION_ADMIN_VOIR_CREER_ENSEIGNANT:
                     if(request.getParameter("data-id") != null) {
                         int dataId = Integer.parseInt(request.getParameter("data-id"));
-                        request.setAttribute("lEnseignant", enseignantSB.getEnseignantParId(dataId)).get(0);
+                        request.setAttribute("lEnseignant", enseignantSB.getEnseignantParId(dataId).get(0));
                     } else {
                         request.setAttribute("lEnseignant", null);
                     }

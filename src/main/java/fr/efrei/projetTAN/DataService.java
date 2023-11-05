@@ -7,6 +7,7 @@ import jakarta.servlet.http.*;
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -147,7 +148,7 @@ public class DataService {
     public static void serviceCreerPoste(PosteSessionBean posteSB, EcoleSessionBean ecoleSB,
                                          CompetenceSessionBean competenceSB, ContrainteSessionBean contrainteSB,
                                          RemarqueSessionBean remarqueSB, NiveauEtudiantSessionBean nivEtudiantSB,
-                                         HttpServletRequest request) {
+                                         RecruteurSessionBean recruteurSB, HttpServletRequest request) {
         // Déclaration de variable pour le message à afficher
         String msgErreur = "";
         String msgInfo = "";
@@ -190,6 +191,7 @@ public class DataService {
             EcoleEntity ecole  = serviceRecupCreerEcole(ecoleSB, strEcole);
 
             PosteEntity nouveauPoste = new PosteEntity(nomPoste, ecole, contrat, periode, nivEtudiant, recruteurConnecte);
+            posteSB.ajouterPoste(nouveauPoste);
 
             // Remplissage des listes du poste
             ArrayList<String> listeStr = new ArrayList<>();
@@ -212,7 +214,9 @@ public class DataService {
             // Ajout des compétences, contraintes et remarques
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            posteSB.ajouterPoste(nouveauPoste);
+            posteSB.modifierPoste(nouveauPoste);
+            recruteurConnecte.getEstRespoListePostes().add(nouveauPoste);
+            recruteurSB.modifierRecruteur(recruteurConnecte);
             msgInfo = "Création du poste effectuée";
         }
         // Envoi des messages d'information

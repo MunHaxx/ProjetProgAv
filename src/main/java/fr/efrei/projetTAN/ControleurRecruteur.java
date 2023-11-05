@@ -112,6 +112,7 @@ public class ControleurRecruteur extends HttpServlet {
                         case ACTION_RECRUTEUR_ACCEPTER_CANDIDATURE:
                             DataService.serviceModifStatusCandidatureRetenue(candidatureSB, request);
                             redirigerListeCandidatures(request, response);
+                            break;
                         case ACTION_RECRUTEUR_REJETER_CANDIDATURE:
                             DataService.serviceModifStatusCandidatureNonRetenue(candidatureSB, request);
                             redirigerListeCandidatures(request, response);

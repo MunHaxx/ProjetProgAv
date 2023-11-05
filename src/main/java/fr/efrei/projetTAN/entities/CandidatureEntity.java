@@ -34,9 +34,7 @@ public class CandidatureEntity {
     @Column(name = "Decision", nullable = true, length = 50)
     private String decision;
 
-    public CandidatureEntity() {
-
-    }
+    public CandidatureEntity() { }
 
     public int getIdCandidature() {
         return idCandidature;
@@ -44,19 +42,6 @@ public class CandidatureEntity {
 
     public void setIdCandidature(int idCandidature) {
         this.idCandidature = idCandidature;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof CandidatureEntity)) return false;
-        CandidatureEntity that = (CandidatureEntity) o;
-        return getIdCandidature() == that.getIdCandidature() && Objects.equals(getPoste(), that.getPoste()) && Objects.equals(getEnseignant(), that.getEnseignant()) && Objects.equals(getDateCandid(), that.getDateCandid()) && Objects.equals(getDecision(), that.getDecision());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getIdCandidature(), getPoste(), getEnseignant(), getDateCandid(), getDecision());
     }
 
     public PosteEntity getPoste() {
@@ -91,11 +76,17 @@ public class CandidatureEntity {
         this.decision = decision;
     }
 
-    public CandidatureEntity(int idCandidature, PosteEntity poste, EnseignantEntity enseignant, Date dateCandid, String decision) {
-        this.idCandidature = idCandidature;
-        this.poste = poste;
-        this.enseignant = enseignant;
-        this.dateCandid = dateCandid;
-        this.decision = decision;
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof CandidatureEntity)) return false;
+        CandidatureEntity that = (CandidatureEntity) o;
+        return getIdCandidature() == that.getIdCandidature() && Objects.equals(getPoste(), that.getPoste()) && Objects.equals(getEnseignant(), that.getEnseignant()) && Objects.equals(getDateCandid(), that.getDateCandid()) && Objects.equals(getDecision(), that.getDecision());
     }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getIdCandidature(), getPoste(), getEnseignant(), getDateCandid(), getDecision());
+    }
+
 }

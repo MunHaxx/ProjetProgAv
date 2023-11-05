@@ -5,6 +5,8 @@ import jakarta.servlet.http.*;
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
 
+import java.util.Objects;
+
 import static fr.efrei.projetTAN.utils.User.UserRecruteurConst.*;
 import static fr.efrei.projetTAN.utils.User.UserAdminConst.*;
 import static fr.efrei.projetTAN.utils.User.UserEnseignantConst.*;
@@ -81,7 +83,7 @@ public class DataService {
     }
 
     // Permet de modifier le status d'une candidature en retenue (acceptée)
-    // Associé au bouton accetper sur la page liste des candidatures de l'utilisateur recruteur
+    // Associé au bouton accepter sur la page liste des candidatures de l'utilisateur recruteur
     public static void serviceModifStatusCandidatureRetenue(CandidatureSessionBean candidSB, HttpServletRequest request) {
         // Déclaration de variable pour le message à afficher
         String msgErreur = "";
@@ -90,11 +92,15 @@ public class DataService {
         if (request.getParameter("data-id") == null)
             msgErreur = "Erreur : récupération de l'ID impossible, on ne peut pas modifier cette candidature";
         else {
+            // Récupération de l'entité
             int idCandid = Integer.parseInt(request.getParameter("data-id"));
             CandidatureEntity candidSelect = candidSB.getCandidatureParId(idCandid);
             if (candidSelect == null)
                 msgErreur = "Erreur : récupération de la candidature impossible";
+            else if(Objects.equals(candidSelect.getDecision(), "Retenue"))
+                msgInfo = "Cette candidature est déjà retenue";
             else {
+                // Modification de l'entité
                 candidSelect.setDecision("Retenue");
                 candidSB.modifierCandidature(candidSelect);
                 msgInfo = "Candidature retenue";
@@ -105,7 +111,7 @@ public class DataService {
     }
 
     // Permet de modifier le status d'une candidature en non retenue (refusée)
-    // Associé au bouton accetper sur la page liste des candidatures de l'utilisateur recruteur
+    // Associé au bouton refuser sur la page liste des candidatures de l'utilisateur recruteur
     public static void serviceModifStatusCandidatureNonRetenue(CandidatureSessionBean candidSB, HttpServletRequest request) {
         // Déclaration de variable pour le message à afficher
         String msgErreur = "";
@@ -114,11 +120,15 @@ public class DataService {
         if (request.getParameter("data-id") == null)
             msgErreur = "Erreur : récupération de l'ID impossible, on ne peut pas modifier cette candidature";
         else {
+            // Récupération de l'entité
             int idCandid = Integer.parseInt(request.getParameter("data-id"));
             CandidatureEntity candidSelect = candidSB.getCandidatureParId(idCandid);
             if (candidSelect == null)
                 msgErreur = "Erreur : récupération de la candidature impossible";
+            else if(Objects.equals(candidSelect.getDecision(), "Non retenue"))
+                msgInfo = "Cette candidature est déjà non retenue";
             else {
+                // Modification de l'entité
                 candidSelect.setDecision("Non retenue");
                 candidSB.modifierCandidature(candidSelect);
                 msgInfo = "Candidature non retenue";
@@ -127,7 +137,6 @@ public class DataService {
         request.getSession().setAttribute("messageErreur", msgErreur);
         request.getSession().setAttribute("messageInfo", msgInfo);
     }
-
 
     // Permet de créer une école
     // Utilisé lors de la création de poste

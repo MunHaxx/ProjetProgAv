@@ -28,6 +28,8 @@ public class ControleurEnseignant extends HttpServlet {
     @EJB
     private ContrainteSessionBean contrainteSB;
     @EJB
+    private RemarqueSessionBean remarqueSB;
+    @EJB
     private EcoleSessionBean ecoleSB;
     @EJB
     private EnseignantSessionBean enseignantSB;
@@ -44,19 +46,16 @@ public class ControleurEnseignant extends HttpServlet {
     @EJB
     private RecruteurSessionBean recruteurSB;
 
-    public void init() {
-        
-    }
+    public void init() { }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        processRequest(request, response);
+        traiterRequete(request, response);
     }
-
     public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        processRequest(request, response);
+        traiterRequete(request, response);
     }
 
-    public void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void traiterRequete(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         actionUtilisateur = request.getParameter("action");
         chargerLaPageSuivante(actionUtilisateur, request, response);
     }

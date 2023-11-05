@@ -21,7 +21,7 @@ import java.util.Objects;
 public class RecruteurEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @jakarta.persistence.Column(name = "ID_recruteur", nullable = false)
+    @Column(name = "ID_recruteur", nullable = false)
     private int idRecruteur;
 
     @Basic
@@ -44,8 +44,8 @@ public class RecruteurEntity {
     public RecruteurEntity(String nom, String prenom) {
         this.nom = nom;
         this.prenom = prenom;
-        this.estRespoListePostes = new ArrayList<PosteEntity>();
-        this.listeEnseignantReco = new ArrayList<EnseignantEntity>();
+        this.estRespoListePostes = new ArrayList<>();
+        this.listeEnseignantReco = new ArrayList<>();
     }
 
     public int getIdRecruteur() {

@@ -2,6 +2,7 @@ package fr.efrei.projetTAN.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 
@@ -32,6 +33,14 @@ public class NiveauEtudiantEntity {
     private List<EnseignantEntity> EnseignantsPreferentNivEtud;
     @OneToMany(mappedBy = "pourNivEtudiant")
     private List<PosteEntity> PostesPourNivEtud;
+
+    public NiveauEtudiantEntity() {}
+    public NiveauEtudiantEntity(EnumNivEtudiant niveau) {
+        System.out.println("\n\n\n Bonsoir " + niveau);
+        this.niveau = niveau;
+        this.EnseignantsPreferentNivEtud = new ArrayList<EnseignantEntity>();
+        this.PostesPourNivEtud = new ArrayList<PosteEntity>();
+    }
 
 
     public int getIdNivEtud() {

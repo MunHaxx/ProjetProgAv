@@ -14,6 +14,7 @@ import static fr.efrei.projetTAN.utils.Entity.EcoleConst.*;
         {
                 @NamedQuery(name = "recupToutesLesEcoles", query = SELECT_TOUTES_LES_ECOLES)
                 , @NamedQuery(name = "recupEcoleId", query = SELECT_ECOLE_PAR_ID)
+                , @NamedQuery(name = "recupEcoleNom", query = SELECT_ECOLE_PAR_RAISON_SOCIALE)
         }
 )
 public class EcoleEntity {

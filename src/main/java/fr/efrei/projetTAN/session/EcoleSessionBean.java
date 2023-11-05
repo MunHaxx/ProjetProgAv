@@ -11,20 +11,20 @@ public class EcoleSessionBean {
     private final EntityManager entityManager = entityManagerFactory.createEntityManager();
     private Query requete;
 
-    // Permet d'obtenir la liste de toutes les études
+    // Permet d'obtenir la liste de toutes les écoles
     public List<EcoleEntity> getToutesEtudes(){
         requete = entityManager.createNamedQuery("recupToutesLesEcoles");
         return  requete.getResultList();
     }
 
-    // Permet d'obtenir une étude à partir de son ID
+    // Permet d'obtenir une école à partir de son ID
     public EcoleEntity getEtudeParId(int id) {
         requete = entityManager.createNamedQuery("recupEcoleId" );
         requete.setParameter("id", id);
         return (EcoleEntity) requete.getSingleResult();
     }
 
-    // Permet de créer une nouvelle etude
+    // Permet de créer une nouvelle école
     public void ajouterEcole(EcoleEntity ecoleACreer) {
         entityManager.getTransaction().begin();
         entityManager.persist(ecoleACreer);

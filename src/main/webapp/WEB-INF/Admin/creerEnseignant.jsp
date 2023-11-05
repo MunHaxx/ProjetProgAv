@@ -33,33 +33,33 @@
             </form> 
             
             <form class="container-modif-employe" method="post" action="ControleurAdmin">
-                <input type="hidden" name="data-id" value="${enseignant.idEnseignant}">
+                <input type="hidden" name="data-id" value="${lEnseignant.idEnseignant}">
                 
                 <div class="modif-employe">
                     <div class="title-page">Mon profil</div>
 
                     <div class="container-info">
                         <div class="title-info-case">Nom</div>
-                        <input class="info-case" placeholder="Nom" name="champNom" autofocus="" />
+                        <input class="info-case" placeholder="Nom" name="champNom" autofocus="" value="${lEnseignant.nom}"/>
 
                         <div class="title-info-case droite">Site</div>
-                        <input class="info-case" placeholder="Site" name="champSite" />
+                        <input class="info-case" placeholder="Site" name="champSite" value="${lEnseignant.siteWeb}"/>
                     </div>
 
                     <div class="container-info">
                         <div class="title-info-case">Prénom</div>
-                        <input class="info-case" placeholder="Prénom" name="champPrenom" />
+                        <input class="info-case" placeholder="Prénom" name="champPrenom" value="${lEnseignant.prenom}"/>
 
                         <div class="title-info-case droite">Mail</div>
-                        <input class="info-case" placeholder="Mail" name="champMail" />
+                        <input class="info-case" placeholder="Mail" name="champMail" value="${lEnseignant.mail}"/>
                     </div>
 
                     <div class="container-info">
                         <div class="title-info-case">Soutenu par</div>
-                        <input class="info-case" placeholder="Soutenu par" name="champSoutient" />
+                        <input class="info-case" placeholder="Soutenu par" name="champSoutient" value="${lEnseignant.recoParEcole}${lEnseignant.recoParRecruteur}"/>
                         
                         <div class="title-info-case droite">Téléphone</div>
-                        <input class="info-case" placeholder="Téléphone" name="champTelephone" />
+                        <input class="info-case" placeholder="Téléphone" name="champTelephone" value="${lEnseignant.telephone}"/>
                     </div>
           
                     <!-- Intérêts -->
@@ -69,17 +69,17 @@
                         <div class="container-champs">
                             <div class="container-champ">
                                 <div class="point-champ">-</div>
-                                <input class="input-champ" placeholder="Intérêt 1" name="champInteret1" />
+                                <input class="input-champ" placeholder="Intérêt 1" name="champInteret1"  value="${lEnseignant.listeInterets[0]}"/>
                             </div>
 
                             <div class="container-champ">
                                 <div class="point-champ">-</div>
-                                <input class="input-champ" placeholder="Intérêt 2" name="champInteret2" />
+                                <input class="input-champ" placeholder="Intérêt 2" name="champInteret2" value="${lEnseignant.listeInterets[1]}"/>
                             </div>
 
                             <div class="container-champ">
                                 <div class="point-champ">-</div>
-                                <input class="input-champ" placeholder="Intérêt 3" name="champInteret3" />
+                                <input class="input-champ" placeholder="Intérêt 3" name="champInteret3" value="${lEnseignant.listeInterets[2]}"/>
                             </div>
                         </div>
                     </div>
@@ -334,7 +334,7 @@
                                             <option value="expert">Expert</option>
                                         </select>
                                     </div>
-
+                                    
                                     <div class="container-champ container-competence">
                                       <div class="point-champ">-</div>
                   

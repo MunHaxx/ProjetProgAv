@@ -33,7 +33,7 @@
             </form> 
             
             <form class="container-modif-recruteur" method="post" action="ControleurAdmin">
-                <input type="hidden" name="data-id" value="${recruteur.idRecruteur}">
+                <input type="hidden" name="data-id" value="${leRecruteur.idRecruteur}">
 
                 <div class="modif-recruteur">
                     <div class="title-page">Profil recruteur</div>
@@ -41,10 +41,10 @@
                     <div>
                         <div class="container-info">
                             <div class="title-info-case">Nom</div>
-                            <input class="info-case" placeholder="Nom" name="champModifNomRecruteur" value=""/>
+                            <input class="info-case" placeholder="Nom" name="champModifNomRecruteur" value="${leRecruteur.nom}"/>
 
                             <div class="title-info-case droite">Prénom</div>
-                            <input class="info-case" placeholder="Prénom" name="champModifPrenomRecruteur" value=""/>
+                            <input class="info-case" placeholder="Prénom" name="champModifPrenomRecruteur" value="${leRecruteur.prenom}"/>
                         </div>
                 
                         <div class="container-button">

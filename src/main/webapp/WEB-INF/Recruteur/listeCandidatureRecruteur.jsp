@@ -62,9 +62,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="agrandir" onclick="changeClass(this)">Agrandir</div>
+                            <div class="agrandir details-hide" onclick="changeClass(this)">Agrandir</div>
                             
-                            <div class="container-listes">
+                            <div class="container-listes hide">
                                 <div class="container-liste">
                                     <div class="title-liste">Activités</div>
                 

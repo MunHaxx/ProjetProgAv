@@ -13,7 +13,7 @@
             <div class="hello">Bonjour Enseignant !</div>
         </div>
     
-        <form class="content" method="post" action="ControleurEnseignant">
+        <div class="content">
             <div className="message erreur">
                 ${messageErreur}
             </div> 
@@ -22,40 +22,42 @@
                 ${messageInfo}
             </div> 
 
-            <div class="Menu">
+            <form class="Menu" method="post" action="ControleurEnseignant">
                 <button type="submit" name="action" value="VoirListePoste" class="element">Liste postes</button>
                 <button type="submit" name="action" value="VoirListeCandidature" class="element">Liste candidatures</button>
                 <button type="submit" name="action" value="VoirModifierProfil" class="element select">Modifier profil</button>
 
                 <button type="submit" name="action" value="Deconnexion" class="deconnexion">Déconnexion</button>
-            </div>
+            </form>
 
-            <div class="container-modif-employe">
+            <form class="container-modif-employe" method="post" action="ControleurEnseignant">
+                <input type="hidden" name="data-id" value="${lEnseignant.idEnseignant}">
+                
                 <div class="modif-employe">
                     <div class="title-page">Mon profil</div>
 
                     <div class="container-info">
                         <div class="title-info-case">Nom</div>
-                        <input class="info-case" placeholder="Nom" name="champNom" autofocus="" />
+                        <input class="info-case" placeholder="Nom" name="champNom" autofocus="" value="${lEnseignant.nom}"/>
 
                         <div class="title-info-case droite">Site</div>
-                        <input class="info-case" placeholder="Site" name="champSite" />
+                        <input class="info-case" placeholder="Site" name="champSite" value="${lEnseignant.siteWeb}"/>
                     </div>
 
                     <div class="container-info">
                         <div class="title-info-case">Prénom</div>
-                        <input class="info-case" placeholder="Prénom" name="champPrenom" />
+                        <input class="info-case" placeholder="Prénom" name="champPrenom" value="${lEnseignant.prenom}"/>
 
                         <div class="title-info-case droite">Mail</div>
-                        <input class="info-case" placeholder="Mail" name="champMail" />
+                        <input class="info-case" placeholder="Mail" name="champMail" value="${lEnseignant.mail}"/>
                     </div>
 
                     <div class="container-info">
                         <div class="title-info-case">Soutenu par</div>
-                        <input class="info-case" placeholder="Soutenu par" name="champSoutient" />
+                        <input class="info-case" placeholder="Soutenu par" name="champSoutient" value="${lEnseignant.recoParEcole}${lEnseignant.recoParRecruteur}"/>
                         
                         <div class="title-info-case droite">Téléphone</div>
-                        <input class="info-case" placeholder="Téléphone" name="champTelephone" />
+                        <input class="info-case" placeholder="Téléphone" name="champTelephone" value="${lEnseignant.telephone}"/>
                     </div>
           
                     <!-- Intérêts -->
@@ -65,17 +67,17 @@
                         <div class="container-champs">
                             <div class="container-champ">
                                 <div class="point-champ">-</div>
-                                <input class="input-champ" placeholder="Intérêt 1" name="champInteret1" />
+                                <input class="input-champ" placeholder="Intérêt 1" name="champInteret1" value="${lEnseignant.listeInterets[0].nomInteret}"/>
                             </div>
 
                             <div class="container-champ">
                                 <div class="point-champ">-</div>
-                                <input class="input-champ" placeholder="Intérêt 2" name="champInteret2" />
+                                <input class="input-champ" placeholder="Intérêt 2" name="champInteret2" value="${lEnseignant.listeInterets[1].nomInteret}"/>
                             </div>
 
                             <div class="container-champ">
                                 <div class="point-champ">-</div>
-                                <input class="input-champ" placeholder="Intérêt 3" name="champInteret3" />
+                                <input class="input-champ" placeholder="Intérêt 3" name="champInteret3" value="${lEnseignant.listeInterets[2].nomInteret}"/>
                             </div>
                         </div>
                     </div>
@@ -87,17 +89,17 @@
                         <div class="container-champs">
                             <div class="container-champ">
                               <div class="point-champ">-</div>
-                              <input class="input-champ" placeholder="Activités 1" name="champActivite1" />
+                              <input class="input-champ" placeholder="Activités 1" name="champActivite1" value="${lEnseignant.listeActivites[0].nomActivite}"/>
                             </div>
 
                             <div class="container-champ">
                               <div class="point-champ">-</div>
-                              <input class="input-champ" placeholder="Activités 2" name="champActivite2" />
+                              <input class="input-champ" placeholder="Activités 2" name="champActivite2" value="${lEnseignant.listeActivites[1].nomActivite}"/>
                             </div>
 
                             <div class="container-champ">
                               <div class="point-champ">-</div>
-                              <input class="input-champ" placeholder="Activités 3" name="champActivite3" />
+                              <input class="input-champ" placeholder="Activités 3" name="champActivite3" value="${lEnseignant.listeActivites[2].nomActivite}"/>
                             </div>
                         </div>
                     </div>
@@ -111,30 +113,30 @@
                                 <div class="point-champ">-</div>
                 
                                 <div class="titre-champ titre">Titre</div>
-                                <input class="input-champ input-titre" placeholder="Titre etudes 1" name="champEtude1" />
+                                <input class="input-champ input-titre" placeholder="Titre etudes 1" name="champEtude1" value="${lEnseignant.listeEtudes[0].titre}"/>
                 
                                 <div class="titre-champ date">Date d'obtention</div>
-                                <input type="date" class="input-champ input-date" name="champDate1" />
+                                <input type="date" class="input-champ input-date" name="champDate1" value="${lEnseignant.listeEtudes[0].dateObtention}"/>
                             </div>
               
                             <div class="container-champ">
                                 <div class="point-champ">-</div>
                 
                                 <div class="titre-champ titre">Titre</div>
-                                <input class="input-champ input-titre" placeholder="Titre etudes 2" name="champEtude2" />
+                                <input class="input-champ input-titre" placeholder="Titre etudes 2" name="champEtude2" value="${lEnseignant.listeEtudes[1].titre}"/>
                 
                                 <div class="titre-champ date">Date d'obtention</div>
-                                <input type="date" class="input-champ input-date"name="champDate2" />
+                                <input type="date" class="input-champ input-date"name="champDate2" value="${lEnseignant.listeEtudes[1].dateObtention}"/>
                             </div>
                             
                             <div class="container-champ">
                                 <div class="point-champ">-</div>
                 
                                 <div class="titre-champ titre">Titre</div>
-                                <input class="input-champ" placeholder="Titre etudes 3" name="champEtude3" />
+                                <input class="input-champ" placeholder="Titre etudes 3" name="champEtude3" value="${lEnseignant.listeEtudes[2].titre}"/>
                 
                                 <div class="titre-champ date">Date d'obtention</div>
-                                <input type="date" class="input-champ input-date" name="champDate3" />
+                                <input type="date" class="input-champ input-date" name="champDate3" value="${lEnseignant.listeEtudes[2].dateObtention}"/>
                             </div>
                         </div>
                     </div>
@@ -151,13 +153,13 @@
                                     <div class="point-champ">-</div>
                   
                                     <div class="titre-champ">Ecole</div>
-                                    <input class="input-champ" placeholder="Ecole" name="champEcole1" />
+                                    <input class="input-champ" placeholder="Ecole" name="champEcole1" value="${lEnseignant.listeExperience[0].ecole}"/>
                   
                                     <div class="titre-champ duree">Duree</div>
-                                    <input class="input-champ" placeholder="Duree" name="champDuree1" />
+                                    <input class="input-champ" placeholder="Duree" name="champDuree1" value="${lEnseignant.listeExperience[0].duree}"/>
                   
                                     <div class="titre-champ evaluation">Evaluation</div>
-                                    <input class="input-champ" placeholder="Evaluation" name="champEvaluation1" />
+                                    <input class="input-champ" placeholder="Evaluation" name="champEvaluation1" value="${lEnseignant.listeExperience[0].evalEcole}"/>
                                 </div>
                 
                                 <div class="container-competences">
@@ -167,7 +169,7 @@
                                         <div class="point-champ">-</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
-                                        <input class="input-champ" placeholder="Intérêt" name="champCompetence1.1" />
+                                        <input class="input-champ" placeholder="Competence 1" name="champCompetence1.1" value="${lEnseignant.listeExperience[0].listeCompetences[0].nomCompetence}"/>
                     
                                         <div class="titre-champ titre-competence niveau">Niveau </div>
 
@@ -352,10 +354,10 @@
                     </div>
           
                     <div class="container-button">
-                        <button type="submit" name="action" value="SauveModifEnseignant" class="sauvegarder">Sauvegarder</button>
+                        <button type="submit" name="action" value="SauveEnseignant" class="sauvegarder">Sauvegarder</button>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </body>
 </html>

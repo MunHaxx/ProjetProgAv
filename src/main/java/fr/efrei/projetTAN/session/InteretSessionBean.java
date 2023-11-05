@@ -12,12 +12,13 @@ public class InteretSessionBean {
     private final EntityManager entityManager = entityManagerFactory.createEntityManager();
     private Query requete;
 
+    // Permet d'obtenir la liste de tous les intérêts
     public List<InteretEntity> getToutesActivites(){
         requete = entityManager.createNamedQuery("recupTousLesInterets");
         return  requete.getResultList();
     }
 
-    // Permet d'obtenir une candidature à partir de son ID
+    // Permet d'obtenir un intérêt à partir de son ID
     public InteretEntity getActiviteParId(int id) {
         requete = entityManager.createNamedQuery("recupInteretId" );
         requete.setParameter("id", id);

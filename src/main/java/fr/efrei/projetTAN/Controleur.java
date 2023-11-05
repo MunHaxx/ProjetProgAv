@@ -89,18 +89,15 @@ public class Controleur extends HttpServlet {
     
         if (unUtilisateur != null) {
             String role = unUtilisateur.getRole();
-    
+            request.getSession().setAttribute("messageInfo", "");
+            request.getSession().setAttribute("messageErreur", "");
+
             if ("admin".equals(role)) {
-                request.getSession().setAttribute("messageErreur", "");
-                request.getSession().setAttribute("messageInfo", "");
-                List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
                 request.getSession().setAttribute("utilisateur", unUtilisateur);
                 request.getSession().setAttribute("lAdmin", unUtilisateur);
-                request.setAttribute("tousLesRecruteurs", listeRecruteurs);
+                request.setAttribute("tousLesPostes", posteSB.getTousLesPostes());
                 request.getRequestDispatcher(PAGE_LOGIN_ADMIN).forward(request, response);
             } else if ("recruteur".equals(role)) {
-                request.getSession().setAttribute("messageInfo", "");
-                request.getSession().setAttribute("messageErreur", "");
                 List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
                 request.getSession().setAttribute("utilisateur", unUtilisateur);
                 RecruteurEntity recruteurActuel = recruteurSB.getRecruteurParId(unUtilisateur.getIdRole());
@@ -108,11 +105,10 @@ public class Controleur extends HttpServlet {
                 request.setAttribute("tousLesRecruteurs", listeRecruteurs);
                 request.getRequestDispatcher(PAGE_LOGIN_RECRUTEUR).forward(request, response);
             } else if ("enseignant".equals(role)) {
-                request.getSession().setAttribute("messageInfo", "");
-                request.getSession().setAttribute("messageErreur", "");
                 request.getSession().setAttribute("utilisateur", unUtilisateur);
                 EnseignantEntity enseignantActuel = enseignantSB.getEnseignantParId(unUtilisateur.getIdRole());
                 request.getSession().setAttribute("lEnseignant", enseignantActuel);
+                request.setAttribute("tousLesPostes", posteSB.getTousLesPostes());
                 request.getRequestDispatcher(PAGE_LOGIN_ENSEIGNANT).forward(request, response);
             } else {
                 request.getSession().setAttribute("messageErreur", "Rôle non valide");

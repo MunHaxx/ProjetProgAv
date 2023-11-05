@@ -17,7 +17,7 @@ import static fr.efrei.projetTAN.utils.User.UserEnseignantConst.*;
 public class DataService {
 
     private static boolean saisieCaractereValide(String saisie) {
-        return (!saisie.isEmpty()) && saisie.matches("^[a-zA-Z]+$");
+        return (!saisie.isEmpty()) && saisie.matches("^[a-zA-Z\\s]+$");
     }
 
     // Permet de modifier ou de créer un recruteur

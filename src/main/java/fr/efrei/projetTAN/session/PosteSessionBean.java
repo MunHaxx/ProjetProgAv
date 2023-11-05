@@ -12,13 +12,13 @@ public class PosteSessionBean {
     private final EntityManager entityManager = entityManagerFactory.createEntityManager();
     private Query requete;
 
-    // Permet d'obtenir la liste de toutes les candidatures
+    // Permet d'obtenir la liste de tous les postes
     public List<PosteEntity> getTousLesPostes(){
         requete = entityManager.createNamedQuery("recupTousLesPostes");
         return  requete.getResultList();
     }
 
-    // Permet d'obtenir une candidature à partir de son ID
+    // Permet d'obtenir une poste à partir de son ID
     public PosteEntity getPosteParId(int id) {
         requete = entityManager.createNamedQuery("recupPosteId" );
         requete.setParameter("id", id);

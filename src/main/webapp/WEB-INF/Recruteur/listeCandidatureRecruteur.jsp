@@ -41,6 +41,12 @@
                             <div class="container-infos-candidature">
                                 <button type="submit" name="action" value="AccepterCandidature" class="action-button accepter">Accepter</button>
                                 <button type="submit" name="action" value="RejeterCandidature" class="action-button rejeter">Rejeter</button>
+
+                                <div class="container-info Statut">
+                                    <img class="icon-status" src="/ProjetTAN/resources/icons/status.png" />
+                                    <div class="info">${candidature.decision}</div>
+                                </div>
+                                
                                 <div class="title-candidature">Candidature n°${candidature.idCandidature}</div>
 
                                 <div class="container-line">
@@ -62,9 +68,9 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="agrandir" onclick="changeClass(this)">Agrandir</div>
+                            <div class="agrandir details-hide" onclick="changeClass(this)">Agrandir</div>
                             
-                            <div class="container-listes">
+                            <div class="container-listes hide">
                                 <div class="container-liste">
                                     <div class="title-liste">Activités</div>
                 

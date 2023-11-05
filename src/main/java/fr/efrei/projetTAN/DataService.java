@@ -76,7 +76,7 @@ public class DataService {
             msgErreur = "Impossible d'afficher la liste des candidatures sur ce poste";
         else {
             int idPoste = Integer.parseInt(request.getParameter("data-id"));
-            PosteEntity posteSelect = posteSB.getPosteParId(idPoste);
+            PosteEntity posteSelect = posteSB.getPosteParId(idPoste).get(0);
             if (posteSelect == null)
                 msgErreur = "Impossible d'afficher la liste des candidatures sur ce poste";
             else
@@ -188,6 +188,7 @@ public class DataService {
             GlobalConst.EnumTypeContrat contrat = serviceCreerTypeContrat(strContrat);
             NiveauEtudiantEntity nivEtudiant = serviceCreerNivEtudiant(nivEtudiantSB, strNivEtudiant);
             EcoleEntity ecole  = serviceRecupCreerEcole(ecoleSB, strEcole);
+
             PosteEntity nouveauPoste = new PosteEntity(nomPoste, ecole, contrat, periode, nivEtudiant, recruteurConnecte);
 
             // Remplissage des listes du poste
@@ -198,8 +199,7 @@ public class DataService {
             listeStr.add(strCompt2);
             listeStr.add(strCompt3);
             ArrayList<CompetenceEntity> listeCompetences = serviceCreerListeCompetences(competenceSB, nouveauPoste, listeStr);
-            if (listeCompetences != null)
-                nouveauPoste.setListeCompetences(listeCompetences);
+            nouveauPoste.setListeCompetences(listeCompetences);
             listeStr.clear();
 
             // Contraintes
@@ -256,8 +256,6 @@ public class DataService {
 
     // Crée une liste de compétences à partir d'une liste de string
     public static ArrayList<CompetenceEntity> serviceCreerListeCompetences(CompetenceSessionBean competenceSB, PosteEntity poste, ArrayList<String> strListe) {
-        if (strListe == null)
-            return null;
         ArrayList<CompetenceEntity> listeCompt = new ArrayList<>();
         for (String compt:strListe) {
             if (compt != null && !compt.isEmpty()){

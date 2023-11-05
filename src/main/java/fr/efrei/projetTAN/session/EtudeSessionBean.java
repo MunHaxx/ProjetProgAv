@@ -18,10 +18,10 @@ public class EtudeSessionBean {
     }
 
     // Permet d'obtenir une étude à partir de son ID
-    public EtudeEntity getEtudeParId(int id) {
+    public List<EtudeEntity> getEtudeParId(int id) {
         requete = entityManager.createNamedQuery("recupEtudeId" );
         requete.setParameter("id", id);
-        return (EtudeEntity) requete.getSingleResult();
+        return requete.getResultList();
     }
 
     // Permet de créer une nouvelle étude

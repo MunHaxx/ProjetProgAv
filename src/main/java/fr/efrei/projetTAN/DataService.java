@@ -50,7 +50,7 @@ public class DataService {
         else {
             // Récupération de l'entité
             int idRecruteur = Integer.parseInt(request.getParameter("data-id"));
-            RecruteurEntity recruteurModifie = recruteurSB.getRecruteurParId(idRecruteur);
+            RecruteurEntity recruteurModifie = recruteurSB.getRecruteurParId(idRecruteur).get(0);
             if(idRecruteur <= 0 || recruteurModifie == null)
                 msgErreur = "Erreur : impossible de récupérer l'ID du recruteur à modifier";
             else{
@@ -76,7 +76,7 @@ public class DataService {
             msgErreur = "Impossible d'afficher la liste des candidatures sur ce poste";
         else {
             int idPoste = Integer.parseInt(request.getParameter("data-id"));
-            PosteEntity posteSelect = posteSB.getPosteParId(idPoste);
+            PosteEntity posteSelect = posteSB.getPosteParId(idPoste).get(0);
             if (posteSelect == null)
                 msgErreur = "Impossible d'afficher la liste des candidatures sur ce poste";
             else
@@ -98,7 +98,7 @@ public class DataService {
         else {
             // Récupération de l'entité
             int idCandid = Integer.parseInt(request.getParameter("data-id"));
-            CandidatureEntity candidSelect = candidSB.getCandidatureParId(idCandid);
+            CandidatureEntity candidSelect = candidSB.getCandidatureParId(idCandid).get(0);
             if (candidSelect == null)
                 msgErreur = "Erreur : récupération de la candidature impossible";
             else if(Objects.equals(candidSelect.getDecision(), "Retenue"))
@@ -127,7 +127,7 @@ public class DataService {
         else {
             // Récupération de l'entité
             int idCandid = Integer.parseInt(request.getParameter("data-id"));
-            CandidatureEntity candidSelect = candidSB.getCandidatureParId(idCandid);
+            CandidatureEntity candidSelect = candidSB.getCandidatureParId(idCandid).get(0);
             if (candidSelect == null)
                 msgErreur = "Erreur : récupération de la candidature impossible";
             else if(Objects.equals(candidSelect.getDecision(), "Non retenue"))

@@ -79,7 +79,7 @@ public class ControleurAdmin extends HttpServlet {
                 case ACTION_ADMIN_VOIR_CREER_RECRUTEUR:
                     if(request.getParameter("data-id").isEmpty()) {
                         int dataId = Integer.parseInt(request.getParameter("data-id"));
-                        request.setAttribute("leRecruteur", recruteurSB.getRecruteurParId(dataId));
+                        request.setAttribute("leRecruteur", recruteurSB.getRecruteurParId(dataId).get(0));
                     } else {
                         request.setAttribute("leRecruteur", null);
                     }
@@ -92,7 +92,7 @@ public class ControleurAdmin extends HttpServlet {
                 case ACTION_ADMIN_VOIR_CREER_ENSEIGNANT:
                     if(request.getParameter("data-id") != null) {
                         int dataId = Integer.parseInt(request.getParameter("data-id"));
-                        request.setAttribute("lEnseignant", enseignantSB.getEnseignantParId(dataId));
+                        request.setAttribute("lEnseignant", enseignantSB.getEnseignantParId(dataId)).get(0);
                     } else {
                         request.setAttribute("lEnseignant", null);
                     }

@@ -19,10 +19,10 @@ public class ContrainteSessionBean {
     }
 
     // Permet d'obtenir une contrainte à partir de son ID
-    public ContrainteEntity getContrainteParId(int id) {
+    public List<ContrainteEntity> getContrainteParId(int id) {
         requete = entityManager.createNamedQuery("recupContrainteId" );
         requete.setParameter("id", id);
-        return (ContrainteEntity) requete.getSingleResult();
+        return requete.getResultList();
     }
 
     // Permet de créer une nouvelle contrainte

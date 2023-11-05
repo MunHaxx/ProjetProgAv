@@ -19,10 +19,10 @@ public class PosteSessionBean {
     }
 
     // Permet d'obtenir une poste à partir de son ID
-    public PosteEntity getPosteParId(int id) {
+    public List<PosteEntity> getPosteParId(int id) {
         requete = entityManager.createNamedQuery("recupPosteId" );
         requete.setParameter("id", id);
-        return (PosteEntity) requete.getSingleResult();
+        return requete.getResultList();
     }
 
     // Permet de créer un nouveau poste

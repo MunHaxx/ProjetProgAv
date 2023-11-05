@@ -50,7 +50,7 @@
                         <div class="container-line">
                             <div class="info">${enseignant.nom}</div>
                             <div class="info">${enseignant.prenom}</div>
-                            <div class="info">${enseignant.recoParEcole}${enseignant.recoParRecruteur}</div>
+                            <div class="info">${enseignant.recoParEcole.raisonSociale}${enseignant.recoParRecruteur.nom} ${enseignant.recoParRecruteur.prenom}</div>
                         </div>
 
                         <div class="container-line">

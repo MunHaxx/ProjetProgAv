@@ -54,7 +54,7 @@
 
                     <div class="container-info">
                         <div class="title-info-case">Soutenu par</div>
-                        <input class="info-case" placeholder="Soutenu par" name="champSoutient" value="${lEnseignant.recoParEcole}${lEnseignant.recoParRecruteur}"/>
+                        <input class="info-case" placeholder="Soutenu par" name="champSoutient" value="${enseignant.recoParEcole.raisonSociale}${enseignant.recoParRecruteur.nom} ${enseignant.recoParRecruteur.prenom}"/>
                         
                         <div class="title-info-case droite">Téléphone</div>
                         <input class="info-case" placeholder="Téléphone" name="champTelephone" value="${lEnseignant.telephone}"/>
@@ -153,13 +153,13 @@
                                     <div class="point-champ">-</div>
                   
                                     <div class="titre-champ">Ecole</div>
-                                    <input class="input-champ" placeholder="Ecole" name="champEcole1" value="${lEnseignant.listeExperience[0].ecole}"/>
+                                    <input class="input-champ" placeholder="Ecole" name="champEcole1" value="${lEnseignant.listeExperiences[0].ecole}"/>
                   
                                     <div class="titre-champ duree">Duree</div>
-                                    <input class="input-champ" placeholder="Duree" name="champDuree1" value="${lEnseignant.listeExperience[0].duree}"/>
+                                    <input class="input-champ" placeholder="Duree" name="champDuree1" value="${lEnseignant.listeExperiences[0].duree}"/>
                   
                                     <div class="titre-champ evaluation">Evaluation</div>
-                                    <input class="input-champ" placeholder="Evaluation" name="champEvaluation1" value="${lEnseignant.listeExperience[0].evalEcole}"/>
+                                    <input class="input-champ" placeholder="Evaluation" name="champEvaluation1" value="${lEnseignant.listeExperiences[0].evalEcole}"/>
                                 </div>
                 
                                 <div class="container-competences">
@@ -169,15 +169,16 @@
                                         <div class="point-champ">-</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
-                                        <input class="input-champ" placeholder="Competence 1" name="champCompetence1.1" value="${lEnseignant.listeExperience[0].listeCompetences[0].nomCompetence}"/>
+                                        <input class="input-champ" placeholder="Competence 1" name="champCompetence1.1" value="${lEnseignant.listeExperiences[0].listeCompetences[0].nomCompetence}"/>
                     
-                                        <div class="titre-champ titre-competence niveau">Niveau </div>
+                                        <div class="titre-champ titre-competence niveau">Niveau</div>
 
-                                        <select class="input-champ input-niveau" name="champNiveau1.1" >
-                                            <option value="debutant">Débutant</option>
-                                            <option value="intermediare">Intermédiaire</option>
-                                            <option value="avance">Avancé</option>
-                                            <option value="expert">Expert</option>
+                                        <select class="input-champ input-niveau" name="champNiveau1.1">
+                                            <c:forEach items="${['Debutant', 'Intermediaire', 'Confirme', 'Expert']}" var="option">
+                                                <option value="${option}" <c:if test="${option eq lEnseignant.listeExperiences[0].listeCompetences[0].niveau}">selected</c:if>>
+                                                    <c:out value="${option}" />
+                                                </option>
+                                            </c:forEach>
                                         </select>
                                     </div>
 
@@ -185,32 +186,34 @@
                                         <div class="point-champ">-</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
-                                        <input class="input-champ" placeholder="Intérêt" name="champCompetence1.2" />
+                                        <input class="input-champ" placeholder="Competence 2" name="champCompetence1.2" value="${lEnseignant.listeExperiences[0].listeCompetences[1].nomCompetence}"/>
                     
-                                        <div class="titre-champ titre-competence niveau">Niveau </div>
+                                        <div class="titre-champ titre-competence niveau">Niveau</div>
 
-                                        <select class="input-champ input-niveau" name="champNiveau1.2" >
-                                            <option value="debutant">Débutant</option>
-                                            <option value="intermediare">Intermédiaire</option>
-                                            <option value="avance">Avancé</option>
-                                            <option value="expert">Expert</option>
+                                        <select class="input-champ input-niveau" name="champNiveau1.2">
+                                            <c:forEach items="${['Debutant', 'Intermediaire', 'Confirme', 'Expert']}" var="option">
+                                                <option value="${option}" <c:if test="${option eq lEnseignant.listeExperiences[0].listeCompetences[1].niveau}">selected</c:if>>
+                                                    <c:out value="${option}" />
+                                                </option>
+                                            </c:forEach>
                                         </select>
                                     </div>
 
                                     <div class="container-champ container-competence">
-                                      <div class="point-champ">-</div>
-                  
-                                      <div class="titre-champ titre-competence">Compétences</div>
-                                      <input class="input-champ" placeholder="Intérêt" name="champInteret1.3" />
-                  
-                                      <div class="titre-champ titre-competence niveau">Niveau </div>
+                                        <div class="point-champ">-</div>
+                    
+                                        <div class="titre-champ titre-competence">Compétences</div>
+                                        <input class="input-champ" placeholder="Competence 3" name="champCompetence1.3" value="${lEnseignant.listeExperiences[0].listeCompetences[2].nomCompetence}"/>
+                    
+                                        <div class="titre-champ titre-competence niveau">Niveau</div>
 
-                                      <select class="input-champ input-niveau" name="champNiveau1.3" >
-                                          <option value="debutant">Débutant</option>
-                                          <option value="intermediare">Intermédiaire</option>
-                                          <option value="avance">Avancé</option>
-                                          <option value="expert">Expert</option>
-                                      </select>
+                                        <select class="input-champ input-niveau" name="champNiveau1.3">
+                                            <c:forEach items="${['Debutant', 'Intermediaire', 'Confirme', 'Expert']}" var="option">
+                                                <option value="${option}" <c:if test="${option eq lEnseignant.listeExperiences[0].listeCompetences[2].niveau}">selected</c:if>>
+                                                    <c:out value="${option}" />
+                                                </option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -221,13 +224,13 @@
                                     <div class="point-champ">-</div>
                   
                                     <div class="titre-champ">Ecole</div>
-                                    <input class="input-champ" placeholder="Ecole" name="champEcole2" />
+                                    <input class="input-champ" placeholder="Ecole" name="champEcole2" value="${lEnseignant.listeExperiences[1].ecole}"/>
                   
                                     <div class="titre-champ duree">Duree</div>
-                                    <input class="input-champ" placeholder="Duree" name="champDuree2" />
+                                    <input class="input-champ" placeholder="Duree" name="champDuree2" value="${lEnseignant.listeExperiences[1].duree}"/>
                   
                                     <div class="titre-champ evaluation">Evaluation</div>
-                                    <input class="input-champ" placeholder="Evaluation" name="champEvaluation2" />
+                                    <input class="input-champ" placeholder="Evaluation" name="champEvaluation2" value="${lEnseignant.listeExperiences[1].evalEcole}"/>
                                 </div>
                 
                                 <div class="container-competences">
@@ -237,15 +240,16 @@
                                         <div class="point-champ">-</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
-                                        <input class="input-champ" placeholder="Intérêt" name="champCompetence2.1" />
+                                        <input class="input-champ" placeholder="Competence 1" name="champCompetence2.1" value="${lEnseignant.listeExperiences[1].listeCompetences[0].nomCompetence}"/>
                     
-                                        <div class="titre-champ titre-competence niveau">Niveau </div>
+                                        <div class="titre-champ titre-competence niveau">Niveau</div>
 
-                                        <select class="input-champ input-niveau" name="champNiveau2.1" >
-                                            <option value="debutant">Débutant</option>
-                                            <option value="intermediare">Intermédiaire</option>
-                                            <option value="avance">Avancé</option>
-                                            <option value="expert">Expert</option>
+                                        <select class="input-champ input-niveau" name="champNiveau2.1">
+                                            <c:forEach items="${['Debutant', 'Intermediaire', 'Confirme', 'Expert']}" var="option">
+                                                <option value="${option}" <c:if test="${option eq lEnseignant.listeExperiences[1].listeCompetences[0].niveau}">selected</c:if>>
+                                                    <c:out value="${option}" />
+                                                </option>
+                                            </c:forEach>
                                         </select>
                                     </div>
 
@@ -253,49 +257,51 @@
                                         <div class="point-champ">-</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
-                                        <input class="input-champ" placeholder="Intérêt" name="champCompetence2.2" />
+                                        <input class="input-champ" placeholder="Competence 2" name="champCompetence2.2" value="${lEnseignant.listeExperiences[1].listeCompetences[1].nomCompetence}"/>
                     
-                                        <div class="titre-champ titre-competence niveau">Niveau </div>
+                                        <div class="titre-champ titre-competence niveau">Niveau</div>
 
-                                        <select class="input-champ input-niveau" name="champNiveau2.2" >
-                                            <option value="debutant">Débutant</option>
-                                            <option value="intermediare">Intermédiaire</option>
-                                            <option value="avance">Avancé</option>
-                                            <option value="expert">Expert</option>
+                                        <select class="input-champ input-niveau" name="champNiveau2.2">
+                                            <c:forEach items="${['Debutant', 'Intermediaire', 'Confirme', 'Expert']}" var="option">
+                                                <option value="${option}" <c:if test="${option eq lEnseignant.listeExperiences[1].listeCompetences[1].niveau}">selected</c:if>>
+                                                    <c:out value="${option}" />
+                                                </option>
+                                            </c:forEach>
                                         </select>
                                     </div>
 
                                     <div class="container-champ container-competence">
-                                      <div class="point-champ">-</div>
-                  
-                                      <div class="titre-champ titre-competence">Compétences</div>
-                                      <input class="input-champ" placeholder="Intérêt" name="champInteret2.3" />
-                  
-                                      <div class="titre-champ titre-competence niveau">Niveau </div>
+                                        <div class="point-champ">-</div>
+                    
+                                        <div class="titre-champ titre-competence">Compétences</div>
+                                        <input class="input-champ" placeholder="Competence 3" name="champCompetence3.3" value="${lEnseignant.listeExperiences[2].listeCompetences[2].nomCompetence}"/>
+                    
+                                        <div class="titre-champ titre-competence niveau">Niveau</div>
 
-                                      <select class="input-champ input-niveau" name="champNiveau2.3" >
-                                          <option value="debutant">Débutant</option>
-                                          <option value="intermediare">Intermédiaire</option>
-                                          <option value="avance">Avancé</option>
-                                          <option value="expert">Expert</option>
-                                      </select>
+                                        <select class="input-champ input-niveau" name="champNiveau3.3">
+                                            <c:forEach items="${['Debutant', 'Intermediaire', 'Confirme', 'Expert']}" var="option">
+                                                <option value="${option}" <c:if test="${option eq lEnseignant.listeExperiences[2].listeCompetences[2].niveau}">selected</c:if>>
+                                                    <c:out value="${option}" />
+                                                </option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
-
+                            
                             <!-- Expérience 3 -->
                             <div class="container-experience">
                                 <div class="container-champ container-ecole">
                                     <div class="point-champ">-</div>
                   
                                     <div class="titre-champ">Ecole</div>
-                                    <input class="input-champ" placeholder="Ecole" name="champEcole3" />
+                                    <input class="input-champ" placeholder="Ecole" name="champEcole3" value="${lEnseignant.listeExperiences[2].ecole}"/>
                   
                                     <div class="titre-champ duree">Duree</div>
-                                    <input class="input-champ" placeholder="Duree" name="champDuree3" />
+                                    <input class="input-champ" placeholder="Duree" name="champDuree3" value="${lEnseignant.listeExperiences[2].duree}"/>
                   
                                     <div class="titre-champ evaluation">Evaluation</div>
-                                    <input class="input-champ" placeholder="Evaluation" name="champEvaluation3" />
+                                    <input class="input-champ" placeholder="Evaluation" name="champEvaluation3" value="${lEnseignant.listeExperiences[2].evalEcole}"/>
                                 </div>
                 
                                 <div class="container-competences">
@@ -305,15 +311,16 @@
                                         <div class="point-champ">-</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
-                                        <input class="input-champ" placeholder="Intérêt" name="champCompetence3.1" />
+                                        <input class="input-champ" placeholder="Competence 1" name="champCompetence3.1" value="${lEnseignant.listeExperiences[2].listeCompetences[0].nomCompetence}"/>
                     
-                                        <div class="titre-champ titre-competence niveau">Niveau </div>
+                                        <div class="titre-champ titre-competence niveau">Niveau</div>
 
-                                        <select class="input-champ input-niveau" name="champNiveau3.1" >
-                                            <option value="debutant">Débutant</option>
-                                            <option value="intermediare">Intermédiaire</option>
-                                            <option value="avance">Avancé</option>
-                                            <option value="expert">Expert</option>
+                                        <select class="input-champ input-niveau" name="champNiveau1.1">
+                                            <c:forEach items="${['Debutant', 'Intermediaire', 'Confirme', 'Expert']}" var="option">
+                                                <option value="${option}" <c:if test="${option eq lEnseignant.listeExperiences[2].listeCompetences[0].niveau}">selected</c:if>>
+                                                    <c:out value="${option}" />
+                                                </option>
+                                            </c:forEach>
                                         </select>
                                     </div>
 
@@ -321,32 +328,34 @@
                                         <div class="point-champ">-</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
-                                        <input class="input-champ" placeholder="Intérêt" name="champCompetence3.2" />
+                                        <input class="input-champ" placeholder="Competence 2" name="champCompetence3.2" value="${lEnseignant.listeExperiences[2].listeCompetences[1].nomCompetence}"/>
                     
-                                        <div class="titre-champ titre-competence niveau">Niveau </div>
+                                        <div class="titre-champ titre-competence niveau">Niveau</div>
 
-                                        <select class="input-champ input-niveau" name="champNiveau3.2" >
-                                            <option value="debutant">Débutant</option>
-                                            <option value="intermediare">Intermédiaire</option>
-                                            <option value="avance">Avancé</option>
-                                            <option value="expert">Expert</option>
+                                        <select class="input-champ input-niveau" name="champNiveau3.2">
+                                            <c:forEach items="${['Debutant', 'Intermediaire', 'Confirme', 'Expert']}" var="option">
+                                                <option value="${option}" <c:if test="${option eq lEnseignant.listeExperiences[2].listeCompetences[1].niveau}">selected</c:if>>
+                                                    <c:out value="${option}" />
+                                                </option>
+                                            </c:forEach>
                                         </select>
                                     </div>
 
                                     <div class="container-champ container-competence">
-                                      <div class="point-champ">-</div>
-                  
-                                      <div class="titre-champ titre-competence">Compétences</div>
-                                      <input class="input-champ" placeholder="Intérêt" name="champInteret3.3" />
-                  
-                                      <div class="titre-champ titre-competence niveau">Niveau </div>
+                                        <div class="point-champ">-</div>
+                    
+                                        <div class="titre-champ titre-competence">Compétences</div>
+                                        <input class="input-champ" placeholder="Competence 3" name="champCompetence3.3" value="${lEnseignant.listeExperiences[2].listeCompetences[2].nomCompetence}"/>
+                    
+                                        <div class="titre-champ titre-competence niveau">Niveau</div>
 
-                                      <select class="input-champ input-niveau" name="champNiveau3.3" >
-                                          <option value="debutant">Débutant</option>
-                                          <option value="intermediare">Intermédiaire</option>
-                                          <option value="avance">Avancé</option>
-                                          <option value="expert">Expert</option>
-                                      </select>
+                                        <select class="input-champ input-niveau" name="champNiveau3.3">
+                                            <c:forEach items="${['Debutant', 'Intermediaire', 'Confirme', 'Expert']}" var="option">
+                                                <option value="${option}" <c:if test="${option eq lEnseignant.listeExperiences[2].listeCompetences[2].niveau}">selected</c:if>>
+                                                    <c:out value="${option}" />
+                                                </option>
+                                            </c:forEach>
+                                        </select>
                                     </div>
                                 </div>
                             </div>

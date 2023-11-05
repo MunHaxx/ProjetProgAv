@@ -67,8 +67,10 @@ public class ControleurAdmin extends HttpServlet {
         } 
         // if recruteur, if enseignant, if admin, selon les consts définies dans chaque
         else {
-            List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
-
+            List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs(); // Besoin de la liste dans différents case
+            List<EnseignantEntity> listeEnseignants = enseignantSB.getTousEnseignants(); // Besoin de la liste dans différents case
+            
+           
             switch (actionUtilisateur) {
                 case ACTION_ADMIN_VOIR_LISTE_POSTE:
                     request.getSession().setAttribute("messageInfo", "");
@@ -82,13 +84,23 @@ public class ControleurAdmin extends HttpServlet {
                 case ACTION_ADMIN_VOIR_CREER_RECRUTEUR:
                     if(request.getParameter("data-id") != null) {
                         int dataId = Integer.parseInt(request.getParameter("data-id"));
+                        request.setAttribute("leRecruteur", recruteurSB.getRecruteurParId(dataId));
+                    } else {
+                        request.setAttribute("leRecruteur", null);
                     }
                     request.getRequestDispatcher(PAGE_ADMIN_CREER_RECRUTEUR).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_LISTE_ENSEIGNANT:
+                    request.setAttribute("tousLesEnseignants", listeEnseignants);
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_ENSEIGNANT).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_CREER_ENSEIGNANT:
+                    if(request.getParameter("data-id") != null) {
+                        int dataId = Integer.parseInt(request.getParameter("data-id"));
+                        request.setAttribute("lEnseignant", enseignantSB.getEnseignantParId(dataId));
+                    } else {
+                        request.setAttribute("lEnseignant", null);
+                    }
                     request.getRequestDispatcher(PAGE_ADMIN_CREER_ENSEIGNANT).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_LISTE_CANDIDATURE:

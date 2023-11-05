@@ -38,7 +38,10 @@ public class CompetenceEntity {
             inverseJoinColumns = @JoinColumn( name = "ID_Poste" ) )
     private List<PosteEntity> listePostes;
 
-    public CompetenceEntity() {
+    public CompetenceEntity() { }
+
+    public CompetenceEntity(String nomCompetence) {
+        this.nomCompetence = nomCompetence;
     }
 
     public int getIdCompetence() {

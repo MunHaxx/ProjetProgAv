@@ -82,7 +82,6 @@ public class ControleurAdmin extends HttpServlet {
                 case ACTION_ADMIN_VOIR_CREER_RECRUTEUR:
                     if(request.getParameter("data-id") != null) {
                         int dataId = Integer.parseInt(request.getParameter("data-id"));
-                        System.out.println("\n\n\ndata-id du bouton cliqué : " + dataId + "\n\n\n");
                     }
                     request.getRequestDispatcher(PAGE_ADMIN_CREER_RECRUTEUR).forward(request, response);
                     break;

@@ -28,12 +28,10 @@ public class EtudeEntity {
     @Basic
     @Column(name = "Date_obtention", nullable = true)
     private Date dateObtention;
+    @ManyToOne
+    @JoinColumn(name = "IDenseignant")
+    private EnseignantEntity enseignant;
 
-    public EtudeEntity(int idEtude, String titre, Date dateObtention) {
-        this.idEtude = idEtude;
-        this.titre = titre;
-        this.dateObtention = dateObtention;
-    }
     public EtudeEntity() {
 
     }
@@ -62,16 +60,24 @@ public class EtudeEntity {
         this.dateObtention = dateObtention;
     }
 
+    public EnseignantEntity getEnseignant() {
+        return enseignant;
+    }
+
+    public void setEnseignant(EnseignantEntity enseignant) {
+        this.enseignant = enseignant;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof EtudeEntity)) return false;
         EtudeEntity that = (EtudeEntity) o;
-        return getIdEtude() == that.getIdEtude() && Objects.equals(getTitre(), that.getTitre()) && Objects.equals(getDateObtention(), that.getDateObtention());
+        return getIdEtude() == that.getIdEtude() && Objects.equals(getTitre(), that.getTitre()) && Objects.equals(getDateObtention(), that.getDateObtention()) && Objects.equals(getEnseignant(), that.getEnseignant());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdEtude(), getTitre(), getDateObtention());
+        return Objects.hash(getIdEtude(), getTitre(), getDateObtention(), getEnseignant());
     }
 }

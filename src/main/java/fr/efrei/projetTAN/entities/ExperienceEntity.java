@@ -33,30 +33,24 @@ public class ExperienceEntity {
     @Basic
     @Column(name = "Duree", nullable = true, length = 50)
     private String duree;
-
+    @ManyToOne
+    @JoinColumn(name = "IDenseignant")
+    private EnseignantEntity enseignant;
     @ManyToMany
     @JoinTable( name = "compt_lie_xp",
             joinColumns = @JoinColumn( name = "IDexperience" ),
             inverseJoinColumns = @JoinColumn( name = "ID_Competence" ) )
     private List<CompetenceEntity> listeCompetences = new ArrayList<>();
 
-    public ExperienceEntity(int idExperience, String ecole, String evalEcole, String duree, List<CompetenceEntity> listeCompetences) {
-        this.idExperience = idExperience;
-        this.ecole = ecole;
-        this.evalEcole = evalEcole;
-        this.duree = duree;
-        this.listeCompetences = listeCompetences;
-    }
     public ExperienceEntity() {
-
     }
 
-    public int getiDexperience() {
+    public int getIdExperience() {
         return idExperience;
     }
 
-    public void setiDexperience(int iDexperience) {
-        this.idExperience = iDexperience;
+    public void setIdExperience(int idExperience) {
+        this.idExperience = idExperience;
     }
 
     public String getEcole() {
@@ -83,6 +77,14 @@ public class ExperienceEntity {
         this.duree = duree;
     }
 
+    public EnseignantEntity getEnseignant() {
+        return enseignant;
+    }
+
+    public void setEnseignant(EnseignantEntity enseignant) {
+        this.enseignant = enseignant;
+    }
+
     public List<CompetenceEntity> getListeCompetences() {
         return listeCompetences;
     }
@@ -96,12 +98,12 @@ public class ExperienceEntity {
         if (this == o) return true;
         if (!(o instanceof ExperienceEntity)) return false;
         ExperienceEntity that = (ExperienceEntity) o;
-        return getiDexperience() == that.getiDexperience() && Objects.equals(getEcole(), that.getEcole()) && Objects.equals(getEvalEcole(), that.getEvalEcole()) && Objects.equals(getDuree(), that.getDuree()) && Objects.equals(getListeCompetences(), that.getListeCompetences());
+        return getIdExperience() == that.getIdExperience() && Objects.equals(getEcole(), that.getEcole()) && Objects.equals(getEvalEcole(), that.getEvalEcole()) && Objects.equals(getDuree(), that.getDuree()) && Objects.equals(getEnseignant(), that.getEnseignant()) && Objects.equals(getListeCompetences(), that.getListeCompetences());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getiDexperience(), getEcole(), getEvalEcole(), getDuree(), getListeCompetences());
+        return Objects.hash(getIdExperience(), getEcole(), getEvalEcole(), getDuree(), getEnseignant(), getListeCompetences());
     }
 }
 

@@ -57,8 +57,8 @@
                                         <div class="info">${candidature.enseignant.siteWeb}</div>
                                     </div>
                                     <div class="infos">
-                                        <div class="info">${candidature.enseignant.recoParEcole} ${candidature.enseignant.recoParRecruteur}</div>
-                                        <div class="info">${candidature.enseignant.prefereNivEtudiant}</div>
+                                        <div class="info">${candidature.enseignant.recoParEcole.raisonSociale}${candidature.enseignant.recoParRecruteur.prenom} ${candidature.enseignant.recoParRecruteur.nom}</div>
+                                        <div class="info">${candidature.enseignant.prefereNivEtudiant.niveau}</div>
                                     </div>
                                 </div>
                             </div>

@@ -23,7 +23,6 @@ public class PosteEntity {
     @Id
     @Column(name = "ID_Poste", nullable = false)
     private int idPoste;
-    // LIST COMPETENCE
     @Basic
     @Column(name = "Nom", nullable = true, length = 50)
     private String nomPoste;
@@ -43,6 +42,11 @@ public class PosteEntity {
     @JoinColumn(name = "ID_Recruteur")
     private RecruteurEntity recruteurRespo;
     @ManyToMany
+    @JoinTable( name = "requiert_compt",
+            joinColumns = @JoinColumn( name = "ID_Poste" ),
+            inverseJoinColumns = @JoinColumn( name = "ID_Competence" ) )
+    private List<CompetenceEntity> listeCompetences;
+    @ManyToMany
     @JoinTable( name = "Contient_contrainte",
             joinColumns = @JoinColumn( name = "ID_Poste" ),
             inverseJoinColumns = @JoinColumn( name = "ID_Contrainte" ) )
@@ -54,6 +58,18 @@ public class PosteEntity {
     private List<RemarqueEntity> listeRemarques;
     @OneToMany(mappedBy = "poste")
     private List<CandidatureEntity> listeCandid;
+
+    public PosteEntity(){}
+
+    public PosteEntity(String nomPoste, EcoleEntity ecole, EnumTypeContrat typeContrat, String periode,
+                       NiveauEtudiantEntity pourNivEtudiant, RecruteurEntity recruteurRespo) {
+        this.nomPoste = nomPoste;
+        this.ecole = ecole;
+        this.typeContrat = typeContrat;
+        this.periode = periode;
+        this.pourNivEtudiant = pourNivEtudiant;
+        this.recruteurRespo = recruteurRespo;
+    }
 
     public int getIdPoste() {
         return idPoste;
@@ -111,6 +127,14 @@ public class PosteEntity {
         this.recruteurRespo = recruteurRespo;
     }
 
+    public List<CompetenceEntity> getListeCompetences() {
+        return listeCompetences;
+    }
+
+    public void setListeCompetences(List<CompetenceEntity> listeCompetences) {
+        this.listeCompetences = listeCompetences;
+    }
+
     public List<ContrainteEntity> getListeContraintes() {
         return listeContraintes;
     }
@@ -140,11 +164,12 @@ public class PosteEntity {
         if (this == o) return true;
         if (!(o instanceof PosteEntity)) return false;
         PosteEntity that = (PosteEntity) o;
-        return getIdPoste() == that.getIdPoste() && Objects.equals(getNomPoste(), that.getNomPoste()) && Objects.equals(getEcole(), that.getEcole()) && getTypeContrat() == that.getTypeContrat() && Objects.equals(getPeriode(), that.getPeriode()) && Objects.equals(getPourNivEtudiant(), that.getPourNivEtudiant()) && Objects.equals(getRecruteurRespo(), that.getRecruteurRespo()) && Objects.equals(getListeContraintes(), that.getListeContraintes()) && Objects.equals(getListeRemarques(), that.getListeRemarques()) && Objects.equals(getListeCandid(), that.getListeCandid());
+        return getIdPoste() == that.getIdPoste() && Objects.equals(getNomPoste(), that.getNomPoste()) && Objects.equals(getEcole(), that.getEcole()) && getTypeContrat() == that.getTypeContrat() && Objects.equals(getPeriode(), that.getPeriode()) && Objects.equals(getPourNivEtudiant(), that.getPourNivEtudiant()) && Objects.equals(getRecruteurRespo(), that.getRecruteurRespo()) && Objects.equals(getListeCompetences(), that.getListeCompetences()) && Objects.equals(getListeContraintes(), that.getListeContraintes()) && Objects.equals(getListeRemarques(), that.getListeRemarques()) && Objects.equals(getListeCandid(), that.getListeCandid());
     }
 
     /*@Override
     public int hashCode() {
-        return Objects.hash(getIdPoste(), getNom(), getEcole(), getTypeContrat(), getPeriode(), getPourNivEtudiant(), getRecruteurRespo(), getListeContraintes(), getListeRemarques(), getListeCandid());
+        return Objects.hash(getIdPoste(), getNom(), getEcole(), getTypeContrat(), getPeriode(), getPourNivEtudiant(), getRecruteurRespo(), getListeCompetences(), getListeContraintes(), getListeRemarques(), getListeCandid());
     }*/
+
 }

@@ -1,11 +1,13 @@
 package fr.efrei.projetTAN;
 
 import fr.efrei.projetTAN.utils.GlobalConst;
+import jakarta.persistence.*;
 import jakarta.servlet.http.*;
 
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 import static fr.efrei.projetTAN.utils.User.UserRecruteurConst.*;
@@ -38,7 +40,7 @@ public class DataService {
             msgErreur = "Saisie incorrecte, veuillez vérifier tous les champs";
 
         // Création de l'entité s'il n'y a pas d'ID dans la requête
-        else if (request.getParameter("data-id") == null) {
+        else if (request.getParameter("data-id").isEmpty()) {
             RecruteurEntity nouveauRecruteur = new RecruteurEntity(nom, prenom);
             recruteurSB.ajouterRecruteur(nouveauRecruteur);
             msgInfo = "Création du recruteur effectuée";
@@ -70,7 +72,7 @@ public class DataService {
         // Déclaration de variable pour le message à afficher
         String msgErreur = "";
         // Si on ne retrouve pas l'ID, on affiche une erreur
-        if (request.getParameter("data-id") == null)
+        if (request.getParameter("data-id").isEmpty())
             msgErreur = "Impossible d'afficher la liste des candidatures sur ce poste";
         else {
             int idPoste = Integer.parseInt(request.getParameter("data-id"));
@@ -91,7 +93,7 @@ public class DataService {
         String msgErreur = "";
         String msgInfo = "";
         // Si on ne retrouve pas l'ID, on affiche une erreur
-        if (request.getParameter("data-id") == null)
+        if (request.getParameter("data-id").isEmpty())
             msgErreur = "Erreur : récupération de l'ID impossible, on ne peut pas modifier cette candidature";
         else {
             // Récupération de l'entité
@@ -120,7 +122,7 @@ public class DataService {
         String msgErreur = "";
         String msgInfo = "";
         // Si on ne retrouve pas l'ID, on affiche une erreur
-        if (request.getParameter("data-id") == null)
+        if (request.getParameter("data-id").isEmpty())
             msgErreur = "Erreur : récupération de l'ID impossible, on ne peut pas modifier cette candidature";
         else {
             // Récupération de l'entité
@@ -142,40 +144,17 @@ public class DataService {
         request.getSession().setAttribute("messageInfo", msgInfo);
     }
 
-    // Permet de créer une école
-    // Utilisé lors de la création de poste
-    public static void serviceCreerEcole(EcoleSessionBean ecoleSB, HttpServletRequest request) {
-        // Déclaration de variable pour le message à afficher
-        String msgErreur = "";
-        String msgInfo = "";
-
-        // Récupération des données du formulaire
-        String raisonSociale = request.getParameter(CHAMP_CREER_POSTE_ECOLE);
-
-        // Vérifications des saisies utilisateur
-        if(raisonSociale == null)
-            msgErreur = "Erreur : récupération des données saisies impossible";
-        else if (!saisieCaractereValide(raisonSociale))
-            msgErreur = "Saisie incorrecte, veuillez vérifier tous les champs";
-
-        // Création de l'entité
-        EcoleEntity nouvelleEcole = new EcoleEntity(raisonSociale);
-        ecoleSB.ajouterEcole(nouvelleEcole);
-        msgInfo = "Création du recruteur effectuée";
-
-        // Envoi des messages d'information
-        request.setAttribute("messageErreur", msgErreur);
-        request.setAttribute("messageInfo", msgInfo);
-    }
-
-    public static void serviceCreerPoste(PosteSessionBean posteSB, HttpServletRequest request) {
+    public static void serviceCreerPoste(PosteSessionBean posteSB, EcoleSessionBean ecoleSB,
+                                         CompetenceSessionBean competenceSB, ContrainteSessionBean contrainteSB,
+                                         RemarqueSessionBean remarqueSB, NiveauEtudiantSessionBean nivEtudiantSB,
+                                         HttpServletRequest request) {
         // Déclaration de variable pour le message à afficher
         String msgErreur = "";
         String msgInfo = "";
 
         // Récupération des données du formulaire
         String nomPoste = request.getParameter(CHAMP_CREER_POSTE_TITRE);
-        String strecole = request.getParameter(CHAMP_CREER_POSTE_ECOLE);
+        String strEcole = request.getParameter(CHAMP_CREER_POSTE_ECOLE);
         String strContrat = request.getParameter(CHAMP_CREER_POSTE_CONTRAT);
         String periode = request.getParameter(CHAMP_CREER_POSTE_PERIODE);
         String strNivEtudiant = request.getParameter(CHAMP_CREER_POSTE_NIVEAU);
@@ -196,87 +175,113 @@ public class DataService {
         RecruteurEntity recruteurConnecte = (RecruteurEntity) request.getAttribute("leRecruteur");
         if (recruteurConnecte == null)
             msgErreur = "Erreur : impossible de récupérer l'utilisateur recruteur connecté";
-
         // Vérifications des saisies utilisateur
-        else if(nomPoste == null || strecole == null || strContrat == null || periode == null || strNivEtudiant == null)
+        else if (nomPoste.isEmpty() || strEcole.isEmpty() || strContrat.isEmpty()
+                || periode.isEmpty() || strNivEtudiant.isEmpty()) {
             msgErreur = "Erreur : compléter tous les champs obligatoires";
-        else if (!saisieCaractereValide(nomPoste) || !saisieCaractereValide(strecole) || !saisieCaractereValide(strContrat)
-                || !saisieCaractereValide(periode) || !saisieCaractereValide(strNivEtudiant))
+        }
+        else if (!saisieCaractereValide(nomPoste) || !saisieCaractereValide(strEcole) || !saisieCaractereValide(strContrat)) // période et niveau étudiant peuvent contenir des chiffres et des caractères spéciaux
             msgErreur = "Saisie incorrecte, veuillez vérifier tous les champs";
-        else if(!GlobalConst.estDansEnumTypeContrat(strContrat))
-            msgErreur = "Saisie incorrecte, les contrats valides sont : CDI, CDD, Interim";
-        else if(!GlobalConst.estDansEnumNivEtudiant(strNivEtudiant))
-            msgErreur = "Saisie incorrecte, les niveaux étudiants valides sont : L1, L2, L3, M1, M2";
 
-        else{
-            /*// C'est trop le bordel, fait des sous fonctions, on s'en sort plus
-
-
-
-
-
-            GlobalConst.EnumTypeContrat contrat =  GlobalConst.stringVersEnumTypeContrat(strContrat);
-            GlobalConst.EnumNivEtudiant nivEtudiant =  GlobalConst.stringVersEnumNivEtudiant(strNivEtudiant);
-            // Création de l'entité
+        else {
+            // Conversion de type des entrées utilisateurs
+            GlobalConst.EnumTypeContrat contrat = serviceCreerTypeContrat(strContrat);
+            NiveauEtudiantEntity nivEtudiant = serviceCreerNivEtudiant(nivEtudiantSB, strNivEtudiant);
+            EcoleEntity ecole  = serviceRecupCreerEcole(ecoleSB, strEcole);
             PosteEntity nouveauPoste = new PosteEntity(nomPoste, ecole, contrat, periode, nivEtudiant, recruteurConnecte);
-            RecruteurEntity nouveauRecruteur = new RecruteurEntity(nom, prenom);
-            recruteurSB.ajouterRecruteur(nouveauRecruteur);
-            msgInfo = "Création du recruteur effectuée";*/
+
+            // Remplissage des listes du poste
+            ArrayList<String> listeStr = new ArrayList<>();
+
+            // Compétences
+            listeStr.add(strCompt1);
+            listeStr.add(strCompt2);
+            listeStr.add(strCompt3);
+            ArrayList<CompetenceEntity> listeCompetences = serviceCreerListeCompetences(competenceSB, nouveauPoste, listeStr);
+            if (listeCompetences != null)
+                nouveauPoste.setListeCompetences(listeCompetences);
+            listeStr.clear();
+
+            // Contraintes
+            /*listeStr.add(contr1); listeStr.add(contr2); listeStr.add(contr3);
+            ArrayList<ContrainteEntity> listeContraintes = serviceCreerListeContraintes(contrainteSB, nouveauPoste, listeStr);
+            if (listeContraintes != null)
+                nouveauPoste.setListeContraintes(listeContraintes);
+            listeStr.clear();*/
+
+            // Ajout des compétences, contraintes et remarques
+            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+            posteSB.ajouterPoste(nouveauPoste);
+            msgInfo = "Création du poste effectuée";
         }
         // Envoi des messages d'information
         request.setAttribute("messageErreur", msgErreur);
         request.setAttribute("messageInfo", msgInfo);
     }
 
-    // Permet de modifier ou de créer une candidature
-    // Associé aux boutons :
-    // - postuler sur la page liste des postes de l'utilisateur enseignant
-    // - accepter/refuser sur la page listes des candidatures de l'utilisateur recruteur
-    /*public static void serviceModifierCreerCandidature(CandidatureSessionBean candidatureSB, HttpServletRequest request) {
-        // Déclaration de variable pour le message à afficher
-        String msgErreur = "";
-        String msgInfo = "";
+    // Créé un enum type de contrat à partir d'un string, utilisé lors de la création de poste
+    public static GlobalConst.EnumTypeContrat serviceCreerTypeContrat(String strContrat){
+        if (strContrat == null || !GlobalConst.estDansEnumTypeContrat(strContrat))
+            return GlobalConst.EnumTypeContrat.CDD; // valeur par défaut
+        else
+            return GlobalConst.stringVersEnumTypeContrat(strContrat);
+    }
 
-        // Récupération des données du formulaire
-        // gérer après pour création/modif String idPoste = request.getParameter("data-id");
-        //EnseignantEntity enseignantActuel = request.getParameter("lEnseignant"); //enseignantSB.getEnseignantParId(unUtilisateur.getIdRole());
-        request.getSession().setAttribute("lEnseignant", enseignantActuel);
-        // Enseignant co
-        // date = now
-        // Decision = en attente
-        String nom = request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_NOM);
-        String prenom = request.getParameter(CHAMP_RECRUTEUR_MODIFICATION_PRENOM);
+    // Créé un niveau étudiant à partir d'un string, utilisé lors de la création de poste
+    public static NiveauEtudiantEntity serviceCreerNivEtudiant(NiveauEtudiantSessionBean nivEtudSB, String strNivEtudiant){
+        if (strNivEtudiant == null || !GlobalConst.estDansEnumTypeContrat(strNivEtudiant))
+            strNivEtudiant = "L1"; // valeur par défaut
+        NiveauEtudiantEntity nivEtud = new NiveauEtudiantEntity(GlobalConst.stringVersEnumNivEtudiant(strNivEtudiant));
+        nivEtudSB.ajouterNiveauEtudiant(nivEtud);
+        return nivEtud;
+    }
 
-        // Vérifications des saisies utilisateur
-        if(nom == null || prenom == null)
-            msgErreur = "Erreur : récupération des données saisies impossible";
-        else if (!saisieCaractereValide(nom) || !saisieCaractereValide(prenom))
-            msgErreur = "Saisie incorrecte, veuillez vérifier tous les champs";
-
-            // Création de l'entité s'il n'y a pas d'ID dans la requête
-        else if (request.getParameter("data-id") == null) {
-            RecruteurEntity nouveauRecruteur = new RecruteurEntity(nom, prenom);
-            recruteurSB.ajouterRecruteur(nouveauRecruteur);
-            msgInfo = "Création du recruteur effectuée";
+    // Crée une école, utilisé lors de la création de poste
+    public static EcoleEntity serviceRecupCreerEcole(EcoleSessionBean ecoleSB, String strEcole) {
+        if (strEcole == null || !saisieCaractereValide(strEcole)){
+            strEcole = "Ecole non mentionnée";
         }
-
-        // Modification de l'entité
+        if(ecoleSB.getEcoleParRaisonSociale(strEcole).isEmpty()){
+            // Créé l'entité si elle n'existe pas
+            EcoleEntity nouvelleEcole = new EcoleEntity(strEcole);
+            ecoleSB.ajouterEcole(nouvelleEcole);
+            return nouvelleEcole;
+        }
         else {
-            int idRecruteur = Integer.parseInt(request.getParameter("data-id"));
-            if(idRecruteur <= 0)
-                msgErreur = "Erreur : impossible de récupérer l'ID du recruteur à modifier";
-            else{
-                // Récupération de l'entité
-                RecruteurEntity recruteurModifie = recruteurSB.getRecruteurParId(idRecruteur);
-                // Modification des données
-                recruteurModifie.setNom(nom);
-                recruteurModifie.setPrenom(prenom);
-                recruteurSB.modifierRecruteur(recruteurModifie);
-                msgInfo = "Modification du recruteur effectuée";
+            // Récupère l'entité
+            return ecoleSB.getEcoleParRaisonSociale(strEcole).get(0);
+        }
+    }
+
+    // Crée une liste de compétences à partir d'une liste de string
+    public static ArrayList<CompetenceEntity> serviceCreerListeCompetences(CompetenceSessionBean competenceSB, PosteEntity poste, ArrayList<String> strListe) {
+        if (strListe == null)
+            return null;
+        ArrayList<CompetenceEntity> listeCompt = new ArrayList<>();
+        for (String compt:strListe) {
+            if (compt != null && !compt.isEmpty()){
+                CompetenceEntity nouvelleCompetence = new CompetenceEntity(compt, poste);
+                competenceSB.ajouterCompetence(nouvelleCompetence);
+                listeCompt.add(nouvelleCompetence);
             }
         }
-        // Envoi des informations
-        request.setAttribute("messageErreur", msgErreur);
-        request.setAttribute("messageInfo", msgInfo);
+        return listeCompt;
+    }
+
+    // Crée une liste de contraintes à partir d'une liste de string
+    /*public static ArrayList<CompetenceEntity> serviceCreerListeContraintes(ContrainteSessionBean contrainteSB, PosteEntity poste, ArrayList<String> strListe) {
+        if (strListe == null)
+            return null;
+        ArrayList<CompetenceEntity> listeCompt = new ArrayList<>();
+        for (String compt:strListe) {
+            if (compt != null && !compt.isEmpty()){
+                CompetenceEntity nouvelleCompetence = new CompetenceEntity(compt, poste);
+                competenceSB.ajouterCompetence(nouvelleCompetence);
+                listeCompt.add(nouvelleCompetence);
+            }
+        }
+        return listeCompt;
     }*/
+
 }

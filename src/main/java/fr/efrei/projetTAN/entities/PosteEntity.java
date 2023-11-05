@@ -3,6 +3,7 @@ package fr.efrei.projetTAN.entities;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -69,6 +70,10 @@ public class PosteEntity {
         this.periode = periode;
         this.pourNivEtudiant = pourNivEtudiant;
         this.recruteurRespo = recruteurRespo;
+        this.listeCandid = new ArrayList<>();
+        this.listeCompetences = new ArrayList<>();
+        this.listeContraintes = new ArrayList<>();
+        this.listeRemarques = new ArrayList<>();
     }
 
     public int getIdPoste() {

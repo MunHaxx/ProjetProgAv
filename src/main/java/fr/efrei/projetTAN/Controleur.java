@@ -25,6 +25,8 @@ public class Controleur extends HttpServlet {
     @EJB
     private ContrainteSessionBean contrainteSB;
     @EJB
+    private RemarqueSessionBean remarqueSB;
+    @EJB
     private EcoleSessionBean ecoleSB;
     @EJB
     private EnseignantSessionBean enseignantSB;
@@ -80,7 +82,7 @@ public class Controleur extends HttpServlet {
         }
         
     }
-    
+
     // Page d'accueil différente selon le type d'utilisateur connecté
     public void dirigerVersPageAccueil(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         Utilisateur unUtilisateur = (Utilisateur) request.getSession().getAttribute("utilisateur");

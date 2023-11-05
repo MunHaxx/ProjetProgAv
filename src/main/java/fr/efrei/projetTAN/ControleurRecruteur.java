@@ -5,6 +5,7 @@ import java.util.List;
 
 import fr.efrei.projetTAN.utils.GlobalConst.*;
 import jakarta.ejb.EJB;
+import jakarta.persistence.NoResultException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 
@@ -28,6 +29,8 @@ public class ControleurRecruteur extends HttpServlet {
     @EJB
     private ContrainteSessionBean contrainteSB;
     @EJB
+    private RemarqueSessionBean remarqueSB;
+    @EJB
     private EcoleSessionBean ecoleSB;
     @EJB
     private EnseignantSessionBean enseignantSB;
@@ -44,9 +47,7 @@ public class ControleurRecruteur extends HttpServlet {
     @EJB
     private RecruteurSessionBean recruteurSB;
 
-    public void init() {
-
-    }
+    public void init() { }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         traiterRequete(request, response);
@@ -101,7 +102,7 @@ public class ControleurRecruteur extends HttpServlet {
                             redirigerListeCandidatures(request, response);
                             break;
                         case ACTION_RECRUTEUR_SAUVE_CREATION_POSTE:
-
+                            DataService.serviceCreerPoste(posteSB, ecoleSB, competenceSB, contrainteSB, remarqueSB, nivEtudSB, request);
                             request.getRequestDispatcher(PAGE_RECRUTEUR_CREER_POSTE).forward(request, response);
                             break;
                         case ACTION_RECRUTEUR_SAUVE_MODIFICATION_PROFIL:

@@ -27,6 +27,8 @@ public class ControleurAdmin extends HttpServlet {
     @EJB
     private ContrainteSessionBean contrainteSB;
     @EJB
+    private RemarqueSessionBean remarqueSB;
+    @EJB
     private EcoleSessionBean ecoleSB;
     @EJB
     private EnseignantSessionBean enseignantSB;
@@ -56,12 +58,10 @@ public class ControleurAdmin extends HttpServlet {
         chargerLaPageSuivante(actionUtilisateur, request, response);
     }
 
-    // un login, enseignant, recruteur, admin 
     public void chargerLaPageSuivante(String actionUtilisateur, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         if (actionUtilisateur == null || actionUtilisateur.isEmpty()) {
             request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
-        } 
-        // if recruteur, if enseignant, if admin, selon les consts définies dans chaque
+        }
         else {
             List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs();
 
@@ -76,7 +76,7 @@ public class ControleurAdmin extends HttpServlet {
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_RECRUTEUR).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_CREER_RECRUTEUR:
-                    if(request.getParameter("data-id") != null) {
+                    if(request.getParameter("data-id").isEmpty()) {
                         int dataId = Integer.parseInt(request.getParameter("data-id"));
                     }
                     request.getRequestDispatcher(PAGE_ADMIN_CREER_RECRUTEUR).forward(request, response);

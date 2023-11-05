@@ -27,6 +27,8 @@ public class ControleurEnseignant extends HttpServlet {
     @EJB
     private ContrainteSessionBean contrainteSB;
     @EJB
+    private RemarqueSessionBean remarqueSB;
+    @EJB
     private EcoleSessionBean ecoleSB;
     @EJB
     private EnseignantSessionBean enseignantSB;

@@ -3,6 +3,7 @@ package fr.efrei.projetTAN.entities;
 import fr.efrei.projetTAN.utils.GlobalConst.EnumNivCompt;
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -42,6 +43,14 @@ public class CompetenceEntity {
 
     public CompetenceEntity(String nomCompetence) {
         this.nomCompetence = nomCompetence;
+        this.niveau = null;
+        this.listePostes = new ArrayList<PosteEntity>();
+    }
+    public CompetenceEntity(String nomCompetence, PosteEntity poste) {
+        this.nomCompetence = nomCompetence;
+        this.niveau = null;
+        this.listePostes = new ArrayList<PosteEntity>();
+        this.listePostes.add(poste);
     }
 
     public int getIdCompetence() {

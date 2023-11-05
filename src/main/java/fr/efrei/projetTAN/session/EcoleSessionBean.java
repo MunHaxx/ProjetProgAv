@@ -12,16 +12,23 @@ public class EcoleSessionBean {
     private Query requete;
 
     // Permet d'obtenir la liste de toutes les écoles
-    public List<EcoleEntity> getToutesEtudes(){
+    public List<EcoleEntity> getToutesEcoles(){
         requete = entityManager.createNamedQuery("recupToutesLesEcoles");
         return  requete.getResultList();
     }
 
+    // Permet d'obtenir une école à partir de son nom / raison sociale
+    public List<EcoleEntity> getEcoleParRaisonSociale(String nom){
+        requete = entityManager.createNamedQuery("recupEcoleNom" );
+        requete.setParameter("nom", nom);
+        return requete.getResultList();
+    }
+
     // Permet d'obtenir une école à partir de son ID
-    public EcoleEntity getEtudeParId(int id) {
+    public List<EcoleEntity> getEcoleParId(int id) {
         requete = entityManager.createNamedQuery("recupEcoleId" );
         requete.setParameter("id", id);
-        return (EcoleEntity) requete.getSingleResult();
+        return requete.getResultList();
     }
 
     // Permet de créer une nouvelle école

@@ -18,10 +18,10 @@ public class CandidatureSessionBean {
     }
 
     // Permet d'obtenir une candidature à partir de son ID
-    public CandidatureEntity getCandidatureParId(int id) {
+    public List<CandidatureEntity> getCandidatureParId(int id) {
         requete = entityManager.createNamedQuery("recupCandidatureId" );
         requete.setParameter("id", id);
-        return (CandidatureEntity) requete.getSingleResult();
+        return requete.getResultList();
     }
 
     // Permet de créer une nouvelle candidature

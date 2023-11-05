@@ -15,14 +15,14 @@ public class ExperienceSessionBean {
     // Permet d'obtenir la liste de toutes les expériences
     public List<ExperienceEntity> getToutesLesExperiences(){
         requete = entityManager.createNamedQuery("recupToutesLesXp");
-        return  requete.getResultList();
+        return requete.getResultList();
     }
 
     // Permet d'obtenir une expérience à partir de son ID
-    public ExperienceEntity getExperienceParId(int id) {
+    public List<ExperienceEntity> getExperienceParId(int id) {
         requete = entityManager.createNamedQuery("recupXpId" );
         requete.setParameter("id", id);
-        return (ExperienceEntity) requete.getSingleResult();
+        return requete.getResultList();
     }
 
     // Permet de créer une nouvelle expérience

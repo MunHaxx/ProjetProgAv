@@ -32,9 +32,9 @@ public class EnseignantSessionBean {
     }
 
     // Permet d'obtenir un enseignant à partir de son ID
-    public EnseignantEntity getEnseignantParId(int id) {
+    public List<EnseignantEntity> getEnseignantParId(int id) {
         requete = entityManager.createNamedQuery("recupEnseignantId" );
         requete.setParameter("id", id);
-        return (EnseignantEntity) requete.getSingleResult();
+        return requete.getResultList();
     }
 }

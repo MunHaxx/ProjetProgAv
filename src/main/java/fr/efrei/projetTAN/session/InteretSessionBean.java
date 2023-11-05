@@ -13,16 +13,16 @@ public class InteretSessionBean {
     private Query requete;
 
     // Permet d'obtenir la liste de tous les intérêts
-    public List<InteretEntity> getToutesActivites(){
+    public List<InteretEntity> getTousLesInterets(){
         requete = entityManager.createNamedQuery("recupTousLesInterets");
         return  requete.getResultList();
     }
 
     // Permet d'obtenir un intérêt à partir de son ID
-    public InteretEntity getActiviteParId(int id) {
+    public List<InteretEntity> getInteretParId(int id) {
         requete = entityManager.createNamedQuery("recupInteretId" );
         requete.setParameter("id", id);
-        return (InteretEntity) requete.getSingleResult();
+        return requete.getResultList();
     }
 
     // Permet de créer un nouvel interet

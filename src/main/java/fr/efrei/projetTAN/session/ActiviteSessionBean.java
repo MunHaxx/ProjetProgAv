@@ -19,10 +19,10 @@ public class ActiviteSessionBean {
     }
 
     // Permet d'obtenir une activité à partir de son ID
-    public ActiviteEntity getActiviteParId(int id) {
+    public List<ActiviteEntity> getActiviteParId(int id) {
         requete = entityManager.createNamedQuery("recupActiviteId" );
         requete.setParameter("id", id);
-        return (ActiviteEntity) requete.getSingleResult();
+        return requete.getResultList();
     }
 
     // Permet de créer une nouvelle activite

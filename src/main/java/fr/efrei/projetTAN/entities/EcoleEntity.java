@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-import static fr.efrei.projetTAN.utils.Entity.EcoleConst.*;
+import static fr.efrei.projetTAN.utils.Entity.EntityConst.*;
 
 @Entity
 @Table(name = "ecole", schema = "prj_progav")

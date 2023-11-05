@@ -2,7 +2,7 @@ package fr.efrei.projetTAN.entities;
 
 import jakarta.persistence.*;
 
-import static fr.efrei.projetTAN.utils.Entity.ExperienceConst.*;
+import static fr.efrei.projetTAN.utils.Entity.EntityConst.*;
 
 import java.util.ArrayList;
 import java.util.List;

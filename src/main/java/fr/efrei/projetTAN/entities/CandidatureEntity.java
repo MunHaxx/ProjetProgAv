@@ -2,7 +2,7 @@ package fr.efrei.projetTAN.entities;
 
 import jakarta.persistence.*;
 
-import static fr.efrei.projetTAN.utils.Entity.CandidatureConst.*;
+import static fr.efrei.projetTAN.utils.Entity.EntityConst.*;
 
 import java.sql.Date;
 import java.util.Objects;

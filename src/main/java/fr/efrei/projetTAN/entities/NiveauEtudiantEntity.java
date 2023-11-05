@@ -8,7 +8,7 @@ import java.util.Objects;
 
 import java.util.List;
 
-import static fr.efrei.projetTAN.utils.Entity.NiveauEtudiantConst.*;
+import static fr.efrei.projetTAN.utils.Entity.EntityConst.*;
 import static fr.efrei.projetTAN.utils.GlobalConst.EnumNivEtudiant;
 
 

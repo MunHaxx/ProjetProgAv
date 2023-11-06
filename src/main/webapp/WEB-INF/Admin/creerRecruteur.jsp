@@ -33,7 +33,7 @@
             </form> 
             
             <form class="container-modif-recruteur" method="post" action="ControleurAdmin">
-                <input type="hidden" name="data-id" value="${leRecruteur.idRecruteur == null ? '-1' : leRecruteur.idRecruteur}" />
+                <input type="hidden" name="data-id" value="${leRecruteur.idRecruteur}" />
 
                 <div class="modif-recruteur">
                     <div class="title-page">Profil recruteur</div>

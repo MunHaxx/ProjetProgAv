@@ -40,7 +40,7 @@ public class DataService {
             msgErreur = "Saisie incorrecte, veuillez vérifier tous les champs";
 
         // Création de l'entité s'il n'y a pas d'ID dans la requête
-        else if (request.getParameter("data-id").isEmpty()) {
+        else if (request.getParameter("data-id") == null || request.getParameter("data-id").isEmpty()) {
             RecruteurEntity nouveauRecruteur = new RecruteurEntity(nom, prenom);
             recruteurSB.ajouterRecruteur(nouveauRecruteur);
             msgInfo = "Création du recruteur effectuée";
@@ -72,7 +72,7 @@ public class DataService {
         // Déclaration de variable pour le message à afficher
         String msgErreur = "";
         // Si on ne retrouve pas l'ID, on affiche une erreur
-        if (request.getParameter("data-id").isEmpty())
+        if (request.getParameter("data-id") == null || request.getParameter("data-id").isEmpty())
             msgErreur = "Impossible d'afficher la liste des candidatures sur ce poste";
         else {
             int idPoste = Integer.parseInt(request.getParameter("data-id"));
@@ -93,7 +93,7 @@ public class DataService {
         String msgErreur = "";
         String msgInfo = "";
         // Si on ne retrouve pas l'ID, on affiche une erreur
-        if (request.getParameter("data-id").isEmpty())
+        if (request.getParameter("data-id") == null || request.getParameter("data-id").isEmpty())
             msgErreur = "Erreur : récupération de l'ID impossible, on ne peut pas modifier cette candidature";
         else {
             // Récupération de l'entité
@@ -122,7 +122,7 @@ public class DataService {
         String msgErreur = "";
         String msgInfo = "";
         // Si on ne retrouve pas l'ID, on affiche une erreur
-        if (request.getParameter("data-id").isEmpty())
+        if (request.getParameter("data-id") == null || request.getParameter("data-id").isEmpty())
             msgErreur = "Erreur : récupération de l'ID impossible, on ne peut pas modifier cette candidature";
         else {
             // Récupération de l'entité

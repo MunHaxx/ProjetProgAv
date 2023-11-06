@@ -77,11 +77,11 @@ public class ControleurAdmin extends HttpServlet {
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_RECRUTEUR).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_CREER_RECRUTEUR:
-                    if(request.getParameter("data-id").isEmpty()) {
+                    if(request.getParameter("data-id") == null || request.getParameter("data-id").isEmpty()) {
+                        request.setAttribute("leRecruteur", null);
+                    } else {
                         int dataId = Integer.parseInt(request.getParameter("data-id"));
                         request.setAttribute("leRecruteur", recruteurSB.getRecruteurParId(dataId).get(0));
-                    } else {
-                        request.setAttribute("leRecruteur", null);
                     }
                     request.getRequestDispatcher(PAGE_ADMIN_CREER_RECRUTEUR).forward(request, response);
                     break;
@@ -112,7 +112,14 @@ public class ControleurAdmin extends HttpServlet {
                 case ACTION_ADMIN_SAUVE_ENSEIGNANT:
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_ENSEIGNANT).forward(request, response);
                     break;
-
+                case ACTION_ADMIN_ACCEPTER_CANDIDATURE:
+                    DataService.serviceModifStatusCandidatureRetenue(candidatureSB, request);
+                    redirigerListeCandidatures(request, response);
+                    break;
+                case ACTION_ADMIN_REJETER_CANDIDATURE:
+                    DataService.serviceModifStatusCandidatureNonRetenue(candidatureSB, request);
+                    redirigerListeCandidatures(request, response);
+                    break;
                 
                 case ACTION_DECONNEXION:
                     request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);

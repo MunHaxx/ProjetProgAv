@@ -58,11 +58,11 @@ public class RemarqueEntity {
         if (this == o) return true;
         if (!(o instanceof RemarqueEntity)) return false;
         RemarqueEntity that = (RemarqueEntity) o;
-        return getIdRemarque() == that.getIdRemarque() && Objects.equals(getNomRemarque(), that.getNomRemarque()) && Objects.equals(getListePostes(), that.getListePostes());
+        return getIdRemarque() == that.getIdRemarque() && Objects.equals(getNomRemarque(), that.getNomRemarque());
     }
 
-    /*@Override
+    @Override
     public int hashCode() {
-        return Objects.hash(getIdRemarque(), getRemarque(), getListePostes());
-    }*/
+        return Objects.hash(getIdRemarque(), getNomRemarque());
+    }
 }

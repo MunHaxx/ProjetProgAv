@@ -7,8 +7,8 @@ import jakarta.servlet.http.*;
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static fr.efrei.projetTAN.utils.User.UserRecruteurConst.*;
@@ -78,6 +78,7 @@ public class DataService {
         else {
             int idPoste = Integer.parseInt(request.getParameter("data-id"));
             PosteEntity posteSelect = posteSB.getPosteParId(idPoste).get(0);
+            request.getSession().setAttribute("PosteSelect", posteSelect);
             if (posteSelect == null)
                 msgErreur = "Impossible d'afficher la liste des candidatures sur ce poste";
             else
@@ -105,10 +106,19 @@ public class DataService {
             else if(Objects.equals(candidSelect.getDecision(), "Retenue"))
                 msgInfo = "Cette candidature est déjà retenue";
             else {
+                // Récupération de l'entité liée
+                PosteEntity posteSelect = (PosteEntity) request.getSession().getAttribute("PosteSelect");
+                ArrayList<CandidatureEntity> listeCandidPoste = posteSelect.getListeCandid();
+                int index = posteSelect.getListeCandid().indexOf(candidSelect);
                 // Modification de l'entité
                 candidSelect.setDecision("Retenue");
                 candidSB.modifierCandidature(candidSelect);
-                msgInfo = "Candidature retenue";
+                // Modification de l'entité liée
+                listeCandidPoste.set(index, candidSelect);
+                posteSelect.setListeCandid(listeCandidPoste);
+
+                msgInfo = "Candidature non retenue";
+
             }
         }
         // Envoi des messages d'information
@@ -134,10 +144,18 @@ public class DataService {
             else if(Objects.equals(candidSelect.getDecision(), "Non retenue"))
                 msgInfo = "Cette candidature est déjà non retenue";
             else {
+                // Récupération de l'entité liée
+                PosteEntity posteSelect = (PosteEntity) request.getSession().getAttribute("PosteSelect");
+                ArrayList<CandidatureEntity> listeCandidPoste = posteSelect.getListeCandid();
+                int index = posteSelect.getListeCandid().indexOf(candidSelect);
                 // Modification de l'entité
-                candidSelect.setDecision("Non retenue");
+                candidSelect.setDecision("Non Retenue");
                 candidSB.modifierCandidature(candidSelect);
+                // Modification de l'entité liée
+                listeCandidPoste.set(index, candidSelect);
+                posteSelect.setListeCandid(listeCandidPoste);
                 msgInfo = "Candidature non retenue";
+
             }
         }
         // Envoi des messages d'information

@@ -89,13 +89,13 @@ public class CompetenceEntity {
         if (this == o) return true;
         if (!(o instanceof CompetenceEntity)) return false;
         CompetenceEntity that = (CompetenceEntity) o;
-        return getIdCompetence() == that.getIdCompetence() && Objects.equals(getNomCompetence(), that.getNomCompetence()) && getNiveau() == that.getNiveau() && Objects.equals(getListePostes(), that.getListePostes());
+        return getIdCompetence() == that.getIdCompetence() && Objects.equals(getNomCompetence(), that.getNomCompetence()) && getNiveau() == that.getNiveau();
     }
 
-    @Override
+    /*@Override
     public int hashCode() {
-        return Objects.hash(getIdCompetence(), getNomCompetence(), getNiveau(), getListePostes());
-    }
+        return Objects.hash(getIdCompetence(), getNomCompetence(), getNiveau());
+    }*/
 }
 
 

@@ -46,19 +46,19 @@ public class PosteEntity {
     @JoinTable( name = "requiert_compt",
             joinColumns = @JoinColumn( name = "ID_Poste" ),
             inverseJoinColumns = @JoinColumn( name = "ID_Competence" ) )
-    private List<CompetenceEntity> listeCompetences;
+    private ArrayList<CompetenceEntity> listeCompetences;
     @ManyToMany
     @JoinTable( name = "Contient_contrainte",
             joinColumns = @JoinColumn( name = "ID_Poste" ),
             inverseJoinColumns = @JoinColumn( name = "ID_Contrainte" ) )
-    private List<ContrainteEntity> listeContraintes;
+    private ArrayList<ContrainteEntity> listeContraintes;
     @ManyToMany
     @JoinTable( name = "Contient_remarque",
             joinColumns = @JoinColumn( name = "ID_Poste" ),
             inverseJoinColumns = @JoinColumn( name = "ID_Remarque" ) )
-    private List<RemarqueEntity> listeRemarques;
+    private ArrayList<RemarqueEntity> listeRemarques;
     @OneToMany(mappedBy = "poste")
-    private List<CandidatureEntity> listeCandid;
+    private ArrayList<CandidatureEntity> listeCandid;
 
     public PosteEntity(){}
 
@@ -136,31 +136,31 @@ public class PosteEntity {
         return listeCompetences;
     }
 
-    public void setListeCompetences(List<CompetenceEntity> listeCompetences) {
+    public void setListeCompetences(ArrayList<CompetenceEntity> listeCompetences) {
         this.listeCompetences = listeCompetences;
     }
 
-    public List<ContrainteEntity> getListeContraintes() {
+    public ArrayList<ContrainteEntity> getListeContraintes() {
         return listeContraintes;
     }
 
-    public void setListeContraintes(List<ContrainteEntity> listeContraintes) {
+    public void setListeContraintes(ArrayList<ContrainteEntity> listeContraintes) {
         this.listeContraintes = listeContraintes;
     }
 
-    public List<RemarqueEntity> getListeRemarques() {
+    public ArrayList<RemarqueEntity> getListeRemarques() {
         return listeRemarques;
     }
 
-    public void setListeRemarques(List<RemarqueEntity> listeRemarques) {
+    public void setListeRemarques(ArrayList<RemarqueEntity> listeRemarques) {
         this.listeRemarques = listeRemarques;
     }
 
-    public List<CandidatureEntity> getListeCandid() {
-        return listeCandid;
+    public ArrayList<CandidatureEntity> getListeCandid() {
+        return (ArrayList<CandidatureEntity>) listeCandid;
     }
 
-    public void setListeCandid(List<CandidatureEntity> listeCandid) {
+    public void setListeCandid(ArrayList<CandidatureEntity> listeCandid) {
         this.listeCandid = listeCandid;
     }
 
@@ -169,12 +169,11 @@ public class PosteEntity {
         if (this == o) return true;
         if (!(o instanceof PosteEntity)) return false;
         PosteEntity that = (PosteEntity) o;
-        return getIdPoste() == that.getIdPoste() && Objects.equals(getNomPoste(), that.getNomPoste()) && Objects.equals(getEcole(), that.getEcole()) && getTypeContrat() == that.getTypeContrat() && Objects.equals(getPeriode(), that.getPeriode()) && Objects.equals(getPourNivEtudiant(), that.getPourNivEtudiant()) && Objects.equals(getRecruteurRespo(), that.getRecruteurRespo()) && Objects.equals(getListeCompetences(), that.getListeCompetences()) && Objects.equals(getListeContraintes(), that.getListeContraintes()) && Objects.equals(getListeRemarques(), that.getListeRemarques()) && Objects.equals(getListeCandid(), that.getListeCandid());
+        return getIdPoste() == that.getIdPoste() && Objects.equals(getNomPoste(), that.getNomPoste()) && Objects.equals(getEcole(), that.getEcole()) && getTypeContrat() == that.getTypeContrat() && Objects.equals(getPeriode(), that.getPeriode()) && Objects.equals(getPourNivEtudiant(), that.getPourNivEtudiant()) && Objects.equals(getRecruteurRespo(), that.getRecruteurRespo());
     }
 
-    /*@Override
+    @Override
     public int hashCode() {
-        return Objects.hash(getIdPoste(), getNom(), getEcole(), getTypeContrat(), getPeriode(), getPourNivEtudiant(), getRecruteurRespo(), getListeCompetences(), getListeContraintes(), getListeRemarques(), getListeCandid());
-    }*/
-
+        return Objects.hash(getIdPoste(), getNomPoste(), getEcole(), getTypeContrat(), getPeriode(), getPourNivEtudiant(), getRecruteurRespo());
+    }
 }

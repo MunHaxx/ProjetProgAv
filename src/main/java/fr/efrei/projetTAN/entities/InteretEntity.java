@@ -57,11 +57,11 @@ public class InteretEntity {
         if (this == o) return true;
         if (!(o instanceof InteretEntity)) return false;
         InteretEntity that = (InteretEntity) o;
-        return getIdInteret() == that.getIdInteret() && Objects.equals(getNomInteret(), that.getNomInteret()) && Objects.equals(getListeEnseignants(), that.getListeEnseignants());
+        return getIdInteret() == that.getIdInteret() && Objects.equals(getNomInteret(), that.getNomInteret());
     }
 
-    /*@Override
+    @Override
     public int hashCode() {
-        return Objects.hash(getIdInteret(), getInteret(), getListeEnseignants());
-    }*/
+        return Objects.hash(getIdInteret(), getNomInteret());
+    }
 }

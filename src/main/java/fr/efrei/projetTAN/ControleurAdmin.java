@@ -90,7 +90,7 @@ public class ControleurAdmin extends HttpServlet {
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_ENSEIGNANT).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_CREER_ENSEIGNANT:
-                    if(request.getParameter("data-id") != null) {
+                    if(!request.getParameter("data-id").isEmpty()) {
                         int dataId = Integer.parseInt(request.getParameter("data-id"));
                         request.setAttribute("lEnseignant", enseignantSB.getEnseignantParId(dataId).get(0));
                     } else {

@@ -88,5 +88,4 @@ public class CandidatureEntity {
     public int hashCode() {
         return Objects.hash(getIdCandidature(), getPoste(), getEnseignant(), getDateCandid(), getDecision());
     }
-
 }

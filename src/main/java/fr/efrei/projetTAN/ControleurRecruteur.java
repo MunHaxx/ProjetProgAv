@@ -83,16 +83,14 @@ public class ControleurRecruteur extends HttpServlet {
                     request.getSession().setAttribute("messageErreur", "");
                     switch (actionUtilisateur) {
                         case ACTION_RECRUTEUR_VOIR_LISTE_POSTE:
-                            // Redirection vers la page correspondante
+                            request.getSession().setAttribute("PosteSelect", "");
                             request.getRequestDispatcher(PAGE_RECRUTEUR_LISTE_POSTE).forward(request, response);
                             break;
                         case ACTION_RECRUTEUR_VOIR_CREER_POSTE:
-                            // Redirection vers la page correspondante
                             request.getRequestDispatcher(PAGE_RECRUTEUR_CREER_POSTE).forward(request, response);
                             break;
                         case ACTION_RECRUTEUR_VOIR_MODIFIER_PROFIL:
                             request.setAttribute("idRecruteur", recruteurActuel.getIdRecruteur());
-                            // Redirection vers la page correspondante
                             request.getRequestDispatcher(PAGE_RECRUTEUR_MODIFIER_PROFIL).forward(request, response);
                             break;
                         case ACTION_RECRUTEUR_VOIR_LISTE_CANDIDATURE:
@@ -109,7 +107,6 @@ public class ControleurRecruteur extends HttpServlet {
                             break;
                         case ACTION_RECRUTEUR_SAUVE_MODIFICATION_PROFIL:
                             DataService.serviceModifierCreerRecruteur(recruteurSB, request);
-                            // Redirection vers la page correspondante
                             request.getRequestDispatcher(PAGE_RECRUTEUR_MODIFIER_PROFIL).forward(request, response);
                             break;
                         case ACTION_RECRUTEUR_ACCEPTER_CANDIDATURE:

@@ -36,7 +36,6 @@ public class NiveauEtudiantEntity {
 
     public NiveauEtudiantEntity() {}
     public NiveauEtudiantEntity(EnumNivEtudiant niveau) {
-        System.out.println("\n\n\n Bonsoir " + niveau);
         this.niveau = niveau;
         this.EnseignantsPreferentNivEtud = new ArrayList<EnseignantEntity>();
         this.PostesPourNivEtud = new ArrayList<PosteEntity>();
@@ -80,11 +79,11 @@ public class NiveauEtudiantEntity {
         if (this == o) return true;
         if (!(o instanceof NiveauEtudiantEntity)) return false;
         NiveauEtudiantEntity that = (NiveauEtudiantEntity) o;
-        return getIdNivEtud() == that.getIdNivEtud() && getNiveau() == that.getNiveau() && Objects.equals(getEnseignantsPreferentNivEtud(), that.getEnseignantsPreferentNivEtud()) && Objects.equals(getPostesPourNivEtud(), that.getPostesPourNivEtud());
+        return getIdNivEtud() == that.getIdNivEtud() && getNiveau() == that.getNiveau();
     }
 
-    /*@Override
+    @Override
     public int hashCode() {
-        return Objects.hash(getIdNivEtud(), getNiveau(), getEnseignantsPreferentNivEtud(), getPostesPourNivEtud());
-    }*/
+        return Objects.hash(getIdNivEtud(), getNiveau());
+    }
 }

@@ -71,11 +71,11 @@ public class EcoleEntity {
         if (this == o) return true;
         if (!(o instanceof EcoleEntity)) return false;
         EcoleEntity that = (EcoleEntity) o;
-        return getIdEcole() == that.getIdEcole() && Objects.equals(getRaisonSociale(), that.getRaisonSociale()) && Objects.equals(getBesoinListePostes(), that.getBesoinListePostes()) && Objects.equals(getListeEnseignantReco(), that.getListeEnseignantReco());
+        return getIdEcole() == that.getIdEcole() && Objects.equals(getRaisonSociale(), that.getRaisonSociale());
     }
 
-    @Override
+    /*@Override
     public int hashCode() {
-        return Objects.hash(getIdEcole(), getRaisonSociale(), getBesoinListePostes(), getListeEnseignantReco());
-    }
+        return Objects.hash(getIdEcole(), getRaisonSociale());
+    }*/
 }

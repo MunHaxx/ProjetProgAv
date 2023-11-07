@@ -15,7 +15,7 @@ public class PosteSessionBean {
     // Permet d'obtenir la liste de tous les postes
     public List<PosteEntity> getTousLesPostes(){
         requete = entityManager.createNamedQuery("recupTousLesPostes");
-        return  requete.getResultList();
+        return requete.getResultList();
     }
 
     // Permet d'obtenir une poste à partir de son ID
@@ -29,6 +29,13 @@ public class PosteSessionBean {
     public void ajouterPoste(PosteEntity posteACreer) {
         entityManager.getTransaction().begin();
         entityManager.persist(posteACreer);
+        entityManager.getTransaction().commit();
+    }
+
+    // Permet de modifier un nouveau poste
+    public void modifierPoste(PosteEntity posteAModifier) {
+        entityManager.getTransaction().begin();
+        entityManager.merge(posteAModifier);
         entityManager.getTransaction().commit();
     }
 

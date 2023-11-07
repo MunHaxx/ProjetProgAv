@@ -174,5 +174,16 @@ public class EnseignantEntity {
         this.listeCandid = listeCandid;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof EnseignantEntity)) return false;
+        EnseignantEntity that = (EnseignantEntity) o;
+        return getIdEnseignant() == that.getIdEnseignant() && Objects.equals(getNom(), that.getNom()) && Objects.equals(getPrenom(), that.getPrenom()) && Objects.equals(getRecoParRecruteur(), that.getRecoParRecruteur()) && Objects.equals(getRecoParEcole(), that.getRecoParEcole()) && Objects.equals(getMail(), that.getMail()) && Objects.equals(getTelephone(), that.getTelephone()) && Objects.equals(getSiteWeb(), that.getSiteWeb()) && Objects.equals(getPrefereNivEtudiant(), that.getPrefereNivEtudiant());
+    }
 
+    @Override
+    public int hashCode() {
+        return Objects.hash(getIdEnseignant(), getNom(), getPrenom(), getRecoParRecruteur(), getRecoParEcole(), getMail(), getTelephone(), getSiteWeb(), getPrefereNivEtudiant());
+    }
 }

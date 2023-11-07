@@ -58,11 +58,11 @@ public class ContrainteEntity {
         if (this == o) return true;
         if (!(o instanceof ContrainteEntity)) return false;
         ContrainteEntity that = (ContrainteEntity) o;
-        return getIdContrainte() == that.getIdContrainte() && Objects.equals(getNomContrainte(), that.getNomContrainte()) && Objects.equals(getListePostes(), that.getListePostes());
+        return getIdContrainte() == that.getIdContrainte() && Objects.equals(getNomContrainte(), that.getNomContrainte());
     }
 
     /*@Override
     public int hashCode() {
-        return Objects.hash(getIdContrainte(), getContrainte(), getListePostes());
+        return Objects.hash(getIdContrainte(), getNomContrainte());
     }*/
 }

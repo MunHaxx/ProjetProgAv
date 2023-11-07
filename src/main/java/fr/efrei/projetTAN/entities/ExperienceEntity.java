@@ -98,12 +98,12 @@ public class ExperienceEntity {
         if (this == o) return true;
         if (!(o instanceof ExperienceEntity)) return false;
         ExperienceEntity that = (ExperienceEntity) o;
-        return getIdExperience() == that.getIdExperience() && Objects.equals(getEcole(), that.getEcole()) && Objects.equals(getEvalEcole(), that.getEvalEcole()) && Objects.equals(getDuree(), that.getDuree()) && Objects.equals(getEnseignant(), that.getEnseignant()) && Objects.equals(getListeCompetences(), that.getListeCompetences());
+        return getIdExperience() == that.getIdExperience() && Objects.equals(getEcole(), that.getEcole()) && Objects.equals(getEvalEcole(), that.getEvalEcole()) && Objects.equals(getDuree(), that.getDuree()) && Objects.equals(getEnseignant(), that.getEnseignant());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdExperience(), getEcole(), getEvalEcole(), getDuree(), getEnseignant(), getListeCompetences());
+        return Objects.hash(getIdExperience(), getEcole(), getEvalEcole(), getDuree(), getEnseignant());
     }
 }
 

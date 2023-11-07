@@ -8,6 +8,7 @@ import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import static fr.efrei.projetTAN.utils.User.UserRecruteurConst.*;
@@ -77,6 +78,7 @@ public class DataService {
         else {
             int idPoste = Integer.parseInt(request.getParameter("data-id"));
             PosteEntity posteSelect = posteSB.getPosteParId(idPoste).get(0);
+            request.getSession().setAttribute("PosteSelect", posteSelect);
             if (posteSelect == null)
                 msgErreur = "Impossible d'afficher la liste des candidatures sur ce poste";
             else
@@ -104,10 +106,19 @@ public class DataService {
             else if(Objects.equals(candidSelect.getDecision(), "Retenue"))
                 msgInfo = "Cette candidature est déjà retenue";
             else {
+                // Récupération de l'entité liée
+                PosteEntity posteSelect = (PosteEntity) request.getSession().getAttribute("PosteSelect");
+                ArrayList<CandidatureEntity> listeCandidPoste = posteSelect.getListeCandid();
+                int index = posteSelect.getListeCandid().indexOf(candidSelect);
                 // Modification de l'entité
                 candidSelect.setDecision("Retenue");
                 candidSB.modifierCandidature(candidSelect);
-                msgInfo = "Candidature retenue";
+                // Modification de l'entité liée
+                listeCandidPoste.set(index, candidSelect);
+                posteSelect.setListeCandid(listeCandidPoste);
+
+                msgInfo = "Candidature non retenue";
+
             }
         }
         // Envoi des messages d'information
@@ -133,10 +144,18 @@ public class DataService {
             else if(Objects.equals(candidSelect.getDecision(), "Non retenue"))
                 msgInfo = "Cette candidature est déjà non retenue";
             else {
+                // Récupération de l'entité liée
+                PosteEntity posteSelect = (PosteEntity) request.getSession().getAttribute("PosteSelect");
+                ArrayList<CandidatureEntity> listeCandidPoste = posteSelect.getListeCandid();
+                int index = posteSelect.getListeCandid().indexOf(candidSelect);
                 // Modification de l'entité
-                candidSelect.setDecision("Non retenue");
+                candidSelect.setDecision("Non Retenue");
                 candidSB.modifierCandidature(candidSelect);
+                // Modification de l'entité liée
+                listeCandidPoste.set(index, candidSelect);
+                posteSelect.setListeCandid(listeCandidPoste);
                 msgInfo = "Candidature non retenue";
+
             }
         }
         // Envoi des messages d'information
@@ -147,7 +166,7 @@ public class DataService {
     public static void serviceCreerPoste(PosteSessionBean posteSB, EcoleSessionBean ecoleSB,
                                          CompetenceSessionBean competenceSB, ContrainteSessionBean contrainteSB,
                                          RemarqueSessionBean remarqueSB, NiveauEtudiantSessionBean nivEtudiantSB,
-                                         HttpServletRequest request) {
+                                         RecruteurSessionBean recruteurSB, HttpServletRequest request) {
         // Déclaration de variable pour le message à afficher
         String msgErreur = "";
         String msgInfo = "";
@@ -188,7 +207,9 @@ public class DataService {
             GlobalConst.EnumTypeContrat contrat = serviceCreerTypeContrat(strContrat);
             NiveauEtudiantEntity nivEtudiant = serviceCreerNivEtudiant(nivEtudiantSB, strNivEtudiant);
             EcoleEntity ecole  = serviceRecupCreerEcole(ecoleSB, strEcole);
+
             PosteEntity nouveauPoste = new PosteEntity(nomPoste, ecole, contrat, periode, nivEtudiant, recruteurConnecte);
+            posteSB.ajouterPoste(nouveauPoste);
 
             // Remplissage des listes du poste
             ArrayList<String> listeStr = new ArrayList<>();
@@ -198,8 +219,7 @@ public class DataService {
             listeStr.add(strCompt2);
             listeStr.add(strCompt3);
             ArrayList<CompetenceEntity> listeCompetences = serviceCreerListeCompetences(competenceSB, nouveauPoste, listeStr);
-            if (listeCompetences != null)
-                nouveauPoste.setListeCompetences(listeCompetences);
+            nouveauPoste.setListeCompetences(listeCompetences);
             listeStr.clear();
 
             // Contraintes
@@ -212,7 +232,9 @@ public class DataService {
             // Ajout des compétences, contraintes et remarques
             // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
-            posteSB.ajouterPoste(nouveauPoste);
+            posteSB.modifierPoste(nouveauPoste);
+            recruteurConnecte.getEstRespoListePostes().add(nouveauPoste);
+            recruteurSB.modifierRecruteur(recruteurConnecte);
             msgInfo = "Création du poste effectuée";
         }
         // Envoi des messages d'information
@@ -256,12 +278,12 @@ public class DataService {
 
     // Crée une liste de compétences à partir d'une liste de string
     public static ArrayList<CompetenceEntity> serviceCreerListeCompetences(CompetenceSessionBean competenceSB, PosteEntity poste, ArrayList<String> strListe) {
-        if (strListe == null)
-            return null;
         ArrayList<CompetenceEntity> listeCompt = new ArrayList<>();
-        for (String compt:strListe) {
-            if (compt != null && !compt.isEmpty()){
-                CompetenceEntity nouvelleCompetence = new CompetenceEntity(compt, poste);
+        for (String strCompt:strListe) {
+            if (strCompt != null && !strCompt.isEmpty()){
+                // est-ce que ma compétence existe ? oui je récup et j'ajoute à la liste des postes de la compt
+                // sinon je créé ma compétence, et je l'ajoute à la listes des postes de la compt
+                CompetenceEntity nouvelleCompetence = new CompetenceEntity(strCompt, poste);
                 competenceSB.ajouterCompetence(nouvelleCompetence);
                 listeCompt.add(nouvelleCompetence);
             }

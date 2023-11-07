@@ -93,12 +93,12 @@ public class RecruteurEntity {
         if (this == o) return true;
         if (!(o instanceof RecruteurEntity)) return false;
         RecruteurEntity recruteur = (RecruteurEntity) o;
-        return getIdRecruteur() == recruteur.getIdRecruteur() && Objects.equals(getNom(), recruteur.getNom()) && Objects.equals(getPrenom(), recruteur.getPrenom()) && Objects.equals(getEstRespoListePostes(), recruteur.getEstRespoListePostes()) && Objects.equals(getListeEnseignantReco(), recruteur.getListeEnseignantReco());
+        return getIdRecruteur() == recruteur.getIdRecruteur() && Objects.equals(getNom(), recruteur.getNom()) && Objects.equals(getPrenom(), recruteur.getPrenom());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getIdRecruteur(), getNom(), getPrenom(), getEstRespoListePostes(), getListeEnseignantReco());
+        return Objects.hash(getIdRecruteur(), getNom(), getPrenom());
     }
 }
 

@@ -279,9 +279,11 @@ public class DataService {
     // Crée une liste de compétences à partir d'une liste de string
     public static ArrayList<CompetenceEntity> serviceCreerListeCompetences(CompetenceSessionBean competenceSB, PosteEntity poste, ArrayList<String> strListe) {
         ArrayList<CompetenceEntity> listeCompt = new ArrayList<>();
-        for (String compt:strListe) {
-            if (compt != null && !compt.isEmpty()){
-                CompetenceEntity nouvelleCompetence = new CompetenceEntity(compt, poste);
+        for (String strCompt:strListe) {
+            if (strCompt != null && !strCompt.isEmpty()){
+                // est-ce que ma compétence existe ? oui je récup et j'ajoute à la liste des postes de la compt
+                // sinon je créé ma compétence, et je l'ajoute à la listes des postes de la compt
+                CompetenceEntity nouvelleCompetence = new CompetenceEntity(strCompt, poste);
                 competenceSB.ajouterCompetence(nouvelleCompetence);
                 listeCompt.add(nouvelleCompetence);
             }

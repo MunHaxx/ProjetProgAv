@@ -49,7 +49,7 @@ public class CompetenceEntity {
     public CompetenceEntity(String nomCompetence, PosteEntity poste) {
         this.nomCompetence = nomCompetence;
         this.niveau = null;
-        this.listePostes = new ArrayList<PosteEntity>();
+        this.listePostes = new ArrayList<>();
         this.listePostes.add(poste);
     }
 

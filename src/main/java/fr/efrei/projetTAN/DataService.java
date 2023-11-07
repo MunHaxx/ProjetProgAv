@@ -117,7 +117,7 @@ public class DataService {
                 listeCandidPoste.set(index, candidSelect);
                 posteSelect.setListeCandid(listeCandidPoste);
 
-                msgInfo = "Candidature non retenue";
+                msgInfo = "Candidature retenue";
 
             }
         }

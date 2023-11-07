@@ -5,7 +5,7 @@
     <head>
         <!-- <link rel="stylesheet" href="/style.css"> -->
         <link rel="stylesheet" type="text/css" href="/ProjetTAN/resources/css/style.css" />
-        <title>ProjetTA - Login</title>
+        <title>ProjetTAN - Login</title>
     </head>
 
     <body>
@@ -26,7 +26,7 @@
                 <div class="presentation-message">Bienvenue sur la plateforme de recrutement d'enseignant supérieurs
                 </div>
 
-                <form action="Controleur" method="post" class="container-input-login">
+                <form action="ControleurLogin" method="post" class="container-input-login">
                     <input class="input-connexion" placeholder="Identifiant" name="champLogin" />
                     <input type="password" class="input-connexion" placeholder="Mot De Passe" name="champPassword" />
                     <input type="submit" name="action" value="Login" class="se-connecter" />

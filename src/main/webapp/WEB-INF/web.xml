@@ -6,13 +6,13 @@
 
     <!-- Connexion -->
     <servlet>
-        <servlet-name>Controleur</servlet-name>
-        <servlet-class>fr.efrei.projetTAN.Controleur</servlet-class>
+        <servlet-name>ControleurLogin</servlet-name>
+        <servlet-class>fr.efrei.projetTAN.ControleurLogin</servlet-class>
     </servlet>
 
     <servlet-mapping>
-        <servlet-name>Controleur</servlet-name>
-        <url-pattern>/Controleur</url-pattern>
+        <servlet-name>ControleurLogin</servlet-name>
+        <url-pattern>/ControleurLogin</url-pattern>
     </servlet-mapping>
 
     <!-- Admin -->
@@ -49,7 +49,7 @@
     </servlet-mapping>
 
     <welcome-file-list>
-        <welcome-file>Controleur</welcome-file>
+        <welcome-file>ControleurLogin</welcome-file>
     </welcome-file-list>
 
     <jsp-config>

@@ -3,7 +3,7 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="/ProjetTAN/resources/css/style.css" />
-        <title>ProjetTA - Login</title>
+        <title>ProjetTAN - Informations Poste</title>
     </head>
 
     <body>

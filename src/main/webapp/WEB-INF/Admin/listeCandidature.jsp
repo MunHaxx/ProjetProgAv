@@ -26,7 +26,7 @@
             
             <form class="Menu" method="post" action="ControleurAdmin">
                 <button type="submit" name="action" value="VoirListePoste" class="element">Listes postes</button>
-                <button type="submit" name="action" value="VoirListeRecruteur" class="element select">Liste Recruteurs</button>
+                <button type="submit" name="action" value="VoirListeRecruteur" class="element">Liste Recruteurs</button>
                 <button type="submit" name="action" value="VoirCreerRecruteur" class="element">Créer Recruteur</button>
                 <button type="submit" name="action" value="VoirListeEnseignant" class="element">Liste Enseignants</button>
                 <button type="submit" name="action" value="VoirCreerEnseignant" class="element">Créer Enseignant</button>

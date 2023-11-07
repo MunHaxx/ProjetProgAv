@@ -65,7 +65,8 @@ public class ControleurAdmin extends HttpServlet {
         else {
             List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs(); // Besoin de la liste dans différents case
             List<EnseignantEntity> listeEnseignants = enseignantSB.getTousEnseignants(); // Besoin de la liste dans différents case
-            
+            request.getSession().setAttribute("messageInfo", "");
+            request.getSession().setAttribute("messageErreur", "");
            
             switch (actionUtilisateur) {
                 case ACTION_ADMIN_VOIR_LISTE_POSTE:
@@ -77,11 +78,11 @@ public class ControleurAdmin extends HttpServlet {
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_RECRUTEUR).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_CREER_RECRUTEUR:
-                    if(request.getParameter("data-id").isEmpty()) {
+                    if(request.getParameter("data-id") == null || request.getParameter("data-id").isEmpty()) {
+                        request.setAttribute("leRecruteur", null);
+                    } else {
                         int dataId = Integer.parseInt(request.getParameter("data-id"));
                         request.setAttribute("leRecruteur", recruteurSB.getRecruteurParId(dataId).get(0));
-                    } else {
-                        request.setAttribute("leRecruteur", null);
                     }
                     request.getRequestDispatcher(PAGE_ADMIN_CREER_RECRUTEUR).forward(request, response);
                     break;
@@ -90,11 +91,11 @@ public class ControleurAdmin extends HttpServlet {
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_ENSEIGNANT).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_CREER_ENSEIGNANT:
-                    if(!request.getParameter("data-id").isEmpty()) {
+                    if(request.getParameter("data-id") == null || request.getParameter("data-id").isEmpty()) {
+                        request.setAttribute("lEnseignant", null);
+                    } else {
                         int dataId = Integer.parseInt(request.getParameter("data-id"));
                         request.setAttribute("lEnseignant", enseignantSB.getEnseignantParId(dataId).get(0));
-                    } else {
-                        request.setAttribute("lEnseignant", null);
                     }
                     request.getRequestDispatcher(PAGE_ADMIN_CREER_ENSEIGNANT).forward(request, response);
                     break;
@@ -112,7 +113,14 @@ public class ControleurAdmin extends HttpServlet {
                 case ACTION_ADMIN_SAUVE_ENSEIGNANT:
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_ENSEIGNANT).forward(request, response);
                     break;
-
+                case ACTION_ADMIN_ACCEPTER_CANDIDATURE:
+                    DataService.serviceModifStatusCandidatureRetenue(candidatureSB, request);
+                    redirigerListeCandidatures(request, response);
+                    break;
+                case ACTION_ADMIN_REJETER_CANDIDATURE:
+                    DataService.serviceModifStatusCandidatureNonRetenue(candidatureSB, request);
+                    redirigerListeCandidatures(request, response);
+                    break;
                 
                 case ACTION_DECONNEXION:
                     request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);

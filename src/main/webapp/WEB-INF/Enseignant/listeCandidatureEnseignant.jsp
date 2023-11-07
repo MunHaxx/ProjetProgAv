@@ -4,7 +4,7 @@
     <head>
         <!-- <link rel="stylesheet" href="/style.css"> -->
         <link rel="stylesheet" type="text/css" href="/ProjetTAN/resources/css/style.css" />
-        <title>ProjetTA - Enseignant</title>
+        <title>ProjetTAN - Liste Candidature</title>
     </head>
 
     <body>

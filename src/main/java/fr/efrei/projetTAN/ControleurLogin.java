@@ -13,7 +13,7 @@ import static fr.efrei.projetTAN.utils.User.LoginConst.*;
 import fr.efrei.projetTAN.entities.*;
 import fr.efrei.projetTAN.session.*;
 
-public class Controleur extends HttpServlet {
+public class ControleurLogin extends HttpServlet {
     private Utilisateur unUtilisateur;
     private String actionUtilisateur;
     @EJB

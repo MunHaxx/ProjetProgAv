@@ -100,8 +100,6 @@ public class ControleurAdmin extends HttpServlet {
                     request.getRequestDispatcher(PAGE_ADMIN_CREER_ENSEIGNANT).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_LISTE_CANDIDATURE:
-                    // int dataId = Integer.parseInt(request.getParameter("data-id"));
-                    // request.setAttribute("toutesLesCandidatures", posteSB.getPosteParId(dataId).getListeCandid());
                     redirigerListeCandidatures(request, response);
                     request.getRequestDispatcher(PAGE_ADMIN_VOIR_CANDIDATURE).forward(request, response);
                     break;
@@ -111,6 +109,7 @@ public class ControleurAdmin extends HttpServlet {
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_RECRUTEUR).forward(request, response);
                     break;
                 case ACTION_ADMIN_SAUVE_ENSEIGNANT:
+                    request.setAttribute("tousLesEnseignants", listeEnseignants);
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_ENSEIGNANT).forward(request, response);
                     break;
                 case ACTION_ADMIN_ACCEPTER_CANDIDATURE:

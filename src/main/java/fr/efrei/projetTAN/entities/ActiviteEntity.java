@@ -57,11 +57,12 @@ public class ActiviteEntity {
         if (this == o) return true;
         if (!(o instanceof ActiviteEntity)) return false;
         ActiviteEntity that = (ActiviteEntity) o;
-        return getIdActivite() == that.getIdActivite() && Objects.equals(getNomActivite(), that.getNomActivite()) && Objects.equals(getListeEnseignants(), that.getListeEnseignants());
+        return getIdActivite() == that.getIdActivite() && Objects.equals(getNomActivite(), that.getNomActivite());
     }
 
     /*@Override
     public int hashCode() {
-        return Objects.hash(getIdRemarque(), getRemarque(), getListeEnseignants());
+        return Objects.hash(getIdActivite(), getNomActivite());
     }*/
+
 }

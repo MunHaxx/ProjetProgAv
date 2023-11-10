@@ -45,7 +45,7 @@
                         <input type="hidden" name="data-id" value="${enseignant.idEnseignant}">
                         <button type="submit" name="action" value="VoirCreerEnseignant" class="modifier">Modifier</button>
 
-                        <div class="title-enseignant">Enseignant n°N</div>
+                        <div class="title-enseignant">Enseignant n°${enseignant.idEnseignant}</div>
             
                         <div class="container-line">
                             <div class="info">${enseignant.nom}</div>

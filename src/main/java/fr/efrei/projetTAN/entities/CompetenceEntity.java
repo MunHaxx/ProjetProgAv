@@ -15,7 +15,8 @@ import static fr.efrei.projetTAN.utils.Entity.EntityConst.*;
 @NamedQueries(
         {
                 @NamedQuery(name = "recupTousLesCompt", query = SELECT_TOUTES_LES_COMPETENCES)
-                , @NamedQuery(name = "recupComptId", query = SELECT_UNE_COMPETENCE)
+                , @NamedQuery(name = "recupComptId", query = SELECT_UNE_COMPETENCE_PAR_ID)
+                , @NamedQuery(name = "recupComptNom", query = SELECT_UNE_COMPETENCE_PAR_NOM)
         }
 )
 

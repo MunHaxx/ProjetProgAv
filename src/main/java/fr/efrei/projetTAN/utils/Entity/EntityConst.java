@@ -10,7 +10,8 @@ public final class EntityConst {
     public static final String SELECT_CANDIDATURE_PAR_ID = "SELECT c FROM CandidatureEntity c WHERE c.idCandidature = :id";
     
     public static final String SELECT_TOUTES_LES_COMPETENCES = "SELECT c FROM CompetenceEntity c";
-    public static final String SELECT_UNE_COMPETENCE = "SELECT c FROM CompetenceEntity c WHERE c.idCompetence = :id";
+    public static final String SELECT_UNE_COMPETENCE_PAR_ID = "SELECT c FROM CompetenceEntity c WHERE c.idCompetence = :id";
+    public static final String SELECT_UNE_COMPETENCE_PAR_NOM = "SELECT c FROM CompetenceEntity c WHERE c.nomCompetence = :nom";
     
     public static final String SELECT_TOUTES_LES_CONTRAINTES = "SELECT c FROM ContrainteEntity c";
     public static final String SELECT_UNE_CONTRAINTE = "SELECT c FROM ContrainteEntity c WHERE c.idContrainte = :id";

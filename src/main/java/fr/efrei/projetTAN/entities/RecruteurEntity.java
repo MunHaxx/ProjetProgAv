@@ -100,5 +100,6 @@ public class RecruteurEntity {
     public int hashCode() {
         return Objects.hash(getIdRecruteur(), getNom(), getPrenom());
     }
+
 }
 

@@ -4,7 +4,7 @@
     <head>
         <!-- <link rel="stylesheet" href="/style.css"> -->
         <link rel="stylesheet" type="text/css" href="/ProjetTAN/resources/css/style.css" />
-        <title>ProjetTA - Login</title>
+        <title>ProjetTAN - Liste poste</title>
     </head>
 
     <body>

@@ -4,7 +4,7 @@
     <head>
         <!-- <link rel="stylesheet" href="/style.css"> -->
         <link rel="stylesheet" type="text/css" href="/ProjetTAN/resources/css/style.css" />
-        <title>ProjetTA - Admin</title>
+        <title>ProjetTAN - Informations recruteur</title>
     </head>
 
     <body>
@@ -33,7 +33,7 @@
             </form> 
             
             <form class="container-modif-recruteur" method="post" action="ControleurAdmin">
-                <input type="hidden" name="data-id" value="${leRecruteur.idRecruteur == null ? '-1' : leRecruteur.idRecruteur}" />
+                <input type="hidden" name="data-id" value="${leRecruteur.idRecruteur}" />
 
                 <div class="modif-recruteur">
                     <div class="title-page">Profil recruteur</div>

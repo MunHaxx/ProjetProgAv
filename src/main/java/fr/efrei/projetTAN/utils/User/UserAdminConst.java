@@ -10,6 +10,8 @@ public final class UserAdminConst {
     public static final String ACTION_ADMIN_VOIR_LISTE_CANDIDATURE = "VoirListeCandidature";
     public static final String ACTION_ADMIN_SAUVE_RECRUTEUR = "SauveRecruteur";
     public static final String ACTION_ADMIN_SAUVE_ENSEIGNANT = "SauveEnseignant";
+    public static final String ACTION_ADMIN_ACCEPTER_CANDIDATURE = "AccepterCandidature";
+    public static final String ACTION_ADMIN_REJETER_CANDIDATURE = "RejeterCandidature";
 
     // Lien de page
     public static final String PAGE_ADMIN_LISTE_POSTE = "/WEB-INF/Admin/listePosteAdmin.jsp";

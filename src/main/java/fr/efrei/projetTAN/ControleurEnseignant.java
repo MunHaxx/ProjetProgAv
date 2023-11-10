@@ -90,10 +90,10 @@ public class ControleurEnseignant extends HttpServlet {
                             request.getRequestDispatcher(PAGE_ENSEIGNANT_LISTE_CANDIDATURE).forward(request, response);
                             break;
                         case ACTION_ENSEIGNANT_VOIR_MODIFIER_PROFIL:
-                            
                             request.getRequestDispatcher(PAGE_ENSEIGNANT_MODIFIER_PROFIL).forward(request, response);
                             break;
                         case ACTION_ENSEIGNANT_POSTULER:
+                            request.setAttribute("tousLesPostes", posteSB.getTousLesPostes());
                             request.getRequestDispatcher(PAGE_ENSEIGNANT_LISTE_POSTE).forward(request, response);
                             break;
                         case ACTION_ENSEIGNANT_SAUVE_MODIFICATION_PROFIL:

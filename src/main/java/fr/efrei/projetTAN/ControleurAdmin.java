@@ -45,29 +45,34 @@ public class ControleurAdmin extends HttpServlet {
     @EJB
     private RecruteurSessionBean recruteurSB;
 
-    public void init() { }
+    public void init() {
+    }
+
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         traiterRequete(request, response);
     }
-    public void doPost (HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         traiterRequete(request, response);
     }
 
-    public void traiterRequete(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void traiterRequete(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
         actionUtilisateur = request.getParameter("action");
         chargerLaPageSuivante(actionUtilisateur, request, response);
     }
 
-    public void chargerLaPageSuivante(String actionUtilisateur, HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    public void chargerLaPageSuivante(String actionUtilisateur, HttpServletRequest request,
+            HttpServletResponse response) throws ServletException, IOException {
         if (actionUtilisateur == null || actionUtilisateur.isEmpty()) {
             request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
-        }
-        else {
+        } else {
             List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs(); // Besoin de la liste dans différents case
             List<EnseignantEntity> listeEnseignants = enseignantSB.getTousEnseignants(); // Besoin de la liste dans différents case
+
             request.getSession().setAttribute("messageInfo", "");
             request.getSession().setAttribute("messageErreur", "");
-           
+
             switch (actionUtilisateur) {
                 case ACTION_ADMIN_VOIR_LISTE_POSTE:
                     request.setAttribute("tousLesPostes", posteSB.getTousLesPostes());
@@ -78,7 +83,7 @@ public class ControleurAdmin extends HttpServlet {
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_RECRUTEUR).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_CREER_RECRUTEUR:
-                    if(request.getParameter("data-id") == null || request.getParameter("data-id").isEmpty()) {
+                    if (request.getParameter("data-id") == null || request.getParameter("data-id").isEmpty()) {
                         request.setAttribute("leRecruteur", null);
                     } else {
                         int dataId = Integer.parseInt(request.getParameter("data-id"));
@@ -91,7 +96,7 @@ public class ControleurAdmin extends HttpServlet {
                     request.getRequestDispatcher(PAGE_ADMIN_LISTE_ENSEIGNANT).forward(request, response);
                     break;
                 case ACTION_ADMIN_VOIR_CREER_ENSEIGNANT:
-                    if(request.getParameter("data-id") == null || request.getParameter("data-id").isEmpty()) {
+                    if (request.getParameter("data-id") == null || request.getParameter("data-id").isEmpty()) {
                         request.setAttribute("lEnseignant", null);
                     } else {
                         int dataId = Integer.parseInt(request.getParameter("data-id"));
@@ -120,14 +125,16 @@ public class ControleurAdmin extends HttpServlet {
                     DataService.serviceModifStatusCandidatureNonRetenue(candidatureSB, request);
                     redirigerListeCandidatures(request, response);
                     break;
-                
+
                 case ACTION_DECONNEXION:
                     request.getRequestDispatcher(PAGE_CONNEXION).forward(request, response);
                     break;
             }
         }
     }
-    public void redirigerListeCandidatures(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    public void redirigerListeCandidatures(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         DataService.serviceGetListeCandidatureDunPoste(posteSB, request);
         if (request.getSession().getAttribute("messageErreur") != "")
             // Redirection vers la page courante pour afficher l'erreur
@@ -137,4 +144,3 @@ public class ControleurAdmin extends HttpServlet {
             request.getRequestDispatcher(PAGE_ADMIN_VOIR_CANDIDATURE).forward(request, response);
     }
 }
-

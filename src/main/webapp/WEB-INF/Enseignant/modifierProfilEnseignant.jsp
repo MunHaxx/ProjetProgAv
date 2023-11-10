@@ -66,17 +66,17 @@
 
                         <div class="container-champs">
                             <div class="container-champ">
-                                <div class="point-champ">-</div>
+                                <div class="point-champ">•</div>
                                 <input class="input-champ" placeholder="Intérêt 1" name="champInteret1" value="${lEnseignant.listeInterets[0].nomInteret}"/>
                             </div>
 
                             <div class="container-champ">
-                                <div class="point-champ">-</div>
+                                <div class="point-champ">•</div>
                                 <input class="input-champ" placeholder="Intérêt 2" name="champInteret2" value="${lEnseignant.listeInterets[1].nomInteret}"/>
                             </div>
 
                             <div class="container-champ">
-                                <div class="point-champ">-</div>
+                                <div class="point-champ">•</div>
                                 <input class="input-champ" placeholder="Intérêt 3" name="champInteret3" value="${lEnseignant.listeInterets[2].nomInteret}"/>
                             </div>
                         </div>
@@ -88,17 +88,17 @@
 
                         <div class="container-champs">
                             <div class="container-champ">
-                              <div class="point-champ">-</div>
+                              <div class="point-champ">•</div>
                               <input class="input-champ" placeholder="Activités 1" name="champActivite1" value="${lEnseignant.listeActivites[0].nomActivite}"/>
                             </div>
 
                             <div class="container-champ">
-                              <div class="point-champ">-</div>
+                              <div class="point-champ">•</div>
                               <input class="input-champ" placeholder="Activités 2" name="champActivite2" value="${lEnseignant.listeActivites[1].nomActivite}"/>
                             </div>
 
                             <div class="container-champ">
-                              <div class="point-champ">-</div>
+                              <div class="point-champ">•</div>
                               <input class="input-champ" placeholder="Activités 3" name="champActivite3" value="${lEnseignant.listeActivites[2].nomActivite}"/>
                             </div>
                         </div>
@@ -110,7 +110,7 @@
             
                         <div class="container-champs">
                             <div class="container-champ">
-                                <div class="point-champ">-</div>
+                                <div class="point-champ">•</div>
                 
                                 <div class="titre-champ titre">Titre</div>
                                 <input class="input-champ input-titre" placeholder="Titre etudes 1" name="champEtude1" value="${lEnseignant.listeEtudes[0].titre}"/>
@@ -120,7 +120,7 @@
                             </div>
               
                             <div class="container-champ">
-                                <div class="point-champ">-</div>
+                                <div class="point-champ">•</div>
                 
                                 <div class="titre-champ titre">Titre</div>
                                 <input class="input-champ input-titre" placeholder="Titre etudes 2" name="champEtude2" value="${lEnseignant.listeEtudes[1].titre}"/>
@@ -130,7 +130,7 @@
                             </div>
                             
                             <div class="container-champ">
-                                <div class="point-champ">-</div>
+                                <div class="point-champ">•</div>
                 
                                 <div class="titre-champ titre">Titre</div>
                                 <input class="input-champ" placeholder="Titre etudes 3" name="champEtude3" value="${lEnseignant.listeEtudes[2].titre}"/>
@@ -150,7 +150,7 @@
                             <!-- Expérience 1 -->
                             <div class="container-experience">
                                 <div class="container-champ container-ecole">
-                                    <div class="point-champ">-</div>
+                                    <div class="point-champ">•</div>
                   
                                     <div class="titre-champ">Ecole</div>
                                     <input class="input-champ" placeholder="Ecole" name="champEcole1" value="${lEnseignant.listeExperiences[0].ecole}"/>
@@ -166,7 +166,7 @@
                                     <div class="titre-liste-competence">Compétences développés</div>
 
                                     <div class="container-champ container-competence">
-                                        <div class="point-champ">-</div>
+                                        <div class="point-champ">•</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
                                         <input class="input-champ" placeholder="Competence 1" name="champCompetence1.1" value="${lEnseignant.listeExperiences[0].listeCompetences[0].nomCompetence}"/>
@@ -183,7 +183,7 @@
                                     </div>
 
                                     <div class="container-champ container-competence">
-                                        <div class="point-champ">-</div>
+                                        <div class="point-champ">•</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
                                         <input class="input-champ" placeholder="Competence 2" name="champCompetence1.2" value="${lEnseignant.listeExperiences[0].listeCompetences[1].nomCompetence}"/>
@@ -200,7 +200,7 @@
                                     </div>
 
                                     <div class="container-champ container-competence">
-                                        <div class="point-champ">-</div>
+                                        <div class="point-champ">•</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
                                         <input class="input-champ" placeholder="Competence 3" name="champCompetence1.3" value="${lEnseignant.listeExperiences[0].listeCompetences[2].nomCompetence}"/>
@@ -221,7 +221,7 @@
                             <!-- Expérience 2 -->
                             <div class="container-experience">
                                 <div class="container-champ container-ecole">
-                                    <div class="point-champ">-</div>
+                                    <div class="point-champ">•</div>
                   
                                     <div class="titre-champ">Ecole</div>
                                     <input class="input-champ" placeholder="Ecole" name="champEcole2" value="${lEnseignant.listeExperiences[1].ecole}"/>
@@ -237,7 +237,7 @@
                                     <div class="titre-liste-competence">Compétences développés</div>
 
                                     <div class="container-champ container-competence">
-                                        <div class="point-champ">-</div>
+                                        <div class="point-champ">•</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
                                         <input class="input-champ" placeholder="Competence 1" name="champCompetence2.1" value="${lEnseignant.listeExperiences[1].listeCompetences[0].nomCompetence}"/>
@@ -254,7 +254,7 @@
                                     </div>
 
                                     <div class="container-champ container-competence">
-                                        <div class="point-champ">-</div>
+                                        <div class="point-champ">•</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
                                         <input class="input-champ" placeholder="Competence 2" name="champCompetence2.2" value="${lEnseignant.listeExperiences[1].listeCompetences[1].nomCompetence}"/>
@@ -271,7 +271,7 @@
                                     </div>
 
                                     <div class="container-champ container-competence">
-                                        <div class="point-champ">-</div>
+                                        <div class="point-champ">•</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
                                         <input class="input-champ" placeholder="Competence 3" name="champCompetence3.3" value="${lEnseignant.listeExperiences[2].listeCompetences[2].nomCompetence}"/>
@@ -292,7 +292,7 @@
                             <!-- Expérience 3 -->
                             <div class="container-experience">
                                 <div class="container-champ container-ecole">
-                                    <div class="point-champ">-</div>
+                                    <div class="point-champ">•</div>
                   
                                     <div class="titre-champ">Ecole</div>
                                     <input class="input-champ" placeholder="Ecole" name="champEcole3" value="${lEnseignant.listeExperiences[2].ecole}"/>
@@ -308,7 +308,7 @@
                                     <div class="titre-liste-competence">Compétences développés</div>
 
                                     <div class="container-champ container-competence">
-                                        <div class="point-champ">-</div>
+                                        <div class="point-champ">•</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
                                         <input class="input-champ" placeholder="Competence 1" name="champCompetence3.1" value="${lEnseignant.listeExperiences[2].listeCompetences[0].nomCompetence}"/>
@@ -325,7 +325,7 @@
                                     </div>
 
                                     <div class="container-champ container-competence">
-                                        <div class="point-champ">-</div>
+                                        <div class="point-champ">•</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
                                         <input class="input-champ" placeholder="Competence 2" name="champCompetence3.2" value="${lEnseignant.listeExperiences[2].listeCompetences[1].nomCompetence}"/>
@@ -342,7 +342,7 @@
                                     </div>
 
                                     <div class="container-champ container-competence">
-                                        <div class="point-champ">-</div>
+                                        <div class="point-champ">•</div>
                     
                                         <div class="titre-champ titre-competence">Compétences</div>
                                         <input class="input-champ" placeholder="Competence 3" name="champCompetence3.3" value="${lEnseignant.listeExperiences[2].listeCompetences[2].nomCompetence}"/>

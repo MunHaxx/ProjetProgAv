@@ -72,6 +72,7 @@ public class ControleurLogin extends HttpServlet {
             }
         }
 
+        //Si le rôle a bien été attribué, modifier les caractéristisques de l'utilisateur
         if (role != null) {
             unUtilisateur = new Utilisateur();
             unUtilisateur.setIdentifiant(identifiant);

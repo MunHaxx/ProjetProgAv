@@ -64,17 +64,17 @@
                             <div class="title-liste">Compétences</div>
                             <div class="container-champs">
                                 <div class="container-champ">
-                                    <div class="point-champ">-</div>
+                                    <div class="point-champ">•</div>
                                     <input class="input-champ" placeholder="Compétence 1" name="champCompetence1" />
                                 </div>
 
                                 <div class="container-champ">
-                                    <div class="point-champ">-</div>
+                                    <div class="point-champ">•</div>
                                     <input class="input-champ" placeholder="Compétence 2" name="champCompetence2" />
                                 </div>
 
                                 <div class="container-champ">
-                                    <div class="point-champ">-</div>
+                                    <div class="point-champ">•</div>
                                     <input class="input-champ" placeholder="Compétence 3" name="champCompetence3" />
                                 </div>
                             </div>
@@ -85,17 +85,17 @@
                             <div class="title-liste">Contraintes</div>
                             <div class="container-champs">
                                 <div class="container-champ">
-                                    <div class="point-champ">-</div>
+                                    <div class="point-champ">•</div>
                                     <input class="input-champ" placeholder="Contrainte 1" name="champContrainte1" />
                                 </div>
 
                                 <div class="container-champ">
-                                    <div class="point-champ">-</div>
+                                    <div class="point-champ">•</div>
                                     <input class="input-champ" placeholder="Contrainte 2" name="champContrainte2" />
                                 </div>
 
                                 <div class="container-champ">
-                                    <div class="point-champ">-</div>
+                                    <div class="point-champ">•</div>
                                     <input class="input-champ" placeholder="Contrainte 3" name="champContrainte3" />
                                 </div>
                             </div>
@@ -106,17 +106,17 @@
                             <div class="title-liste">Remarques</div>
                             <div class="container-champs">
                                 <div class="container-champ">
-                                    <div class="point-champ">-</div>
+                                    <div class="point-champ">•</div>
                                     <input class="input-champ" placeholder="Remarque 1" name="champRemarque1" />
                                 </div>
 
                                 <div class="container-champ">
-                                    <div class="point-champ">-</div>
+                                    <div class="point-champ">•</div>
                                     <input class="input-champ" placeholder="Remarque 2" name="champRemarque2" />
                                 </div>
 
                                 <div class="container-champ">
-                                    <div class="point-champ">-</div>
+                                    <div class="point-champ">•</div>
                                     <input class="input-champ" placeholder="Remarque 3" name="champRemarque3" />
                                 </div>
                             </div>

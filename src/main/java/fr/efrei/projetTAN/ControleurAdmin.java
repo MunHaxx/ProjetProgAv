@@ -65,8 +65,7 @@ public class ControleurAdmin extends HttpServlet {
         else {
             List<RecruteurEntity> listeRecruteurs = recruteurSB.getTousRecruteurs(); // Besoin de la liste dans différents case
             List<EnseignantEntity> listeEnseignants = enseignantSB.getTousEnseignants(); // Besoin de la liste dans différents case
-            
-           
+
             switch (actionUtilisateur) {
                 case ACTION_ADMIN_VOIR_LISTE_POSTE:
                     request.setAttribute("tousLesPostes", posteSB.getTousLesPostes());

@@ -26,6 +26,13 @@ public class CompetenceSessionBean {
         return requete.getResultList();
     }
 
+    // Permet d'obtenir une compétence à partir de son ID
+    public List<CompetenceEntity> getCompetenceParNom(String nom) {
+        requete = entityManager.createNamedQuery("recupComptNom" );
+        requete.setParameter("nom", nom);
+        return requete.getResultList();
+    }
+
     // Permet de créer une nouvelle compétence
     public void ajouterCompetence(CompetenceEntity comptACreer) {
         entityManager.getTransaction().begin();

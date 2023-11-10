@@ -17,6 +17,7 @@ import static fr.efrei.projetTAN.utils.User.UserEnseignantConst.*;
 
 public class DataService {
 
+    // Permet de vérifier la saisie utilisateur
     private static boolean saisieCaractereValide(String saisie) {
         return (!saisie.isEmpty()) && saisie.matches("^[a-zA-Z\\s]+$");
     }
@@ -163,6 +164,8 @@ public class DataService {
         request.getSession().setAttribute("messageInfo", msgInfo);
     }
 
+    // Permet de créer un poste, associé à la page de création de poste sur le profil recruteur
+    // Associé au bouton sauvegarder de la page mentionnée
     public static void serviceCreerPoste(PosteSessionBean posteSB, EcoleSessionBean ecoleSB,
                                          CompetenceSessionBean competenceSB, ContrainteSessionBean contrainteSB,
                                          RemarqueSessionBean remarqueSB, NiveauEtudiantSessionBean nivEtudiantSB,
@@ -218,19 +221,11 @@ public class DataService {
             listeStr.add(strCompt1);
             listeStr.add(strCompt2);
             listeStr.add(strCompt3);
-            ArrayList<CompetenceEntity> listeCompetences = serviceCreerListeCompetences(competenceSB, nouveauPoste, listeStr);
-            nouveauPoste.setListeCompetences(listeCompetences);
+            serviceCreerListeCompetences(competenceSB, nouveauPoste, posteSB, listeStr);
             listeStr.clear();
 
-            // Contraintes
-            /*listeStr.add(contr1); listeStr.add(contr2); listeStr.add(contr3);
-            ArrayList<ContrainteEntity> listeContraintes = serviceCreerListeContraintes(contrainteSB, nouveauPoste, listeStr);
-            if (listeContraintes != null)
-                nouveauPoste.setListeContraintes(listeContraintes);
-            listeStr.clear();*/
-
-            // Ajout des compétences, contraintes et remarques
-            // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            // Contraintes et remarques
+            // non implémenter car on aurait aimé résoudre les problèmes sur compétences avant de gérer ceux-là
 
             posteSB.modifierPoste(nouveauPoste);
             recruteurConnecte.getEstRespoListePostes().add(nouveauPoste);
@@ -242,7 +237,7 @@ public class DataService {
         request.setAttribute("messageInfo", msgInfo);
     }
 
-    // Créé un enum type de contrat à partir d'un string, utilisé lors de la création de poste
+    // Crée un enum type de contrat à partir d'un string, utilisé lors de la création de poste
     public static GlobalConst.EnumTypeContrat serviceCreerTypeContrat(String strContrat){
         if (strContrat == null || !GlobalConst.estDansEnumTypeContrat(strContrat))
             return GlobalConst.EnumTypeContrat.CDD; // valeur par défaut
@@ -250,7 +245,7 @@ public class DataService {
             return GlobalConst.stringVersEnumTypeContrat(strContrat);
     }
 
-    // Créé un niveau étudiant à partir d'un string, utilisé lors de la création de poste
+    // Crée un niveau étudiant à partir d'un string, utilisé lors de la création de poste
     public static NiveauEtudiantEntity serviceCreerNivEtudiant(NiveauEtudiantSessionBean nivEtudSB, String strNivEtudiant){
         if (strNivEtudiant == null || !GlobalConst.estDansEnumTypeContrat(strNivEtudiant))
             strNivEtudiant = "L1"; // valeur par défaut
@@ -277,33 +272,36 @@ public class DataService {
     }
 
     // Crée une liste de compétences à partir d'une liste de string
-    public static ArrayList<CompetenceEntity> serviceCreerListeCompetences(CompetenceSessionBean competenceSB, PosteEntity poste, ArrayList<String> strListe) {
+    public static void serviceCreerListeCompetences(CompetenceSessionBean competenceSB, PosteEntity poste, PosteSessionBean posteSB, ArrayList<String> strListe) {
         ArrayList<CompetenceEntity> listeCompt = new ArrayList<>();
         for (String strCompt:strListe) {
             if (strCompt != null && !strCompt.isEmpty()){
-                // est-ce que ma compétence existe ? oui je récup et j'ajoute à la liste des postes de la compt
-                // sinon je créé ma compétence, et je l'ajoute à la listes des postes de la compt
-                CompetenceEntity nouvelleCompetence = new CompetenceEntity(strCompt, poste);
-                competenceSB.ajouterCompetence(nouvelleCompetence);
-                listeCompt.add(nouvelleCompetence);
+                CompetenceEntity competence;
+
+                // Vérifie si la compétence existe déjà pour ce poste
+                boolean competenceExistePourPoste = false;
+                for (CompetenceEntity comp : poste.getListeCompetences()) {
+                    if (Objects.equals(comp.getNomCompetence(), strCompt)) {
+                        competenceExistePourPoste = true;
+                        break;
+                    }
+                }
+                // Si la compétence n'existe pas pour ce poste, on l'ajoute
+                if (!competenceExistePourPoste) {
+                    // Si la compétence existe, on l'ajoute à la liste de compétences du poste
+                    if (!competenceSB.getCompetenceParNom(strCompt).isEmpty()) {
+                        competence = competenceSB.getCompetenceParNom(strCompt).get(0);
+                    }
+                    // Sinon on créé une compétence
+                    else {
+                        competence = new CompetenceEntity(strCompt, poste);
+                    }
+                    listeCompt.add(competence);
+                    competenceSB.ajouterCompetence(competence);
+                }
             }
         }
-        return listeCompt;
+        poste.setListeCompetences(listeCompt);
+        posteSB.modifierPoste(poste);
     }
-
-    // Crée une liste de contraintes à partir d'une liste de string
-    /*public static ArrayList<CompetenceEntity> serviceCreerListeContraintes(ContrainteSessionBean contrainteSB, PosteEntity poste, ArrayList<String> strListe) {
-        if (strListe == null)
-            return null;
-        ArrayList<CompetenceEntity> listeCompt = new ArrayList<>();
-        for (String compt:strListe) {
-            if (compt != null && !compt.isEmpty()){
-                CompetenceEntity nouvelleCompetence = new CompetenceEntity(compt, poste);
-                competenceSB.ajouterCompetence(nouvelleCompetence);
-                listeCompt.add(nouvelleCompetence);
-            }
-        }
-        return listeCompt;
-    }*/
-
 }
